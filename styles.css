@@ -118,7 +118,7 @@ img { display: block; width: 100%; }
 .process-grid p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 14px; }
 
 .about { display: grid; grid-template-columns: 1.08fr .92fr; min-height: 700px; background: #101617; }
-.about-image { min-height: 600px; background-image: linear-gradient(90deg, transparent 50%, #101617 100%), url("assets/aderemi-cover.png"); background-size: cover; background-position: 40% center; }
+.about-image { min-height: 600px; background-image: linear-gradient(90deg, transparent 50%, #101617 100%), url("aderemi-cover.png"); background-size: cover; background-position: 40% center; }
 .about-copy { max-width: 560px; padding: 120px 50px 100px; align-self: center; }
 .about-copy .eyebrow { margin-bottom: 22px; }
 .about-copy > p:not(.eyebrow) { margin: 28px 0; color: var(--muted); line-height: 1.8; }
