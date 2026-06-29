@@ -129,10 +129,17 @@ img { display: block; width: 100%; }
 .contact { padding-block: 130px 90px; }
 .contact-top { max-width: 1040px; }
 .contact h2 { margin: 20px 0 70px; font-family: "Manrope", sans-serif; font-size: clamp(52px, 8vw, 108px); line-height: .95; }
-.contact-bottom { padding-top: 35px; display: grid; grid-template-columns: 1.35fr .65fr; gap: 50px; border-top: 1px solid var(--line); }
+.contact-bottom { padding-top: 35px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 50px; align-items: start; border-top: 1px solid var(--line); }
+.contact-details { display: grid; gap: 24px; }
 .contact-email { display: flex; align-items: center; gap: 15px; font-family: "Manrope", sans-serif; font-size: clamp(22px, 3.5vw, 46px); overflow-wrap: anywhere; }
 .contact-email svg { color: var(--amber); flex: 0 0 auto; }
-.contact-bottom p { margin: 3px 0 0; color: var(--muted); line-height: 1.7; }
+.contact-details p { max-width: 540px; margin: 0; color: var(--muted); line-height: 1.7; }
+.booking-card { scroll-margin-top: 120px; padding: 28px; border: 1px solid var(--line); border-radius: 6px; background: var(--ink-soft); }
+.booking-card .booking-kicker { margin: 0 0 12px; color: var(--teal); font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
+.booking-card h3 { margin: 0 0 24px; font-family: "Manrope", sans-serif; font-size: 25px; line-height: 1.2; }
+.calendar-booking-button { min-height: 48px; }
+.calendar-booking-button button, .booking-fallback { min-height: 48px; padding: 0 18px !important; display: inline-flex; align-items: center; justify-content: center; border: 0 !important; border-radius: 5px !important; background: var(--paper) !important; color: var(--ink) !important; font-family: "DM Sans", sans-serif !important; font-size: 14px !important; font-weight: 600 !important; cursor: pointer; transition: background .2s ease; }
+.calendar-booking-button button:hover, .booking-fallback:hover { background: var(--amber) !important; }
 .site-footer { min-height: 145px; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 48px; border-top: 1px solid var(--line); }
 .footer-links { display: flex; gap: 24px; }
 .site-footer > p { color: var(--muted); font-size: 12px; }

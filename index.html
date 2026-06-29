@@ -13,8 +13,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -31,12 +33,12 @@
         <a href="#process">Process</a>
         <a href="#about">About</a>
       </nav>
-      <a class="header-cta" href="#contact">Start a project <i data-lucide="arrow-up-right"></i></a>
+      <a class="header-cta" href="#booking">Start a project <i data-lucide="arrow-up-right"></i></a>
       <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
         <i data-lucide="menu"></i>
       </button>
       <nav class="mobile-nav" aria-label="Mobile navigation">
-        <a href="#work">Work</a><a href="#services">Services</a><a href="#process">Process</a><a href="#about">About</a><a href="#contact">Start a project</a>
+        <a href="#work">Work</a><a href="#services">Services</a><a href="#process">Process</a><a href="#about">About</a><a href="#booking">Start a project</a>
       </nav>
     </header>
 
@@ -48,7 +50,7 @@
           <p class="hero-lede">Cinematic edits, motion design, and social content built to earn attention and make every second count.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#work">View selected work <i data-lucide="arrow-down-right"></i></a>
-            <a class="button button-ghost" href="#contact">Let&rsquo;s work together</a>
+            <a class="button button-ghost" href="#booking">Let&rsquo;s work together</a>
           </div>
           <div class="hero-proof" aria-label="Key services">
             <span>01 <b>Creative direction</b></span>
@@ -162,7 +164,7 @@
           <h2>Technology in the toolkit. Story at the centre.</h2>
           <p>I&rsquo;m Aderemi, a visual storyteller working where editing, motion, and creative technology meet. I care about work that feels precise without feeling sterile, and cinematic without losing the message.</p>
           <div class="about-tags"><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><span>AI workflows</span></div>
-          <a href="#contact">Tell me what you&rsquo;re making <i data-lucide="arrow-right"></i></a>
+          <a href="#booking">Tell me what you&rsquo;re making <i data-lucide="arrow-right"></i></a>
         </div>
       </section>
 
@@ -172,8 +174,30 @@
           <h2>Let&rsquo;s make it <em>impossible to ignore.</em></h2>
         </div>
         <div class="contact-bottom">
-          <a class="contact-email" href="mailto:hello@remivisuals.com">hello@remivisuals.com <i data-lucide="arrow-up-right"></i></a>
-          <p>Share the idea, timeline, and where it needs to live. I&rsquo;ll reply with the clearest next step.</p>
+          <div class="contact-details">
+            <a class="contact-email" href="mailto:hello@remivisuals.com">hello@remivisuals.com <i data-lucide="arrow-up-right"></i></a>
+            <p>Share the idea, timeline, and where it needs to live. I&rsquo;ll reply with the clearest next step.</p>
+          </div>
+          <div class="booking-card" id="booking">
+            <p class="booking-kicker">Ready when you are</p>
+            <h3>Choose a time that works.</h3>
+            <div class="calendar-booking-button">
+              <script>
+                (function() {
+                  var target = document.currentScript;
+                  window.addEventListener('load', function() {
+                    calendar.schedulingButton.load({
+                      url: 'https://calendar.google.com/calendar/appointments/AcZssZ0fdiH36cAAQn9p8uHOMRxK8uQRYQsUs8UtIwE=?gv=true',
+                      color: '#f8f8f8',
+                      label: 'Book an appointment',
+                      target,
+                    });
+                  });
+                })();
+              </script>
+              <noscript><a class="booking-fallback" href="https://calendar.google.com/calendar/appointments/AcZssZ0fdiH36cAAQn9p8uHOMRxK8uQRYQsUs8UtIwE=?gv=true">Book an appointment</a></noscript>
+            </div>
+          </div>
         </div>
       </section>
     </main>
