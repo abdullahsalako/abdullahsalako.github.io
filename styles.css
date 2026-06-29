@@ -137,9 +137,9 @@ img { display: block; width: 100%; }
 .booking-card { scroll-margin-top: 120px; padding: 28px; border: 1px solid var(--line); border-radius: 6px; background: var(--ink-soft); }
 .booking-card .booking-kicker { margin: 0 0 12px; color: var(--teal); font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
 .booking-card h3 { margin: 0 0 24px; font-family: "Manrope", sans-serif; font-size: 25px; line-height: 1.2; }
-.calendar-booking-button { min-height: 48px; }
-.calendar-booking-button button, .booking-fallback { min-height: 48px; padding: 0 18px !important; display: inline-flex; align-items: center; justify-content: center; border: 0 !important; border-radius: 5px !important; background: var(--paper) !important; color: var(--ink) !important; font-family: "DM Sans", sans-serif !important; font-size: 14px !important; font-weight: 600 !important; cursor: pointer; transition: background .2s ease; }
-.calendar-booking-button button:hover, .booking-fallback:hover { background: var(--amber) !important; }
+.booking-button { min-height: 50px; width: fit-content; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 5px; background: var(--paper); color: var(--ink); font-size: 14px; font-weight: 600; transition: background .2s ease; }
+.booking-button svg { width: 18px; height: 18px; }
+.booking-button:hover { background: var(--amber); }
 .site-footer { min-height: 145px; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 48px; border-top: 1px solid var(--line); }
 .footer-links { display: flex; gap: 24px; }
 .site-footer > p { color: var(--muted); font-size: 12px; }

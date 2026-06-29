@@ -13,10 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
-    <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -175,28 +173,13 @@
         </div>
         <div class="contact-bottom">
           <div class="contact-details">
-            <a class="contact-email" href="mailto:hello@remivisuals.com">hello@remivisuals.com <i data-lucide="arrow-up-right"></i></a>
+            <a class="contact-email" href="mailto:abdullahsalako@gmail.com">abdullahsalako@gmail.com <i data-lucide="arrow-up-right"></i></a>
             <p>Share the idea, timeline, and where it needs to live. I&rsquo;ll reply with the clearest next step.</p>
           </div>
           <div class="booking-card" id="booking">
             <p class="booking-kicker">Ready when you are</p>
             <h3>Choose a time that works.</h3>
-            <div class="calendar-booking-button">
-              <script>
-                (function() {
-                  var target = document.currentScript;
-                  window.addEventListener('load', function() {
-                    calendar.schedulingButton.load({
-                      url: 'https://calendar.google.com/calendar/appointments/AcZssZ0fdiH36cAAQn9p8uHOMRxK8uQRYQsUs8UtIwE=?gv=true',
-                      color: '#f8f8f8',
-                      label: 'Book an appointment',
-                      target,
-                    });
-                  });
-                })();
-              </script>
-              <noscript><a class="booking-fallback" href="https://calendar.google.com/calendar/appointments/AcZssZ0fdiH36cAAQn9p8uHOMRxK8uQRYQsUs8UtIwE=?gv=true">Book an appointment</a></noscript>
-            </div>
+            <a class="booking-button" href="https://calendar.google.com/calendar/appointments/AcZssZ0fdiH36cAAQn9p8uHOMRxK8uQRYQsUs8UtIwE=?gv=true" target="_blank" rel="noopener noreferrer">Book a call <i data-lucide="calendar-days"></i></a>
           </div>
         </div>
       </section>
