@@ -136,6 +136,12 @@ img { display: block; width: 100%; }
 .contact-email { display: flex; align-items: center; gap: 15px; font-family: "Manrope", sans-serif; font-size: clamp(22px, 3.5vw, 46px); overflow-wrap: anywhere; }
 .contact-email svg { color: var(--amber); flex: 0 0 auto; }
 .contact-details p { max-width: 540px; margin: 0; color: var(--muted); line-height: 1.7; }
+.contact-socials { display: flex; gap: 10px; flex-wrap: wrap; }
+.contact-socials a { min-height: 44px; padding: 0 14px; display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line); border-radius: 5px; color: #d5d8d6; font-size: 13px; transition: border-color .2s ease, color .2s ease; }
+.contact-socials a:hover { border-color: var(--teal); color: var(--paper); }
+.contact-socials svg { width: 16px; height: 16px; }
+.contact-socials a > svg:last-child { width: 14px; color: var(--amber); }
+.x-mark { width: 16px; text-align: center; font-family: "Manrope", sans-serif; font-weight: 800; }
 .booking-card { scroll-margin-top: 120px; padding: 28px; border: 1px solid var(--line); border-radius: 6px; background: var(--ink-soft); }
 .booking-card .booking-kicker { margin: 0 0 12px; color: var(--teal); font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
 .booking-card h3 { margin: 0 0 24px; font-family: "Manrope", sans-serif; font-size: 25px; line-height: 1.2; }
