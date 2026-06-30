@@ -117,7 +117,9 @@ img { display: block; width: 100%; }
 .process-grid p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 14px; }
 
 .about { display: grid; grid-template-columns: 1.08fr .92fr; min-height: 700px; background: #101617; }
-.about-image { min-height: 600px; background-image: linear-gradient(90deg, transparent 50%, #101617 100%), url("aderemi-cover.png"); background-size: cover; background-position: 40% center; }
+.about-image { min-height: 600px; position: relative; overflow: hidden; background: #2b2b2b; }
+.about-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 60%, #101617 100%); pointer-events: none; }
+.about-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; filter: saturate(.9) contrast(1.02); }
 .about-copy { max-width: 560px; padding: 120px 50px 100px; align-self: center; }
 .about-copy .eyebrow { margin-bottom: 22px; }
 .about-copy > p:not(.eyebrow) { margin: 28px 0; color: var(--muted); line-height: 1.8; }
@@ -187,7 +189,9 @@ img { display: block; width: 100%; }
   .process-grid li:nth-child(2) { border-right: 0; }
   .process-grid li { border-bottom: 1px solid var(--line); }
   .about { grid-template-columns: 1fr; }
-  .about-image { min-height: 430px; background-position: center; }
+  .about-image { min-height: 430px; }
+  .about-image::after { background: linear-gradient(180deg, transparent 65%, #101617 100%); }
+  .about-image img { object-position: center 20%; }
   .about-copy { max-width: 700px; padding: 80px 32px; }
   .booking-heading { grid-template-columns: 1fr; gap: 20px; }
   .site-footer { padding-block: 35px; grid-template-columns: 1fr auto; }
