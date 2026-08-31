@@ -158,34 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { passive: true });
 })();
 
-// ─── Custom cursor ring (pointer devices only) ────────────────────────────────
 const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-
-if (!isTouch) {
-  const ring = document.createElement("div");
-  ring.className = "cursor-ring";
-  document.body.appendChild(ring);
-  document.body.classList.add("custom-cursor");
-
-  let mx = 0, my = 0, rx = 0, ry = 0;
-
-  document.addEventListener("mousemove", (e) => { mx = e.clientX; my = e.clientY; });
-
-  (function animRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + "px";
-    ring.style.top  = ry + "px";
-    requestAnimationFrame(animRing);
-  })();
-
-  document.querySelectorAll(
-    "a, button, .project, .service-row, .filter, .color-slider"
-  ).forEach((el) => {
-    el.addEventListener("mouseenter", () => ring.classList.add("hovering"));
-    el.addEventListener("mouseleave", () => ring.classList.remove("hovering"));
-  });
-}
 
 // ─── Hero parallax ───────────────────────────────────────────────────────────
 (function initParallax() {

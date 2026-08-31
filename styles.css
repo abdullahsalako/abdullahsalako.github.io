@@ -38,7 +38,6 @@ body {
 }
 
 body.menu-open { overflow: hidden; }
-body.custom-cursor, body.custom-cursor a, body.custom-cursor button { cursor: none !important; }
 button, a { font: inherit; }
 button { color: inherit; border: none; background: none; padding: 0; }
 a { color: inherit; text-decoration: none; }
@@ -1008,26 +1007,6 @@ img { display: block; width: 100%; }
   will-change: transform;
 }
 
-/* --- Custom Cursor --- */
-.cursor-ring {
-  position: fixed;
-  width: 32px;
-  height: 32px;
-  border: 1.5px solid var(--amber);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1000;
-  transform: translate(-50%, -50%);
-  transition: width .35s cubic-bezier(.2,.8,.2,1), height .35s cubic-bezier(.2,.8,.2,1), border-color .35s ease, background .35s ease;
-  will-change: transform;
-}
-.cursor-ring.hovering {
-  width: 54px;
-  height: 54px;
-  background: rgba(37, 99, 235, 0.08);
-  border-color: var(--amber);
-  border-width: 2px;
-}
 
 .parallax-img {
   will-change: transform;
