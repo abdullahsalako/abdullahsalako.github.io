@@ -1,23 +1,40 @@
 :root {
-  --ink: #0b1220;
-  --ink-soft: #eef2f8;
+  /* Navy Blue & Light Gray Foundation */
+  --bg-primary: #0a192f;
+  --bg-light: #f4f6f9;
+  --text-main: #0a192f;
+  --text-light: #ffffff;
+  --text-muted: #5b6b84;
+
+  /* Accent Orange System */
+  --accent-orange: #ff6b35;
+  --accent-orange-deep: #e0531f;
+  --accent-orange-glow: rgba(255, 107, 53, 0.15);
+  --accent-orange-soft: rgba(255, 107, 53, 0.08);
+
+  /* Mapping legacy variables so all existing layout rules resolve automatically */
+  --ink: var(--bg-primary);
+  --ink-soft: #e6edf7; /* Light navy tint */
   --ink-card: rgba(255, 255, 255, 0.72);
-  --paper: #f8fafc;
-  --muted: #5b6b84;
-  --line: rgba(11, 18, 32, 0.10);
-  --line-hover: rgba(11, 18, 32, 0.22);
-  /* Blue & white accent system */
-  --blue: #2563eb;          /* Primary royal blue (readable on white) */
-  --blue-deep: #1d4ed8;     /* Deeper royal blue */
-  --blue-glow: rgba(37, 99, 235, 0.14);
-  --blue-light: #93c5fd;    /* Sky / highlight blue */
+  --paper: var(--bg-light);
+  --muted: var(--text-muted);
+  --line: rgba(10, 25, 47, 0.10);
+  --line-hover: rgba(10, 25, 47, 0.22);
+
+  /* Aligning blue references to Orange accent / Navy accents */
+  --blue: var(--accent-orange);
+  --blue-deep: var(--accent-orange-deep);
+  --blue-glow: var(--accent-orange-glow);
+  --blue-light: #adc7e6; /* Lighter navy/blue tint for metadata badges */
   --white: #ffffff;
-  /* Legacy aliases so existing rules still resolve */
-  --teal: var(--blue);
-  --teal-glow: var(--blue-glow);
-  --amber: var(--blue);
-  --amber-glow: var(--blue-glow);
-  --violet: #6366f1;
+
+  /* Aligning other system aliases */
+  --teal: var(--accent-orange);
+  --teal-glow: var(--accent-orange-glow);
+  --amber: var(--accent-orange);
+  --amber-glow: var(--accent-orange-glow);
+  --violet: var(--accent-orange);
+
   --max: 1200px;
   --transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   --font-display: "Cormorant Garamond", Georgia, serif;
@@ -137,7 +154,7 @@ img { display: block; width: 100%; }
 .brand:hover .brand-mark {
   filter: drop-shadow(0 0 10px var(--blue-glow));
 }
-.brand-mark img { width: 100%; height: 100%; object-fit: contain; }
+.brand-mark img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
 /* Hide the text name since the wordmark logo already says "salako." */
 .brand-copy strong { display: none; }
 .brand-copy { display: grid; line-height: 1.1; }
@@ -164,8 +181,8 @@ img { display: block; width: 100%; }
   transform-origin: right;
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.desktop-nav a:hover { color: var(--ink); }
-.desktop-nav a:hover::after {
+.desktop-nav a:hover, .desktop-nav a.active { color: var(--accent-orange); }
+.desktop-nav a:hover::after, .desktop-nav a.active::after {
   transform: scaleX(1);
   transform-origin: left;
 }
@@ -274,7 +291,7 @@ img { display: block; width: 100%; }
 }
 .button-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 12px 30px rgba(255, 107, 53, 0.3);
 }
 .button-primary:hover svg {
   transform: translate(3px, -3px);
@@ -358,7 +375,7 @@ img { display: block; width: 100%; }
   position: absolute; 
   inset: -6px; 
   border-radius: 50%; 
-  border: 1px solid rgba(147, 197, 253, 0.45); 
+  border: 1px solid rgba(255, 107, 53, 0.45); 
   animation: pulse-ring 2.5s cubic-bezier(.2,.8,.2,1) infinite; 
   pointer-events: none; 
 }
@@ -488,9 +505,9 @@ img { display: block; width: 100%; }
 }
 .slider-badge-after {
   right: 20px;
-  background: rgba(37, 99, 235, 0.25);
-  border: 1px solid var(--blue-light);
-  color: #dbeafe;
+  background: var(--accent-orange-soft);
+  border: 1px solid var(--accent-orange);
+  color: var(--accent-orange);
 }
 
 /* --- Ticker Marquee --- */
@@ -587,7 +604,7 @@ img { display: block; width: 100%; }
   background: rgba(8,11,12,0.05);
   border-color: rgba(8,11,12,0.2);
 }
-.filter.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.filter.active { background: var(--accent-orange); color: #fff; border-color: var(--accent-orange); }
 
 .project-grid { 
   display: grid; 
@@ -672,9 +689,9 @@ img { display: block; width: 100%; }
   transition: var(--transition);
 }
 .project:hover .project-overlay > svg {
-  background: #fff;
-  color: var(--ink);
-  border-color: #fff;
+  background: var(--accent-orange);
+  color: #fff;
+  border-color: var(--accent-orange);
   transform: scale(1.06);
 }
 
@@ -697,7 +714,7 @@ img { display: block; width: 100%; }
   font-weight: 800;
   letter-spacing: -1.5px;
 }
-.project-statement em { color: #7fb0ff; font-style: normal; }
+.project-statement em { color: var(--accent-orange); font-style: normal; }
 .project-copy > button { 
   height: auto; 
   display: flex; 
@@ -713,7 +730,7 @@ img { display: block; width: 100%; }
   letter-spacing: 1px;
 }
 .project-copy > button svg { width: 16px; transition: transform 0.3s ease; }
-.project-copy:hover > button svg { transform: translate(3px, -3px); color: #7fb0ff; }
+.project-copy:hover > button svg { transform: translate(3px, -3px); color: var(--accent-orange); }
 
 /* --- Process Section --- */
 .process-grid { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); list-style: none; border-top: 1px solid var(--line); }
@@ -761,7 +778,7 @@ img { display: block; width: 100%; }
 .about-tags span:hover {
   border-color: var(--amber);
   color: var(--ink);
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.10);
+  box-shadow: 0 0 10px var(--accent-orange-glow);
 }
 .about-copy > a { 
   margin-top: 36px; 
@@ -942,7 +959,7 @@ img { display: block; width: 100%; }
   place-items: center; 
   align-content: center; 
   gap: 16px; 
-  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.15), transparent 45%), #eef2f8; 
+  background: radial-gradient(circle at center, var(--accent-orange-glow), transparent 45%), var(--bg-light); 
   border-bottom: 1px solid var(--line);
   position: relative;
 }
@@ -953,7 +970,7 @@ img { display: block; width: 100%; }
   border: 1.5px solid var(--amber); 
   border-radius: 50%; 
   color: var(--amber); 
-  background: rgba(37, 99, 235, 0.06);
+  background: var(--accent-orange-soft);
   box-shadow: 0 0 20px var(--amber-glow);
 }
 .modal-visual span { color: var(--muted); font-size: 13px; font-family: var(--font-display); font-weight: 800; letter-spacing: 0.5px; }
@@ -1097,10 +1114,10 @@ img { display: block; width: 100%; }
     transition: var(--transition);
     font-family: var(--font-display);
   }
-  .mobile-nav a:hover {
-    border-color: var(--amber);
-    background: rgba(37, 99, 235, 0.06);
-    color: var(--ink);
+  .mobile-nav a:hover, .mobile-nav a.active {
+    border-color: var(--accent-orange);
+    background: var(--accent-orange-soft);
+    color: var(--accent-orange);
   }
   .mobile-nav .mobile-booking-link { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
   .mobile-nav .mobile-booking-link:hover { background: var(--amber); border-color: var(--amber); color: #fff; }
