@@ -37,8 +37,8 @@
 
   --max: 1200px;
   --transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -49,9 +49,19 @@ body {
   background: var(--paper); 
   color: var(--ink); 
   font-family: var(--font-body); 
+  font-size: 16px;
   overflow-x: hidden; 
   position: relative;
-  line-height: 1.6;
+  line-height: 1.7;
+}
+
+/* --- Global Heading Typography (Syne) --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin: 0;
 }
 
 body.menu-open { overflow: hidden; }
@@ -163,8 +173,10 @@ img { display: block; width: 100%; }
 .desktop-nav { margin-left: auto; display: flex; gap: 32px; }
 .desktop-nav a { 
   color: #55627a; 
+  font-family: var(--font-body);
   font-size: 14px; 
   font-weight: 600; 
+  letter-spacing: 0.1px;
   transition: color 0.2s ease; 
   position: relative;
   padding-block: 4px;
@@ -252,9 +264,9 @@ img { display: block; width: 100%; }
   max-width: 680px; 
   margin: 28px 0 24px; 
   font-family: var(--font-display); 
-  font-size: clamp(54px, 5.5vw, 84px); 
-  line-height: 1; 
-  letter-spacing: -2px; 
+  font-size: clamp(48px, 5.5vw, 80px); 
+  line-height: 1.05; 
+  letter-spacing: -1.5px; 
   font-weight: 800;
   text-wrap: balance;
 }
@@ -266,8 +278,9 @@ img { display: block; width: 100%; }
   max-width: 520px; 
   margin: 0; 
   color: var(--muted); 
-  font-size: 18px; 
-  line-height: 1.65; 
+  font-size: 17px; 
+  line-height: 1.75; 
+  font-weight: 400;
 }
 .hero-actions { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
 .button { 
@@ -538,13 +551,13 @@ img { display: block; width: 100%; }
 .section-heading h2, .work-heading h2, .about-copy h2, .booking-heading h2 { 
   margin: 0; 
   font-family: var(--font-display); 
-  font-size: clamp(38px, 4vw, 56px); 
-  line-height: 1.05; 
+  font-size: clamp(36px, 4vw, 54px); 
+  line-height: 1.1; 
   font-weight: 800;
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
   text-wrap: balance;
 }
-.section-heading > p:last-child { margin: 6px 0 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+.section-heading > p:last-child { margin: 6px 0 0; color: var(--muted); font-size: 16px; line-height: 1.75; font-weight: 400; }
 
 .service-list { border-top: 1px solid var(--line); }
 .service-row { 
@@ -576,7 +589,7 @@ img { display: block; width: 100%; }
   border-bottom-color: rgba(11,18,32,0.22);
 }
 .service-number { color: var(--amber); font-family: var(--font-display); font-size: 13px; font-weight: 800; }
-.service-row h3 { margin: 0 0 8px; font-family: var(--font-display); font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+.service-row h3 { margin: 0 0 8px; font-family: var(--font-display); font-size: 24px; font-weight: 800; letter-spacing: -0.25px; line-height: 1.2; }
 .service-row p { margin: 0; color: var(--muted); font-size: 15px; }
 .service-row > svg { width: 24px; height: 24px; justify-self: end; color: var(--amber); transition: transform 0.3s ease; }
 .service-row:hover > svg { transform: rotate(-45deg) scale(1.1); color: var(--ink); }
@@ -752,7 +765,7 @@ img { display: block; width: 100%; }
 }
 .process-grid li:last-child { border-right: 0; }
 .process-grid span { color: var(--amber); font-family: var(--font-display); font-size: 13px; font-weight: 800; }
-.process-grid h3 { margin: 80px 0 14px; font-family: var(--font-display); font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+.process-grid h3 { margin: 80px 0 14px; font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: -0.25px; line-height: 1.2; }
 .process-grid p { margin: 0; color: var(--muted); line-height: 1.6; font-size: 14px; }
 
 /* --- About Section --- */
@@ -798,7 +811,7 @@ img { display: block; width: 100%; }
 /* --- Contact & Booking --- */
 .contact { padding-block: 140px 90px; }
 .contact-top { max-width: 1040px; }
-.contact h2 { margin: 20px 0 70px; font-family: var(--font-display); font-size: clamp(52px, 7vw, 98px); line-height: 0.95; font-weight: 800; letter-spacing: -3px; }
+.contact h2 { margin: 20px 0 70px; font-family: var(--font-display); font-size: clamp(46px, 7vw, 88px); line-height: 1.05; font-weight: 800; letter-spacing: -1.5px; }
 .contact h2 em { display: inline-block; }
 .contact-bottom { padding-top: 45px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 60px; align-items: start; border-top: 1px solid var(--line); }
 .contact-details { display: grid; gap: 28px; }
