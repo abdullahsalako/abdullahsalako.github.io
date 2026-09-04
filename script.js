@@ -36,7 +36,8 @@ document.querySelectorAll(".filter").forEach((button) => {
     });
 
     document.querySelectorAll(".project-card").forEach((project) => {
-      const match = filter === "all" || project.dataset.category === filter;
+      const categories = (project.dataset.category || "").split(/\s+/);
+      const match = filter === "all" || categories.includes(filter);
       project.classList.toggle("filtered-out", !match);
       window.setTimeout(() => {
         project.hidden = !match;
