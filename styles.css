@@ -406,8 +406,7 @@ p, h1, h2, h3, h4, h5, h6, a, span, label, input, textarea, select, button {
 .about,
 .process,
 .services,
-.contact,
-.booking-section {
+.contact {
   padding-block: clamp(56px, 8vw, 104px);
   border-top: 1px solid var(--line-strong);
 }
@@ -676,8 +675,7 @@ p, h1, h2, h3, h4, h5, h6, a, span, label, input, textarea, select, button {
 .service-card p { color: var(--ink-muted); font-size: 0.94rem; }
 
 .contact-form,
-.contact-details,
-.booking-card {
+.contact-details {
   border: 1px solid var(--line-strong);
   background: var(--paper-soft);
 }
@@ -780,40 +778,6 @@ p, h1, h2, h3, h4, h5, h6, a, span, label, input, textarea, select, button {
 
 .contact-socials svg { width: 16px; height: 16px; }
 .x-mark { font-weight: 900; }
-
-.booking-card {
-  display: grid;
-  gap: 14px;
-  padding: 20px;
-}
-
-.booking-card h3 { font-size: 1.6rem; }
-
-.booking-section .section-heading p:last-child {
-  max-width: 410px;
-  color: var(--ink-muted);
-}
-
-.booking-section .section-heading a {
-  color: var(--accent-dark);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  font-weight: 800;
-}
-
-.booking-frame {
-  overflow: hidden;
-  border: 1px solid var(--line-strong);
-  background: #fff;
-  box-shadow: var(--shadow);
-}
-
-.booking-frame iframe {
-  display: block;
-  width: 100%;
-  min-height: 600px;
-  border: 0;
-}
 
 .site-footer {
   display: grid;
@@ -1013,7 +977,6 @@ p, h1, h2, h3, h4, h5, h6, a, span, label, input, textarea, select, button {
     gap: 12px;
   }
   .contact-socials a { justify-content: flex-start; }
-  .booking-frame { margin-inline: 0; border-inline: 1px solid var(--line-strong); }
 }
 
 @media (prefers-reduced-motion: reduce) {
