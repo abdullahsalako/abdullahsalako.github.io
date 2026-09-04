@@ -111,3 +111,79 @@ window.addEventListener("scroll", () => {
 document.addEventListener("DOMContentLoaded", () => {
   if (window.lucide) window.lucide.createIcons();
 });
+
+// --- Custom Editorial Feather Pointer Track ---
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.body.classList.add("custom-cursor-enabled");
+
+  const cursorWrapper = document.createElement("div");
+  cursorWrapper.className = "cursor-wrapper";
+  cursorWrapper.setAttribute("aria-hidden", "true");
+  cursorWrapper.innerHTML = `
+    <div class="cursor-feather">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L3 13v5h5l9.74-9.76z"></path>
+        <line x1="16" y1="8" x2="19" y2="11"></line>
+        <line x1="4.5" y1="18.5" x2="9" y2="14"></line>
+      </svg>
+    </div>
+    <div class="cursor-dot"></div>
+  `;
+  document.body.appendChild(cursorWrapper);
+
+  let mouseX = -100;
+  let mouseY = -100;
+  let featherX = -100;
+  let featherY = -100;
+  let dotX = -100;
+  let dotY = -100;
+  let isVisible = false;
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!isVisible) {
+      isVisible = true;
+      featherX = mouseX;
+      featherY = mouseY;
+      dotX = mouseX;
+      dotY = mouseY;
+      cursorWrapper.style.opacity = "1";
+    }
+  });
+
+  document.addEventListener("mouseleave", () => {
+    cursorWrapper.style.opacity = "0";
+    isVisible = false;
+  });
+
+  function animateCursor() {
+    if (isVisible) {
+      featherX += (mouseX - featherX) * 0.35;
+      featherY += (mouseY - featherY) * 0.35;
+      dotX += (mouseX - dotX) * 0.16;
+      dotY += (mouseY - dotY) * 0.16;
+
+      const featherEl = cursorWrapper.querySelector(".cursor-feather");
+      const dotEl = cursorWrapper.querySelector(".cursor-dot");
+
+      if (featherEl) featherEl.style.transform = `translate3d(${featherX}px, ${featherY}px, 0)`;
+      if (dotEl) dotEl.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
+    }
+    requestAnimationFrame(animateCursor);
+  }
+  requestAnimationFrame(animateCursor);
+
+  const interactiveSelector = "a, button, input, textarea, select, .filter, .project-card, [role='button']";
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      cursorWrapper.classList.add("hovering");
+    }
+  });
+
+  document.addEventListener("mouseout", (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      cursorWrapper.classList.remove("hovering");
+    }
+  });
+}

@@ -1055,3 +1055,80 @@ p, h1, h2, h3, h4, h5, h6, a, span, label, input, textarea, select, button {
     scroll-behavior: auto !important;
   }
 }
+
+/* --- Custom Editorial Feather / Quill Cursor --- */
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor-enabled,
+  body.custom-cursor-enabled a,
+  body.custom-cursor-enabled button,
+  body.custom-cursor-enabled input,
+  body.custom-cursor-enabled textarea,
+  body.custom-cursor-enabled select,
+  body.custom-cursor-enabled .filter,
+  body.custom-cursor-enabled .project-card,
+  body.custom-cursor-enabled .project-card > button,
+  body.custom-cursor-enabled [role="button"] {
+    cursor: none !important;
+  }
+
+  .cursor-wrapper {
+    position: fixed;
+    inset: 0 auto auto 0;
+    z-index: 10000;
+    pointer-events: none;
+    will-change: transform;
+    opacity: 0;
+    transition: opacity 250ms ease;
+  }
+
+  .cursor-feather {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 28px;
+    height: 28px;
+    color: var(--ink);
+    pointer-events: none;
+    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), color 200ms ease;
+    transform-origin: 2px 2px;
+  }
+
+  .cursor-feather svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.22));
+  }
+
+  .cursor-dot {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.6;
+    pointer-events: none;
+    transition: transform 220ms ease, opacity 220ms ease, background 220ms ease;
+  }
+
+  .cursor-wrapper.hovering .cursor-feather {
+    transform: scale(1.35) rotate(-16deg);
+    color: var(--accent-dark);
+  }
+
+  .cursor-wrapper.hovering .cursor-dot {
+    transform: scale(2.4);
+    opacity: 0.3;
+    background: var(--ink);
+  }
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-wrapper {
+    display: none !important;
+  }
+  body, a, button, input, textarea, select {
+    cursor: auto !important;
+  }
+}
