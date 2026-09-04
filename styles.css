@@ -188,12 +188,21 @@ p, h1, h2, h3, h4, h5, h6, a, span, label, input, textarea, select, button {
   text-transform: uppercase;
 }
 
-.masthead p {
-  margin-top: 18px;
+.masthead-motto {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  font-style: italic;
+  color: var(--accent-dark);
+  margin: 10px 0 4px;
+  letter-spacing: 0.05em;
+}
+
+.masthead-sub {
+  margin-top: 10px;
   color: var(--ink-muted);
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 800;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.24em;
 }
 
 .primary-nav {
@@ -215,7 +224,7 @@ p, h1, h2, h3, h4, h5, h6, a, span, label, input, textarea, select, button {
 .edition-bar {
   margin-top: 24px;
   min-height: 46px;
-  border-block: 1px solid var(--line-strong);
+  border-block: 3px double var(--line-strong);
 }
 
 .availability-ticker {
@@ -352,23 +361,73 @@ p, h1, h2, h3, h4, h5, h6, a, span, label, input, textarea, select, button {
 .portrait-card strong { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.04em; }
 .portrait-card span { color: var(--ink-muted); }
 
+.notice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 36px;
+  width: 100%;
+}
+
 .notice-card {
-  padding: clamp(20px, 3vw, 32px);
+  padding: clamp(22px, 3vw, 34px);
   border: 1px solid var(--line-strong);
-  background: linear-gradient(135deg, var(--accent-soft), transparent 42%), var(--paper-soft);
+  background: linear-gradient(135deg, var(--accent-soft), transparent 45%), var(--paper-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.cv-notice {
+  background: linear-gradient(135deg, var(--paper-deep), transparent 50%), var(--paper-soft);
+}
+
+.cv-link {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 8px 14px;
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  transition: background var(--transition), transform var(--transition);
+}
+
+.cv-link:hover {
+  background: var(--accent);
+  color: var(--paper-soft);
+  transform: translateY(-2px);
 }
 
 .hero-notice { width: 100%; }
 
 .notice-card h2 {
-  margin-top: 12px;
-  font-size: clamp(1.7rem, 3vw, 3rem);
-  line-height: 1.05;
+  margin-top: 8px;
+  font-size: clamp(1.45rem, 2.5vw, 2.2rem);
+  line-height: 1.08;
 }
 
 .notice-card p:last-child {
-  margin-top: 14px;
   color: var(--ink-muted);
+}
+
+.dropcap {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  line-height: 0.82;
+  padding: 2px 8px 0 0;
+  color: var(--accent-dark);
+  font-weight: 900;
+}
+
+.ornament-divider {
+  text-align: center;
+  font-size: 1.15rem;
+  color: var(--accent);
+  letter-spacing: 0.6em;
+  padding-block: clamp(24px, 4vw, 42px);
+  opacity: 0.6;
+  user-select: none;
 }
 
 .stat-grid {
@@ -925,6 +984,7 @@ p, h1, h2, h3, h4, h5, h6, a, span, label, input, textarea, select, button {
   .portrait-card {
     max-width: min(100%, 520px);
   }
+  .notice-grid { grid-template-columns: 1fr; }
   .hero-notice { grid-column: auto; }
   .project-grid { grid-template-columns: 1fr; }
   .project-featured { grid-row: auto; }
