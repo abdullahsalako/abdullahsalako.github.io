@@ -79,22 +79,15 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
-const sections = Array.from(document.querySelectorAll("main section[id], main[id]"));
+const currentPage = window.location.pathname.split("/").pop() || "index.html";
 const navLinks = Array.from(document.querySelectorAll(".primary-nav a"));
 
-const sectionObserver = new IntersectionObserver((entries) => {
-  const visible = entries
-    .filter((entry) => entry.isIntersecting)
-    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-  if (!visible) return;
-  const id = visible.target.id || "top";
-  navLinks.forEach((link) => {
-    link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
-  });
-}, { rootMargin: "-35% 0px -55% 0px", threshold: [0.08, 0.2, 0.45] });
-
-sections.forEach((section) => sectionObserver.observe(section));
+navLinks.forEach((link) => {
+  const href = link.getAttribute("href");
+  if (href === currentPage || (currentPage === "" && href === "index.html")) {
+    link.classList.add("active");
+  }
+});
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
