@@ -1,182 +1,159 @@
 const root = document.documentElement;
-const themeToggle = document.querySelector(".theme-toggle");
-const modal = document.querySelector(".project-modal");
-const modalTitle = modal ? modal.querySelector("#modalTitle") : null;
-
+const themeToggle = document.querySelector('.theme-toggle');
 function setTheme(theme) {
   root.dataset.theme = theme;
-  localStorage.setItem("remi-theme", theme);
-
-  if (!themeToggle) return;
-  const isDark = theme === "dark";
-  themeToggle.setAttribute("aria-pressed", String(isDark));
-  themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-  themeToggle.innerHTML = `<i data-lucide="${isDark ? "sun" : "moon"}"></i><span>${isDark ? "Light" : "Dark"}</span>`;
-  if (window.lucide) window.lucide.createIcons();
+  try { localStorage.setItem('remi-theme', theme); } catch {}
+  const dark = theme === 'dark';
+  themeToggle?.setAttribute('aria-pressed', String(dark));
+  themeToggle?.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
+  if (themeToggle) themeToggle.textContent = dark ? '☀ Light edition' : '☾ Dark edition';
 }
-
-const savedTheme = localStorage.getItem("remi-theme");
-const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-setTheme(savedTheme || preferredTheme);
-
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    setTheme(root.dataset.theme === "dark" ? "light" : "dark");
-  });
-}
-
-document.querySelectorAll(".filter").forEach((button) => {
-  button.addEventListener("click", () => {
-    const filter = button.dataset.filter;
-
-    document.querySelectorAll(".filter").forEach((item) => {
-      const active = item === button;
-      item.classList.toggle("active", active);
-      item.setAttribute("aria-pressed", String(active));
+let savedTheme;
+try { savedTheme = localStorage.getItem('remi-theme'); } catch {}
+setTheme(['dark', 'light'].includes(savedTheme) ? savedTheme : 'light');
+themeToggle?.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+const projectCards = [...document.querySelectorAll('.project-card')];
+const count = document.querySelector('.project-count');
+document.querySelectorAll('.filter').forEach(button => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.filter').forEach(item => {
+      item.classList.toggle('active', item === button);
+      item.setAttribute('aria-pressed', String(item === button));
     });
-
-    document.querySelectorAll(".project-card").forEach((project) => {
-      const categories = (project.dataset.category || "").split(/\s+/);
-      const match = filter === "all" || categories.includes(filter);
-      project.classList.toggle("filtered-out", !match);
-      window.setTimeout(() => {
-        project.hidden = !match;
-      }, match ? 0 : 180);
-    });
+    projectCards.forEach(card => { card.hidden = button.dataset.filter !== 'all' && !card.dataset.category.split(/\s+/).includes(button.dataset.filter); });
+    if (count) { const visible = projectCards.filter(card => !card.hidden).length; count.textContent = `${visible} ${visible === 1 ? 'feature' : 'features'} in this section`; }
   });
 });
-
+const modal = document.querySelector('.project-modal');
+let activeProject;
 if (modal) {
-  document.querySelectorAll("[data-project]").forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      if (modalTitle) modalTitle.textContent = trigger.dataset.project;
-      modal.showModal();
-    });
-  });
-
-  const closeButton = modal.querySelector(".modal-close");
-  if (closeButton) closeButton.addEventListener("click", () => modal.close());
-
-  modal.addEventListener("click", (event) => {
+  document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => {
+    activeProject = button;
+    modal.querySelector('#modalTitle').textContent = button.dataset.project;
+    modal.querySelector('.modal-summary').textContent = button.querySelector('.project-desc').textContent;
+    modal.querySelector('.modal-tools').textContent = button.querySelector('.project-tools').textContent;
+    const visual = modal.querySelector('.modal-visual');
+    visual.replaceChildren();
+    const source = button.querySelector('img');
+    if (source) { const img = source.cloneNode(); img.loading = 'eager'; visual.append(img); }
+    modal.querySelector('.modal-inquiry').href = `mailto:abdullahsalako@gmail.com?subject=${encodeURIComponent('Portfolio inquiry: ' + button.dataset.project)}`;
+    modal.showModal();
+  }));
+  modal.querySelector('.modal-close').addEventListener('click', () => modal.close());
+  modal.addEventListener('close', () => activeProject?.focus());
+  modal.addEventListener('click', event => {
     if (event.target !== modal) return;
-    const rect = modal.getBoundingClientRect();
-    const inside =
-      rect.top <= event.clientY &&
-      event.clientY <= rect.top + rect.height &&
-      rect.left <= event.clientX &&
-      event.clientX <= rect.left + rect.width;
-    if (!inside) modal.close();
+    const r = modal.getBoundingClientRect();
+    if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) modal.close();
   });
 }
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add("visible");
-    revealObserver.unobserve(entry.target);
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
-
-const currentPage = window.location.pathname.split("/").pop() || "index.html";
-const navLinks = Array.from(document.querySelectorAll(".primary-nav a"));
-
-navLinks.forEach((link) => {
-  const href = link.getAttribute("href");
-  if (href === currentPage || (currentPage === "" && href === "index.html")) {
-    link.classList.add("active");
-  }
+const page = location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('.primary-nav a').forEach(link => {
+  const active = link.getAttribute('href') === page;
+  link.classList.toggle('active', active);
+  if (active) link.setAttribute('aria-current', 'page');
+  else link.removeAttribute('aria-current');
+});
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();
+const form = document.querySelector('.contact-form');
+form?.addEventListener('submit', event => {
+  event.preventDefault();
+  const data = new FormData(form);
+  const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nService: ${data.get('service') || 'Let’s discuss'}\n\n${data.get('brief')}`;
+  location.href = `mailto:abdullahsalako@gmail.com?subject=${encodeURIComponent('Project brief — ' + data.get('name'))}&body=${encodeURIComponent(body)}`;
 });
 
-const yearEl = document.getElementById("year");
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+// A decorative quill; the small ink point stays at the actual click position.
+(() => {
+  const desktop = matchMedia('(min-width: 769px) and (hover: hover) and (pointer: fine)');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const cursor = document.createElement('div');
+  cursor.className = 'quill-cursor';
+  cursor.setAttribute('aria-hidden', 'true');
+  cursor.innerHTML = `<span class="quill-point"></span><svg class="quill-feather" viewBox="0 0 32 40" fill="none" focusable="false" aria-hidden="true">
+    <path d="M6 33C6 24 9 13 17 6C21 3 26 2 29 2C29 8 27 14 24 19L20 20L22 23C18 28 12 30 6 33Z" fill="currentColor" fill-opacity=".9"/>
+    <path d="M3 38C9 25 17 14 26 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    <path d="M11 25L10 18M15 20L14 12M19 15L19 8M13 24L20 23M17 19L24 16" stroke="var(--paper)" stroke-width=".7" stroke-linecap="round"/>
+  </svg>`;
+  const feather = cursor.querySelector('.quill-feather');
+  let x = 0, y = 0, followX = 0, followY = 0, angle = 0, targetAngle = 0;
+  let frame = 0, lastFrame = 0, idleTimer = 0, hasPointer = false, visible = false;
+  let previousScroll = window.scrollY;
 
-const progressBar = document.createElement("div");
-progressBar.className = "progress-bar";
-document.body.appendChild(progressBar);
-
-window.addEventListener("scroll", () => {
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  progressBar.style.width = `${maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0}%`;
-}, { passive: true });
-
-document.addEventListener("DOMContentLoaded", () => {
-  if (window.lucide) window.lucide.createIcons();
-});
-
-// --- Custom Editorial Feather Pointer Track ---
-if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  document.body.classList.add("custom-cursor-enabled");
-
-  const cursorWrapper = document.createElement("div");
-  cursorWrapper.className = "cursor-wrapper";
-  cursorWrapper.setAttribute("aria-hidden", "true");
-  cursorWrapper.innerHTML = `
-    <div class="cursor-feather">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L3 13v5h5l9.74-9.76z"></path>
-        <line x1="16" y1="8" x2="19" y2="11"></line>
-        <line x1="4.5" y1="18.5" x2="9" y2="14"></line>
-      </svg>
-    </div>
-    <div class="cursor-dot"></div>
-  `;
-  document.body.appendChild(cursorWrapper);
-
-  let mouseX = -100;
-  let mouseY = -100;
-  let featherX = -100;
-  let featherY = -100;
-  let dotX = -100;
-  let dotY = -100;
-  let isVisible = false;
-
-  window.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    if (!isVisible) {
-      isVisible = true;
-      featherX = mouseX;
-      featherY = mouseY;
-      dotX = mouseX;
-      dotY = mouseY;
-      cursorWrapper.style.opacity = "1";
-    }
-  });
-
-  document.addEventListener("mouseleave", () => {
-    cursorWrapper.style.opacity = "0";
-    isVisible = false;
-  });
-
-  function animateCursor() {
-    if (isVisible) {
-      featherX += (mouseX - featherX) * 0.35;
-      featherY += (mouseY - featherY) * 0.35;
-      dotX += (mouseX - dotX) * 0.16;
-      dotY += (mouseY - dotY) * 0.16;
-
-      const featherEl = cursorWrapper.querySelector(".cursor-feather");
-      const dotEl = cursorWrapper.querySelector(".cursor-dot");
-
-      if (featherEl) featherEl.style.transform = `translate3d(${featherX}px, ${featherY}px, 0)`;
-      if (dotEl) dotEl.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
-    }
-    requestAnimationFrame(animateCursor);
+  function hide(resetPointer = true) {
+    visible = false;
+    if (resetPointer) hasPointer = false;
+    cursor.classList.remove('is-visible');
+    document.documentElement.classList.remove('quill-active');
+    clearTimeout(idleTimer);
+    cancelAnimationFrame(frame);
+    frame = 0;
+    lastFrame = 0;
   }
-  requestAnimationFrame(animateCursor);
 
-  const interactiveSelector = "a, button, input, textarea, select, .filter, .project-card, [role='button']";
-  document.addEventListener("mouseover", (e) => {
-    if (e.target.closest(interactiveSelector)) {
-      cursorWrapper.classList.add("hovering");
-    }
-  });
+  function draw(time) {
+    frame = 0;
+    if (!visible) return;
+    const blend = reducedMotion.matches ? 1 : 1 - Math.exp(-Math.min(time - (lastFrame || time - 16), 40) / 55);
+    lastFrame = time;
+    followX += (x - followX) * blend;
+    followY += (y - followY) * blend;
+    angle += (targetAngle - angle) * blend;
+    // Limit the trail to ten pixels even after a quick sweep across the page.
+    const offsetX = Math.max(-10, Math.min(10, followX - x));
+    const offsetY = Math.max(-10, Math.min(10, followY - y));
+    cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    feather.style.transform = `translate(${8 + offsetX}px, ${-30 + offsetY}px) rotate(${reducedMotion.matches ? 0 : angle}deg)`;
+    targetAngle *= .82;
+    if (!reducedMotion.matches && (Math.abs(followX - x) + Math.abs(followY - y) + Math.abs(angle) > .1)) {
+      frame = requestAnimationFrame(draw);
+    } else lastFrame = 0;
+  }
 
-  document.addEventListener("mouseout", (e) => {
-    if (e.target.closest(interactiveSelector)) {
-      cursorWrapper.classList.remove("hovering");
+  function schedule() {
+    if (!frame) frame = requestAnimationFrame(draw);
+  }
+
+  function show() {
+    visible = true;
+    cursor.classList.add('is-visible');
+    document.documentElement.classList.add('quill-active');
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => hide(false), 2600);
+    schedule();
+  }
+
+  document.addEventListener('pointermove', event => {
+    if (!desktop.matches || event.pointerType !== 'mouse' || event.target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])')) {
+      hide();
+      return;
     }
-  });
-}
+    // Keep the decoration in the active dialog's top layer when one is open.
+    const host = document.querySelector('dialog[open]') || document.body;
+    if (cursor.parentElement !== host) host.append(cursor);
+    const dx = event.clientX - x, dy = event.clientY - y;
+    x = event.clientX;
+    y = event.clientY;
+    if (!hasPointer) { followX = x; followY = y; angle = 0; }
+    targetAngle = reducedMotion.matches ? 0 : Math.max(-12, Math.min(12, dx * .3 - dy * .15));
+    hasPointer = true;
+    show();
+  }, { passive: true });
+
+  window.addEventListener('scroll', () => {
+    const delta = window.scrollY - previousScroll;
+    previousScroll = window.scrollY;
+    if (!desktop.matches || !hasPointer) return;
+    targetAngle = reducedMotion.matches ? 0 : Math.max(-8, Math.min(8, delta * .15));
+    show();
+  }, { passive: true });
+  document.addEventListener('pointerdown', event => { if (event.pointerType !== 'mouse') hide(); }, { passive: true });
+  document.documentElement.addEventListener('pointerleave', hide);
+  window.addEventListener('blur', hide);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) hide(); });
+  document.addEventListener('keydown', hide);
+  document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('close', hide));
+  desktop.addEventListener('change', hide);
+  reducedMotion.addEventListener('change', () => { angle = targetAngle = 0; if (visible) schedule(); });
+})();
