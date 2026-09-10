@@ -34,13 +34,31 @@ if (modal) {
     modal.querySelector('.modal-tools').textContent = button.querySelector('.project-tools').textContent;
     const visual = modal.querySelector('.modal-visual');
     visual.replaceChildren();
-    const source = button.querySelector('img');
-    if (source) { const img = source.cloneNode(); img.loading = 'eager'; visual.append(img); }
+    const videoSource = button.dataset.video;
+    if (videoSource) {
+      const video = document.createElement('video');
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = 'metadata';
+      video.poster = button.dataset.poster || '';
+      video.src = videoSource;
+      video.setAttribute('aria-label', `${button.dataset.project} video`);
+      visual.append(video);
+    } else {
+      const source = button.querySelector('img');
+      if (source) { const img = source.cloneNode(); img.loading = 'eager'; visual.append(img); }
+    }
+    modal.querySelector('.modal-note').textContent = videoSource
+      ? 'A short colour-grading study presented in its final cinematic format.'
+      : 'For viewing access and further project details, contact the editing desk.';
     modal.querySelector('.modal-inquiry').href = `mailto:abdullahsalako@gmail.com?subject=${encodeURIComponent('Portfolio inquiry: ' + button.dataset.project)}`;
     modal.showModal();
   }));
   modal.querySelector('.modal-close').addEventListener('click', () => modal.close());
-  modal.addEventListener('close', () => activeProject?.focus());
+  modal.addEventListener('close', () => {
+    modal.querySelector('video')?.pause();
+    activeProject?.focus();
+  });
   modal.addEventListener('click', event => {
     if (event.target !== modal) return;
     const r = modal.getBoundingClientRect();
