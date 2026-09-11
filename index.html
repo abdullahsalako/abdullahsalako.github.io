@@ -25,6 +25,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800&display=swap" rel="stylesheet" />
+    <script>
+      (() => {
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let introSeen = false;
+        try { introSeen = sessionStorage.getItem('remi-intro-seen') === '1'; } catch {}
+        if (!reducedMotion && !introSeen) {
+          document.documentElement.classList.add('intro-pending');
+          try { sessionStorage.setItem('remi-intro-seen', '1'); } catch {}
+          window.setTimeout(() => document.documentElement.classList.remove('intro-pending'), 3200);
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="styles.css" />
     <script type="application/ld+json">
       {
@@ -49,6 +61,14 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <div class="portfolio-intro" role="status" aria-label="Aderemi Salako — loading portfolio">
+      <div class="intro-lockup">
+        <p class="intro-eyebrow" aria-hidden="true">Remi Visuals · Portfolio</p>
+        <p class="intro-name" aria-hidden="true"><span data-intro-name="aderemi salako"></span><i class="intro-cursor"></i></p>
+        <span class="intro-line" aria-hidden="true"><i></i></span>
+      </div>
+    </div>
+
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header class="site-header" aria-label="The Remi Edit masthead">
@@ -72,7 +92,6 @@
       <nav class="primary-nav" aria-label="Primary navigation">
         <a aria-current="page" class="active" href="index.html">Front Page</a>
         <a href="portfolio.html">Selected Work</a>
-        <a href="journal.html">Editing Desk</a>
         <a href="journal.html#about">About</a>
         <a href="notices.html">Notices & Contact</a>
       </nav>
@@ -150,7 +169,7 @@
         <div class="overview-grid">
           <article class="overview-card reveal">
             <span class="journal-meta">Page Two</span>
-            <h3>Stories from the Editing Desk</h3>
+            <h3>Selected Work &amp; Visual Studies</h3>
             <p>Browse the portfolio: commercial treatments, short-form concepts, and experiments in motion.</p>
             <a class="project-link" href="portfolio.html">Open Page Two <i data-lucide="arrow-right"></i></a>
           </article>
@@ -181,7 +200,6 @@
       <nav aria-label="Footer links">
         <a href="index.html">Front Page</a>
         <a href="portfolio.html">Selected Work</a>
-        <a href="journal.html">Editing Desk</a>
         <a href="journal.html#about">About</a>
         <a href="notices.html">Notices & Contact</a>
         <a href="https://www.linkedin.com/in/abdullah-salako-b43461252/" target="_blank" rel="noopener noreferrer">LinkedIn</a>

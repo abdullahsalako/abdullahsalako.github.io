@@ -12,6 +12,49 @@ let savedTheme;
 try { savedTheme = localStorage.getItem('remi-theme'); } catch {}
 setTheme(['dark', 'light'].includes(savedTheme) ? savedTheme : 'light');
 themeToggle?.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+
+const portfolioIntro = document.querySelector('.portfolio-intro');
+const introName = portfolioIntro?.querySelector('[data-intro-name]');
+if (portfolioIntro && introName && root.classList.contains('intro-pending')) {
+  const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+  const characters = [...introName.dataset.introName];
+  let characterIndex = 0;
+  let typingTimer;
+  let exitTimer;
+
+  const finishIntro = () => {
+    clearTimeout(typingTimer);
+    clearTimeout(exitTimer);
+    root.classList.remove('intro-pending');
+    portfolioIntro.remove();
+  };
+
+  const leaveIntro = () => {
+    portfolioIntro.classList.add('is-leaving');
+    exitTimer = window.setTimeout(finishIntro, 740);
+  };
+
+  const typeNextCharacter = () => {
+    introName.textContent += characters[characterIndex] || '';
+    characterIndex += 1;
+    if (characterIndex < characters.length) {
+      typingTimer = window.setTimeout(typeNextCharacter, 55);
+    } else {
+      exitTimer = window.setTimeout(leaveIntro, 420);
+    }
+  };
+
+  if (motionPreference.matches) {
+    finishIntro();
+  } else {
+    portfolioIntro.classList.add('intro-active');
+    requestAnimationFrame(() => { typingTimer = window.setTimeout(typeNextCharacter, 120); });
+    motionPreference.addEventListener('change', event => { if (event.matches) finishIntro(); }, { once: true });
+  }
+} else {
+  root.classList.remove('intro-pending');
+  portfolioIntro?.remove();
+}
 const projectCards = [...document.querySelectorAll('.project-card')];
 const count = document.querySelector('.project-count');
 document.querySelectorAll('.filter').forEach(button => {
@@ -50,7 +93,7 @@ if (modal) {
     }
     modal.querySelector('.modal-note').textContent = videoSource
       ? 'A short colour-grading study presented in its final cinematic format.'
-      : 'For viewing access and further project details, contact the editing desk.';
+      : 'For viewing access and further project details, get in touch.';
     modal.querySelector('.modal-inquiry').href = `mailto:abdullahsalako@gmail.com?subject=${encodeURIComponent('Portfolio inquiry: ' + button.dataset.project)}`;
     modal.showModal();
   }));
@@ -67,7 +110,7 @@ if (modal) {
 }
 const page = location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.primary-nav a').forEach(link => {
-  const active = link.getAttribute('href') === page;
+  const active = link.getAttribute('href').split('#')[0] === page;
   link.classList.toggle('active', active);
   if (active) link.setAttribute('aria-current', 'page');
   else link.removeAttribute('aria-current');
