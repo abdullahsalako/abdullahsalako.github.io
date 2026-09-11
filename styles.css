@@ -104,7 +104,7 @@ html.intro-pending body { overflow: hidden; }
 @media print { .portfolio-intro { display: none !important; } }
 
 /* Fixed film edges with reserved paper gutters on every page. */
-:root { --film-width: 40px; --film-pitch: 192px; --film-gap: 24px; }
+:root { --film-width: 20px; --film-pitch: 32px; --film-gap: 24px; }
 .section-shell, .site-header {
   width: min(1240px, calc(100% - 2 * (var(--film-width) + var(--film-gap))));
 }
@@ -119,19 +119,19 @@ html::after {
   pointer-events: none;
   user-select: none;
   background-color: #191919;
-  background-image: url('assets/film-edge.svg?v=2');
+  background-image: url('assets/film-edge.svg?v=3');
   background-size: var(--film-width) var(--film-pitch);
   background-repeat: repeat-y;
-  box-shadow: inset 0 0 0 1px #ffffff14, 2px 0 5px #00000012;
+  box-shadow: none;
 }
 html::before { left: 0; }
 html::after { right: 0; }
 
 @media(max-width:900px) {
-  :root { --film-width: 24px; --film-pitch: 144px; --film-gap: 20px; }
+  :root { --film-width: 14px; --film-pitch: 28px; --film-gap: 20px; }
 }
 @media(max-width:650px) {
-  :root { --film-width: 14px; --film-pitch: 112px; --film-gap: 16px; }
+  :root { --film-width: 10px; --film-pitch: 24px; --film-gap: 16px; }
 }
 @media(max-width:380px) {
   :root { --film-width: 0px; }
