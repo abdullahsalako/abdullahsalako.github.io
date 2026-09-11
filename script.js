@@ -92,7 +92,7 @@ if (modal) {
       if (source) { const img = source.cloneNode(); img.loading = 'eager'; visual.append(img); }
     }
     modal.querySelector('.modal-note').textContent = videoSource
-      ? 'A short colour-grading study presented in its final cinematic format.'
+      ? 'A short colour grading study presented in its final cinematic format.'
       : 'For viewing access and further project details, get in touch.';
     modal.querySelector('.modal-inquiry').href = `mailto:abdullahsalako@gmail.com?subject=${encodeURIComponent('Portfolio inquiry: ' + button.dataset.project)}`;
     modal.showModal();
