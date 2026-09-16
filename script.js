@@ -195,6 +195,37 @@ var posts = {
       { p: 'The last node adds a fine, even grain over the full frame at low opacity. It does two things at once: it unifies footage shot across slightly different conditions, and it keeps skin from looking over-smoothed once the isolation node has done its work.' },
       { p: 'None of this is complicated on its own. What makes it repeatable is building it as a saved node tree, so every new project starts from the same disciplined base instead of a blank page.' }
     ]
+  },
+  '27-in-retrospect': {
+    tag: 'Personal · Reflection',
+    title: '27, in Retrospect',
+    dek: "You don't notice the climb until you look down",
+    date: '14 Jul 2026', readTime: '2 min read',
+    sourceUrl: 'https://substack.com/home/post/p-206814420',
+    body: [
+      { p: "My birthdays have never really been days of celebration. They've always been days of introspection." },
+      { p: 'Today, I turned 28.' },
+      { p: "Every year since I turned 23, I take some time to sit with my thoughts and reflect on the year I've just lived. It's like my own quiet version of a New Year reflection and resolution." },
+      { p: "I usually pen down these thoughts, and they always end up somewhere in one of my diaries never to be read again. One of the things I'm trying to do more of is put myself out there. That's why you're reading this." },
+      { p: 'I spent the latter part of being 27 feeling somewhat unhappy. Why?' },
+      { p: 'Every year, I ask myself the same question:' },
+      { quote: 'What does it mean to say I am satisfied with my life?' },
+      { p: 'That question is almost directly asking how my life is measuring up to my expectations.' },
+      { p: "As you grow older, your expectations of what you'll get out of life begin to change. Perhaps the unhappy version of me is caught between two things: expecting the future to be worse than I once imagined, or realizing that I haven't achieved what my younger self expected I would have by now." },
+      { p: "Maybe that's what they call a midlife crisis." },
+      { p: "Looking back, 27 wasn't really a bad year. In fact, it was one of the years I pushed myself the most. I tried a couple of new things. I started playing tennis." },
+      { p: "At 28, I want to live more. I want to put myself out there, meet more people, and be more extroverted. It's never come naturally to me, but I want to change that." },
+      { p: "I'll end with this picture of my younger self." },
+      { img: 'assets/journal/27-in-retrospect-young.jpg', alt: 'A childhood photo of the author' },
+      { p: 'He probably thought life would look very different by 28.' },
+      { p: "Maybe I haven't become everything he imagined." },
+      { p: "But I hope he'd be proud that I never stopped trying." },
+      { p: 'On to 28.' },
+      { p: 'Happy birthday to me.' },
+      { p: 'May the pieces finally begin to fall into place. May the coast start aligning in my favor.' },
+      { p: 'And to everyone reading this, I hope life meets you with kindness, courage, and moments that remind you why you kept going.' },
+      { p: 'Bye, 27.' }
+    ]
   }
 };
 var articleRoot = document.querySelector('[data-article]');
@@ -204,14 +235,24 @@ if (articleRoot) {
   document.title = post.title + ' | Remi Visuals';
   document.querySelector('#post-tag').textContent = post.tag;
   document.querySelector('#post-title').textContent = post.title;
+  var dekEl = document.querySelector('#post-dek');
+  if (dekEl) {
+    if (post.dek) { dekEl.textContent = post.dek; dekEl.hidden = false; }
+    else { dekEl.textContent = ''; dekEl.hidden = true; }
+  }
   document.querySelector('#post-date').textContent = post.date;
   document.querySelector('#post-readtime').textContent = post.readTime;
   var bodyEl = document.querySelector('#post-body');
-  bodyEl.innerHTML = post.body.map(function (block) {
+  var bodyHtml = post.body.map(function (block) {
     if (block.h2) return '<h2>' + block.h2 + '</h2>';
     if (block.quote) return '<blockquote>' + block.quote + '</blockquote>';
+    if (block.img) return '<img src="' + block.img + '" alt="' + (block.alt || '') + '" loading="lazy" />';
     return '<p>' + block.p + '</p>';
   }).join('');
+  if (post.sourceUrl) {
+    bodyHtml += '<p class="article-source">Originally published on <a href="' + post.sourceUrl + '" target="_blank" rel="noopener">Substack</a>.</p>';
+  }
+  bodyEl.innerHTML = bodyHtml;
 }
 
 /* ---------- contact form (notices.html) ---------- */
