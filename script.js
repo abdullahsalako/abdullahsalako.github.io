@@ -13,22 +13,6 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   });
 })();
 
-/* ---------- scroll reveal ---------- */
-(function () {
-  var targets = document.querySelectorAll('.reveal');
-  if (!targets.length) return;
-  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    targets.forEach(function (el) { el.classList.add('is-visible'); });
-    return;
-  }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-  targets.forEach(function (el) { io.observe(el); });
-})();
-
 /* ---------- shared project data (Work index + lightbox + project.html case studies) ---------- */
 var projects = [
   { slug: 'Red Eye Effect', title: 'Red Eye Effect', cat: 'Featured · Colour Study · 2026', meta: 'Colour Grading · 2026',
@@ -238,3 +222,19 @@ form && form.addEventListener('submit', function (event) {
   var body = 'Name: ' + data.get('name') + '\nEmail: ' + data.get('email') + '\n\n' + data.get('brief');
   location.href = 'mailto:hello@aderemisalako.me?subject=' + encodeURIComponent('Project brief — ' + data.get('name')) + '&body=' + encodeURIComponent(body);
 });
+
+/* ---------- scroll reveal (runs last so dynamically-inserted .reveal elements, e.g. the work index rows, are included) ---------- */
+(function () {
+  var targets = document.querySelectorAll('.reveal');
+  if (!targets.length) return;
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    targets.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  targets.forEach(function (el) { io.observe(el); });
+})();
