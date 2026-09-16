@@ -3,40 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f4efe4" />
-    <meta name="description" content="Aderemi Abdullah Salako is an Abuja, Nigeria based video editor, VFX artist, 3D animator, and visual storyteller crafting cinematic edits, visual effects, 3D motion, colour grades, and social content." />
-    <title>Remi Visuals, Front Page | Aderemi Abdullah Salako</title>
+    <meta name="theme-color" content="#faf7f1" />
+    <meta name="description" content="Aderemi Abdullah Salako is an Abuja, Nigeria based video editor and colourist working across colour, motion, and short-form storytelling for creators, brands, and digital audiences." />
+    <title>Remi Visuals | Aderemi Abdullah Salako</title>
     <link rel="canonical" href="https://abdullahsalako.github.io/index.html" />
-    <meta property="og:title" content="Remi Visuals, Aderemi Abdullah Salako" />
-    <meta property="og:description" content="Front page of the editorial portfolio for video editor, VFX artist, 3D animator, and visual storyteller Aderemi Abdullah Salako." />
+    <meta property="og:title" content="Remi Visuals — Aderemi Abdullah Salako" />
+    <meta property="og:description" content="Video editing, colour grading, and visual storytelling from Abuja, Nigeria." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://abdullahsalako.github.io/index.html" />
     <meta property="og:site_name" content="Remi Visuals" />
     <meta property="og:image" content="https://abdullahsalako.github.io/assets/remi-visuals-og-v3.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Remi Visuals editorial portfolio banner" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Remi Visuals, Aderemi Abdullah Salako" />
-    <meta name="twitter:description" content="Video editing, VFX, 3D animation, colour grading, motion graphics, and visual storytelling from Abuja, Nigeria." />
+    <meta name="twitter:title" content="Remi Visuals — Aderemi Abdullah Salako" />
+    <meta name="twitter:description" content="Video editing, colour grading, and visual storytelling from Abuja, Nigeria." />
     <meta name="twitter:image" content="https://abdullahsalako.github.io/assets/remi-visuals-og-v3.png" />
     <link rel="icon" type="image/png" href="remi-visuals-icon.png" />
     <link rel="apple-touch-icon" href="remi-visuals-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800&display=swap" rel="stylesheet" />
-    <script>
-      (() => {
-        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        let introSeen = false;
-        try { introSeen = sessionStorage.getItem('remi-intro-seen') === '1'; } catch {}
-        if (!reducedMotion && !introSeen) {
-          document.documentElement.classList.add('intro-pending');
-          try { sessionStorage.setItem('remi-intro-seen', '1'); } catch {}
-          window.setTimeout(() => document.documentElement.classList.remove('intro-pending'), 3200);
-        }
-      })();
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script type="application/ld+json">
       {
@@ -44,168 +29,66 @@
         "@type": "Person",
         "name": "Aderemi Abdullah Salako",
         "alternateName": "Salako Abdullah",
-        "jobTitle": "Video Editor, VFX Artist, 3D Animator, Visual Storyteller",
+        "jobTitle": "Video Editor, Colourist, Visual Storyteller",
         "url": "https://abdullahsalako.github.io/",
-        "email": "mailto:abdullahsalako@gmail.com",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Abuja",
-          "addressCountry": "Nigeria"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/abdullah-salako-b43461252/",
-          "https://x.com/remmivisuals"
-        ]
+        "email": "mailto:hello@aderemisalako.me",
+        "address": { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "Nigeria" },
+        "sameAs": ["https://www.linkedin.com/in/abdullah-salako-b43461252/", "https://x.com/remmivisuals"]
       }
     </script>
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="portfolio-intro" role="status" aria-label="Aderemi Salako, loading portfolio">
-      <div class="intro-lockup">
-        <p class="intro-eyebrow" aria-hidden="true">Remi Visuals · Portfolio</p>
-        <p class="intro-name" aria-hidden="true"><span data-intro-name="aderemi salako"></span><i class="intro-cursor"></i></p>
-        <span class="intro-line" aria-hidden="true"><i></i></span>
-      </div>
-    </div>
-
     <a class="skip-link" href="#main-content">Skip to content</a>
-
-    <header class="site-header" aria-label="Remi Visuals masthead">
-      <div class="top-strip">
-        <p>REMI VISUALS · ABUJA, NIGERIA</p>
-        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
-          <i data-lucide="moon"></i>
-          <span>Dark</span>
-        </button>
+    <header class="site">
+      <div class="head-row">
+        <a class="brand" href="index.html">Aderemi Salako <em>&middot;</em> Remi Visuals</a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="portfolio.html">Work</a>
+          <a href="journal.html">Journal</a>
+          <a href="about.html">About</a>
+          <a href="notices.html">Contact</a>
+        </nav>
       </div>
-
-      <div class="masthead">
-        <a class="brand-lockup" href="index.html" aria-label="Remi Visuals home">
-          <img src="salako-logo.png" alt="" aria-hidden="true" />
-          <span class="masthead-title">Remi Visuals</span>
-        </a>
-        <p class="masthead-motto">❦ &nbsp; Film, Frame & the Visual Cut &nbsp; ❦</p>
-        <p class="masthead-sub">AN INDEPENDENT JOURNAL OF FILM, COLOUR & VISUAL STORYTELLING</p>
-      </div>
-
-      <nav class="primary-nav" aria-label="Primary navigation">
-        <a aria-current="page" class="active" href="index.html">Front Page</a>
-        <a href="portfolio.html">Selected Work</a>
-        <a href="journal.html#about">About</a>
-        <a href="notices.html">Notices & Contact</a>
-      </nav>
     </header>
 
     <main id="main-content">
-      <section class="edition-bar section-shell" aria-label="Edition information">
-        <span>VOL. 01 · NO. 01</span>
-        <span><time datetime="2026-09-10">10 SEPTEMBER 2026</time> · ABUJA, NIGERIA</span>
-        <span>FRONT PAGE EDITION</span>
-      </section>
-
-      <section class="availability-ticker section-shell" aria-label="Availability">
-        <strong>The Latest</strong>
-        <p>Currently available for video editing, short form content, creative collaborations, and freelance opportunities.</p>
-      </section>
-
-      <section class="hero section-shell" aria-labelledby="hero-title">
-        <div class="hero-profile">
-          <article class="hero-copy reveal">
-            <p class="section-kicker">❧ Feature Profile</p>
-            <h1 id="hero-title">Video Editor.<br>Photographer.<br>Visual Storyteller.<br><em>Creative Problem Solver.</em></h1>
-            <p class="hero-lede">From Abuja, with a considered eye. I’m Aderemi Abdullah Salako, a self taught video editor, photographer, and visual storyteller turning moving images and still frames into stories worth staying for.</p>
-            <p class="hero-body">At Remi Visuals, rhythm leads the edit and a considered eye guides the photograph. DaVinci Resolve, colour, sound, motion, and AI assisted tools bring it into focus, from the first social hook to the final frame.</p>
-            <dl class="stat-grid" aria-label="At a glance"><div><dt>01</dt><dd>Creative home<br><strong>Abuja, Nigeria</strong></dd></div><div><dt>07</dt><dd>Areas of practice<br><strong>One considered craft</strong></dd></div><div><dt>∞</dt><dd>Always learning<br><strong>Story comes first</strong></dd></div></dl>
-            <div class="hero-actions" aria-label="Primary actions">
-              <a class="button button-primary" href="notices.html">Start a Project <i data-lucide="send"></i></a>
-              <a class="button button-secondary" href="mailto:abdullahsalako@gmail.com?subject=CV%20request%20for%20Aderemi%20Abdullah%20Salako">↓ &nbsp; Request CV ↗</a>
-            </div>
-          </article>
-
-          <aside class="hero-aside reveal" data-delay="1" aria-label="Portrait and core skills">
-            <figure class="portrait-card">
-              <img src="headshot.jpg" alt="Portrait of Aderemi Abdullah Salako" width="1024" height="1024" decoding="async" fetchpriority="high" />
-              <figcaption>
-                <strong>Aderemi Abdullah Salako</strong>
-                <span>Video editor · Photographer · Visual storyteller</span>
-                <span>Abuja, Nigeria</span>
-              </figcaption>
-            </figure>
-
-            <section class="skills-panel" aria-labelledby="skills-title">
-              <div class="section-heading compact-heading">
-                <p class="section-kicker">❧ Core Skills</p>
-                <h2 id="skills-title">Tools of the trade.</h2>
-              </div>
-<p class="rating-note">Personal proficiency · a practice in progress</p><div class="skill-grid"><div class="skill-rating"><label for="skill-0">DaVinci Resolve</label><meter id="skill-0" min="0" max="5" value="5">5 out of 5</meter><b aria-hidden="true">●●●●●</b></div><div class="skill-rating"><label for="skill-1">Colour Grading</label><meter id="skill-1" min="0" max="5" value="5">5 out of 5</meter><b aria-hidden="true">●●●●●</b></div><div class="skill-rating"><label for="skill-2">Short form Editing</label><meter id="skill-2" min="0" max="5" value="5">5 out of 5</meter><b aria-hidden="true">●●●●●</b></div><div class="skill-rating"><label for="skill-3">Motion Graphics</label><meter id="skill-3" min="0" max="5" value="4">4 out of 5</meter><b aria-hidden="true">●●●●○</b></div><div class="skill-rating"><label for="skill-4">Fusion Compositing</label><meter id="skill-4" min="0" max="5" value="4">4 out of 5</meter><b aria-hidden="true">●●●●○</b></div><div class="skill-rating"><label for="skill-5">Photography / Videography</label><meter id="skill-5" min="0" max="5" value="4">4 out of 5</meter><b aria-hidden="true">●●●●○</b></div><div class="skill-rating"><label for="skill-6">AI Media Tools</label><meter id="skill-6" min="0" max="5" value="4">4 out of 5</meter><b aria-hidden="true">●●●●○</b></div></div>
-            </section>
-          </aside>
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="reveal">
+            <p class="kicker">Video Editor &amp; Colourist &middot; Abuja, Nigeria</p>
+            <h1>Edits with a considered eye, cut for <em>rhythm</em> and story.</h1>
+            <p class="hero-lede">Aderemi Abdullah Salako — a self-taught editor working across colour, motion, and short-form storytelling for creators, brands, and digital audiences.</p>
+            <p class="hero-teasers"><a href="portfolio.html">See the work &rarr;</a><a href="journal.html">Read the journal &rarr;</a></p>
+          </div>
+          <figure class="hero-figure reveal">
+            <img src="headshot.jpg" alt="Portrait of Aderemi Abdullah Salako" width="1024" height="1191" fetchpriority="high" />
+            <figcaption>Abuja, Nigeria</figcaption>
+          </figure>
         </div>
-
-        <div class="notice-grid">
-          <aside class="notice-card hero-notice reveal" aria-labelledby="availability-title">
-            <p class="section-kicker">❧ Notice of Availability</p>
-            <h2 id="availability-title">Open for Engagement</h2>
-            <p>Editorial projects, VFX shots, 3D animated visuals, campaign edits, social packages, and event films are open for booking. Replies within 1 to 2 business days.</p>
-          </aside>
-
-          <aside class="notice-card cv-notice reveal" aria-labelledby="cv-title">
-            <p class="section-kicker">❧ Curriculum Vitae</p>
-            <h2 id="cv-title">The credentials behind the cut.</h2>
-            <p>For experience, creative tools, and production interests, request the latest CV directly from the editor.</p>
-            <a class="text-link cv-link" href="mailto:abdullahsalako@gmail.com?subject=CV%20Request%20for%20Aderemi%20Abdullah%20Salako">↓ &nbsp; Request CV ↗</a>
-          </aside>
+        <div class="wrap">
+          <div class="meta-row reveal">
+            <div><span>Availability</span><p>Available for freelance, remote collaborations, internships, and creative opportunities</p></div>
+            <div><span>Focus</span><p>DaVinci Resolve &middot; Colour &middot; Short-form &amp; social edits</p></div>
+            <div><span>Currently</span><p>Building Remi Visuals into a full-time studio practice</p></div>
+          </div>
         </div>
-      </section>
-
-      <div class="ornament-divider" aria-hidden="true">❖ &nbsp; ❖ &nbsp; ❖</div>
-
-      <section class="section-shell" aria-label="Edition Directory">
-        <div class="section-heading">
-          <p class="section-kicker">❧ Editorial Directory</p>
-          <h2>Inside This Edition.</h2>
-        </div>
-        <div class="overview-grid">
-          <article class="overview-card reveal">
-            <span class="journal-meta">Page Two</span>
-            <h3>Selected Work &amp; Visual Studies</h3>
-            <p>Browse the portfolio: commercial treatments, short form concepts, and experiments in motion.</p>
-            <a class="project-link" href="portfolio.html">Open Page Two <i data-lucide="arrow-right"></i></a>
-          </article>
-          <article class="overview-card reveal" data-delay="1">
-            <span class="journal-meta">Page Three</span>
-            <h3>Creative Journal & Notes</h3>
-            <p>Essays on colour grading nodes, editing rhythm, sound bed structure, and compositing workflows.</p>
-            <a class="project-link" href="journal.html">Open Page Three <i data-lucide="arrow-right"></i></a>
-          </article>
-          <article class="overview-card reveal" data-delay="2">
-            <span class="journal-meta">Page Four</span>
-            <h3>Notices & Correspondence</h3>
-            <p>Have a story in mind? Find the services, project brief, and direct correspondence desk.</p>
-            <a class="project-link" href="notices.html">Open Page Four <i data-lucide="arrow-right"></i></a>
-          </article>
-        </div>
-      </section>
-
-      <section class="page-nav section-shell" aria-label="Page navigation">
-        <div></div>
-        <a class="page-nav-link" href="portfolio.html">Next: Portfolio (Page Two) →</a>
       </section>
     </main>
 
-    <footer class="site-footer section-shell">
-      <p><strong>Remi Visuals</strong> · Aderemi Abdullah Salako · Abuja, Nigeria</p>
-      <p>All stories cut with intention. ❦</p>
-      <nav aria-label="Footer links">
-        <a href="index.html">Front Page</a>
-        <a href="portfolio.html">Selected Work</a>
-        <a href="journal.html#about">About</a>
-        <a href="notices.html">Notices & Contact</a>
-        <a href="https://www.linkedin.com/in/abdullah-salako-b43461252/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://x.com/remmivisuals" target="_blank" rel="noopener noreferrer">X</a>
-      <a href="https://github.com/abdullahsalako" target="_blank" rel="noopener noreferrer">GitHub</a></nav>
-      <small>&copy; <span id="year"></span> Remi Visuals. All rights reserved.</small>
+    <footer class="site">
+      <div class="foot-row">
+        <span>&copy; <span id="year"></span> Remi Visuals</span>
+        <nav aria-label="Footer links" style="display:flex;gap:16px">
+          <a href="portfolio.html">Work</a>
+          <a href="journal.html">Journal</a>
+          <a href="about.html">About</a>
+          <a href="notices.html">Contact</a>
+          <a href="https://www.linkedin.com/in/abdullah-salako-b43461252/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://x.com/remmivisuals" target="_blank" rel="noopener noreferrer">X</a>
+          <a href="https://github.com/abdullahsalako" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+      </div>
     </footer>
   </body>
 </html>

@@ -18,7 +18,7 @@ I’m Salako Abdullah, a visual storyteller working at the intersection of editi
 
 ## Contact
 
-- Email: [abdullahsalako@gmail.com](mailto:abdullahsalako@gmail.com)
+- Email: [hello@aderemisalako.me](mailto:hello@aderemisalako.me)
 - LinkedIn: [Salako Abdullah](https://www.linkedin.com/in/abdullah-salako-b43461252/)
 - X: [@remmivisuals](https://x.com/remmivisuals)
 - Website: [abdullahsalako.github.io](https://abdullahsalako.github.io/)

@@ -1,220 +1,240 @@
-const root = document.documentElement;
-const themeToggle = document.querySelector('.theme-toggle');
-function setTheme(theme) {
-  root.dataset.theme = theme;
-  try { localStorage.setItem('remi-theme', theme); } catch {}
-  const dark = theme === 'dark';
-  themeToggle?.setAttribute('aria-pressed', String(dark));
-  themeToggle?.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
-  if (themeToggle) themeToggle.textContent = dark ? '☀ Light edition' : '☾ Dark edition';
-}
-let savedTheme;
-try { savedTheme = localStorage.getItem('remi-theme'); } catch {}
-setTheme(['dark', 'light'].includes(savedTheme) ? savedTheme : 'light');
-themeToggle?.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+document.documentElement.classList.add('js-ready');
+var yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-const portfolioIntro = document.querySelector('.portfolio-intro');
-const introName = portfolioIntro?.querySelector('[data-intro-name]');
-if (portfolioIntro && introName && root.classList.contains('intro-pending')) {
-  const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
-  const characters = [...introName.dataset.introName];
-  let characterIndex = 0;
-  let typingTimer;
-  let exitTimer;
-
-  const finishIntro = () => {
-    clearTimeout(typingTimer);
-    clearTimeout(exitTimer);
-    root.classList.remove('intro-pending');
-    portfolioIntro.remove();
-  };
-
-  const leaveIntro = () => {
-    portfolioIntro.classList.add('is-leaving');
-    exitTimer = window.setTimeout(finishIntro, 740);
-  };
-
-  const typeNextCharacter = () => {
-    introName.textContent += characters[characterIndex] || '';
-    characterIndex += 1;
-    if (characterIndex < characters.length) {
-      typingTimer = window.setTimeout(typeNextCharacter, 55);
-    } else {
-      exitTimer = window.setTimeout(leaveIntro, 420);
-    }
-  };
-
-  if (motionPreference.matches) {
-    finishIntro();
-  } else {
-    portfolioIntro.classList.add('intro-active');
-    requestAnimationFrame(() => { typingTimer = window.setTimeout(typeNextCharacter, 120); });
-    motionPreference.addEventListener('change', event => { if (event.matches) finishIntro(); }, { once: true });
-  }
-} else {
-  root.classList.remove('intro-pending');
-  portfolioIntro?.remove();
-}
-const projectCards = [...document.querySelectorAll('.project-card')];
-const count = document.querySelector('.project-count');
-document.querySelectorAll('.filter').forEach(button => {
-  button.addEventListener('click', () => {
-    document.querySelectorAll('.filter').forEach(item => {
-      item.classList.toggle('active', item === button);
-      item.setAttribute('aria-pressed', String(item === button));
-    });
-    projectCards.forEach(card => { card.hidden = button.dataset.filter !== 'all' && !card.dataset.category.split(/\s+/).includes(button.dataset.filter); });
-    if (count) { const visible = projectCards.filter(card => !card.hidden).length; count.textContent = `${visible} ${visible === 1 ? 'feature' : 'features'} in this section`; }
+/* ---------- nav active state ---------- */
+(function () {
+  var page = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.site-nav a').forEach(function (link) {
+    var href = link.getAttribute('href').split('#')[0].split('?')[0];
+    var active = href === page;
+    link.classList.toggle('on', active);
+    if (active) link.setAttribute('aria-current', 'page');
   });
-});
-const modal = document.querySelector('.project-modal');
-let activeProject;
-if (modal) {
-  document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => {
-    activeProject = button;
-    modal.querySelector('#modalTitle').textContent = button.dataset.project;
-    modal.querySelector('.modal-summary').textContent = button.querySelector('.project-desc').textContent;
-    modal.querySelector('.modal-tools').textContent = button.querySelector('.project-tools').textContent;
-    const visual = modal.querySelector('.modal-visual');
-    visual.replaceChildren();
-    const videoSource = button.dataset.video;
-    if (videoSource) {
-      const video = document.createElement('video');
-      video.controls = true;
-      video.playsInline = true;
-      video.preload = 'metadata';
-      video.poster = button.dataset.poster || '';
-      video.src = videoSource;
-      video.setAttribute('aria-label', `${button.dataset.project} video`);
-      visual.append(video);
-    } else {
-      const source = button.querySelector('img');
-      if (source) { const img = source.cloneNode(); img.loading = 'eager'; visual.append(img); }
-    }
-    modal.querySelector('.modal-note').textContent = videoSource
-      ? 'A short colour grading study presented in its final cinematic format.'
-      : 'For viewing access and further project details, get in touch.';
-    modal.querySelector('.modal-inquiry').href = `mailto:abdullahsalako@gmail.com?subject=${encodeURIComponent('Portfolio inquiry: ' + button.dataset.project)}`;
-    modal.showModal();
-  }));
-  modal.querySelector('.modal-close').addEventListener('click', () => modal.close());
-  modal.addEventListener('close', () => {
-    modal.querySelector('video')?.pause();
-    activeProject?.focus();
-  });
-  modal.addEventListener('click', event => {
-    if (event.target !== modal) return;
-    const r = modal.getBoundingClientRect();
-    if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) modal.close();
-  });
-}
-const page = location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.primary-nav a').forEach(link => {
-  const active = link.getAttribute('href').split('#')[0] === page;
-  link.classList.toggle('active', active);
-  if (active) link.setAttribute('aria-current', 'page');
-  else link.removeAttribute('aria-current');
-});
-const year = document.getElementById('year');
-if (year) year.textContent = new Date().getFullYear();
-const form = document.querySelector('.contact-form');
-form?.addEventListener('submit', event => {
-  event.preventDefault();
-  const data = new FormData(form);
-  const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nService: ${data.get('service') || 'Let’s discuss'}\n\n${data.get('brief')}`;
-  location.href = `mailto:abdullahsalako@gmail.com?subject=${encodeURIComponent('Project brief — ' + data.get('name'))}&body=${encodeURIComponent(body)}`;
-});
-
-// A decorative quill; the small ink point stays at the actual click position.
-(() => {
-  const desktop = matchMedia('(min-width: 769px) and (hover: hover) and (pointer: fine)');
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  const cursor = document.createElement('div');
-  cursor.className = 'quill-cursor';
-  cursor.setAttribute('aria-hidden', 'true');
-  cursor.innerHTML = `<span class="quill-point"></span><svg class="quill-feather" viewBox="0 0 32 40" fill="none" focusable="false" aria-hidden="true">
-    <path d="M6 33C6 24 9 13 17 6C21 3 26 2 29 2C29 8 27 14 24 19L20 20L22 23C18 28 12 30 6 33Z" fill="currentColor" fill-opacity=".9"/>
-    <path d="M3 38C9 25 17 14 26 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-    <path d="M11 25L10 18M15 20L14 12M19 15L19 8M13 24L20 23M17 19L24 16" stroke="var(--paper)" stroke-width=".7" stroke-linecap="round"/>
-  </svg>`;
-  const feather = cursor.querySelector('.quill-feather');
-  let x = 0, y = 0, followX = 0, followY = 0, angle = 0, targetAngle = 0;
-  let frame = 0, lastFrame = 0, idleTimer = 0, hasPointer = false, visible = false;
-  let previousScroll = window.scrollY;
-
-  function hide(resetPointer = true) {
-    visible = false;
-    if (resetPointer) hasPointer = false;
-    cursor.classList.remove('is-visible');
-    document.documentElement.classList.remove('quill-active');
-    clearTimeout(idleTimer);
-    cancelAnimationFrame(frame);
-    frame = 0;
-    lastFrame = 0;
-  }
-
-  function draw(time) {
-    frame = 0;
-    if (!visible) return;
-    const blend = reducedMotion.matches ? 1 : 1 - Math.exp(-Math.min(time - (lastFrame || time - 16), 40) / 55);
-    lastFrame = time;
-    followX += (x - followX) * blend;
-    followY += (y - followY) * blend;
-    angle += (targetAngle - angle) * blend;
-    // Limit the trail to ten pixels even after a quick sweep across the page.
-    const offsetX = Math.max(-10, Math.min(10, followX - x));
-    const offsetY = Math.max(-10, Math.min(10, followY - y));
-    cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-    feather.style.transform = `translate(${8 + offsetX}px, ${-30 + offsetY}px) rotate(${reducedMotion.matches ? 0 : angle}deg)`;
-    targetAngle *= .82;
-    if (!reducedMotion.matches && (Math.abs(followX - x) + Math.abs(followY - y) + Math.abs(angle) > .1)) {
-      frame = requestAnimationFrame(draw);
-    } else lastFrame = 0;
-  }
-
-  function schedule() {
-    if (!frame) frame = requestAnimationFrame(draw);
-  }
-
-  function show() {
-    visible = true;
-    cursor.classList.add('is-visible');
-    document.documentElement.classList.add('quill-active');
-    clearTimeout(idleTimer);
-    idleTimer = setTimeout(() => hide(false), 2600);
-    schedule();
-  }
-
-  document.addEventListener('pointermove', event => {
-    if (!desktop.matches || event.pointerType !== 'mouse' || event.target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])')) {
-      hide();
-      return;
-    }
-    // Keep the decoration in the active dialog's top layer when one is open.
-    const host = document.querySelector('dialog[open]') || document.body;
-    if (cursor.parentElement !== host) host.append(cursor);
-    const dx = event.clientX - x, dy = event.clientY - y;
-    x = event.clientX;
-    y = event.clientY;
-    if (!hasPointer) { followX = x; followY = y; angle = 0; }
-    targetAngle = reducedMotion.matches ? 0 : Math.max(-12, Math.min(12, dx * .3 - dy * .15));
-    hasPointer = true;
-    show();
-  }, { passive: true });
-
-  window.addEventListener('scroll', () => {
-    const delta = window.scrollY - previousScroll;
-    previousScroll = window.scrollY;
-    if (!desktop.matches || !hasPointer) return;
-    targetAngle = reducedMotion.matches ? 0 : Math.max(-8, Math.min(8, delta * .15));
-    show();
-  }, { passive: true });
-  document.addEventListener('pointerdown', event => { if (event.pointerType !== 'mouse') hide(); }, { passive: true });
-  document.documentElement.addEventListener('pointerleave', hide);
-  window.addEventListener('blur', hide);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) hide(); });
-  document.addEventListener('keydown', hide);
-  document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('close', hide));
-  desktop.addEventListener('change', hide);
-  reducedMotion.addEventListener('change', () => { angle = targetAngle = 0; if (visible) schedule(); });
 })();
+
+/* ---------- scroll reveal ---------- */
+(function () {
+  var targets = document.querySelectorAll('.reveal');
+  if (!targets.length) return;
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    targets.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  targets.forEach(function (el) { io.observe(el); });
+})();
+
+/* ---------- shared project data (Work index + lightbox + project.html case studies) ---------- */
+var projects = [
+  { slug: 'Red Eye Effect', title: 'Red Eye Effect', cat: 'Featured · Colour Study · 2026', meta: 'Colour Grading · 2026',
+    desc: 'A cinematic colour study that turns a quiet close-up into an unsettling red-eye reveal through restrained grading and selective colour work.',
+    video: 'assets/red-eye-effect.mp4', poster: 'assets/red-eye-effect-poster.jpg',
+    role: 'Colour grade · selective correction · finishing', focus: 'Cinematic colour study', deliverable: '31-second film',
+    brief: 'Build tension without turning the frame into an effect. The image needed to feel intimate first, then quietly strange — a look that rewards a second viewing.',
+    approach: 'The treatment keeps the surrounding palette restrained and the contrast controlled, reserving saturation for the eye reveal. Each adjustment was chosen to protect the skin tone and let the emotional shift arrive through colour rather than noise.',
+    outcome: 'A compact visual study with a precise focal point: the final grade gives the reveal its weight while preserving the calm that makes it unsettling.' },
+  { slug: 'Momentum', title: 'Momentum', cat: 'Commercial · VFX · 2026', meta: 'Commercial · 2026',
+    desc: 'A high energy brand film treatment with editorial pacing, VFX polish, colour finishing, and motion led emphasis.',
+    poster: 'https://images.unsplash.com/photo-1648827800808-75ce3a93c7de?auto=format&fit=crop&w=1600&q=80',
+    role: 'Editing · VFX · colour grade · motion', focus: 'Brand film treatment', deliverable: 'Campaign film concept',
+    brief: 'Create a commercial world that feels fast and polished while leaving the central message easy to read.',
+    approach: 'The imagined workflow moves from a clean editorial spine into selective compositing and graphic accents. Momentum is treated as a rhythm problem first: every visual intervention earns its place in the cut.',
+    outcome: 'A campaign direction designed to feel premium, clear, and adaptable across a hero edit and social cutdowns.' },
+  { slug: 'In Frame', title: 'In Frame', cat: 'Short form · 2026', meta: 'Short Form · 2026',
+    desc: 'A social first series built around fast cuts, clear structure, captions, and platform ready rhythm.',
+    poster: 'https://images.unsplash.com/photo-1548607634-9f8cfca5d944?auto=format&fit=crop&w=1600&q=80',
+    role: 'Editing · social content', focus: 'Platform-first storytelling', deliverable: 'Short-form series',
+    brief: 'Make the first seconds work hard while keeping the story legible with or without sound.',
+    approach: 'The edit establishes a clear visual premise early, uses captions as part of the composition, and maintains a pace that supports the subject.',
+    outcome: 'A flexible social-content direction that translates a strong idea into repeatable, audience-conscious episodes.' },
+  { slug: 'Between Takes', title: 'Between Takes', cat: 'Film · 2026', meta: 'Film · 2026',
+    desc: 'Documentary style finishing focused on visual continuity, careful tone, and colour managed delivery.',
+    poster: 'https://images.unsplash.com/photo-1741388503120-5049f5da2733?auto=format&fit=crop&w=1600&q=80',
+    role: 'Colour grade · finishing', focus: 'Documentary-style film finish', deliverable: 'Narrative film treatment',
+    brief: 'Maintain the truth of the material while giving the film a single, coherent visual atmosphere from beginning to end.',
+    approach: 'The finish begins with continuity — matching exposure, skin tone, and colour temperature — then develops a quiet tonal direction that supports the observational pace.',
+    outcome: 'A film-treatment approach that makes the visual language feel unified without losing the texture of individual moments.' },
+  { slug: 'Visual Rhythm', title: 'Visual Rhythm', cat: 'VFX · 3D Motion · 2026', meta: 'VFX · 2026',
+    desc: 'Complex visual effects composite with 3D product motion, particle passes, and dynamic speed ramping.',
+    poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80',
+    role: 'VFX · 3D motion · compositing', focus: 'Graphic visual effects', deliverable: 'Motion-led visual treatment',
+    brief: 'Bring dimensional energy into the frame while keeping the visual effects legible and integrated with the edit.',
+    approach: 'The approach layers animation, particles, and compositing around a clear point of attention. Speed changes are designed into the story rhythm rather than used as standalone flourish.',
+    outcome: 'A vivid motion system that gives a campaign or music-led piece greater scale without losing editorial clarity.' },
+  { slug: 'Make It Land', title: 'Make It Land', cat: 'Visual ID · 3D Animation · 2026', meta: '3D Animation · 2026',
+    desc: 'Identity in motion for campaigns that need clarity, tempo, 3D animated detail, and a memorable final frame.',
+    poster: 'assets/red-eye-effect-poster.jpg',
+    role: 'Creative direction · 3D animation · motion graphics', focus: 'Campaign visual identity', deliverable: 'Motion identity system',
+    brief: 'Turn a visual identity into a moving language that can introduce, punctuate, and close a campaign with confidence.',
+    approach: 'The system begins with a recognisable visual gesture, then develops it into flexible animation beats for titles, transitions, and end frames.',
+    outcome: 'A motion-identity framework that helps the campaign arrive with a clearer point of view and leave a distinct impression.' },
+  { slug: 'Lumina', title: 'Lumina', cat: 'Commercial · 2026', meta: 'Commercial · 2026',
+    desc: 'Luxury brand spot featuring rich skin tone rendering, natural grain structure, and subtle titles.',
+    poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1600&q=80',
+    role: 'Editing · colour grade', focus: 'Luxury brand finish', deliverable: 'Commercial spot treatment',
+    brief: 'Create an elevated visual finish that feels luxurious and tactile without becoming overly polished or distant.',
+    approach: 'The look balances controlled colour with retained texture. Editorial choices are economical, giving the image space and allowing details to do the speaking.',
+    outcome: 'A restrained premium finish designed to feel contemporary, warm, and considered across a hero spot and campaign cutdowns.' }
+];
+
+/* ---------- Work index (portfolio.html) ---------- */
+var indexList = document.getElementById('workIndex');
+if (indexList) {
+  projects.forEach(function (p, i) {
+    var row = document.createElement('div');
+    row.className = 'index-row reveal';
+    row.setAttribute('data-open-lightbox', i);
+    row.setAttribute('tabindex', '0');
+    row.setAttribute('role', 'button');
+    row.innerHTML = '<span class="index-num">' + String(i + 1).padStart(2, '0') + '</span>' +
+      '<span class="index-title">' + p.title + '</span>' +
+      '<span class="index-meta">' + p.meta + '</span>' +
+      '<img class="index-thumb" src="' + p.poster + '" alt="" loading="lazy" />';
+    indexList.appendChild(row);
+  });
+  indexList.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      var row = e.target.closest('[data-open-lightbox]');
+      if (row) { e.preventDefault(); openLightbox(parseInt(row.getAttribute('data-open-lightbox'), 10)); }
+    }
+  });
+}
+
+var lb = document.getElementById('lightbox');
+var current = 0;
+var lastFocused = null;
+if (lb) {
+  var lbMedia = document.getElementById('lbMedia');
+  var lbCat = document.getElementById('lbCat');
+  var lbTitle = document.getElementById('lbTitle');
+  var lbDesc = document.getElementById('lbDesc');
+  var lbLink = document.getElementById('lbLink');
+
+  var renderProject = function (i) {
+    current = (i + projects.length) % projects.length;
+    var p = projects[current];
+    lbMedia.innerHTML = p.video
+      ? '<video src="' + p.video + '" poster="' + p.poster + '" controls playsinline preload="metadata"></video>'
+      : '<img src="' + p.poster + '" alt="' + p.title + '" />';
+    lbCat.textContent = p.cat;
+    lbTitle.textContent = p.title;
+    lbDesc.textContent = p.desc;
+    if (lbLink) lbLink.href = 'project.html?project=' + encodeURIComponent(p.slug);
+  };
+  window.openLightbox = function (i) {
+    lastFocused = document.activeElement;
+    renderProject(i);
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lbClose').focus();
+  };
+  var closeLightbox = function () {
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+    var vid = lbMedia.querySelector('video');
+    if (vid) vid.pause();
+    if (lastFocused) lastFocused.focus();
+  };
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-open-lightbox]');
+    if (trigger) openLightbox(parseInt(trigger.getAttribute('data-open-lightbox'), 10));
+  });
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbPrev').addEventListener('click', function () { renderProject(current - 1); });
+  document.getElementById('lbNext').addEventListener('click', function () { renderProject(current + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') renderProject(current - 1);
+    if (e.key === 'ArrowRight') renderProject(current + 1);
+  });
+}
+
+/* ---------- project.html case-study template ---------- */
+var caseStudy = document.querySelector('[data-case-study]');
+if (caseStudy) {
+  var requested = new URLSearchParams(location.search).get('project');
+  var project = projects.find(function (p) { return p.slug === requested; }) || projects[0];
+  document.title = project.title + ' Case Study | Remi Visuals';
+  var canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.setAttribute('href', location.href);
+  var descTag = document.querySelector('meta[name="description"]');
+  if (descTag) descTag.setAttribute('content', project.desc + ' A project case study from Remi Visuals.');
+  document.querySelector('#case-title').textContent = project.title;
+  document.querySelector('#case-kicker').textContent = project.cat;
+  document.querySelector('#case-summary').textContent = project.desc;
+  document.querySelector('#case-brief').textContent = project.brief;
+  document.querySelector('#case-approach').textContent = project.approach;
+  document.querySelector('#case-outcome').textContent = project.outcome;
+  document.querySelector('#case-role').textContent = project.role;
+  document.querySelector('#case-focus').textContent = project.focus;
+  document.querySelector('#case-deliverable').textContent = project.deliverable;
+  var figure = document.querySelector('#case-image').closest('figure');
+  if (project.video) {
+    var video = document.createElement('video');
+    video.controls = true; video.playsInline = true; video.preload = 'metadata';
+    video.poster = project.poster; video.src = project.video;
+    video.setAttribute('aria-label', 'Watch ' + project.title);
+    figure.replaceChild(video, document.querySelector('#case-image'));
+  } else {
+    var img = document.querySelector('#case-image');
+    img.src = project.poster; img.alt = project.title;
+  }
+  var caption = document.querySelector('#case-caption');
+  if (caption) caption.textContent = project.title + ' · final frame.';
+  var inquiry = document.querySelector('.case-inquiry');
+  if (inquiry) inquiry.href = 'notices.html?ref=' + encodeURIComponent(project.title) + '#contact';
+}
+
+/* ---------- journal article template (article.html?post=slug) ---------- */
+var posts = {
+  'node-workflow': {
+    tag: 'Colour Grade Note',
+    title: 'The DaVinci Resolve Node Workflow for Cinematic Skin Tones',
+    date: '15 Sep 2026', readTime: '6 min read',
+    body: [
+      { p: "Every grade I build for a face starts the same way: get the exposure and the LOG transform right before a single hue is touched. Skin is the one thing a viewer has calibrated their whole life — it forgives almost nothing, so the node tree has to earn cinematic warmth without ever announcing itself." },
+      { h2: '1. Primary exposure balance' },
+      { p: 'The first node does one job: even out exposure across the face before any look is applied. A soft power window keyed to the highlights on the forehead and cheekbones, blended at low opacity, prevents the grade downstream from having to fight uneven light.' },
+      { h2: '2. The LOG transform' },
+      { p: 'Converting into a working colour space early means every later node operates on predictable values. I keep a scope open through this stage — not for the shape of the curve, but to confirm skin sits where it should before anything stylistic happens.' },
+      { h2: '3. Parallel HSL isolation' },
+      { p: "This is the actual warmth: a qualifier isolates the skin-tone range in parallel with the rest of the frame, so adjustments to hue and saturation land only where they're meant to. Small moves — a few degrees of hue, a touch of saturation — read as a lot on a close-up." },
+      { quote: 'The goal is never a “look.” It’s a face that reads as itself, just lit a little more generously than the camera saw it.' },
+      { h2: '4. Soft grain overlay' },
+      { p: 'The last node adds a fine, even grain over the full frame at low opacity. It does two things at once: it unifies footage shot across slightly different conditions, and it keeps skin from looking over-smoothed once the isolation node has done its work.' },
+      { p: 'None of this is complicated on its own. What makes it repeatable is building it as a saved node tree, so every new project starts from the same disciplined base instead of a blank page.' }
+    ]
+  }
+};
+var articleRoot = document.querySelector('[data-article]');
+if (articleRoot) {
+  var postSlug = new URLSearchParams(location.search).get('post') || 'node-workflow';
+  var post = posts[postSlug] || posts['node-workflow'];
+  document.title = post.title + ' | Remi Visuals';
+  document.querySelector('#post-tag').textContent = post.tag;
+  document.querySelector('#post-title').textContent = post.title;
+  document.querySelector('#post-date').textContent = post.date;
+  document.querySelector('#post-readtime').textContent = post.readTime;
+  var bodyEl = document.querySelector('#post-body');
+  bodyEl.innerHTML = post.body.map(function (block) {
+    if (block.h2) return '<h2>' + block.h2 + '</h2>';
+    if (block.quote) return '<blockquote>' + block.quote + '</blockquote>';
+    return '<p>' + block.p + '</p>';
+  }).join('');
+}
+
+/* ---------- contact form (notices.html) ---------- */
+var form = document.querySelector('.contact-form');
+form && form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  var data = new FormData(form);
+  var body = 'Name: ' + data.get('name') + '\nEmail: ' + data.get('email') + '\n\n' + data.get('brief');
+  location.href = 'mailto:hello@aderemisalako.me?subject=' + encodeURIComponent('Project brief — ' + data.get('name')) + '&body=' + encodeURIComponent(body);
+});
