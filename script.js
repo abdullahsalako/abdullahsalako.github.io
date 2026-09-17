@@ -289,6 +289,85 @@ form && form.addEventListener('submit', function (event) {
   location.href = 'mailto:hello@aderemisalako.me?subject=' + encodeURIComponent('Project brief — ' + data.get('name')) + '&body=' + encodeURIComponent(body);
 });
 
+/* ---------- intro preloader (index.html) ---------- */
+(function () {
+  var root = document.documentElement;
+  var intro = document.getElementById('intro');
+  if (!intro || !root.classList.contains('intro-on')) return;
+
+  // 1850 + 480 + 420 = 2.75s, or 2.95s if the hero image still needs a moment
+  var WRITE = 1850, HOLD = 480, FADE = 420, HERO_WAIT = 200;
+  var strokes = [].slice.call(intro.querySelectorAll('.intro-stroke'));
+  var pen = document.getElementById('intro-pen');
+  var lengths = strokes.map(function (path) {
+    var len = path.getTotalLength();
+    path.style.strokeDasharray = len;
+    path.style.strokeDashoffset = len;
+    return len;
+  });
+  var total = lengths.reduce(function (a, b) { return a + b; }, 0);
+  var raf = null, dismissed = false;
+
+  function draw(distance) {
+    var walked = 0, active = 0, at = 0;
+    for (var i = 0; i < strokes.length; i++) {
+      var drawn = Math.max(0, Math.min(lengths[i], distance - walked));
+      strokes[i].style.strokeDashoffset = lengths[i] - drawn;
+      if (drawn > 0) { active = i; at = drawn; }
+      walked += lengths[i];
+    }
+    var point = strokes[active].getPointAtLength(at);
+    pen.setAttribute('transform', 'translate(' + point.x + ',' + point.y + ') rotate(34)');
+  }
+
+  function dismiss(fade) {
+    if (dismissed) return;
+    dismissed = true;
+    if (raf) cancelAnimationFrame(raf);
+    try { sessionStorage.setItem('rv-intro', '1'); } catch (e) {}
+    intro.style.transitionDuration = fade + 'ms';
+    intro.classList.add('is-out');
+    setTimeout(function () {
+      root.classList.remove('intro-on');
+      if (intro.parentNode) intro.parentNode.removeChild(intro);
+    }, fade);
+  }
+
+  // hold the curtain until the hero image is ready, but never for long
+  function whenHeroReady(next) {
+    var hero = document.querySelector('.hero-figure img');
+    if (!hero || hero.complete) return next();
+    var fired = false;
+    var go = function () { if (!fired) { fired = true; next(); } };
+    hero.addEventListener('load', go);
+    hero.addEventListener('error', go);
+    setTimeout(go, HERO_WAIT);
+  }
+
+  function skip() {
+    draw(total);
+    pen.classList.remove('is-writing');
+    dismiss(250);
+  }
+
+  document.getElementById('intro-skip').addEventListener('click', skip);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !dismissed) skip();
+  });
+
+  draw(0);
+  pen.classList.add('is-writing');
+  var start = null;
+  raf = requestAnimationFrame(function step(now) {
+    if (start === null) start = now;
+    var t = Math.min(1, (now - start) / WRITE);
+    draw(t * t * (3 - 2 * t) * total);          // smoothstep, so it starts and settles gently
+    if (t < 1) { raf = requestAnimationFrame(step); return; }
+    pen.classList.remove('is-writing');          // lift the pen off the finished name
+    setTimeout(function () { whenHeroReady(function () { dismiss(FADE); }); }, HOLD);
+  });
+})();
+
 /* ---------- scroll reveal (runs last so dynamically-inserted .reveal elements, e.g. the work index rows, are included) ---------- */
 (function () {
   var targets = document.querySelectorAll('.reveal');

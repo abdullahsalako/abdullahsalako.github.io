@@ -15,6 +15,18 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 .skip-link{position:fixed;top:-100px;left:20px;z-index:200;background:var(--ink);color:var(--paper);padding:10px 14px;font:500 13px var(--body)}
 .skip-link:focus{top:10px}
 
+/* intro preloader (index.html) — shown only while html.intro-on is set */
+.intro{display:none;position:fixed;inset:0;z-index:400;align-items:center;justify-content:center;background:var(--paper);overflow:hidden}
+.intro-on .intro{display:flex}
+.intro-on body{overflow:hidden}
+.intro-sig{width:min(78vw,880px);height:auto;overflow:visible}
+.intro-stroke{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.intro-pen{fill:none;stroke:var(--ink);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .3s ease}
+.intro-pen.is-writing{opacity:1}
+.intro-skip{position:absolute;right:34px;bottom:30px;padding:8px 2px;font:500 11px/1 var(--body);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);border-bottom:1px solid transparent}
+.intro-skip:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.intro.is-out{opacity:0;pointer-events:none;transition:opacity .45s ease}
+
 header.site{padding:26px 0;border-bottom:1px solid var(--line)}
 .head-row{width:min(1180px,calc(100% - 72px));margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .brand{font:500 15px/1 var(--display);letter-spacing:.01em}
@@ -94,6 +106,7 @@ section{padding:96px 0}
 
 footer.site{border-top:1px solid var(--line);padding:32px 0}
 .foot-row{width:min(1180px,calc(100% - 72px));margin-inline:auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font:500 11px/1 var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.foot-row nav{flex-wrap:wrap;row-gap:10px}
 
 .reveal{opacity:1}
 .js-ready .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
@@ -157,15 +170,21 @@ footer.site{border-top:1px solid var(--line);padding:32px 0}
   .hero-copy{max-width:none}
   .hero-figure{max-width:280px}
   .lightbox-inner{grid-template-columns:1fr}
-  .site-nav{display:none}
+  .site-nav{gap:24px}
   section{padding:64px 0}
 }
 @media(max-width:600px){
   .wrap,.head-row,.foot-row{width:calc(100% - 40px)}
+  .intro-sig{width:88vw}
+  .intro-skip{right:20px;bottom:22px}
+  .head-row{gap:14px}
+  .site-nav{flex-wrap:wrap;gap:8px 18px;font-size:11px}
+  .site-nav a{padding:7px 0 5px}
   .journal-row{gap:18px}
   .index-row{grid-template-columns:32px 1fr auto}
 }
 @media(max-width:360px){
+  .site-nav{gap:6px 14px}
   .journal-row{grid-template-columns:1fr;gap:14px}
   .journal-media{flex-direction:row;align-items:center;gap:14px}
 }
