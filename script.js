@@ -201,6 +201,7 @@ var posts = {
     title: '27, in Retrospect',
     dek: "You don't notice the climb until you look down",
     date: '14 Jul 2026', readTime: '2 min read',
+    cover: 'assets/journal/27-in-retrospect.webp',
     sourceUrl: 'https://substack.com/home/post/p-206814420',
     body: [
       { p: "My birthdays have never really been days of celebration. They've always been days of introspection." },
@@ -239,6 +240,30 @@ if (articleRoot) {
   if (dekEl) {
     if (post.dek) { dekEl.textContent = post.dek; dekEl.hidden = false; }
     else { dekEl.textContent = ''; dekEl.hidden = true; }
+  }
+  var canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.setAttribute('href', location.href);
+  var ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', post.title + ' | Remi Visuals');
+  var twitterTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twitterTitle) twitterTitle.setAttribute('content', post.title + ' | Remi Visuals');
+  if (post.dek) {
+    var articleDesc = post.dek + '. A journal entry from Aderemi Abdullah Salako, Remi Visuals.';
+    var descTag = document.querySelector('meta[name="description"]');
+    if (descTag) descTag.setAttribute('content', articleDesc);
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', articleDesc);
+    var twitterDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDesc) twitterDesc.setAttribute('content', articleDesc);
+  }
+  var ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.setAttribute('content', location.href);
+  if (post.cover) {
+    var coverUrl = 'https://abdullahsalako.github.io/' + post.cover;
+    var ogImage = document.querySelector('meta[property="og:image"]');
+    if (ogImage) ogImage.setAttribute('content', coverUrl);
+    var twitterImage = document.querySelector('meta[name="twitter:image"]');
+    if (twitterImage) twitterImage.setAttribute('content', coverUrl);
   }
   document.querySelector('#post-date').textContent = post.date;
   document.querySelector('#post-readtime').textContent = post.readTime;
