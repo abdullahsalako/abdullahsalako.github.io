@@ -240,8 +240,22 @@ if (caseStudy) {
 }
 
 /* ---------- journal article template (article.html?post=slug) ---------- */
-var posts = {
-  'node-workflow': {
+/* ---------- journal posts ----------
+   Every post is published at /journal/<slug>, and that slug is also the folder
+   name under journal/. It is derived from the title by slugify() unless the
+   entry pins one explicitly, which is worth doing when the title is long or
+   likely to be reworded. */
+function slugify(title) {
+  return String(title)
+    .toLowerCase()
+    .replace(/['\u2018\u2019"\u201c\u201d]/g, '')  // drop apostrophes and quotes rather than hyphenating them
+    .replace(/[^a-z0-9]+/g, '-')                  // every other separator or symbol becomes a hyphen
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+var journal = [
+  { slug: 'node-workflow',   // pinned: the full title makes for an unwieldy url
     tag: 'Colour Grade Note',
     title: 'The DaVinci Resolve Node Workflow for Cinematic Skin Tones',
     date: '15 Sep 2026', readTime: '6 min read',
@@ -259,7 +273,7 @@ var posts = {
       { p: 'None of this is complicated on its own. What makes it repeatable is building it as a saved node tree, so every new project starts from the same disciplined base instead of a blank page.' }
     ]
   },
-  '27-in-retrospect': {
+  {
     tag: 'Personal · Reflection',
     title: '27, in Retrospect',
     dek: "You don't notice the climb until you look down",
@@ -291,7 +305,22 @@ var posts = {
       { p: 'Bye, 27.' }
     ]
   }
-};
+];
+
+/* slug -> post, filling in derived slugs and keeping them unique */
+var posts = {};
+journal.forEach(function (post) {
+  var base = post.slug || slugify(post.title);
+  var year = (String(post.date).match(/\d{4}/) || [''])[0];
+  var slug = base;
+  // a clash stays readable by qualifying with the year before falling back to a counter
+  if (posts[slug] && year) slug = base + '-' + year;
+  for (var n = 2; posts[slug]; n++) slug = base + '-' + n;
+  post.slug = slug;
+  post.url = '/journal/' + slug;
+  posts[slug] = post;
+});
+
 var articleRoot = document.querySelector('[data-article]');
 if (articleRoot) {
   // /journal/<slug> — each post is a real page, so its head metadata is already correct
@@ -299,6 +328,8 @@ if (articleRoot) {
   var post = posts[slug];
 
   if (!post) {
+    // usually means the folder name and the post's slug have drifted apart
+    if (window.console) console.warn('No journal post for "' + slug + '". Known slugs: ' + Object.keys(posts).join(', '));
     document.title = 'Article not found | Remi Visuals';
     document.querySelector('#post-tag').textContent = 'Journal';
     document.querySelector('#post-title').textContent = 'Article not found';
