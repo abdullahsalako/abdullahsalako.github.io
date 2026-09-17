@@ -72,9 +72,13 @@ section{padding:96px 0}
 .about-training a{color:var(--accent);border-bottom:1px solid var(--accent)}
 
 .journal-list{border-top:1px solid var(--ink)}
-.journal-row{display:grid;grid-template-columns:110px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--line)}
+.journal-row{display:grid;grid-template-columns:72px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--line)}
 .journal-row.is-link{cursor:pointer}
-.journal-date{font:500 11px/1.5 var(--body);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.journal-media{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.journal-thumb{display:block;width:72px;height:72px;flex:0 0 72px;border:1px solid var(--line);overflow:hidden;background:#efe9dd}
+.journal-thumb img{width:100%;height:100%;object-fit:cover}
+.journal-row.is-link:hover .journal-thumb{border-color:var(--accent)}
+.journal-date{display:block;font:500 11px/1.5 var(--body);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .journal-row h3{font:500 1.3rem/1.25 var(--display);margin:0 0 8px}
 .journal-row.is-link:hover h3{color:var(--accent)}
 .journal-excerpt{font:400 14px/1.6 var(--body);color:var(--muted);margin:0;max-width:60ch}
@@ -158,8 +162,12 @@ footer.site{border-top:1px solid var(--line);padding:32px 0}
 }
 @media(max-width:600px){
   .wrap,.head-row,.foot-row{width:calc(100% - 40px)}
-  .journal-row{grid-template-columns:1fr;gap:8px}
+  .journal-row{gap:18px}
   .index-row{grid-template-columns:32px 1fr auto}
+}
+@media(max-width:360px){
+  .journal-row{grid-template-columns:1fr;gap:14px}
+  .journal-media{flex-direction:row;align-items:center;gap:14px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
