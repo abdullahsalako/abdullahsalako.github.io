@@ -4,9 +4,11 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 /* ---------- nav active state ---------- */
 (function () {
-  var page = location.pathname.split('/').pop() || 'index.html';
+  // urls are extensionless, but /page.html still resolves — match either form
+  var norm = function (p) { return p.replace(/^\//, '').replace(/\.html$/, '') || 'index'; };
+  var page = norm(location.pathname.split('/').pop() || '');
   document.querySelectorAll('.site-nav a').forEach(function (link) {
-    var href = link.getAttribute('href').split('#')[0].split('?')[0];
+    var href = norm(link.getAttribute('href').split('#')[0].split('?')[0]);
     var active = href === page;
     link.classList.toggle('on', active);
     if (active) link.setAttribute('aria-current', 'page');
@@ -166,7 +168,7 @@ var lastFocused = null;
       lbTitle.textContent = item.title;
       lbMeta.textContent = item.cat;
       lbLink.hidden = false;
-      lbLink.href = 'project.html?project=' + encodeURIComponent(item.slug);
+      lbLink.href = '/project?project=' + encodeURIComponent(item.slug);
     }
   }
 
@@ -234,7 +236,7 @@ if (caseStudy) {
   var caption = document.querySelector('#case-caption');
   if (caption) caption.textContent = project.title + ' · final frame.';
   var inquiry = document.querySelector('.case-inquiry');
-  if (inquiry) inquiry.href = 'notices.html?ref=' + encodeURIComponent(project.title) + '#contact';
+  if (inquiry) inquiry.href = '/notices?ref=' + encodeURIComponent(project.title) + '#contact';
 }
 
 /* ---------- journal article template (article.html?post=slug) ---------- */
@@ -320,7 +322,7 @@ if (articleRoot) {
   var ogUrl = document.querySelector('meta[property="og:url"]');
   if (ogUrl) ogUrl.setAttribute('content', location.href);
   if (post.cover) {
-    var coverUrl = 'https://abdullahsalako.github.io/' + post.cover;
+    var coverUrl = 'https://aderemisalako.me/' + post.cover;
     var ogImage = document.querySelector('meta[property="og:image"]');
     if (ogImage) ogImage.setAttribute('content', coverUrl);
     var twitterImage = document.querySelector('meta[name="twitter:image"]');

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://abdullahsalako.github.io/sitemap.xml
+Sitemap: https://aderemisalako.me/sitemap.xml
