@@ -18,12 +18,14 @@ var projects = [
   { slug: 'Red Eye Effect', title: 'Red Eye Effect', cat: 'Featured · Colour Study · 2026', meta: 'Colour Grading · 2026',
     desc: 'A cinematic colour study that turns a quiet close-up into an unsettling red-eye reveal through restrained grading and selective colour work.',
     video: 'assets/red-eye-effect.mp4', poster: 'assets/red-eye-effect-poster.jpg',
+    thumb: 'assets/showreel/red-eye-effect-square.jpg',
     role: 'Colour grade · selective correction · finishing', focus: 'Cinematic colour study', deliverable: '31-second film',
     brief: 'Build tension without turning the frame into an effect. The image needed to feel intimate first, then quietly strange — a look that rewards a second viewing.',
     approach: 'The treatment keeps the surrounding palette restrained and the contrast controlled, reserving saturation for the eye reveal. Each adjustment was chosen to protect the skin tone and let the emotional shift arrive through colour rather than noise.',
     outcome: 'A compact visual study with a precise focal point: the final grade gives the reveal its weight while preserving the calm that makes it unsettling.' },
   { slug: 'Momentum', title: 'Momentum', cat: 'Commercial · VFX · 2026', meta: 'Commercial · 2026',
     desc: 'A high energy brand film treatment with editorial pacing, VFX polish, colour finishing, and motion led emphasis.',
+    thumb: 'assets/showreel/video-placeholder-01.jpg',
     poster: 'https://images.unsplash.com/photo-1648827800808-75ce3a93c7de?auto=format&fit=crop&w=1600&q=80',
     role: 'Editing · VFX · colour grade · motion', focus: 'Brand film treatment', deliverable: 'Campaign film concept',
     brief: 'Create a commercial world that feels fast and polished while leaving the central message easy to read.',
@@ -31,6 +33,7 @@ var projects = [
     outcome: 'A campaign direction designed to feel premium, clear, and adaptable across a hero edit and social cutdowns.' },
   { slug: 'In Frame', title: 'In Frame', cat: 'Short form · 2026', meta: 'Short Form · 2026',
     desc: 'A social first series built around fast cuts, clear structure, captions, and platform ready rhythm.',
+    thumb: 'assets/showreel/video-placeholder-02.jpg',
     poster: 'https://images.unsplash.com/photo-1548607634-9f8cfca5d944?auto=format&fit=crop&w=1600&q=80',
     role: 'Editing · social content', focus: 'Platform-first storytelling', deliverable: 'Short-form series',
     brief: 'Make the first seconds work hard while keeping the story legible with or without sound.',
@@ -38,6 +41,7 @@ var projects = [
     outcome: 'A flexible social-content direction that translates a strong idea into repeatable, audience-conscious episodes.' },
   { slug: 'Between Takes', title: 'Between Takes', cat: 'Film · 2026', meta: 'Film · 2026',
     desc: 'Documentary style finishing focused on visual continuity, careful tone, and colour managed delivery.',
+    thumb: 'assets/showreel/video-placeholder-03.jpg',
     poster: 'https://images.unsplash.com/photo-1741388503120-5049f5da2733?auto=format&fit=crop&w=1600&q=80',
     role: 'Colour grade · finishing', focus: 'Documentary-style film finish', deliverable: 'Narrative film treatment',
     brief: 'Maintain the truth of the material while giving the film a single, coherent visual atmosphere from beginning to end.',
@@ -45,6 +49,7 @@ var projects = [
     outcome: 'A film-treatment approach that makes the visual language feel unified without losing the texture of individual moments.' },
   { slug: 'Visual Rhythm', title: 'Visual Rhythm', cat: 'VFX · 3D Motion · 2026', meta: 'VFX · 2026',
     desc: 'Complex visual effects composite with 3D product motion, particle passes, and dynamic speed ramping.',
+    thumb: 'assets/showreel/video-placeholder-04.jpg',
     poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80',
     role: 'VFX · 3D motion · compositing', focus: 'Graphic visual effects', deliverable: 'Motion-led visual treatment',
     brief: 'Bring dimensional energy into the frame while keeping the visual effects legible and integrated with the edit.',
@@ -52,6 +57,7 @@ var projects = [
     outcome: 'A vivid motion system that gives a campaign or music-led piece greater scale without losing editorial clarity.' },
   { slug: 'Make It Land', title: 'Make It Land', cat: 'Visual ID · 3D Animation · 2026', meta: '3D Animation · 2026',
     desc: 'Identity in motion for campaigns that need clarity, tempo, 3D animated detail, and a memorable final frame.',
+    thumb: 'assets/showreel/video-placeholder-05.jpg',
     poster: 'assets/red-eye-effect-poster.jpg',
     role: 'Creative direction · 3D animation · motion graphics', focus: 'Campaign visual identity', deliverable: 'Motion identity system',
     brief: 'Turn a visual identity into a moving language that can introduce, punctuate, and close a campaign with confidence.',
@@ -59,124 +65,141 @@ var projects = [
     outcome: 'A motion-identity framework that helps the campaign arrive with a clearer point of view and leave a distinct impression.' },
   { slug: 'Lumina', title: 'Lumina', cat: 'Commercial · 2026', meta: 'Commercial · 2026',
     desc: 'Luxury brand spot featuring rich skin tone rendering, natural grain structure, and subtle titles.',
-    poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1600&q=80',
+    thumb: 'assets/showreel/video-placeholder-06.jpg',
+    poster: 'assets/showreel/video-placeholder-06.jpg',
     role: 'Editing · colour grade', focus: 'Luxury brand finish', deliverable: 'Commercial spot treatment',
     brief: 'Create an elevated visual finish that feels luxurious and tactile without becoming overly polished or distant.',
     approach: 'The look balances controlled colour with retained texture. Editorial choices are economical, giving the image space and allowing details to do the speaking.',
-    outcome: 'A restrained premium finish designed to feel contemporary, warm, and considered across a hero spot and campaign cutdowns.' },
-  // Photography selects. Placeholders using the photographs already on the site —
-  // replace the posters and copy with real photo work.
-  { slug: 'Natural Light Portrait', title: 'Natural Light Portrait', cat: 'Photography · Portrait', meta: 'Portrait · 2026',
-    type: 'photo', caseStudy: false,
-    desc: 'A quiet black and white portrait: soft directional light, exposed for the skin, with the contrast held deliberately low.',
-    poster: 'headshot.jpg' },
-  { slug: 'Against the Wall', title: 'Against the Wall', cat: 'Photography · Portrait', meta: 'Portrait · 2026',
-    type: 'photo', caseStudy: false,
-    desc: 'Available light on a painted wall, framed close so the colour behind the subject does most of the work.',
-    poster: 'assets/journal/27-in-retrospect-young.jpg' }
+    outcome: 'A restrained premium finish designed to feel contemporary, warm, and considered across a hero spot and campaign cutdowns.' }
 ];
 
-/* ---------- Showreel indexes (portfolio.html) ---------- */
-function buildIndex(list, kind) {
-  if (!list) return;
-  var shown = 0;
-  projects.forEach(function (p, i) {
-    if ((p.type || 'film') !== kind) return;
-    shown++;
-    var row = document.createElement('div');
-    row.className = 'index-row reveal';
-    row.setAttribute('data-open-lightbox', i);
-    row.setAttribute('tabindex', '0');
-    row.setAttribute('role', 'button');
-    row.innerHTML = '<span class="index-num">' + String(shown).padStart(2, '0') + '</span>' +
-      '<span class="index-title">' + p.title + '</span>' +
-      '<span class="index-meta">' + p.meta + '</span>' +
-      '<img class="index-thumb" src="' + p.poster + '" alt="" loading="lazy" />';
-    list.appendChild(row);
-  });
-  list.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' || e.key === ' ') {
-      var row = e.target.closest('[data-open-lightbox]');
-      if (row) { e.preventDefault(); openLightbox(parseInt(row.getAttribute('data-open-lightbox'), 10)); }
-    }
+/* ---------- Showreel galleries (portfolio.html) ----------
+   Photography is temporary placeholder imagery: swap the files in
+   assets/showreel/ (keeping the names) or edit the list below.
+   Film tiles reuse the projects above; every tile without its own
+   footage falls back to PLACEHOLDER_FILM for preview and playback. */
+var PLACEHOLDER_FILM = 'assets/red-eye-effect.mp4';
+
+var photos = [
+  { src: 'assets/showreel/photography-placeholder-01.jpg', title: 'Portrait', meta: 'Studio' },
+  { src: 'assets/showreel/photography-placeholder-02.jpg', title: 'Lifestyle', meta: 'On location' },
+  { src: 'assets/showreel/photography-placeholder-03.jpg', title: 'Headshot', meta: 'Professional' },
+  { src: 'assets/showreel/photography-placeholder-04.jpg', title: 'Editorial', meta: 'Fashion' },
+  { src: 'assets/showreel/photography-placeholder-05.jpg', title: 'Portrait', meta: 'Low key' },
+  { src: 'assets/showreel/photography-placeholder-06.jpg', title: 'Lifestyle', meta: 'Street' },
+  { src: 'assets/showreel/photography-placeholder-07.jpg', title: 'Lifestyle', meta: 'Golden hour' },
+  { src: 'assets/showreel/photography-placeholder-08.jpg', title: 'Product', meta: 'Apparel' }
+];
+
+var ICON_VIEW = '<svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+  '<path d="M9 3H3v6M15 3h6v6M9 21H3v-6M15 21h6v-6" /></svg>';
+var ICON_PLAY = '<svg class="tile-icon is-play" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+  '<circle cx="12" cy="12" r="10" /><path class="tri" d="M10 8.2l6.2 3.8-6.2 3.8z" /></svg>';
+
+function tile(label, inner) {
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'tile';
+  b.setAttribute('aria-label', label);
+  b.innerHTML = inner + '<span class="tile-veil"></span>';
+  return b;
+}
+
+var photoGrid = document.getElementById('photoGrid');
+if (photoGrid) {
+  photos.forEach(function (p, i) {
+    var b = tile('View ' + p.title, '<img src="' + p.src + '" alt="' + p.title + '" loading="lazy" />' + ICON_VIEW);
+    b.addEventListener('click', function () { openViewer('photo', i); });
+    photoGrid.appendChild(b);
   });
 }
-buildIndex(document.getElementById('photoIndex'), 'photo');
-buildIndex(document.getElementById('workIndex'), 'film');
 
-/* the videography door previews its film on hover */
-(function () {
-  var film = document.getElementById('doorFilm');
-  if (!film || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var door = film.closest('.door');
-  var play = function () { var r = film.play(); if (r && r.catch) r.catch(function () {}); };
-  var stop = function () { film.pause(); film.currentTime = 0; };
-  door.addEventListener('mouseenter', play);
-  door.addEventListener('mouseleave', stop);
-  door.addEventListener('focus', play);
-  door.addEventListener('blur', stop);
-})();
-
-var lb = document.getElementById('lightbox');
-var current = 0;
-var lastFocused = null;
-if (lb) {
-  var lbMedia = document.getElementById('lbMedia');
-  var lbCat = document.getElementById('lbCat');
-  var lbTitle = document.getElementById('lbTitle');
-  var lbDesc = document.getElementById('lbDesc');
-  var lbLink = document.getElementById('lbLink');
-
-  var order = [];      // indices of the collection being browsed, so prev/next stays within it
-  var pos = 0;
-
-  var renderProject = function (k) {
-    pos = (k + order.length) % order.length;
-    current = order[pos];
-    var p = projects[current];
-    lbMedia.innerHTML = p.video
-      ? '<video src="' + p.video + '" poster="' + p.poster + '" controls playsinline preload="metadata"></video>'
-      : '<img src="' + p.poster + '" alt="' + p.title + '" />';
-    lbCat.textContent = p.cat;
-    lbTitle.textContent = p.title;
-    lbDesc.textContent = p.desc;
-    if (lbLink) {
-      lbLink.hidden = p.caseStudy === false;   // photography selects have no case study
-      lbLink.href = 'project.html?project=' + encodeURIComponent(p.slug);
+var filmGrid = document.getElementById('filmGrid');
+if (filmGrid) {
+  var quiet = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  projects.forEach(function (p, i) {
+    var b = tile('Play ' + p.title,
+      '<video src="' + (p.video || PLACEHOLDER_FILM) + '" poster="' + (p.thumb || p.poster) +
+      '" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>' + ICON_PLAY);
+    var vid = b.querySelector('video');
+    if (!quiet) {
+      var play = function () { var r = vid.play(); if (r && r.catch) r.catch(function () {}); };
+      var stop = function () { vid.pause(); vid.currentTime = 0; };
+      b.addEventListener('mouseenter', play);
+      b.addEventListener('mouseleave', stop);
+      b.addEventListener('focus', play);
+      b.addEventListener('blur', stop);
     }
-  };
-  window.openLightbox = function (i) {
-    var kind = projects[i].type || 'film';
-    order = [];
-    projects.forEach(function (p, n) { if ((p.type || 'film') === kind) order.push(n); });
+    b.addEventListener('click', function () { openViewer('film', i); });
+    filmGrid.appendChild(b);
+  });
+}
+
+var allPhotos = document.getElementById('viewAllPhotos');
+if (allPhotos) allPhotos.addEventListener('click', function () { openViewer('photo', 0); });
+var allFilms = document.getElementById('watchAllFilms');
+if (allFilms) allFilms.addEventListener('click', function () { openViewer('film', 0); });
+
+/* ---------- gallery viewer (portfolio.html) ---------- */
+var lastFocused = null;
+(function () {
+  var lb = document.getElementById('lightbox');
+  if (!lb) return;
+  var lbMedia = document.getElementById('lbMedia');
+  var lbTitle = document.getElementById('lbTitle');
+  var lbMeta = document.getElementById('lbMeta');
+  var lbLink = document.getElementById('lbLink');
+  var closeBtn = document.getElementById('lbClose');
+  var set = [], pos = 0, kind = 'photo';
+
+  function show(k) {
+    pos = (k + set.length) % set.length;
+    var item = set[pos];
+    if (kind === 'photo') {
+      lbMedia.innerHTML = '<img src="' + item.src + '" alt="' + item.title + '" />';
+      lbTitle.textContent = item.title;
+      lbMeta.textContent = item.meta;
+      lbLink.hidden = true;
+    } else {
+      lbMedia.innerHTML = '<video src="' + (item.video || PLACEHOLDER_FILM) + '" poster="' + item.poster +
+        '" controls playsinline preload="metadata"></video>';
+      lbTitle.textContent = item.title;
+      lbMeta.textContent = item.cat;
+      lbLink.hidden = false;
+      lbLink.href = 'project.html?project=' + encodeURIComponent(item.slug);
+    }
+  }
+
+  window.openViewer = function (which, i) {
+    kind = which;
+    set = which === 'photo' ? photos : projects;
     lastFocused = document.activeElement;
-    renderProject(order.indexOf(i));
+    show(i);
     lb.classList.add('is-open');
     document.body.style.overflow = 'hidden';
-    document.getElementById('lbClose').focus();
+    closeBtn.focus();
   };
-  var closeLightbox = function () {
+
+  function close() {
     lb.classList.remove('is-open');
     document.body.style.overflow = '';
-    var vid = lbMedia.querySelector('video');
-    if (vid) vid.pause();
+    var v = lbMedia.querySelector('video');
+    if (v) v.pause();
+    lbMedia.innerHTML = '';
     if (lastFocused) lastFocused.focus();
-  };
-  document.addEventListener('click', function (e) {
-    var trigger = e.target.closest('[data-open-lightbox]');
-    if (trigger) openLightbox(parseInt(trigger.getAttribute('data-open-lightbox'), 10));
-  });
-  document.getElementById('lbClose').addEventListener('click', closeLightbox);
-  document.getElementById('lbPrev').addEventListener('click', function () { renderProject(pos - 1); });
-  document.getElementById('lbNext').addEventListener('click', function () { renderProject(pos + 1); });
-  lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+  }
+
+  closeBtn.addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', function () { show(pos - 1); });
+  document.getElementById('lbNext').addEventListener('click', function () { show(pos + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb || e.target === lb.firstElementChild) close(); });
   document.addEventListener('keydown', function (e) {
     if (!lb.classList.contains('is-open')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') renderProject(pos - 1);
-    if (e.key === 'ArrowRight') renderProject(pos + 1);
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(pos - 1);
+    if (e.key === 'ArrowRight') show(pos + 1);
   });
-}
+})();
 
 /* ---------- project.html case-study template ---------- */
 var caseStudy = document.querySelector('[data-case-study]');

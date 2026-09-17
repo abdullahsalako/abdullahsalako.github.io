@@ -42,52 +42,22 @@
             <h1>Showreel</h1>
             <p class="note">Two ways of telling a story. One creative vision.</p>
           </div>
-          <div class="doors reveal">
-            <a class="door" href="#photography">
-              <div class="door-media">
-                <img src="headshot.jpg" alt="" width="1050" height="1400" loading="eager" />
-                <span class="door-label">Freeze the moment</span>
-              </div>
-              <div class="door-body">
-                <h2>Photography</h2>
-                <p class="door-line">Moments captured with intention.</p>
-                <p class="door-note">Portraits, events, brands, and lifestyle captured with emotion, composition, and purpose.</p>
-                <span class="door-cta">View photography &rarr;</span>
-              </div>
-            </a>
-            <a class="door" href="#films">
-              <div class="door-media is-film">
-                <video id="doorFilm" src="assets/red-eye-effect.mp4" poster="assets/red-eye-effect-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>
-                <span class="door-label">Keep the story moving</span>
-              </div>
-              <div class="door-body">
-                <h2>Videography</h2>
-                <p class="door-line">Stories brought to life through motion.</p>
-                <p class="door-note">Cinematic films, events, campaigns, and visual stories created to make people watch, feel, and remember.</p>
-                <span class="door-cta">Watch films &rarr;</span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
 
-      <section id="photography">
-        <div class="wrap">
-          <div class="section-head reveal">
+          <div class="gallery-head reveal" id="photography">
             <h2>Photography</h2>
-            <p class="note">Moments captured with intention.</p>
+            <p class="gallery-tagline">Moments captured with intention.</p>
           </div>
-          <div class="index-list" id="photoIndex"></div>
-        </div>
-      </section>
+          <div class="tile-grid reveal" id="photoGrid"></div>
+          <p class="gallery-cta reveal"><button class="link-cta" id="viewAllPhotos" type="button">View all photography &rarr;</button></p>
 
-      <section id="films">
-        <div class="wrap">
-          <div class="section-head reveal">
-            <h2>Films</h2>
-            <p class="note">Hover a title for a preview, or select it to open the full piece.</p>
+          <div class="gallery-head is-divided reveal" id="films">
+            <h2>Videography</h2>
+            <p class="gallery-tagline">Stories brought to life through motion.</p>
           </div>
-          <div class="index-list" id="workIndex"></div>
+          <div class="tile-grid reveal" id="filmGrid"></div>
+          <p class="gallery-cta reveal"><button class="link-cta" id="watchAllFilms" type="button">Watch all films &rarr;</button></p>
+
+          <p class="coming-soon reveal">More stories coming soon.</p>
         </div>
       </section>
     </main>
@@ -104,19 +74,18 @@
       </div>
     </footer>
 
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project viewer">
-      <button class="lightbox-close" id="lbClose" type="button">Close &times;</button>
-      <button class="lightbox-nav lightbox-prev" id="lbPrev" type="button">&larr; Prev</button>
-      <button class="lightbox-nav lightbox-next" id="lbNext" type="button">Next &rarr;</button>
-      <div class="lightbox-inner">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery viewer">
+      <button class="lightbox-close" id="lbClose" type="button" aria-label="Close gallery">Close &times;</button>
+      <button class="lightbox-nav lightbox-prev" id="lbPrev" type="button" aria-label="Previous">&larr;</button>
+      <button class="lightbox-nav lightbox-next" id="lbNext" type="button" aria-label="Next">&rarr;</button>
+      <figure class="lightbox-stage">
         <div class="lightbox-media" id="lbMedia"></div>
-        <div class="lightbox-copy">
-          <span class="kicker" id="lbCat"></span>
-          <h3 id="lbTitle"></h3>
-          <p id="lbDesc"></p>
+        <figcaption class="lightbox-caption">
+          <span class="lightbox-title" id="lbTitle"></span>
+          <span class="lightbox-meta" id="lbMeta"></span>
           <a class="button-link" id="lbLink" href="project.html">Read the full case study &rarr;</a>
-        </div>
-      </div>
+        </figcaption>
+      </figure>
     </div>
   </body>
 </html>
