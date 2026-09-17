@@ -273,7 +273,7 @@ var journal = [
       { p: 'None of this is complicated on its own. What makes it repeatable is building it as a saved node tree, so every new project starts from the same disciplined base instead of a blank page.' }
     ]
   },
-  {
+  { slug: '27-in-retrospect',   // pinned so rewording the title cannot move the url
     tag: 'Personal · Reflection',
     title: '27, in Retrospect',
     dek: "You don't notice the climb until you look down",
