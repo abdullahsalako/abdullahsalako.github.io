@@ -63,31 +63,59 @@ var projects = [
     role: 'Editing · colour grade', focus: 'Luxury brand finish', deliverable: 'Commercial spot treatment',
     brief: 'Create an elevated visual finish that feels luxurious and tactile without becoming overly polished or distant.',
     approach: 'The look balances controlled colour with retained texture. Editorial choices are economical, giving the image space and allowing details to do the speaking.',
-    outcome: 'A restrained premium finish designed to feel contemporary, warm, and considered across a hero spot and campaign cutdowns.' }
+    outcome: 'A restrained premium finish designed to feel contemporary, warm, and considered across a hero spot and campaign cutdowns.' },
+  // Photography selects. Placeholders using the photographs already on the site —
+  // replace the posters and copy with real photo work.
+  { slug: 'Natural Light Portrait', title: 'Natural Light Portrait', cat: 'Photography · Portrait', meta: 'Portrait · 2026',
+    type: 'photo', caseStudy: false,
+    desc: 'A quiet black and white portrait: soft directional light, exposed for the skin, with the contrast held deliberately low.',
+    poster: 'headshot.jpg' },
+  { slug: 'Against the Wall', title: 'Against the Wall', cat: 'Photography · Portrait', meta: 'Portrait · 2026',
+    type: 'photo', caseStudy: false,
+    desc: 'Available light on a painted wall, framed close so the colour behind the subject does most of the work.',
+    poster: 'assets/journal/27-in-retrospect-young.jpg' }
 ];
 
-/* ---------- Work index (portfolio.html) ---------- */
-var indexList = document.getElementById('workIndex');
-if (indexList) {
+/* ---------- Showreel indexes (portfolio.html) ---------- */
+function buildIndex(list, kind) {
+  if (!list) return;
+  var shown = 0;
   projects.forEach(function (p, i) {
+    if ((p.type || 'film') !== kind) return;
+    shown++;
     var row = document.createElement('div');
     row.className = 'index-row reveal';
     row.setAttribute('data-open-lightbox', i);
     row.setAttribute('tabindex', '0');
     row.setAttribute('role', 'button');
-    row.innerHTML = '<span class="index-num">' + String(i + 1).padStart(2, '0') + '</span>' +
+    row.innerHTML = '<span class="index-num">' + String(shown).padStart(2, '0') + '</span>' +
       '<span class="index-title">' + p.title + '</span>' +
       '<span class="index-meta">' + p.meta + '</span>' +
       '<img class="index-thumb" src="' + p.poster + '" alt="" loading="lazy" />';
-    indexList.appendChild(row);
+    list.appendChild(row);
   });
-  indexList.addEventListener('keydown', function (e) {
+  list.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' || e.key === ' ') {
       var row = e.target.closest('[data-open-lightbox]');
       if (row) { e.preventDefault(); openLightbox(parseInt(row.getAttribute('data-open-lightbox'), 10)); }
     }
   });
 }
+buildIndex(document.getElementById('photoIndex'), 'photo');
+buildIndex(document.getElementById('workIndex'), 'film');
+
+/* the videography door previews its film on hover */
+(function () {
+  var film = document.getElementById('doorFilm');
+  if (!film || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var door = film.closest('.door');
+  var play = function () { var r = film.play(); if (r && r.catch) r.catch(function () {}); };
+  var stop = function () { film.pause(); film.currentTime = 0; };
+  door.addEventListener('mouseenter', play);
+  door.addEventListener('mouseleave', stop);
+  door.addEventListener('focus', play);
+  door.addEventListener('blur', stop);
+})();
 
 var lb = document.getElementById('lightbox');
 var current = 0;
@@ -99,8 +127,12 @@ if (lb) {
   var lbDesc = document.getElementById('lbDesc');
   var lbLink = document.getElementById('lbLink');
 
-  var renderProject = function (i) {
-    current = (i + projects.length) % projects.length;
+  var order = [];      // indices of the collection being browsed, so prev/next stays within it
+  var pos = 0;
+
+  var renderProject = function (k) {
+    pos = (k + order.length) % order.length;
+    current = order[pos];
     var p = projects[current];
     lbMedia.innerHTML = p.video
       ? '<video src="' + p.video + '" poster="' + p.poster + '" controls playsinline preload="metadata"></video>'
@@ -108,11 +140,17 @@ if (lb) {
     lbCat.textContent = p.cat;
     lbTitle.textContent = p.title;
     lbDesc.textContent = p.desc;
-    if (lbLink) lbLink.href = 'project.html?project=' + encodeURIComponent(p.slug);
+    if (lbLink) {
+      lbLink.hidden = p.caseStudy === false;   // photography selects have no case study
+      lbLink.href = 'project.html?project=' + encodeURIComponent(p.slug);
+    }
   };
   window.openLightbox = function (i) {
+    var kind = projects[i].type || 'film';
+    order = [];
+    projects.forEach(function (p, n) { if ((p.type || 'film') === kind) order.push(n); });
     lastFocused = document.activeElement;
-    renderProject(i);
+    renderProject(order.indexOf(i));
     lb.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     document.getElementById('lbClose').focus();
@@ -129,14 +167,14 @@ if (lb) {
     if (trigger) openLightbox(parseInt(trigger.getAttribute('data-open-lightbox'), 10));
   });
   document.getElementById('lbClose').addEventListener('click', closeLightbox);
-  document.getElementById('lbPrev').addEventListener('click', function () { renderProject(current - 1); });
-  document.getElementById('lbNext').addEventListener('click', function () { renderProject(current + 1); });
+  document.getElementById('lbPrev').addEventListener('click', function () { renderProject(pos - 1); });
+  document.getElementById('lbNext').addEventListener('click', function () { renderProject(pos + 1); });
   lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
   document.addEventListener('keydown', function (e) {
     if (!lb.classList.contains('is-open')) return;
     if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') renderProject(current - 1);
-    if (e.key === 'ArrowRight') renderProject(current + 1);
+    if (e.key === 'ArrowLeft') renderProject(pos - 1);
+    if (e.key === 'ArrowRight') renderProject(pos + 1);
   });
 }
 
