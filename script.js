@@ -6,7 +6,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 (function () {
   // urls are extensionless, but /page.html still resolves — match either form
   var norm = function (p) { return p.replace(/^\//, '').replace(/\.html$/, '') || 'index'; };
-  var page = norm(location.pathname.split('/').pop() || '');
+  var page = norm(location.pathname.split('/').filter(Boolean)[0] || '');
   document.querySelectorAll('.site-nav a').forEach(function (link) {
     var href = norm(link.getAttribute('href').split('#')[0].split('?')[0]);
     var active = href === page;
@@ -264,7 +264,7 @@ var posts = {
     title: '27, in Retrospect',
     dek: "You don't notice the climb until you look down",
     date: '14 Jul 2026', readTime: '2 min read',
-    cover: 'assets/journal/27-in-retrospect.webp',
+    cover: '/assets/journal/27-in-retrospect.webp',
     sourceUrl: 'https://substack.com/home/post/p-206814420',
     body: [
       { p: "My birthdays have never really been days of celebration. They've always been days of introspection." },
@@ -280,7 +280,7 @@ var posts = {
       { p: "Looking back, 27 wasn't really a bad year. In fact, it was one of the years I pushed myself the most. I tried a couple of new things. I started playing tennis." },
       { p: "At 28, I want to live more. I want to put myself out there, meet more people, and be more extroverted. It's never come naturally to me, but I want to change that." },
       { p: "I'll end with this picture of my younger self." },
-      { img: 'assets/journal/27-in-retrospect-young.jpg', alt: 'A childhood photo of the author' },
+      { img: '/assets/journal/27-in-retrospect-young.jpg', alt: 'A childhood photo of the author' },
       { p: 'He probably thought life would look very different by 28.' },
       { p: "Maybe I haven't become everything he imagined." },
       { p: "But I hope he'd be proud that I never stopped trying." },
@@ -294,53 +294,38 @@ var posts = {
 };
 var articleRoot = document.querySelector('[data-article]');
 if (articleRoot) {
-  var postSlug = new URLSearchParams(location.search).get('post') || 'node-workflow';
-  var post = posts[postSlug] || posts['node-workflow'];
-  document.title = post.title + ' | Remi Visuals';
-  document.querySelector('#post-tag').textContent = post.tag;
-  document.querySelector('#post-title').textContent = post.title;
-  var dekEl = document.querySelector('#post-dek');
-  if (dekEl) {
-    if (post.dek) { dekEl.textContent = post.dek; dekEl.hidden = false; }
-    else { dekEl.textContent = ''; dekEl.hidden = true; }
+  // /journal/<slug> — each post is a real page, so its head metadata is already correct
+  var slug = location.pathname.replace(/\/+$/, '').split('/').filter(Boolean).pop();
+  var post = posts[slug];
+
+  if (!post) {
+    document.title = 'Article not found | Remi Visuals';
+    document.querySelector('#post-tag').textContent = 'Journal';
+    document.querySelector('#post-title').textContent = 'Article not found';
+    document.querySelector('#post-body').innerHTML =
+      '<p>That entry does not exist, or it has moved. ' +
+      '<a href="/journal">Browse the journal</a> to find what you are after.</p>';
+  } else {
+    document.querySelector('#post-tag').textContent = post.tag;
+    document.querySelector('#post-title').textContent = post.title;
+    var dekEl = document.querySelector('#post-dek');
+    if (dekEl) {
+      if (post.dek) { dekEl.textContent = post.dek; dekEl.hidden = false; }
+      else { dekEl.textContent = ''; dekEl.hidden = true; }
+    }
+    document.querySelector('#post-date').textContent = post.date;
+    document.querySelector('#post-readtime').textContent = post.readTime;
+    var bodyHtml = post.body.map(function (block) {
+      if (block.h2) return '<h2>' + block.h2 + '</h2>';
+      if (block.quote) return '<blockquote>' + block.quote + '</blockquote>';
+      if (block.img) return '<img src="' + block.img + '" alt="' + (block.alt || '') + '" loading="lazy" />';
+      return '<p>' + block.p + '</p>';
+    }).join('');
+    if (post.sourceUrl) {
+      bodyHtml += '<p class="article-source">Originally published on <a href="' + post.sourceUrl + '" target="_blank" rel="noopener">Substack</a>.</p>';
+    }
+    document.querySelector('#post-body').innerHTML = bodyHtml;
   }
-  var canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) canonical.setAttribute('href', location.href);
-  var ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle) ogTitle.setAttribute('content', post.title + ' | Remi Visuals');
-  var twitterTitle = document.querySelector('meta[name="twitter:title"]');
-  if (twitterTitle) twitterTitle.setAttribute('content', post.title + ' | Remi Visuals');
-  if (post.dek) {
-    var articleDesc = post.dek + '. A journal entry from Aderemi Abdullah Salako, Remi Visuals.';
-    var descTag = document.querySelector('meta[name="description"]');
-    if (descTag) descTag.setAttribute('content', articleDesc);
-    var ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', articleDesc);
-    var twitterDesc = document.querySelector('meta[name="twitter:description"]');
-    if (twitterDesc) twitterDesc.setAttribute('content', articleDesc);
-  }
-  var ogUrl = document.querySelector('meta[property="og:url"]');
-  if (ogUrl) ogUrl.setAttribute('content', location.href);
-  if (post.cover) {
-    var coverUrl = 'https://aderemisalako.me/' + post.cover;
-    var ogImage = document.querySelector('meta[property="og:image"]');
-    if (ogImage) ogImage.setAttribute('content', coverUrl);
-    var twitterImage = document.querySelector('meta[name="twitter:image"]');
-    if (twitterImage) twitterImage.setAttribute('content', coverUrl);
-  }
-  document.querySelector('#post-date').textContent = post.date;
-  document.querySelector('#post-readtime').textContent = post.readTime;
-  var bodyEl = document.querySelector('#post-body');
-  var bodyHtml = post.body.map(function (block) {
-    if (block.h2) return '<h2>' + block.h2 + '</h2>';
-    if (block.quote) return '<blockquote>' + block.quote + '</blockquote>';
-    if (block.img) return '<img src="' + block.img + '" alt="' + (block.alt || '') + '" loading="lazy" />';
-    return '<p>' + block.p + '</p>';
-  }).join('');
-  if (post.sourceUrl) {
-    bodyHtml += '<p class="article-source">Originally published on <a href="' + post.sourceUrl + '" target="_blank" rel="noopener">Substack</a>.</p>';
-  }
-  bodyEl.innerHTML = bodyHtml;
 }
 
 /* ---------- contact form (notices.html) ---------- */

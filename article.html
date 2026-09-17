@@ -4,74 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#faf7f1" />
-    <meta name="description" content="A journal entry from Aderemi Abdullah Salako, Remi Visuals." />
-    <title>Journal Entry | Remi Visuals</title>
-    <link rel="canonical" href="https://aderemisalako.me/article" />
-    <meta property="og:title" content="Journal Entry | Remi Visuals" />
-    <meta property="og:description" content="A journal entry from Aderemi Abdullah Salako, Remi Visuals." />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://aderemisalako.me/article" />
-    <meta property="og:site_name" content="Remi Visuals" />
-    <meta property="og:image" content="https://aderemisalako.me/assets/remi-visuals-og-v3.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Journal Entry | Remi Visuals" />
-    <meta name="twitter:description" content="A journal entry from Aderemi Abdullah Salako, Remi Visuals." />
-    <meta name="twitter:image" content="https://aderemisalako.me/assets/remi-visuals-og-v3.png" />
-    <link rel="icon" type="image/png" href="remi-visuals-icon.png" />
-    <link rel="apple-touch-icon" href="remi-visuals-icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <meta name="robots" content="noindex" />
+    <title>Redirecting | Remi Visuals</title>
+    <link rel="canonical" href="https://aderemisalako.me/journal" />
+    <link rel="icon" type="image/png" href="/remi-visuals-icon.png" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script>
+      // legacy /article?post=<slug> now lives at /journal/<slug>
+      (function () {
+        var slug = new URLSearchParams(location.search).get('post');
+        location.replace(slug ? '/journal/' + encodeURIComponent(slug) : '/journal');
+      })();
+    </script>
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <header class="site">
-      <div class="head-row">
-        <a class="brand" href="/">Aderemi Salako <em>&middot;</em> Remi Visuals</a>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="/portfolio">Showreel</a>
-          <a href="/journal">Journal</a>
-          <a href="/about">About</a>
-          <a href="/notices">Contact</a>
-        </nav>
-      </div>
-    </header>
-
     <main id="main-content">
       <section>
-        <div class="wrap" data-article>
-          <a class="back-link" href="/journal">&larr; Back to the Journal</a>
-          <div class="article-head reveal">
-            <p class="kicker" id="post-tag"></p>
-            <h1 id="post-title"></h1>
-            <p class="article-dek" id="post-dek" hidden></p>
-            <div class="article-meta">
-              <span id="post-date"></span>
-              <span>Aderemi Abdullah Salako</span>
-              <span id="post-readtime"></span>
-            </div>
-          </div>
-          <div class="article-body reveal" id="post-body"></div>
-          <div class="article-foot">
-            <a href="/journal">&larr; All journal entries</a>
-            <a href="/notices">Get in touch &rarr;</a>
-          </div>
+        <div class="wrap">
+          <p class="note">Taking you to <a href="/journal">the journal</a>&hellip;</p>
         </div>
       </section>
     </main>
-
-    <footer class="site">
-      <div class="foot-row">
-        <span>&copy; <span id="year"></span> Remi Visuals</span>
-        <nav aria-label="Footer links" style="display:flex;gap:16px">
-          <a href="/">Home</a>
-          <a href="/portfolio">Showreel</a>
-          <a href="/about">About</a>
-          <a href="/notices">Contact</a>
-        </nav>
-      </div>
-    </footer>
   </body>
 </html>
