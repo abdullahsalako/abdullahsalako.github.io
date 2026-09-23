@@ -1,8 +1,8 @@
-# RemiVisuals Portfolio
+# Remi Visuals Portfolio
 
-The official portfolio website of **Aderemi A. Salako**, the creative behind **RemiVisuals**.
+The official portfolio website of **Aderemi A. Salako**, the creative behind **Remi Visuals**.
 
-RemiVisuals focuses on cinematic video editing, motion design, creative direction, and social media content. This website showcases selected projects, services, the creative process, and ways to work with me.
+Remi Visuals focuses on cinematic video editing, motion design, creative direction, and social media content. This website showcases selected projects, services, the creative process, and ways to work with me.
 
 ## Services
 
@@ -31,4 +31,4 @@ The website is built with HTML, CSS, and JavaScript and hosted with GitHub Pages
 
 GitHub Pages publishes the `main` branch of `abdullahsalako/abdullahsalako.github.io` from the repository root.
 
-© 2026 RemiVisuals. All rights reserved.
+© 2026 Remi Visuals. All rights reserved.

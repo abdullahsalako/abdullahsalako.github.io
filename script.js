@@ -208,11 +208,11 @@ var caseStudy = document.querySelector('[data-case-study]');
 if (caseStudy) {
   var requested = new URLSearchParams(location.search).get('project');
   var project = projects.find(function (p) { return p.slug === requested; }) || projects[0];
-  document.title = project.title + ' Case Study | RemiVisuals';
+  document.title = project.title + ' Case Study | Remi Visuals';
   var canonical = document.querySelector('link[rel="canonical"]');
   if (canonical) canonical.setAttribute('href', location.href);
   var descTag = document.querySelector('meta[name="description"]');
-  if (descTag) descTag.setAttribute('content', project.desc + ' A project case study from RemiVisuals.');
+  if (descTag) descTag.setAttribute('content', project.desc + ' A project case study from Remi Visuals.');
   document.querySelector('#case-title').textContent = project.title;
   document.querySelector('#case-kicker').textContent = project.cat;
   document.querySelector('#case-summary').textContent = project.desc;
@@ -330,7 +330,7 @@ if (articleRoot) {
   if (!post) {
     // usually means the folder name and the post's slug have drifted apart
     if (window.console) console.warn('No journal post for "' + slug + '". Known slugs: ' + Object.keys(posts).join(', '));
-    document.title = 'Article not found | RemiVisuals';
+    document.title = 'Article not found | Remi Visuals';
     document.querySelector('#post-tag').textContent = 'Journal';
     document.querySelector('#post-title').textContent = 'Article not found';
     document.querySelector('#post-body').innerHTML =
