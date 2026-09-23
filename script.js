@@ -236,7 +236,7 @@ if (caseStudy) {
   var caption = document.querySelector('#case-caption');
   if (caption) caption.textContent = project.title + ' · final frame.';
   var inquiry = document.querySelector('.case-inquiry');
-  if (inquiry) inquiry.href = '/notices?ref=' + encodeURIComponent(project.title) + '#contact';
+  if (inquiry) inquiry.href = '/contact?ref=' + encodeURIComponent(project.title) + '#contact';
 }
 
 /* ---------- journal article template (article.html?post=slug) ---------- */
@@ -359,7 +359,7 @@ if (articleRoot) {
   }
 }
 
-/* ---------- contact form (notices.html) ---------- */
+/* ---------- contact form (contact.html) ---------- */
 var form = document.querySelector('.contact-form');
 form && form.addEventListener('submit', function (event) {
   event.preventDefault();
