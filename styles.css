@@ -22,7 +22,9 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 .intro-on .intro{display:flex}
 .intro-on body{overflow:hidden}
 .intro-sig{width:min(78vw,880px);height:auto;overflow:visible}
-.intro-stroke{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.intro-stroke{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.intro-fill{fill:var(--ink);opacity:0;transition:opacity .3s ease}
+.intro-fill.is-on{opacity:1}
 .intro-pen{fill:none;stroke:var(--ink);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .3s ease}
 .intro-pen.is-writing{opacity:1}
 .intro-skip{position:absolute;right:34px;bottom:30px;padding:8px 2px;font:500 11px/1 var(--body);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);border-bottom:1px solid transparent}
@@ -31,8 +33,10 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 
 header.site{padding:26px 0;border-bottom:1px solid var(--line)}
 .head-row{width:min(1180px,calc(100% - var(--gutter)));margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.brand{font:500 15px/1 var(--display);letter-spacing:.01em}
-.brand em{font-style:italic;color:var(--accent)}
+.brand{display:inline-flex;flex-direction:column;gap:7px;line-height:1}
+.brand-name{font:500 17px/1 var(--display);letter-spacing:.005em;color:var(--ink)}
+.brand-mark{font:500 10.5px/1 var(--body);letter-spacing:.2em;color:var(--accent)}
+.brand:hover .brand-name{color:var(--accent)}
 .site-nav{display:flex;gap:30px;font:500 12px/1 var(--body);text-transform:uppercase;letter-spacing:.08em}
 .site-nav a{position:relative;padding-bottom:3px;color:var(--muted)}
 .site-nav a:hover,.site-nav a.on{color:var(--ink)}

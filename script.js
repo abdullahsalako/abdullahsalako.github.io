@@ -208,11 +208,11 @@ var caseStudy = document.querySelector('[data-case-study]');
 if (caseStudy) {
   var requested = new URLSearchParams(location.search).get('project');
   var project = projects.find(function (p) { return p.slug === requested; }) || projects[0];
-  document.title = project.title + ' Case Study | Remi Visuals';
+  document.title = project.title + ' Case Study | RemiVisuals';
   var canonical = document.querySelector('link[rel="canonical"]');
   if (canonical) canonical.setAttribute('href', location.href);
   var descTag = document.querySelector('meta[name="description"]');
-  if (descTag) descTag.setAttribute('content', project.desc + ' A project case study from Remi Visuals.');
+  if (descTag) descTag.setAttribute('content', project.desc + ' A project case study from RemiVisuals.');
   document.querySelector('#case-title').textContent = project.title;
   document.querySelector('#case-kicker').textContent = project.cat;
   document.querySelector('#case-summary').textContent = project.desc;
@@ -330,7 +330,7 @@ if (articleRoot) {
   if (!post) {
     // usually means the folder name and the post's slug have drifted apart
     if (window.console) console.warn('No journal post for "' + slug + '". Known slugs: ' + Object.keys(posts).join(', '));
-    document.title = 'Article not found | Remi Visuals';
+    document.title = 'Article not found | RemiVisuals';
     document.querySelector('#post-tag').textContent = 'Journal';
     document.querySelector('#post-title').textContent = 'Article not found';
     document.querySelector('#post-body').innerHTML =
@@ -374,10 +374,15 @@ form && form.addEventListener('submit', function (event) {
   var intro = document.getElementById('intro');
   if (!intro || !root.classList.contains('intro-on')) return;
 
-  // 1850 + 480 + 420 = 2.75s, or 2.95s if the hero image still needs a moment
-  var WRITE = 1850, HOLD = 480, FADE = 420, HERO_WAIT = 200;
+  // 2200 + 520 + 420 = 3.1s, or 3.3s if the hero image still needs a moment
+  var WRITE = 2200, HOLD = 520, FADE = 420, HERO_WAIT = 200;
   var strokes = [].slice.call(intro.querySelectorAll('.intro-stroke'));
+  var fills = [].slice.call(intro.querySelectorAll('.intro-fill'));
   var pen = document.getElementById('intro-pen');
+  // each letter is traced as one or more outlines, then inked in once its last outline is done
+  var glyphOf = strokes.map(function (path) { return +path.getAttribute('data-g'); });
+  var lastStroke = {};
+  glyphOf.forEach(function (g, i) { lastStroke[g] = i; });
   var lengths = strokes.map(function (path) {
     var len = path.getTotalLength();
     path.style.strokeDasharray = len;
@@ -393,6 +398,7 @@ form && form.addEventListener('submit', function (event) {
       var drawn = Math.max(0, Math.min(lengths[i], distance - walked));
       strokes[i].style.strokeDashoffset = lengths[i] - drawn;
       if (drawn > 0) { active = i; at = drawn; }
+      if (lastStroke[glyphOf[i]] === i && fills[glyphOf[i]]) fills[glyphOf[i]].classList.toggle('is-on', drawn >= lengths[i] - 0.5);
       walked += lengths[i];
     }
     var point = strokes[active].getPointAtLength(at);
