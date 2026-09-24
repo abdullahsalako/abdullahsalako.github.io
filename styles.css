@@ -75,7 +75,7 @@ section{padding:clamp(56px,8vw,96px) 0}
 .gallery-head{margin:0 0 22px}
 .gallery-head h2{font:500 clamp(1.5rem,2.6vw,2.15rem)/1.15 var(--display);margin:0 0 6px}
 .gallery-tagline{font:italic 500 1.05rem/1.4 var(--display);color:var(--accent);margin:0}
-.tile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.tile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .tile{position:relative;display:block;aspect-ratio:1;overflow:hidden;background:var(--ink);padding:0;border:0;cursor:pointer}
 .tile img,.tile video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.65,.2,1),filter .45s ease}
 .tile-veil{position:absolute;inset:0;background:rgba(28,26,22,.34);opacity:0;transition:opacity .4s ease;pointer-events:none}
@@ -90,25 +90,17 @@ section{padding:clamp(56px,8vw,96px) 0}
 .link-cta{font:500 12px/1 var(--body);text-transform:uppercase;letter-spacing:.1em;color:var(--ink);padding:0 0 6px;border-bottom:1px solid var(--line);transition:color .3s ease,border-color .3s ease,letter-spacing .3s ease}
 .link-cta:hover{color:var(--accent);border-color:var(--accent);letter-spacing:.13em}
 /* photography and videography: side by side from tablet width, stacked on phones */
-.galleries{--gallery-gap:clamp(56px,6vw,96px);--h2:clamp(1.5rem,2.6vw,2.15rem);counter-reset:gallery}
+.galleries{--gallery-gap:clamp(56px,6vw,96px);counter-reset:gallery}
 .gallery{position:relative;counter-increment:gallery}
 .gallery-head::before{content:counter(gallery,decimal-leading-zero);display:block;margin-bottom:12px;font:600 11px/1 var(--body);letter-spacing:.16em;color:var(--accent)}
-.gallery-head h2{font-size:var(--h2)}
-/* the two are divided by a hairline with an italic ampersand set into it */
-.gallery+.gallery{margin-top:88px;padding-top:56px;border-top:1px solid var(--line)}
-.gallery+.gallery::after{content:'&';position:absolute;top:0;left:50%;transform:translate(-50%,-50%);padding:0 18px;background:var(--paper);font:italic 400 clamp(1.7rem,2.4vw,2.3rem)/1 var(--display);color:var(--accent)}
+/* a hairline divides the two: across the page when stacked, down the gap when side by side */
+.gallery+.gallery{margin-top:88px;padding-top:44px;border-top:1px solid var(--line)}
 @media(min-width:640px){
   .galleries{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,auto);column-gap:var(--gallery-gap)}
   /* each column spans the parent's three rows, so headings, grids and buttons line up across both */
   .gallery{display:grid;grid-row:span 3;grid-template-rows:subgrid}
   .gallery+.gallery{margin-top:0;padding-top:0;border-top:0}
   .gallery+.gallery::before{content:'';position:absolute;top:0;bottom:0;left:calc(var(--gallery-gap) / -2);border-left:1px solid var(--line)}
-  /* the ampersand sits on the rule, level with the middle of the headings (index line + gap + half the h2 line box) */
-  .gallery+.gallery::after{top:calc(23px + var(--h2) * .575);left:calc(var(--gallery-gap) / -2);padding:12px 0}
-  .galleries .tile-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(min-width:960px){
-  .galleries .tile-grid{grid-template-columns:repeat(3,1fr)}
 }
 .coming-soon{margin:72px 0 0;text-align:center;font:500 11px/1 var(--body);text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}
 
@@ -212,7 +204,6 @@ footer.site{border-top:1px solid var(--line);padding:32px 0}
   .hero-grid{gap:44px}
   .hero-figure{max-width:340px}
   .site-nav{gap:24px}
-  .tile-grid{grid-template-columns:repeat(3,1fr)}
 }
 
 @media(max-width:760px){
@@ -225,8 +216,8 @@ footer.site{border-top:1px solid var(--line);padding:32px 0}
   .head-row{gap:14px}
   .site-nav{flex-wrap:wrap;gap:8px 18px;font-size:11px}
   .site-nav a{padding:11px 0 9px}
-  .tile-grid{grid-template-columns:repeat(2,1fr);gap:8px}
-  .gallery+.gallery{margin-top:60px;padding-top:48px}
+  .tile-grid{gap:8px}
+  .gallery+.gallery{margin-top:60px;padding-top:34px}
   .coming-soon{margin-top:52px}
   .journal-row{gap:18px}
 }
