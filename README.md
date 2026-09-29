@@ -40,4 +40,6 @@ GitHub Pages publishes the `main` branch of `abdullahsalako/abdullahsalako.githu
 
 Journal posts are written at [/admin](https://aderemisalako.me/admin/) (Sveltia CMS) and stored as Markdown in `content/journal/`. The **Build journal** GitHub Action (`.github/workflows/build-journal.yml`) turns them into static pages with `tools/build.mjs` on every save, and each morning pulls new posts from Substack with `tools/substack-sync.mjs`. To build locally: `npm ci --prefix tools && node tools/build.mjs`.
 
+Each morning the **Analytics snapshot** Action (`.github/workflows/analytics-snapshot.yml`) copies GA4 and Search Console numbers into a private Google Sheet with `tools/analytics-snapshot.mjs`, for the daily report. It needs the `GOOGLE_SERVICE_ACCOUNT_JSON` and `ANALYTICS_SHEET_ID` secrets and the `GA4_PROPERTY_ID` variable, and prints no data to the (public) Action logs.
+
 © 2026 Remi Visuals. All rights reserved.

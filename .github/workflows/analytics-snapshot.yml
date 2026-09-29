@@ -1,0 +1,33 @@
+# Copies yesterday's GA4 and Search Console numbers into a private Google Sheet
+# each morning, for the 9am site-report agent to read. Nothing is committed and
+# the script prints no numbers, because this repo's Action logs are public.
+name: Analytics snapshot
+
+on:
+  schedule:
+    - cron: '30 6 * * *'   # 07:30 Lagos, before the 9am report
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: tools/analytics-snapshot.mjs
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Write snapshot to Google Sheet
+        run: node tools/analytics-snapshot.mjs
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          ANALYTICS_SHEET_ID: ${{ secrets.ANALYTICS_SHEET_ID }}
+          GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID }}
+          GSC_SITE_URL: ${{ vars.GSC_SITE_URL }}
