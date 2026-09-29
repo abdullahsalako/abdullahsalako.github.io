@@ -249,10 +249,11 @@ if (caseStudy) {
 }
 
 /* ---------- journal ----------
-   Posts are plain static pages at journal/<slug>/index.html, so search engines
-   read the full text without running JavaScript. To publish one, copy an
-   existing post folder, then add a row to journal/index.html and a <url> to
-   sitemap.xml (see docs/SEO-CHECKLIST.md). */
+   Posts are static pages at journal/<slug>/index.html, so search engines read
+   the full text without running JavaScript. They are generated from
+   content/journal/<slug>.md by tools/build.mjs: write and edit posts at /admin,
+   and the "Build journal" GitHub Action rebuilds the pages, the journal list,
+   sitemap.xml, sitemap.html, feed.xml and llms.txt (see docs/SEO-CHECKLIST.md). */
 
 /* ---------- analytics: email link clicks ----------
    Sends a GA4 `email_click` event for every mailto: link, including ones added

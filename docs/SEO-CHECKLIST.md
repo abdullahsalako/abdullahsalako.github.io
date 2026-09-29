@@ -30,16 +30,25 @@ Use this every time you add a project, a journal post or a new page.
 
 ## Adding a journal post
 
-1. Copy `journal/node-workflow/` to `journal/<slug>/`.
-2. Update the title, description, canonical, og tags, `article:published_time`,
-   the `BlogPosting` JSON-LD (`headline`, `description`, `url`,
-   `datePublished`, `image`), the kicker tag, H1, date and read time.
-3. Write the body as HTML in the page itself: `<p>`, `<h2>`, `<blockquote>`,
-   and `<img … alt="…" width height loading="lazy">`.
-4. Add a row to `journal/index.html` (use `<h2>`, and link with the trailing
-   slash).
-5. Link to a related service or case study from inside the post.
-6. Add it to `sitemap.xml` and `sitemap.html`.
+Posts are written in the CMS, not by hand.
+
+1. Open https://aderemisalako.me/admin/ and sign in with your GitHub token.
+2. Journal → New Post. Fill in Title, URL slug, Tag, SEO description
+   (about 150 characters, say what the post teaches and who it is for) and
+   the body. Add a cover image if you have one; it becomes the social preview.
+3. Keep Status on Draft while writing. Set it to Published when it is ready
+   and save.
+4. Use "Closing links" to point to a related service or case study.
+5. The "Build journal" GitHub Action renders the page and updates the
+   journal list, `sitemap.xml`, `sitemap.html`, `feed.xml` and `llms.txt`.
+   The post is live a minute or two later.
+
+Substack posts are pulled in automatically every morning. To keep one off
+the site, set its Status to Draft in the CMS.
+
+Never edit `journal/<slug>/index.html` directly; the next build overwrites
+it. Change `content/journal/<slug>.md` (or use the CMS) instead, and change
+the page layout in `tools/templates/post.html`.
 
 ## Adding any new page
 

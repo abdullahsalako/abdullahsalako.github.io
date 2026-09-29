@@ -1,0 +1,57 @@
+# Renders content/journal/*.md to static pages, sitemap.xml, feed.xml and llms.txt,
+# then commits the result so GitHub Pages publishes it.
+# Runs whenever a post is saved in /admin (the CMS commits to content/journal),
+# and daily after pulling any new Substack posts.
+name: Build journal
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'tools/**'
+      - 'journal/index.html'
+  schedule:
+    - cron: '0 6 * * *'   # 07:00 Lagos — sync Substack before the 9am report
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-journal
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tools/package-lock.json
+
+      - name: Install
+        run: npm ci --prefix tools
+
+      - name: Pull new Substack posts
+        if: github.event_name != 'push'
+        run: node tools/substack-sync.mjs
+
+      - name: Build
+        run: node tools/build.mjs
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A content journal assets/journal sitemap.xml sitemap.html feed.xml llms.txt
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "Build journal"
+            git push
+          fi
