@@ -283,6 +283,23 @@ document.addEventListener('click', function (e) {
   });
 });
 
+/* ---------- analytics: social profile clicks ----------
+   Sends a GA4 `social_click` event for links to the profiles below, wherever
+   they appear. link_location says whether it was the footer or the contact
+   page list. To track another network, add its hostname here. */
+var SOCIAL = { 'youtube.com': 'youtube', 'instagram.com': 'instagram' };
+document.addEventListener('click', function (e) {
+  var link = e.target.closest && e.target.closest('a[href^="http"]');
+  if (!link || typeof gtag !== 'function') return;
+  var platform = SOCIAL[link.hostname.replace(/^www\./, '')];
+  if (!platform) return;
+  gtag('event', 'social_click', {
+    platform: platform,
+    link_location: link.closest('footer') ? 'footer' : link.closest('.contact-links') ? 'contact_page' : 'page_body',
+    page_path: location.pathname
+  });
+});
+
 /* ---------- contact form (contact.html) ---------- */
 var form = document.querySelector('.contact-form');
 form && form.addEventListener('submit', function (event) {

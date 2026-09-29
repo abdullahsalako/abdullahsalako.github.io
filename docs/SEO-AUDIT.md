@@ -53,9 +53,11 @@ These need your accounts, files or decisions, so they are not in the code.
    pages. Clicks on email links send an `email_click` event with `email_type`
    (`contact` or `cv_request`) and `page_path`. "Hire me" and "Start a
    project" buttons send a `hire_click` event with `cta_text`, `cta_location`
-   and `page_path`. In Analytics, link Search Console under Admin → Product
-   links, and mark `email_click` and `hire_click` as key events under Admin →
-   Events so you can see which pages lead to enquiries.
+   and `page_path`. YouTube and Instagram links send a `social_click` event
+   with `platform`, `link_location` (`footer` or `contact_page`) and
+   `page_path`. In Analytics, link Search Console under Admin → Product links,
+   and mark `email_click` and `hire_click` as key events under Admin → Events
+   so you can see which pages lead to enquiries.
 4. **HTTPS.** In the repo on GitHub, go to Settings → Pages and confirm
    "Enforce HTTPS" is ticked. It could not be checked from here.
 5. **Video hosting.** `assets/red-eye-effect.mp4` (5.2 MB) is self-hosted and
