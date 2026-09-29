@@ -29,6 +29,7 @@ in each page.
 | 13 | No HTML sitemap; `sitemap.xml` had no `lastmod` and listed query-string URLs. | Low | New `/sitemap` page linked from every footer. `sitemap.xml` lists the 10 indexable URLs with `lastmod`. |
 | 14 | `robots.txt` allowed everything, and an unrelated `.docx` sat at the site root. | Low | The `.docx` is removed and `/docs/` is blocked from crawling; everything public stays allowed. |
 | 15 | 404 page only linked to the journal. | Low | Links to Home, Portfolio, Services, Contact and Sitemap. |
+| 16 | Seven files no page used (`aderemi-cover.png`, `salako-icon.png`, `salako-logo.png`, `rv-logo.png`, `assets/remi-visuals-og.png`, `assets/film-edge.svg`, `assets/fonts/HolidayFree.otf`), about 3 MB. | Low | Removed. |
 
 Checked after the changes: all 14 HTML pages load with no JavaScript errors
 and no sideways scroll at 375 px. Every internal link and every absolute URL
@@ -67,10 +68,6 @@ These need your accounts, files or decisions, so they are not in the code.
 8. **Google Business Profile.** Optional, but it's the strongest signal for
    "video editor Abuja". You can list it as a service-area business without a
    public street address.
-9. **Unused files.** `aderemi-cover.png` (1.6 MB), `salako-icon.png`,
-   `salako-logo.png`, `rv-logo.png`, `assets/remi-visuals-og.png`,
-   `assets/film-edge.svg` and `assets/fonts/HolidayFree.otf` aren't used by any
-   page. They don't slow the site but can be removed.
 
 ## Limits of GitHub Pages worth knowing
 
