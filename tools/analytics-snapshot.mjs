@@ -33,7 +33,12 @@ const log = (msg) => console.log(msg);
 async function accessToken() {
   const raw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
   if (!raw) throw new Error('GOOGLE_SERVICE_ACCOUNT_JSON is not set');
-  const key = JSON.parse(raw);
+  // the parse error can quote part of the key, and Action logs are public, so drop it
+  let key;
+  try { key = JSON.parse(raw); } catch {
+    throw new Error('GOOGLE_SERVICE_ACCOUNT_JSON is not valid JSON — re-add it with: gh secret set GOOGLE_SERVICE_ACCOUNT_JSON < key.json');
+  }
+  if (!key?.client_email || !key?.private_key) throw new Error('GOOGLE_SERVICE_ACCOUNT_JSON is missing client_email or private_key');
   const now = Math.floor(Date.now() / 1000);
   const b64 = (o) => Buffer.from(JSON.stringify(o)).toString('base64url');
   const tokenUri = key.token_uri || 'https://oauth2.googleapis.com/token';
