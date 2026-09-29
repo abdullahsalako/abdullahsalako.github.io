@@ -27,7 +27,7 @@ in each page.
 | 11 | Alt text was generic ("Portrait") or empty on meaningful images. | Low–medium | Descriptive alts on the headshot, case-study poster, gallery photos and journal images. |
 | 12 | Person schema lacked image, description and skills; there was no business entity. | Medium | Homepage `@graph`: `WebSite` + `Person` (jobTitle, image, knowsAbout, Abuja/NG address, sameAs) + `ProfessionalService` (areaServed Nigeria and worldwide, offers). About has `ProfilePage`; Services has an `OfferCatalog`. |
 | 13 | No HTML sitemap; `sitemap.xml` had no `lastmod` and listed query-string URLs. | Low | New `/sitemap` page linked from every footer. `sitemap.xml` lists the 10 indexable URLs with `lastmod`. |
-| 14 | `robots.txt` allowed everything, including a strategy `.docx` at the site root. | Low | Crawling of `/docs/` and `*.docx` is now blocked; everything public stays allowed. |
+| 14 | `robots.txt` allowed everything, and an unrelated `.docx` sat at the site root. | Low | The `.docx` is removed and `/docs/` is blocked from crawling; everything public stays allowed. |
 | 15 | 404 page only linked to the journal. | Low | Links to Home, Portfolio, Services, Contact and Sitemap. |
 
 Checked after the changes: all 14 HTML pages load with no JavaScript errors
@@ -61,18 +61,16 @@ These need your accounts, files or decisions, so they are not in the code.
    eight photography images are placeholders. For each real project, give me
    the footage link, client or context, your role, tools and one outcome, and
    I'll create a `/work/<slug>/` page like Red Eye Effect.
-7. **Profiles.** Add Behance, YouTube or Vimeo, and Instagram URLs if you have
-   them. They go in the footer, the contact page and the schema `sameAs`.
+7. **Profiles.** YouTube and Instagram are now in every footer, on the contact
+   page and in the schema `sameAs`. Add Behance or Vimeo the same way if you
+   start using them.
 8. **Google Business Profile.** Optional, but it's the strongest signal for
    "video editor Abuja". You can list it as a service-area business without a
    public street address.
-9. **Private file.** `The 4th Era - YouTube Launch Strategy.docx` is publicly
-   downloadable from your site. `robots.txt` stops indexing, not access. If it's
-   private, delete it from the repo.
-10. **Unused files.** `aderemi-cover.png` (1.6 MB), `salako-icon.png`,
-    `salako-logo.png`, `rv-logo.png`, `assets/remi-visuals-og.png`,
-    `assets/film-edge.svg` and `assets/fonts/HolidayFree.otf` aren't used by any
-    page. They don't slow the site but can be removed.
+9. **Unused files.** `aderemi-cover.png` (1.6 MB), `salako-icon.png`,
+   `salako-logo.png`, `rv-logo.png`, `assets/remi-visuals-og.png`,
+   `assets/film-edge.svg` and `assets/fonts/HolidayFree.otf` aren't used by any
+   page. They don't slow the site but can be removed.
 
 ## Limits of GitHub Pages worth knowing
 
