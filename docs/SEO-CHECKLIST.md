@@ -47,7 +47,8 @@ Use this every time you add a project, a journal post or a new page.
 - [ ] Unique `<title>` of 60 characters or fewer, and a 150–160 character description.
 - [ ] `canonical` and `og:url` set to the final URL (a folder page ends in `/`;
       a root `page.html` is `/page` with no slash).
-- [ ] Same header nav and footer as the other pages.
+- [ ] Same header nav and footer as the other pages, and the Google Analytics
+      snippet (copy it from any page's `<head>`).
 - [ ] Every `<img>` has descriptive `alt`, `width` and `height`. Anything below
       the fold has `loading="lazy"`.
 - [ ] Images are WebP, sized to at most twice their displayed width.

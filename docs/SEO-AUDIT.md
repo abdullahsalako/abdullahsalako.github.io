@@ -49,9 +49,10 @@ These need your accounts, files or decisions, so they are not in the code.
 2. **Rich Results Test.** Run <https://search.google.com/test/rich-results> on
    `/`, `/work/red-eye-effect/` and `/journal/node-workflow/` after deploy. The
    schema parses locally, but this environment could not reach Google's tester.
-3. **Analytics.** Pick one and send the snippet or ID:
-   GA4 (a `G-XXXXXXX` measurement ID), or a privacy-friendly option with no
-   cookie banner: Cloudflare Web Analytics (free), Plausible or GoatCounter.
+3. **Analytics.** GA4 (`G-TH2S1CQT9B`) is on every page except the redirect
+   pages. In Analytics, link Search Console under Admin → Product links, and
+   mark contact-page views as a key event so you can see which pages lead to
+   enquiries.
 4. **HTTPS.** In the repo on GitHub, go to Settings → Pages and confirm
    "Enforce HTTPS" is ticked. It could not be checked from here.
 5. **Video hosting.** `assets/red-eye-effect.mp4` (5.2 MB) is self-hosted and
