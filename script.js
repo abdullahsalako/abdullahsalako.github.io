@@ -269,6 +269,20 @@ document.addEventListener('click', function (e) {
   });
 });
 
+/* ---------- analytics: Hire me / Start a project clicks ----------
+   Any link marked data-hire-cta="<where it sits>" sends a GA4 `hire_click`
+   event with the button text and that location. To track a new hire button,
+   add the attribute; no script changes needed. */
+document.addEventListener('click', function (e) {
+  var link = e.target.closest && e.target.closest('[data-hire-cta]');
+  if (!link || typeof gtag !== 'function') return;
+  gtag('event', 'hire_click', {
+    cta_text: link.textContent.replace(/\s*\u2192\s*$/, '').trim(),
+    cta_location: link.getAttribute('data-hire-cta'),
+    page_path: location.pathname
+  });
+});
+
 /* ---------- contact form (contact.html) ---------- */
 var form = document.querySelector('.contact-form');
 form && form.addEventListener('submit', function (event) {

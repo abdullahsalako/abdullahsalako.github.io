@@ -49,6 +49,8 @@ Use this every time you add a project, a journal post or a new page.
       a root `page.html` is `/page` with no slash).
 - [ ] Same header nav and footer as the other pages, and the Google Analytics
       snippet (copy it from any page's `<head>`).
+- [ ] Any new "Hire me" or "Start a project" button has
+      `data-hire-cta="<where-it-sits>"` so its clicks are tracked.
 - [ ] Every `<img>` has descriptive `alt`, `width` and `height`. Anything below
       the fold has `loading="lazy"`.
 - [ ] Images are WebP, sized to at most twice their displayed width.
