@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://aderemisalako.me/</loc></url>
-  <url><loc>https://aderemisalako.me/portfolio</loc></url>
-  <url><loc>https://aderemisalako.me/about</loc></url>
-  <url><loc>https://aderemisalako.me/journal</loc></url>
-  <url><loc>https://aderemisalako.me/contact</loc></url>
-  <url><loc>https://aderemisalako.me/journal/node-workflow</loc></url>
-  <url><loc>https://aderemisalako.me/journal/27-in-retrospect</loc></url>
-  <url><loc>https://aderemisalako.me/project?project=Red%20Eye%20Effect</loc></url>
-  <url><loc>https://aderemisalako.me/project?project=Momentum</loc></url>
-  <url><loc>https://aderemisalako.me/project?project=In%20Frame</loc></url>
-  <url><loc>https://aderemisalako.me/project?project=Between%20Takes</loc></url>
-  <url><loc>https://aderemisalako.me/project?project=Visual%20Rhythm</loc></url>
-  <url><loc>https://aderemisalako.me/project?project=Make%20It%20Land</loc></url>
-  <url><loc>https://aderemisalako.me/project?project=Lumina</loc></url>
+  <url><loc>https://aderemisalako.me/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://aderemisalako.me/portfolio</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://aderemisalako.me/work/red-eye-effect/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://aderemisalako.me/services</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://aderemisalako.me/about</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://aderemisalako.me/contact</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://aderemisalako.me/journal/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://aderemisalako.me/journal/node-workflow/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://aderemisalako.me/journal/27-in-retrospect/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://aderemisalako.me/sitemap</loc><lastmod>2026-09-29</lastmod></url>
 </urlset>

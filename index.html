@@ -4,22 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#faf7f1" />
-    <meta name="description" content="Aderemi A. Salako is an Abuja, Nigeria based video editor and colourist working across colour, motion, and short-form storytelling for creators, brands, and digital audiences." />
-    <title>Remi Visuals | Aderemi A. Salako</title>
+    <meta name="description" content="Freelance video editor, DaVinci Resolve colourist and content strategist in Abuja, Nigeria, editing YouTube, short-form and brand films for creators and brands." />
+    <title>Aderemi Salako | Video Editor &amp; Colourist in Abuja, Nigeria</title>
     <link rel="canonical" href="https://aderemisalako.me/" />
-    <meta property="og:title" content="Remi Visuals — Aderemi A. Salako" />
-    <meta property="og:description" content="Video editing, colour grading, and visual storytelling from Abuja, Nigeria." />
+    <meta property="og:title" content="Aderemi A. Salako — Video Editor &amp; Colourist, Abuja, Nigeria" />
+    <meta property="og:description" content="Video editing, DaVinci Resolve colour grading and content strategy for creators, brands and agencies. Based in Abuja, available remotely." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://aderemisalako.me/" />
     <meta property="og:site_name" content="Remi Visuals" />
+    <meta property="og:locale" content="en_NG" />
     <meta property="og:image" content="https://aderemisalako.me/assets/remi-visuals-og-v3.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Remi Visuals — Aderemi A. Salako" />
-    <meta name="twitter:description" content="Video editing, colour grading, and visual storytelling from Abuja, Nigeria." />
+    <meta name="twitter:site" content="@remmivisuals" />
+    <meta name="twitter:title" content="Aderemi A. Salako — Video Editor &amp; Colourist, Abuja, Nigeria" />
+    <meta name="twitter:description" content="Video editing, DaVinci Resolve colour grading and content strategy for creators, brands and agencies. Based in Abuja, available remotely." />
     <meta name="twitter:image" content="https://aderemisalako.me/assets/remi-visuals-og-v3.png" />
     <link rel="icon" type="image/png" href="remi-visuals-icon.png" />
     <link rel="apple-touch-icon" href="remi-visuals-icon.png" />
-    <link rel="preload" as="image" href="headshot.jpg" />
+    <link rel="preload" as="image" href="headshot.webp" type="image/webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -37,14 +41,56 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Aderemi A. Salako",
-        "alternateName": "Salako Abdullah",
-        "jobTitle": "Video Editor, Colourist, Visual Storyteller",
-        "url": "https://aderemisalako.me/",
-        "email": "mailto:hello@aderemisalako.me",
-        "address": { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "Nigeria" },
-        "sameAs": ["https://www.linkedin.com/in/abdullah-salako-b43461252/", "https://x.com/remmivisuals"]
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://aderemisalako.me/#website",
+            "url": "https://aderemisalako.me/",
+            "name": "Remi Visuals",
+            "alternateName": "Aderemi A. Salako",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://aderemisalako.me/#person" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://aderemisalako.me/#person",
+            "name": "Aderemi A. Salako",
+            "alternateName": ["Aderemi Salako", "Salako Abdullah", "Remi Visuals"],
+            "jobTitle": "Video Editor, Colourist and Content Strategist",
+            "description": "Freelance video editor, DaVinci Resolve colourist and content strategist based in Abuja, Nigeria, working with creators, brands and agencies remotely and on contract.",
+            "url": "https://aderemisalako.me/",
+            "image": "https://aderemisalako.me/headshot.jpg",
+            "email": "mailto:hello@aderemisalako.me",
+            "address": { "@type": "PostalAddress", "addressLocality": "Abuja", "addressRegion": "Federal Capital Territory", "addressCountry": "NG" },
+            "knowsAbout": ["Video editing", "DaVinci Resolve", "Colour grading", "YouTube video editing", "Short-form video", "Content strategy", "Motion graphics", "Fusion compositing"],
+            "worksFor": { "@id": "https://aderemisalako.me/#business" },
+            "sameAs": [
+              "https://www.linkedin.com/in/abdullah-salako-b43461252/",
+              "https://x.com/remmivisuals",
+              "https://github.com/abdullahsalako"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://aderemisalako.me/#business",
+            "name": "Remi Visuals",
+            "url": "https://aderemisalako.me/",
+            "image": "https://aderemisalako.me/assets/remi-visuals-og-v3.png",
+            "logo": "https://aderemisalako.me/remi-visuals-icon.png",
+            "description": "Video editing, DaVinci Resolve colour grading, YouTube and short-form editing, and content strategy by Aderemi A. Salako.",
+            "email": "hello@aderemisalako.me",
+            "founder": { "@id": "https://aderemisalako.me/#person" },
+            "address": { "@type": "PostalAddress", "addressLocality": "Abuja", "addressRegion": "Federal Capital Territory", "addressCountry": "NG" },
+            "areaServed": [{ "@type": "Country", "name": "Nigeria" }, "Worldwide"],
+            "knowsLanguage": "en",
+            "makesOffer": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "YouTube video editing", "url": "https://aderemisalako.me/services#youtube-editing" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Short-form and social video editing", "url": "https://aderemisalako.me/services#short-form" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Colour grading in DaVinci Resolve", "url": "https://aderemisalako.me/services#colour-grading" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content strategy", "url": "https://aderemisalako.me/services#content-strategy" } }
+            ]
+          }
+        ]
       }
     </script>
     <script src="script.js" defer></script>
@@ -106,8 +152,9 @@
       <div class="head-row">
         <a class="brand" href="/"><span class="brand-name">Aderemi A. Salako</span> <span class="brand-mark">Remi Visuals</span></a>
         <nav class="site-nav" aria-label="Primary">
-          <a href="/portfolio">Showreel</a>
-          <a href="/journal">Journal</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/services">Services</a>
+          <a href="/journal/">Journal</a>
           <a href="/about">About</a>
           <a href="/contact">Contact</a>
         </nav>
@@ -117,23 +164,86 @@
     <main id="main-content">
       <section class="hero">
         <div class="wrap hero-grid">
-          <div class="hero-copy reveal">
-            <p class="kicker">Video Editor &amp; Colourist &middot; Abuja, Nigeria</p>
-            <h1>Edits with a considered eye, cut for <em>rhythm</em> and story.</h1>
-            <p class="hero-lede">Aderemi A. Salako — a self-taught editor working across colour, motion, and short-form storytelling for creators, brands, and digital audiences.</p>
-            <p class="hero-teasers"><a href="/portfolio">See the showreel &rarr;</a><a href="/journal">Read the journal &rarr;</a></p>
+          <div class="hero-copy">
+            <h1 class="kicker">Aderemi A. Salako &middot; Video Editor, Colourist &amp; Content Strategist &middot; Abuja, Nigeria</h1>
+            <p class="hero-title">Edits with a considered eye, cut for <em>rhythm</em> and story.</p>
+            <p class="hero-lede">I&rsquo;m a freelance video editor and DaVinci Resolve colourist in Abuja, Nigeria, cutting YouTube videos, short-form social content and brand films for creators, brands and agencies, remotely or on contract.</p>
+            <p class="hero-teasers"><a href="/contact">Hire me &rarr;</a><a href="/portfolio">View portfolio &rarr;</a></p>
           </div>
-          <figure class="hero-figure reveal">
-            <img src="headshot.jpg" alt="Portrait of Aderemi A. Salako" width="1024" height="1191" fetchpriority="high" />
+          <figure class="hero-figure">
+            <picture>
+              <source srcset="headshot.webp" type="image/webp" />
+              <img src="headshot.jpg" alt="Portrait of Aderemi A. Salako, video editor and colourist in Abuja, Nigeria" width="1050" height="1400" fetchpriority="high" />
+            </picture>
             <figcaption>Abuja, Nigeria</figcaption>
           </figure>
         </div>
         <div class="wrap">
           <div class="meta-row reveal">
-            <div><span>Availability</span><p>Available for freelance, remote collaborations, internships, and creative opportunities</p></div>
-            <div><span>Focus</span><p>DaVinci Resolve &middot; Colour &middot; Short-form &amp; social edits</p></div>
+            <div><span>Availability</span><p>Freelance, remote and contract projects, worldwide from Abuja</p></div>
+            <div><span>Focus</span><p>DaVinci Resolve &middot; Colour &middot; YouTube, short-form &amp; social edits</p></div>
             <div><span>Currently</span><p>Building Remi Visuals into a full-time studio practice</p></div>
           </div>
+        </div>
+      </section>
+
+      <section class="home-services" aria-labelledby="services-heading">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <h2 id="services-heading">Services</h2>
+            <p class="note">Editing, colour and strategy for creators, brands and agencies.</p>
+          </div>
+          <div class="service-grid reveal">
+            <div class="service">
+              <h3><a href="/services#youtube-editing">YouTube video editing</a></h3>
+              <p>Long-form edits with clear structure, pacing that holds attention, captions, sound cleanup and thumbnail-ready frames.</p>
+            </div>
+            <div class="service">
+              <h3><a href="/services#short-form">Short-form &amp; social content</a></h3>
+              <p>Reels, TikTok and Shorts built around a strong first three seconds, readable captions and platform-ready rhythm.</p>
+            </div>
+            <div class="service">
+              <h3><a href="/services#colour-grading">Colour grading in DaVinci Resolve</a></h3>
+              <p>Correction, matching and cinematic looks that protect skin tones and keep a whole piece visually consistent.</p>
+            </div>
+            <div class="service">
+              <h3><a href="/services#content-strategy">Content strategy</a></h3>
+              <p>Formats, hooks and a publishing rhythm that turn one shoot into a series your audience comes back for.</p>
+            </div>
+          </div>
+          <p class="gallery-cta reveal"><a class="link-cta" href="/services">All services and how I work &rarr;</a></p>
+        </div>
+      </section>
+
+      <section class="home-work" aria-labelledby="work-heading">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <h2 id="work-heading">Selected work</h2>
+            <p class="note">Case studies with the brief, my role, the tools and the result.</p>
+          </div>
+          <a class="feature-card reveal" href="/work/red-eye-effect/">
+            <picture>
+              <source srcset="assets/red-eye-effect-poster.webp" type="image/webp" />
+              <img src="assets/red-eye-effect-poster.jpg" alt="Red Eye Effect colour study: a close-up portrait graded to a red eye reveal" width="1920" height="1080" loading="lazy" decoding="async" />
+            </picture>
+            <div class="feature-copy">
+              <p class="kicker">Colour study &middot; 2026</p>
+              <h3>Red Eye Effect</h3>
+              <p>A 31-second cinematic colour study that turns a quiet close-up into an unsettling red-eye reveal through restrained grading and selective colour.</p>
+              <span class="link-cta">Read the case study &rarr;</span>
+            </div>
+          </a>
+          <p class="gallery-cta reveal"><a class="link-cta" href="/portfolio">View the full portfolio &rarr;</a> <a class="link-cta" href="/journal/node-workflow/">Read: my DaVinci Resolve node workflow &rarr;</a></p>
+        </div>
+      </section>
+
+      <section class="home-cta" aria-labelledby="cta-heading">
+        <div class="wrap cta-row reveal">
+          <div>
+            <h2 id="cta-heading">Have footage that needs an editor?</h2>
+            <p>Send a short brief with the platform, length and deadline. I reply within 1&ndash;2 business days and work with clients across Nigeria and remotely worldwide.</p>
+          </div>
+          <a class="about-cv" href="/contact">Start a project &rarr;</a>
         </div>
       </section>
     </main>
@@ -142,13 +252,15 @@
       <div class="foot-row">
         <span>&copy; <span id="year"></span> Remi Visuals</span>
         <nav aria-label="Footer links" style="display:flex;gap:16px">
-          <a href="/portfolio">Showreel</a>
-          <a href="/journal">Journal</a>
+          <a href="/">Home</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/services">Services</a>
+          <a href="/journal/">Journal</a>
           <a href="/about">About</a>
           <a href="/contact">Contact</a>
+          <a href="/sitemap">Sitemap</a>
           <a href="https://www.linkedin.com/in/abdullah-salako-b43461252/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://x.com/remmivisuals" target="_blank" rel="noopener noreferrer">X</a>
-          <a href="https://github.com/abdullahsalako" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>
       </div>
     </footer>

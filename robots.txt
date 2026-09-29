@@ -1,4 +1,7 @@
+# Everything public is crawlable. Only internal notes and working files are kept out.
 User-agent: *
 Allow: /
+Disallow: /docs/
+Disallow: /*.docx$
 
 Sitemap: https://aderemisalako.me/sitemap.xml

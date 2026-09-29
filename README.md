@@ -27,6 +27,11 @@ I’m Aderemi A. Salako, a visual storyteller working at the intersection of edi
 
 The website is built with HTML, CSS, and JavaScript and hosted with GitHub Pages.
 
+## SEO
+
+- `docs/SEO-AUDIT.md` lists what was fixed and what still needs doing (Search Console, analytics, video hosting).
+- `docs/SEO-CHECKLIST.md` is the step-by-step for adding projects, journal posts and pages.
+
 ## Publishing
 
 GitHub Pages publishes the `main` branch of `abdullahsalako/abdullahsalako.github.io` from the repository root.

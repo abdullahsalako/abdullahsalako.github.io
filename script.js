@@ -5,8 +5,9 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 /* ---------- nav active state ---------- */
 (function () {
   // urls are extensionless, but /page.html still resolves — match either form
-  var norm = function (p) { return p.replace(/^\//, '').replace(/\.html$/, '') || 'index'; };
+  var norm = function (p) { return p.replace(/^\/|\/$/g, '').replace(/\.html$/, '') || 'index'; };
   var page = norm(location.pathname.split('/').filter(Boolean)[0] || '');
+  if (page === 'work' || page === 'project') page = 'portfolio';  // case studies live under the portfolio
   document.querySelectorAll('.site-nav a').forEach(function (link) {
     var href = norm(link.getAttribute('href').split('#')[0].split('?')[0]);
     var active = href === page;
@@ -15,19 +16,23 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   });
 })();
 
-/* ---------- shared project data (Work index + lightbox + project.html case studies) ---------- */
+/* ---------- shared project data (Showreel lightbox + project.html case studies) ----------
+   A project with a `url` has its own static, indexable case-study page (e.g.
+   work/red-eye-effect/index.html). The rest are concept treatments shown through
+   the noindex project.html template until they have real footage and a page. */
 var projects = [
   { slug: 'Red Eye Effect', title: 'Red Eye Effect', cat: 'Featured · Colour Study · 2026', meta: 'Colour Grading · 2026',
     desc: 'A cinematic colour study that turns a quiet close-up into an unsettling red-eye reveal through restrained grading and selective colour work.',
-    video: 'assets/red-eye-effect.mp4', poster: 'assets/red-eye-effect-poster.jpg',
-    thumb: 'assets/showreel/red-eye-effect-square.jpg',
+    url: '/work/red-eye-effect/',
+    video: 'assets/red-eye-effect.mp4', poster: 'assets/red-eye-effect-poster.webp',
+    thumb: 'assets/showreel/red-eye-effect-square.webp',
     role: 'Colour grade · selective correction · finishing', focus: 'Cinematic colour study', deliverable: '31-second film',
     brief: 'Build tension without turning the frame into an effect. The image needed to feel intimate first, then quietly strange — a look that rewards a second viewing.',
     approach: 'The treatment keeps the surrounding palette restrained and the contrast controlled, reserving saturation for the eye reveal. Each adjustment was chosen to protect the skin tone and let the emotional shift arrive through colour rather than noise.',
     outcome: 'A compact visual study with a precise focal point: the final grade gives the reveal its weight while preserving the calm that makes it unsettling.' },
   { slug: 'Momentum', title: 'Momentum', cat: 'Commercial · VFX · 2026', meta: 'Commercial · 2026',
     desc: 'A high energy brand film treatment with editorial pacing, VFX polish, colour finishing, and motion led emphasis.',
-    thumb: 'assets/showreel/video-placeholder-01.jpg',
+    thumb: 'assets/showreel/video-placeholder-01.webp',
     poster: 'https://images.unsplash.com/photo-1648827800808-75ce3a93c7de?auto=format&fit=crop&w=1600&q=80',
     role: 'Editing · VFX · colour grade · motion', focus: 'Brand film treatment', deliverable: 'Campaign film concept',
     brief: 'Create a commercial world that feels fast and polished while leaving the central message easy to read.',
@@ -35,7 +40,7 @@ var projects = [
     outcome: 'A campaign direction designed to feel premium, clear, and adaptable across a hero edit and social cutdowns.' },
   { slug: 'In Frame', title: 'In Frame', cat: 'Short form · 2026', meta: 'Short Form · 2026',
     desc: 'A social first series built around fast cuts, clear structure, captions, and platform ready rhythm.',
-    thumb: 'assets/showreel/video-placeholder-02.jpg',
+    thumb: 'assets/showreel/video-placeholder-02.webp',
     poster: 'https://images.unsplash.com/photo-1548607634-9f8cfca5d944?auto=format&fit=crop&w=1600&q=80',
     role: 'Editing · social content', focus: 'Platform-first storytelling', deliverable: 'Short-form series',
     brief: 'Make the first seconds work hard while keeping the story legible with or without sound.',
@@ -43,7 +48,7 @@ var projects = [
     outcome: 'A flexible social-content direction that translates a strong idea into repeatable, audience-conscious episodes.' },
   { slug: 'Between Takes', title: 'Between Takes', cat: 'Film · 2026', meta: 'Film · 2026',
     desc: 'Documentary style finishing focused on visual continuity, careful tone, and colour managed delivery.',
-    thumb: 'assets/showreel/video-placeholder-03.jpg',
+    thumb: 'assets/showreel/video-placeholder-03.webp',
     poster: 'https://images.unsplash.com/photo-1741388503120-5049f5da2733?auto=format&fit=crop&w=1600&q=80',
     role: 'Colour grade · finishing', focus: 'Documentary-style film finish', deliverable: 'Narrative film treatment',
     brief: 'Maintain the truth of the material while giving the film a single, coherent visual atmosphere from beginning to end.',
@@ -51,7 +56,7 @@ var projects = [
     outcome: 'A film-treatment approach that makes the visual language feel unified without losing the texture of individual moments.' },
   { slug: 'Visual Rhythm', title: 'Visual Rhythm', cat: 'VFX · 3D Motion · 2026', meta: 'VFX · 2026',
     desc: 'Complex visual effects composite with 3D product motion, particle passes, and dynamic speed ramping.',
-    thumb: 'assets/showreel/video-placeholder-04.jpg',
+    thumb: 'assets/showreel/video-placeholder-04.webp',
     poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80',
     role: 'VFX · 3D motion · compositing', focus: 'Graphic visual effects', deliverable: 'Motion-led visual treatment',
     brief: 'Bring dimensional energy into the frame while keeping the visual effects legible and integrated with the edit.',
@@ -59,16 +64,16 @@ var projects = [
     outcome: 'A vivid motion system that gives a campaign or music-led piece greater scale without losing editorial clarity.' },
   { slug: 'Make It Land', title: 'Make It Land', cat: 'Visual ID · 3D Animation · 2026', meta: '3D Animation · 2026',
     desc: 'Identity in motion for campaigns that need clarity, tempo, 3D animated detail, and a memorable final frame.',
-    thumb: 'assets/showreel/video-placeholder-05.jpg',
-    poster: 'assets/red-eye-effect-poster.jpg',
+    thumb: 'assets/showreel/video-placeholder-05.webp',
+    poster: 'assets/red-eye-effect-poster.webp',
     role: 'Creative direction · 3D animation · motion graphics', focus: 'Campaign visual identity', deliverable: 'Motion identity system',
     brief: 'Turn a visual identity into a moving language that can introduce, punctuate, and close a campaign with confidence.',
     approach: 'The system begins with a recognisable visual gesture, then develops it into flexible animation beats for titles, transitions, and end frames.',
     outcome: 'A motion-identity framework that helps the campaign arrive with a clearer point of view and leave a distinct impression.' },
   { slug: 'Lumina', title: 'Lumina', cat: 'Commercial · 2026', meta: 'Commercial · 2026',
     desc: 'Luxury brand spot featuring rich skin tone rendering, natural grain structure, and subtle titles.',
-    thumb: 'assets/showreel/video-placeholder-06.jpg',
-    poster: 'assets/showreel/video-placeholder-06.jpg',
+    thumb: 'assets/showreel/video-placeholder-06.webp',
+    poster: 'assets/showreel/video-placeholder-06.webp',
     role: 'Editing · colour grade', focus: 'Luxury brand finish', deliverable: 'Commercial spot treatment',
     brief: 'Create an elevated visual finish that feels luxurious and tactile without becoming overly polished or distant.',
     approach: 'The look balances controlled colour with retained texture. Editorial choices are economical, giving the image space and allowing details to do the speaking.',
@@ -77,20 +82,21 @@ var projects = [
 
 /* ---------- Showreel galleries (portfolio.html) ----------
    Photography is temporary placeholder imagery: swap the files in
-   assets/showreel/ (keeping the names) or edit the list below.
+   assets/showreel/ (keeping the names; WebP keeps them light) or edit the list
+   below. `alt` describes the image for search and screen readers.
    Film tiles reuse the projects above; every tile without its own
    footage falls back to PLACEHOLDER_FILM for preview and playback. */
 var PLACEHOLDER_FILM = 'assets/red-eye-effect.mp4';
 
 var photos = [
-  { src: 'assets/showreel/photography-placeholder-01.jpg', title: 'Portrait', meta: 'Studio' },
-  { src: 'assets/showreel/photography-placeholder-02.jpg', title: 'Lifestyle', meta: 'On location' },
-  { src: 'assets/showreel/photography-placeholder-03.jpg', title: 'Headshot', meta: 'Professional' },
-  { src: 'assets/showreel/photography-placeholder-04.jpg', title: 'Editorial', meta: 'Fashion' },
-  { src: 'assets/showreel/photography-placeholder-05.jpg', title: 'Portrait', meta: 'Low key' },
-  { src: 'assets/showreel/photography-placeholder-06.jpg', title: 'Lifestyle', meta: 'Street' },
-  { src: 'assets/showreel/photography-placeholder-07.jpg', title: 'Lifestyle', meta: 'Golden hour' },
-  { src: 'assets/showreel/photography-placeholder-08.jpg', title: 'Product', meta: 'Apparel' }
+  { src: 'assets/showreel/photography-placeholder-01.webp', title: 'Portrait', meta: 'Studio', alt: 'Studio portrait photograph' },
+  { src: 'assets/showreel/photography-placeholder-02.webp', title: 'Lifestyle', meta: 'On location', alt: 'Lifestyle photograph taken on location' },
+  { src: 'assets/showreel/photography-placeholder-03.webp', title: 'Headshot', meta: 'Professional', alt: 'Professional headshot photograph' },
+  { src: 'assets/showreel/photography-placeholder-04.webp', title: 'Editorial', meta: 'Fashion', alt: 'Editorial fashion photograph' },
+  { src: 'assets/showreel/photography-placeholder-05.webp', title: 'Portrait', meta: 'Low key', alt: 'Low-key studio portrait photograph' },
+  { src: 'assets/showreel/photography-placeholder-06.webp', title: 'Lifestyle', meta: 'Street', alt: 'Street lifestyle photograph' },
+  { src: 'assets/showreel/photography-placeholder-07.webp', title: 'Lifestyle', meta: 'Golden hour', alt: 'Lifestyle photograph at golden hour' },
+  { src: 'assets/showreel/photography-placeholder-08.webp', title: 'Product', meta: 'Apparel', alt: 'Product photograph of apparel' }
 ];
 
 var ICON_VIEW = '<svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
@@ -110,7 +116,8 @@ function tile(label, inner) {
 var photoGrid = document.getElementById('photoGrid');
 if (photoGrid) {
   photos.forEach(function (p, i) {
-    var b = tile('View ' + p.title, '<img src="' + p.src + '" alt="' + p.title + '" loading="lazy" />' + ICON_VIEW);
+    var b = tile('View ' + p.title + ' photograph',
+      '<img src="' + p.src + '" alt="' + (p.alt || p.title) + '" width="1100" height="1100" loading="lazy" decoding="async" />' + ICON_VIEW);
     b.addEventListener('click', function () { openViewer('photo', i); });
     photoGrid.appendChild(b);
   });
@@ -120,7 +127,7 @@ var filmGrid = document.getElementById('filmGrid');
 if (filmGrid) {
   var quiet = matchMedia('(prefers-reduced-motion: reduce)').matches;
   projects.forEach(function (p, i) {
-    var b = tile('Play ' + p.title,
+    var b = tile('Play ' + p.title + ' — ' + p.meta,
       '<video src="' + (p.video || PLACEHOLDER_FILM) + '" poster="' + (p.thumb || p.poster) +
       '" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>' + ICON_PLAY);
     var vid = b.querySelector('video');
@@ -158,7 +165,7 @@ var lastFocused = null;
     pos = (k + set.length) % set.length;
     var item = set[pos];
     if (kind === 'photo') {
-      lbMedia.innerHTML = '<img src="' + item.src + '" alt="' + item.title + '" />';
+      lbMedia.innerHTML = '<img src="' + item.src + '" alt="' + (item.alt || item.title) + '" />';
       lbTitle.textContent = item.title;
       lbMeta.textContent = item.meta;
       lbLink.hidden = true;
@@ -168,7 +175,7 @@ var lastFocused = null;
       lbTitle.textContent = item.title;
       lbMeta.textContent = item.cat;
       lbLink.hidden = false;
-      lbLink.href = '/project?project=' + encodeURIComponent(item.slug);
+      lbLink.href = item.url || '/project?project=' + encodeURIComponent(item.slug);
     }
   }
 
@@ -208,6 +215,8 @@ var caseStudy = document.querySelector('[data-case-study]');
 if (caseStudy) {
   var requested = new URLSearchParams(location.search).get('project');
   var project = projects.find(function (p) { return p.slug === requested; }) || projects[0];
+  // projects with their own static page live there; send old /project?project= links on
+  if (project.url) { location.replace(project.url); }
   document.title = project.title + ' Case Study | Remi Visuals';
   var canonical = document.querySelector('link[rel="canonical"]');
   if (canonical) canonical.setAttribute('href', location.href);
@@ -239,125 +248,11 @@ if (caseStudy) {
   if (inquiry) inquiry.href = '/contact?ref=' + encodeURIComponent(project.title) + '#contact';
 }
 
-/* ---------- journal article template (article.html?post=slug) ---------- */
-/* ---------- journal posts ----------
-   Every post is published at /journal/<slug>, and that slug is also the folder
-   name under journal/. It is derived from the title by slugify() unless the
-   entry pins one explicitly, which is worth doing when the title is long or
-   likely to be reworded. */
-function slugify(title) {
-  return String(title)
-    .toLowerCase()
-    .replace(/['\u2018\u2019"\u201c\u201d]/g, '')  // drop apostrophes and quotes rather than hyphenating them
-    .replace(/[^a-z0-9]+/g, '-')                  // every other separator or symbol becomes a hyphen
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
-}
-
-var journal = [
-  { slug: 'node-workflow',   // pinned: the full title makes for an unwieldy url
-    tag: 'Colour Grade Note',
-    title: 'The DaVinci Resolve Node Workflow for Cinematic Skin Tones',
-    date: '15 Sep 2026', readTime: '6 min read',
-    body: [
-      { p: "Every grade I build for a face starts the same way: get the exposure and the LOG transform right before a single hue is touched. Skin is the one thing a viewer has calibrated their whole life — it forgives almost nothing, so the node tree has to earn cinematic warmth without ever announcing itself." },
-      { h2: '1. Primary exposure balance' },
-      { p: 'The first node does one job: even out exposure across the face before any look is applied. A soft power window keyed to the highlights on the forehead and cheekbones, blended at low opacity, prevents the grade downstream from having to fight uneven light.' },
-      { h2: '2. The LOG transform' },
-      { p: 'Converting into a working colour space early means every later node operates on predictable values. I keep a scope open through this stage — not for the shape of the curve, but to confirm skin sits where it should before anything stylistic happens.' },
-      { h2: '3. Parallel HSL isolation' },
-      { p: "This is the actual warmth: a qualifier isolates the skin-tone range in parallel with the rest of the frame, so adjustments to hue and saturation land only where they're meant to. Small moves — a few degrees of hue, a touch of saturation — read as a lot on a close-up." },
-      { quote: 'The goal is never a “look.” It’s a face that reads as itself, just lit a little more generously than the camera saw it.' },
-      { h2: '4. Soft grain overlay' },
-      { p: 'The last node adds a fine, even grain over the full frame at low opacity. It does two things at once: it unifies footage shot across slightly different conditions, and it keeps skin from looking over-smoothed once the isolation node has done its work.' },
-      { p: 'None of this is complicated on its own. What makes it repeatable is building it as a saved node tree, so every new project starts from the same disciplined base instead of a blank page.' }
-    ]
-  },
-  { slug: '27-in-retrospect',   // pinned so rewording the title cannot move the url
-    tag: 'Personal · Reflection',
-    title: '27, in Retrospect',
-    dek: "You don't notice the climb until you look down",
-    date: '14 Jul 2026', readTime: '2 min read',
-    cover: '/assets/journal/27-in-retrospect.webp',
-    sourceUrl: 'https://substack.com/home/post/p-206814420',
-    body: [
-      { p: "My birthdays have never really been days of celebration. They've always been days of introspection." },
-      { p: 'Today, I turned 28.' },
-      { p: "Every year since I turned 23, I take some time to sit with my thoughts and reflect on the year I've just lived. It's like my own quiet version of a New Year reflection and resolution." },
-      { p: "I usually pen down these thoughts, and they always end up somewhere in one of my diaries never to be read again. One of the things I'm trying to do more of is put myself out there. That's why you're reading this." },
-      { p: 'I spent the latter part of being 27 feeling somewhat unhappy. Why?' },
-      { p: 'Every year, I ask myself the same question:' },
-      { quote: 'What does it mean to say I am satisfied with my life?' },
-      { p: 'That question is almost directly asking how my life is measuring up to my expectations.' },
-      { p: "As you grow older, your expectations of what you'll get out of life begin to change. Perhaps the unhappy version of me is caught between two things: expecting the future to be worse than I once imagined, or realizing that I haven't achieved what my younger self expected I would have by now." },
-      { p: "Maybe that's what they call a midlife crisis." },
-      { p: "Looking back, 27 wasn't really a bad year. In fact, it was one of the years I pushed myself the most. I tried a couple of new things. I started playing tennis." },
-      { p: "At 28, I want to live more. I want to put myself out there, meet more people, and be more extroverted. It's never come naturally to me, but I want to change that." },
-      { p: "I'll end with this picture of my younger self." },
-      { img: '/assets/journal/27-in-retrospect-young.jpg', alt: 'A childhood photo of the author' },
-      { p: 'He probably thought life would look very different by 28.' },
-      { p: "Maybe I haven't become everything he imagined." },
-      { p: "But I hope he'd be proud that I never stopped trying." },
-      { p: 'On to 28.' },
-      { p: 'Happy birthday to me.' },
-      { p: 'May the pieces finally begin to fall into place. May the coast start aligning in my favor.' },
-      { p: 'And to everyone reading this, I hope life meets you with kindness, courage, and moments that remind you why you kept going.' },
-      { p: 'Bye, 27.' }
-    ]
-  }
-];
-
-/* slug -> post, filling in derived slugs and keeping them unique */
-var posts = {};
-journal.forEach(function (post) {
-  var base = post.slug || slugify(post.title);
-  var year = (String(post.date).match(/\d{4}/) || [''])[0];
-  var slug = base;
-  // a clash stays readable by qualifying with the year before falling back to a counter
-  if (posts[slug] && year) slug = base + '-' + year;
-  for (var n = 2; posts[slug]; n++) slug = base + '-' + n;
-  post.slug = slug;
-  post.url = '/journal/' + slug;
-  posts[slug] = post;
-});
-
-var articleRoot = document.querySelector('[data-article]');
-if (articleRoot) {
-  // /journal/<slug> — each post is a real page, so its head metadata is already correct
-  var slug = location.pathname.replace(/\/+$/, '').split('/').filter(Boolean).pop();
-  var post = posts[slug];
-
-  if (!post) {
-    // usually means the folder name and the post's slug have drifted apart
-    if (window.console) console.warn('No journal post for "' + slug + '". Known slugs: ' + Object.keys(posts).join(', '));
-    document.title = 'Article not found | Remi Visuals';
-    document.querySelector('#post-tag').textContent = 'Journal';
-    document.querySelector('#post-title').textContent = 'Article not found';
-    document.querySelector('#post-body').innerHTML =
-      '<p>That entry does not exist, or it has moved. ' +
-      '<a href="/journal">Browse the journal</a> to find what you are after.</p>';
-  } else {
-    document.querySelector('#post-tag').textContent = post.tag;
-    document.querySelector('#post-title').textContent = post.title;
-    var dekEl = document.querySelector('#post-dek');
-    if (dekEl) {
-      if (post.dek) { dekEl.textContent = post.dek; dekEl.hidden = false; }
-      else { dekEl.textContent = ''; dekEl.hidden = true; }
-    }
-    document.querySelector('#post-date').textContent = post.date;
-    document.querySelector('#post-readtime').textContent = post.readTime;
-    var bodyHtml = post.body.map(function (block) {
-      if (block.h2) return '<h2>' + block.h2 + '</h2>';
-      if (block.quote) return '<blockquote>' + block.quote + '</blockquote>';
-      if (block.img) return '<img src="' + block.img + '" alt="' + (block.alt || '') + '" loading="lazy" />';
-      return '<p>' + block.p + '</p>';
-    }).join('');
-    if (post.sourceUrl) {
-      bodyHtml += '<p class="article-source">Originally published on <a href="' + post.sourceUrl + '" target="_blank" rel="noopener">Substack</a>.</p>';
-    }
-    document.querySelector('#post-body').innerHTML = bodyHtml;
-  }
-}
+/* ---------- journal ----------
+   Posts are plain static pages at journal/<slug>/index.html, so search engines
+   read the full text without running JavaScript. To publish one, copy an
+   existing post folder, then add a row to journal/index.html and a <url> to
+   sitemap.xml (see docs/SEO-CHECKLIST.md). */
 
 /* ---------- contact form (contact.html) ---------- */
 var form = document.querySelector('.contact-form');
