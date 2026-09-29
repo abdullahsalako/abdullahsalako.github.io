@@ -38,4 +38,6 @@ The website is built with HTML, CSS, and JavaScript and hosted with GitHub Pages
 
 GitHub Pages publishes the `main` branch of `abdullahsalako/abdullahsalako.github.io` from the repository root.
 
+Journal posts are written at [/admin](https://aderemisalako.me/admin/) (Sveltia CMS) and stored as Markdown in `content/journal/`. The **Build journal** GitHub Action (`.github/workflows/build-journal.yml`) turns them into static pages with `tools/build.mjs` on every save, and each morning pulls new posts from Substack with `tools/substack-sync.mjs`. To build locally: `npm ci --prefix tools && node tools/build.mjs`.
+
 © 2026 Remi Visuals. All rights reserved.

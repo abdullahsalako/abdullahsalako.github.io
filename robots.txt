@@ -1,6 +1,7 @@
-# Everything public is crawlable. Only internal notes in /docs/ are kept out.
+# Everything public is crawlable. Internal notes in /docs/ and the CMS at /admin/ are kept out.
 User-agent: *
 Allow: /
 Disallow: /docs/
+Disallow: /admin/
 
 Sitemap: https://aderemisalako.me/sitemap.xml

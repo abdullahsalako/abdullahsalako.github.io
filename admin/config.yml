@@ -1,0 +1,70 @@
+# Sveltia CMS — https://github.com/sveltia/sveltia-cms
+# Saving a post commits a Markdown file to content/journal/. The "Build journal"
+# GitHub Action then renders it to /journal/<slug> and GitHub Pages publishes it.
+backend:
+  name: github
+  repo: abdullahsalako/abdullahsalako.github.io
+  branch: main
+  commit_messages:
+    create: "Add journal post: {{slug}}"
+    update: "Update journal post: {{slug}}"
+    delete: "Delete journal post: {{slug}}"
+    uploadMedia: "Upload {{path}}"
+    deleteMedia: "Delete {{path}}"
+
+site_url: https://aderemisalako.me
+display_url: https://aderemisalako.me
+logo_url: /remi-visuals-icon.png
+
+media_folder: assets/journal
+public_folder: /assets/journal
+
+collections:
+  - name: journal
+    label: Journal
+    label_singular: Post
+    folder: content/journal
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{fields.slug}}"
+    identifier_field: title
+    summary: "{{title}} · {{status}} · {{date}}"
+    sortable_fields: [date, title, status]
+    preview_path: "journal/{{slug}}/"
+    view_filters:
+      - { label: Published, field: status, pattern: published }
+      - { label: Drafts, field: status, pattern: draft }
+      - { label: Coming soon, field: status, pattern: coming-soon }
+    fields:
+      - { name: title, label: Title, widget: string }
+      - name: slug
+        label: URL slug
+        widget: string
+        hint: "The post lives at aderemisalako.me/journal/<slug>/. Lowercase words joined by hyphens. Don't change it after publishing."
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Lowercase letters, numbers and hyphens only']
+      - name: status
+        label: Status
+        widget: select
+        default: draft
+        options:
+          - { label: "Draft (hidden)", value: draft }
+          - { label: "Coming soon (listed, no page)", value: coming-soon }
+          - { label: "Published", value: published }
+      - { name: date, label: Publish date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD MMM YYYY", time_format: false }
+      - { name: tag, label: Tag, widget: string, hint: "e.g. Colour Grade Note, Editing Craft, AI Tools, Personal · Reflection" }
+      - { name: seoTitle, label: SEO title, widget: string, required: false, hint: "Browser tab and Google title, 60 characters or fewer. Defaults to '<Title> | Aderemi Salako' when that fits." }
+      - name: description
+        label: SEO description
+        widget: text
+        hint: "One or two sentences (about 150 characters). Shown in Google, AI search answers and link previews."
+      - { name: section, label: Schema section, widget: string, required: false, hint: "articleSection for search engines, e.g. Colour grading, Editing, AI tools, Personal. Defaults to the tag." }
+      - { name: dek, label: Subtitle, widget: string, required: false }
+      - { name: excerpt, label: Journal list excerpt, widget: text, required: false, hint: "Defaults to the SEO description." }
+      - { name: cover, label: Cover image, widget: image, required: false, hint: "Also used as the social preview image." }
+      - { name: coverPosition, label: Cover crop position, widget: string, required: false, hint: "CSS object-position for the list thumbnail, e.g. 'left 35%'." }
+      - { name: footnote, label: Closing links, widget: text, required: false, hint: "Optional Markdown shown in small type after the post, e.g. links to a related case study or service." }
+      - { name: readTime, label: Read time, widget: string, required: false, hint: "Leave blank to calculate automatically." }
+      - { name: sourceUrl, label: Originally published at, widget: string, required: false, hint: "Filled automatically for posts synced from Substack." }
+      - { name: updated, label: Last updated, widget: datetime, required: false, format: "YYYY-MM-DD", date_format: "DD MMM YYYY", time_format: false }
+      - { name: body, label: Body, widget: markdown }
