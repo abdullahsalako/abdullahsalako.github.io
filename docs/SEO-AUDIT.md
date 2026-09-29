@@ -50,9 +50,10 @@ These need your accounts, files or decisions, so they are not in the code.
    `/`, `/work/red-eye-effect/` and `/journal/node-workflow/` after deploy. The
    schema parses locally, but this environment could not reach Google's tester.
 3. **Analytics.** GA4 (`G-TH2S1CQT9B`) is on every page except the redirect
-   pages. In Analytics, link Search Console under Admin → Product links, and
-   mark contact-page views as a key event so you can see which pages lead to
-   enquiries.
+   pages. Clicks on email links send an `email_click` event with `email_type`
+   (`contact` or `cv_request`) and `page_path`. In Analytics, link Search
+   Console under Admin → Product links, and mark `email_click` as a key event
+   under Admin → Events so you can see which pages lead to enquiries.
 4. **HTTPS.** In the repo on GitHub, go to Settings → Pages and confirm
    "Enforce HTTPS" is ticked. It could not be checked from here.
 5. **Video hosting.** `assets/red-eye-effect.mp4` (5.2 MB) is self-hosted and

@@ -254,6 +254,21 @@ if (caseStudy) {
    existing post folder, then add a row to journal/index.html and a <url> to
    sitemap.xml (see docs/SEO-CHECKLIST.md). */
 
+/* ---------- analytics: email link clicks ----------
+   Sends a GA4 `email_click` event for every mailto: link, including ones added
+   later. Neither the address nor the link text (which can be the address) is
+   sent, since GA forbids email addresses in hits. email_type tells a CV
+   request apart from a general enquiry. */
+document.addEventListener('click', function (e) {
+  var link = e.target.closest && e.target.closest('a[href^="mailto:"]');
+  if (!link || typeof gtag !== 'function') return;
+  var subject = (link.href.split('?subject=')[1] || '').split('&')[0];
+  gtag('event', 'email_click', {
+    email_type: /cv/i.test(decodeURIComponent(subject)) ? 'cv_request' : 'contact',
+    page_path: location.pathname
+  });
+});
+
 /* ---------- contact form (contact.html) ---------- */
 var form = document.querySelector('.contact-form');
 form && form.addEventListener('submit', function (event) {
