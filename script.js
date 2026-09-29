@@ -186,10 +186,18 @@ var lastFocused = null;
     show(i);
     lb.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    setBackgroundInert(true);
     closeBtn.focus();
   };
 
+  // everything except the dialog is inert while it is open, so Tab and screen
+  // readers can't wander into the page hidden behind it
+  function setBackgroundInert(on) {
+    [].forEach.call(document.body.children, function (el) { if (el !== lb) el.inert = on; });
+  }
+
   function close() {
+    setBackgroundInert(false);
     lb.classList.remove('is-open');
     document.body.style.overflow = '';
     var v = lbMedia.querySelector('video');
