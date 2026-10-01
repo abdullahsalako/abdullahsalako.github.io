@@ -39,6 +39,7 @@ jobs:
 
       - name: Pull new Substack posts
         if: github.event_name != 'push'
+        continue-on-error: true
         run: node tools/substack-sync.mjs
 
       - name: Build
