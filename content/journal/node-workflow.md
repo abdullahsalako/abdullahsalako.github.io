@@ -2,22 +2,21 @@
 title: The DaVinci Resolve Node Workflow for Cinematic Skin Tones
 slug: node-workflow
 status: published
-date: '2026-09-15'
+date: 2026-09-15
 tag: Colour Grade Note
-section: Colour grading
 seoTitle: DaVinci Resolve Node Workflow for Cinematic Skin Tones
-description: >-
-  How I build a DaVinci Resolve node tree for cinematic skin tones: exposure
-  balance, LOG transform, parallel HSL isolation and a soft grain overlay.
+description: 'How I build a DaVinci Resolve node tree for cinematic skin tones: exposure balance, LOG transform, parallel HSL isolation and a soft grain overlay.'
+section: Colour grading
+dek: ''
+excerpt: 'A structured breakdown of node-tree architecture: primary exposure balance, LOG transform, parallel HSL isolation, and a soft grain overlay.'
+cover: /assets/journal/image.jpg
+coverPosition: ''
+footnote: See this approach on a finished piece in the [Red Eye Effect colour study](/work/red-eye-effect/), or read about my [colour grading services](/services#colour-grading).
 readTime: 6 min read
-excerpt: >-
-  A structured breakdown of node-tree architecture: primary exposure balance,
-  LOG transform, parallel HSL isolation, and a soft grain overlay.
-footnote: >-
-  See this approach on a finished piece in the [Red Eye Effect colour
-  study](/work/red-eye-effect/), or read about my [colour grading
-  services](/services#colour-grading).
+sourceUrl: ''
+updated: ''
 ---
+
 Every grade I build for a face starts the same way: get the exposure and the LOG transform right before a single hue is touched. Skin is the one thing a viewer has calibrated their whole life — it forgives almost nothing, so the node tree has to earn cinematic warmth without ever announcing itself.
 
 ## 1\. Primary exposure balance
