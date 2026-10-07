@@ -15,20 +15,55 @@
   };
   var icon = function (id) { return '<svg aria-hidden="true"><use href="#' + id + '"/></svg>'; };
 
-  /* ---------- theme ---------- */
-  var themeBtn = $('#theme-toggle');
-  function applyTheme(t) {
+  /* ---------- theme: light | dark | device ----------
+     Saved choice wins; otherwise follow the device; otherwise dark-first. */
+  var THEME_KEY = 'rv-theme';
+  var lightQuery = window.matchMedia('(prefers-color-scheme: light)');
+  function getPref() {
+    try { var v = localStorage.getItem(THEME_KEY); if (v === 'light' || v === 'dark') return v; } catch (e) {}
+    return 'system';
+  }
+  function applyTheme(pref) {
+    var t = pref === 'system' ? (lightQuery.matches ? 'light' : 'dark') : pref;
     root.setAttribute('data-theme', t);
+    root.setAttribute('data-theme-pref', pref);
     var meta = $('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', t === 'light' ? '#f3efe6' : '#1f1d1e');
-    if (themeBtn) themeBtn.setAttribute('aria-label', t === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+    $$('[data-theme-set]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-theme-set') === pref)); });
   }
-  applyTheme(root.getAttribute('data-theme') || 'dark');
-  themeBtn && themeBtn.addEventListener('click', function () {
-    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    applyTheme(next);
-    try { localStorage.setItem('rv-theme', next); } catch (e) {}
+  applyTheme(getPref());
+  $$('[data-theme-set]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var pref = b.getAttribute('data-theme-set');
+      try { if (pref === 'system') localStorage.removeItem(THEME_KEY); else localStorage.setItem(THEME_KEY, pref); } catch (e) {}
+      applyTheme(pref);
+    });
   });
+  var onSystemChange = function () { if (getPref() === 'system') applyTheme('system'); };
+  if (lightQuery.addEventListener) lightQuery.addEventListener('change', onSystemChange); else if (lightQuery.addListener) lightQuery.addListener(onSystemChange);
+
+  /* ---------- Material: ripple + snackbar ---------- */
+  var RIPPLE_SEL = '.btn, .filter, .svc-btn, .fab, .seg button, .nav a, .drawer nav a, .cs-nav a, .acc-btn, .icon-btn, .links a';
+  document.addEventListener('pointerdown', function (e) {
+    if (reduceMotion || e.button > 0) return;
+    var t = e.target.closest && e.target.closest(RIPPLE_SEL);
+    if (!t) return;
+    var r = t.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2, s = document.createElement('span');
+    s.className = 'md-ripple';
+    s.style.cssText = 'width:' + d + 'px;height:' + d + 'px;left:' + (e.clientX - r.left - d / 2) + 'px;top:' + (e.clientY - r.top - d / 2) + 'px';
+    t.appendChild(s);
+    s.addEventListener('animationend', function () { s.remove(); });
+  });
+  var snack = $('#snackbar'), snackText = $('#snackbar-text'), snackTimer = null;
+  function toast(html, ms) {
+    if (!snack) return;
+    snackText.innerHTML = html;
+    snack.classList.add('show');
+    clearTimeout(snackTimer);
+    snackTimer = setTimeout(function () { snack.classList.remove('show'); }, ms || 9000);
+  }
+  var snackClose = $('#snackbar-close');
+  snackClose && snackClose.addEventListener('click', function () { snack.classList.remove('show'); });
 
   /* ---------- mobile drawer ---------- */
   var drawer = $('#drawer'), menuBtn = $('#menu-btn'), lastFocus = null;
@@ -60,7 +95,7 @@
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
-  window.matchMedia('(min-width: 900px)').addEventListener('change', function (m) { if (m.matches && drawer.classList.contains('open')) closeDrawer(false); });
+  window.matchMedia('(min-width: 840px)').addEventListener('change', function (m) { if (m.matches && drawer.classList.contains('open')) closeDrawer(false); });
 
   /* ---------- waveform decoration ---------- */
   var wave = $('[data-wave]');
@@ -244,7 +279,13 @@
   function mark(links, id) {
     links.forEach(function (a) { a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + id)); });
   }
+  var appbar = $('#appbar'), fab = $('#fab');
   function spy() {
+    if (appbar) appbar.classList.toggle('scrolled', window.scrollY > 8);
+    if (fab) {
+      var c = document.getElementById('contact'), inContact = c && c.getBoundingClientRect().top < window.innerHeight * 0.75;
+      fab.classList.toggle('hide', window.scrollY < 480 || inContact);
+    }
     var y = window.scrollY + window.innerHeight * 0.35, cur = chapters[0].id;
     chapters.forEach(function (s) { if (s.offsetTop <= y) cur = s.id; });
     mark(navLinks, NAV_OF[cur]); mark(railLinks, cur);
@@ -264,7 +305,7 @@
   spy();
 
   /* ---------- contact form ---------- */
-  var form = $('#contact-form'), statusBox = $('#form-status');
+  var form = $('#contact-form');
   if (form) {
     var rules = {
       name: function (v) { return v.trim() ? '' : 'Please tell me your name.'; },
@@ -289,8 +330,7 @@
         '\nBudget range: ' + (d.get('budget') || 'Prefer to discuss') + '\n\nProject details:\n' + d.get('details');
       if (typeof gtag === 'function') gtag('event', 'generate_lead', { form: 'portfolio_contact', project_type: d.get('type') });
       location.href = 'mailto:' + S.email + '?subject=' + encodeURIComponent('Project brief — ' + d.get('name')) + '&body=' + encodeURIComponent(body);
-      statusBox.hidden = false;
-      statusBox.innerHTML = 'Thanks, ' + esc(String(d.get('name')).split(' ')[0]) + '. Your email app should open with the brief ready to send. If it doesn’t, write to <a href="mailto:' + esc(S.email) + '">' + esc(S.email) + '</a> and paste your details in.';
+      toast('Thanks, ' + esc(String(d.get('name')).split(' ')[0]) + '. Your email app should open with the brief ready to send. If it doesn’t, write to <a href="mailto:' + esc(S.email) + '">' + esc(S.email) + '</a> and paste your details in.', 12000);
     });
   }
 

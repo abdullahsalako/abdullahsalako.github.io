@@ -171,37 +171,7 @@ a.tag:hover { transform: rotate(0deg) translateY(-3px); box-shadow: var(--offset
 
 /* 5. CHROME ---------------------------------------------------------------- */
 /* top bar: small white tabs, like an annual-report toolbar */
-.bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: flex-start; pointer-events: none; }
-.bar > * { pointer-events: auto; }
-.bar-tab { background: #fff; color: #1a1819; min-height: 34px; display: flex; align-items: center; gap: var(--s-4); padding: 0 var(--s-4); font-size: 0.78rem; font-weight: 600; text-decoration: none; }
-.bar-tab.brand { padding-left: var(--gutter); gap: var(--s-3); }
-.bar-tab.brand i { width: 12px; height: 12px; background: var(--orange); display: inline-block; }
-.nav { display: none; align-items: center; gap: var(--s-1); }
-.nav a { position: relative; padding: 8px 10px; text-decoration: none; }
-.nav a:hover { background: #1a1819; color: #fff; }
-.nav a[aria-current='true'] { box-shadow: inset 0 -3px 0 var(--orange); }
-.bar-tab button { background: none; border: 0; padding: 0; min-height: 34px; min-width: 34px; display: grid; place-items: center; color: inherit; font-weight: 600; font-size: 0.78rem; }
-.bar-tab button:hover { color: var(--orange); }
-.bar-tab button svg { width: 18px; height: 18px; }
-.theme-toggle .i-sun { display: none; }
-:root[data-theme='light'] .theme-toggle .i-sun { display: block; }
-:root[data-theme='light'] .theme-toggle .i-moon { display: none; }
-.menu-btn { gap: 8px; display: inline-flex !important; grid-auto-flow: column; }
-@media (min-width: 900px) { .nav { display: flex; } .menu-btn { display: none !important; } .bar-tab.right { padding-right: var(--gutter); } }
 
-.drawer { position: fixed; inset: 0; z-index: 150; visibility: hidden; }
-.drawer.open { visibility: visible; }
-.drawer-scrim { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.6); opacity: 0; transition: opacity 0.3s; }
-.drawer.open .drawer-scrim { opacity: 1; }
-.drawer-panel { position: absolute; inset: 0 0 0 auto; width: min(88vw, 380px); background: var(--orange); color: var(--on-color); padding: var(--s-5); display: flex; flex-direction: column; gap: var(--s-4); transform: translateX(100%); transition: transform 0.35s var(--ease); }
-.drawer.open .drawer-panel { transform: none; }
-.drawer-top { display: flex; justify-content: space-between; align-items: center; font-weight: 700; }
-.drawer-top button { background: #1a1819; color: #fff; border: 0; width: 44px; height: 44px; display: grid; place-items: center; }
-.drawer-top svg { width: 20px; height: 20px; }
-.drawer nav a { display: flex; align-items: baseline; gap: var(--s-3); padding: var(--s-3) 0; border-bottom: 2px solid rgba(22, 19, 15, 0.25); text-decoration: none; font-family: var(--font-display); font-size: 2rem; font-weight: 500; }
-.drawer nav a span { font-size: 0.8rem; font-family: var(--font-mono); }
-.drawer nav a[aria-current='true'] { background: #1a1819; color: #fff; padding-inline: 10px; }
-.drawer .btn { --bb: #1a1819; --bf: #fff; margin-top: auto; }
 
 footer.site { background: var(--bg); border-top: 2px solid var(--ink); padding: var(--s-8) 0 var(--s-7); color: var(--ink-2); font-size: 0.95rem; }
 .foot-top { display: grid; gap: var(--s-6); margin-bottom: var(--s-7); }
@@ -572,7 +542,6 @@ dialog.modal[open] { animation: pop 0.25s var(--ease); }
 .btn-or:active { --bb: var(--orange-600); }
 .link-arrow { border-bottom-color: var(--orange-500); }
 .link-arrow:hover { background: var(--orange-400); color: var(--orange-950); }
-.bar-tab button:hover { color: var(--orange-700); }
 .hbar-row.hot .lbl, .cs-details summary::after { color: var(--accent-text); }
 .hbar-row.hot .hbar-fill { outline-color: var(--orange-400); }
 .reel:hover .reel-play, .reel:focus-visible .reel-play { background: var(--orange-400); }
@@ -609,7 +578,7 @@ dialog.modal[open] { animation: pop 0.25s var(--ease); }
 .ramp-cap { display: flex; justify-content: space-between; gap: var(--s-4); padding: var(--s-2) var(--gutter); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); background: var(--bg); }
 
 /* orange fields (contact + drawer): deep orange instead of near-black */
-.contact, .drawer-panel { color: var(--orange-950); }
+.contact { color: var(--orange-950); }
 .contact .chap-lede, .contact p, .form-note { color: var(--orange-900); }
 .contact .tag { --c: var(--orange-950); color: var(--orange-50); }
 .contact-title .hl { background: var(--orange-950); color: var(--orange-50); }
@@ -622,10 +591,6 @@ dialog.modal[open] { animation: pop 0.25s var(--ease); }
 .contact-card .btn:hover { box-shadow: 5px 5px 0 var(--orange-500); background: var(--orange-800); border-color: var(--orange-800); }
 .field input, .field select, .field textarea { border-color: var(--orange-950); }
 .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { box-shadow: 4px 4px 0 var(--orange-600); }
-.drawer nav a { border-bottom-color: var(--orange-700); }
-.drawer-top button { background: var(--orange-950); color: var(--orange-50); }
-.drawer nav a[aria-current='true'] { background: var(--orange-950); color: var(--orange-50); }
-.drawer .btn { --bb: var(--orange-950); --bf: var(--orange-50); }
 .p-card:hover, .p-card:focus-within { box-shadow: 8px 8px 0 var(--orange-500); }
 
 /* ==========================================================================
