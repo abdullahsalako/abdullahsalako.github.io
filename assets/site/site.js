@@ -20,7 +20,7 @@
   function applyTheme(t) {
     root.setAttribute('data-theme', t);
     var meta = $('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', t === 'light' ? '#f6f2ea' : '#0c0b0a');
+    if (meta) meta.setAttribute('content', t === 'light' ? '#f3efe6' : '#1f1d1e');
     if (themeBtn) themeBtn.setAttribute('aria-label', t === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
   }
   applyTheme(root.getAttribute('data-theme') || 'dark');
@@ -170,6 +170,7 @@
   /* ---------- skills ---------- */
   var LEVELS = { 1: 'Developing', 2: 'Working knowledge', 3: 'Comfortable' };
   var skillsGrid = $('#skills-grid');
+  var SKILL_COLOR = { editing: 'lav', color: 'orange', audio: 'green', motion: 'pink', strategy: 'yellow' };
   if (skillsGrid) {
     skillsGrid.innerHTML = S.skills.map(function (c, idx) {
       var span = idx < 3 ? 'col-4 col-6-t' : 'col-6 col-6-t';
@@ -178,7 +179,7 @@
         return '<li class="skill"><div class="row"><span>' + esc(it[0]) + '</span><span class="level">' + LEVELS[it[1]] + '</span></div>' +
           '<div class="pips" role="img" aria-label="' + esc(it[0]) + ': ' + LEVELS[it[1]] + '">' + pips + '</div></li>';
       }).join('');
-      return '<article class="card skill-cat reveal ' + span + '" style="--d:' + idx * 60 + 'ms"><h3>' + icon(c.icon) + esc(c.title) + '</h3><ul>' + items + '</ul></article>';
+      return '<article class="skill-cat reveal ' + span + '" style="--c:var(--' + (SKILL_COLOR[c.id] || 'orange') + ');--d:' + idx * 60 + 'ms"><h3><span class="tag" style="--rot:' + (idx % 2 ? 1.5 : -1.5) + 'deg">' + esc(c.title) + '</span></h3><ul>' + items + '</ul></article>';
     }).join('');
   }
 

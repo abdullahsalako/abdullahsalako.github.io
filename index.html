@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0c0b0a" />
+    <meta name="theme-color" content="#1f1d1e" />
     <script>
       /* theme before paint: saved choice, else dark-first */
       (function () {
@@ -43,7 +43,7 @@
     <link rel="preload" as="image" href="assets/site/red-eye-thumb.webp" type="image/webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/site/site.css" />
     <script type="application/ld+json">
       {
@@ -136,14 +136,12 @@
       </defs>
     </svg>
 
-    <a class="skip-link" href="#main-content">Skip to content</a>
+        <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <header class="site">
-      <div class="wrap head-row">
-        <a class="brand" href="#home" aria-label="Aderemi Abdullah Salako — back to top">
-          <span class="brand-mark" aria-hidden="true">R</span>
-          <span class="brand-text">Aderemi A. Salako<small>Remi Visuals</small></span>
-        </a>
+    <!-- Top bar -->
+    <header class="bar">
+      <a class="bar-tab brand" href="#home" aria-label="Aderemi Abdullah Salako, Portfolio 2026: back to top"><i aria-hidden="true"></i>Portfolio 2026</a>
+      <div class="bar-tab right">
         <nav class="nav" aria-label="Primary">
           <a href="#home">Home</a>
           <a href="#work">Work</a>
@@ -151,14 +149,11 @@
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a class="btn btn-primary head-cta" href="#contact" data-hire-cta="header">Hire me</a>
-        <button class="icon-btn theme-toggle" type="button" id="theme-toggle" aria-label="Switch to light theme">
+        <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to light theme">
           <svg class="i-moon" aria-hidden="true"><use href="#i-moon" /></svg>
           <svg class="i-sun" aria-hidden="true"><use href="#i-sun" /></svg>
         </button>
-        <button class="icon-btn menu-btn" type="button" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
-          <svg aria-hidden="true"><use href="#i-menu" /></svg>
-        </button>
+        <button class="menu-btn" type="button" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">Menu <svg aria-hidden="true"><use href="#i-menu" /></svg></button>
       </div>
     </header>
 
@@ -167,135 +162,154 @@
       <div class="drawer-scrim" data-close-drawer></div>
       <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Site menu">
         <div class="drawer-top">
-          <span class="eyebrow" style="margin:0">Menu</span>
-          <button class="icon-btn" type="button" data-close-drawer aria-label="Close menu"><svg aria-hidden="true"><use href="#i-close" /></svg></button>
+          <span>Menu</span>
+          <button type="button" data-close-drawer aria-label="Close menu"><svg aria-hidden="true"><use href="#i-close" /></svg></button>
         </div>
         <nav aria-label="Mobile">
-          <a href="#home"><span>01</span>Home</a>
+          <a href="#home"><span>00</span>Home</a>
           <a href="#work"><span>02</span>Work</a>
-          <a href="#services"><span>03</span>Services</a>
-          <a href="#about"><span>04</span>About</a>
-          <a href="#contact"><span>05</span>Contact</a>
+          <a href="#services"><span>04</span>Services</a>
+          <a href="#about"><span>01</span>About</a>
+          <a href="#contact"><span>08</span>Contact</a>
         </nav>
-        <a class="btn btn-primary" href="#contact" data-hire-cta="drawer" style="margin-top:auto">Let’s work together</a>
+        <a class="btn" href="#contact" data-hire-cta="drawer">Let’s work together</a>
       </div>
     </div>
 
-    <!-- Chapter rail (desktop) -->
-    <nav class="rail" aria-label="Page chapters">
-      <ol>
-        <li><a href="#home"><span class="lbl">Intro</span><i></i></a></li>
-        <li><a href="#about"><span class="lbl">About</span><i></i></a></li>
-        <li><a href="#work"><span class="lbl">Selected work</span><i></i></a></li>
-        <li><a href="#case-study"><span class="lbl">Case study</span><i></i></a></li>
-        <li><a href="#services"><span class="lbl">Services</span><i></i></a></li>
-        <li><a href="#skills"><span class="lbl">Skills</span><i></i></a></li>
-        <li><a href="#process"><span class="lbl">Process</span><i></i></a></li>
-        <li><a href="#proof"><span class="lbl">Social proof</span><i></i></a></li>
-        <li><a href="#contact"><span class="lbl">Contact</span><i></i></a></li>
-      </ol>
-    </nav>
-
     <main id="main-content" class="page-in">
 
-      <!-- 1. HOME / HERO ------------------------------------------------ -->
-      <section class="hero block" id="home" aria-labelledby="hero-h" data-chapter>
-        <div class="wrap">
-          <div class="grid">
-            <div class="col-12 reveal">
-              <p class="badge"><span class="dot" aria-hidden="true"></span>Available for freelance and creative collaborations</p>
-              <p class="hero-name">Aderemi Abdullah Salako</p>
-              <h1 id="hero-h">I shape raw footage into <em>stories</em> people remember.</h1>
-              <p class="hero-sub">Video editor and content strategist creating engaging visual experiences for YouTube, social media, brands, and digital platforms.</p>
-              <div class="cta-row">
-                <a class="btn btn-primary" href="#work">View my work <svg aria-hidden="true"><use href="#i-arrow" /></svg></a>
-                <a class="btn btn-outline" href="#contact" data-hire-cta="home_hero">Let’s work together</a>
-              </div>
-            </div>
-            <div class="col-12 reveal" style="--d:120ms; margin-top: var(--s-7)">
-              <div class="hero-visual">
-                <div class="filmstrip">
-                  <button class="reel" type="button" data-open-project="red-eye-effect" aria-label="Play featured reel: Red Eye Effect, 31 seconds">
-                    <img src="assets/site/red-eye-thumb.webp" width="1280" height="720" alt="Close-up of a man looking down, graded in muted greens with one small red highlight in his eye" fetchpriority="high" decoding="async" />
-                    <span class="reel-rec" aria-hidden="true"><i></i>Featured reel</span>
-                    <span class="reel-play" aria-hidden="true"><svg><use href="#i-play" /></svg></span>
-                    <span class="reel-meta">
-                      <span><strong>Red Eye Effect</strong><small>Colour study · DaVinci Resolve · 2026</small></span>
-                      <span class="timecode" aria-label="Duration 0 minutes 31 seconds">0:31</span>
-                    </span>
-                  </button>
-                </div>
-                <div class="wave" aria-hidden="true" data-wave></div>
-                <div class="hero-readout" aria-hidden="true"><span>00:00:00:00</span><span>23.976 fps · 1920×1080</span><span>00:00:31:00</span></div>
-              </div>
-            </div>
+      <!-- HERO ---------------------------------------------------------- -->
+      <section class="hero" id="home" aria-labelledby="hero-h" data-chapter>
+        <div class="burst" aria-hidden="true"><svg viewBox="0 0 1000 640" preserveAspectRatio="xMaxYMax slice" aria-hidden="true" focusable="false"><polygon fill="#6e1426" points="1130,760 1064,-1139 1006,-1136 948,-1131 890,-1125 833,-1117 776,-1107 719,-1095 662,-1082 606,-1066 551,-1050 496,-1031 441,-1011 388,-989 335,-965 282,-940 231,-914 180,-885 130,-856 81,-824 33,-792 -13,-757 -59,-722 -104,-685 -147,-646 -190,-607"/><polygon fill="#ff5f00" points="1130,760 964,-1133 826,-1116"/><polygon fill="#ff5f00" points="1130,760 690,-1088 555,-1051"/><polygon fill="#ff5f00" points="1130,760 424,-1004 297,-948"/><polygon fill="#ff5f00" points="1130,760 174,-882 57,-808"/><polygon fill="#ff5f00" points="1130,760 -55,-725 -161,-634"/><polygon fill="#ff5f00" points="1130,760 1120,460 1110,461 1101,461 1092,462 1083,464 1074,465 1065,467 1056,469 1047,472 1039,474 1030,477 1021,480 1013,484 1004,488 996,492 988,496 980,500 972,505 964,510 957,515 949,520 942,526 935,532 928,538 922,544"/><polygon fill="#4a0d1c" points="520,59 806,224 806,258 520,93"/><polygon fill="#9d9dff" points="560,-10 846,155 806,224 520,59"/><polygon fill="#4a0d1c" points="480,239 826,439 826,473 480,273"/><polygon fill="#9d9dff" points="520,170 866,370 826,439 480,239"/><polygon fill="#4a0d1c" points="430,429 802,644 802,678 430,463"/><polygon fill="#9d9dff" points="470,360 842,575 802,644 430,429"/></svg></div>
+        <div class="wrap hero-in reveal">
+          <a class="hero-tag" href="#about">Remi Visuals · Abuja, Nigeria</a>
+          <p class="hero-name"><span class="hl dk">Aderemi Abdullah Salako</span></p>
+          <h1 id="hero-h"><span class="hl">I shape raw footage into stories people remember.</span></h1>
+          <p class="hero-sub">Video editor and content strategist creating engaging visual experiences for YouTube, social media, brands, and digital platforms.</p>
+          <div class="cta-row">
+            <a class="btn btn-or" href="#work">View my work <svg aria-hidden="true"><use href="#i-arrow" /></svg></a>
+            <a class="btn" href="#contact" data-hire-cta="home_hero">Let’s work together</a>
           </div>
         </div>
-        <div class="marquee" aria-label="Video editing, content strategy, visual storytelling" role="group">
-          <div class="marquee-track" aria-hidden="true"><span>Video editing</span><span>Content strategy</span><span>Visual storytelling</span><span>Video editing</span><span>Content strategy</span><span>Visual storytelling</span></div>
-          <div class="marquee-track" aria-hidden="true"><span>Video editing</span><span>Content strategy</span><span>Visual storytelling</span><span>Video editing</span><span>Content strategy</span><span>Visual storytelling</span></div>
+        <p class="avail"><i aria-hidden="true"></i>Available for freelance and creative collaborations</p>
+      </section>
+      <div class="marquee" role="group" aria-label="Video editing, content strategy, visual storytelling">
+        <div class="marquee-track" aria-hidden="true"><span>Video editing</span><span>Content strategy</span><span>Visual storytelling</span><span>Video editing</span><span>Content strategy</span><span>Visual storytelling</span></div>
+        <div class="marquee-track" aria-hidden="true"><span>Video editing</span><span>Content strategy</span><span>Visual storytelling</span><span>Video editing</span><span>Content strategy</span><span>Visual storytelling</span></div>
+      </div>
+
+      <!-- PREFACE ------------------------------------------------------- -->
+      <section class="intro" aria-label="Introduction">
+        <div class="wrap">
+          <div class="grid">
+            <div class="col-6 reveal narrow">
+              <p class="note">Portfolio report 2026: selected work, a case study with real numbers, services and the process behind them, from one self-taught editor in Abuja.</p>
+              <p class="lead" style="margin-top:var(--s-6)">Good editing is mostly invisible. It’s <strong>what the audience stops noticing</strong> because the story, the sound and the colour are all pulling the same way.</p>
+              <p class="lead">This site is laid out like a report because I treat every project the same way: start with a question, make decisions I can explain, and measure what I can. <strong>So, what’s the story?</strong></p>
+            </div>
+            <div class="col-6 reveal" style="--d:100ms">
+              <div class="bignum" aria-hidden="true">5</div>
+              <p class="bignum-cap"><span class="sr-only">5 </span>disciplines I work across, in 8 chapters. Pick one:</p>
+              <nav class="cloud" aria-label="Chapters" style="margin-top:var(--s-5)">
+                <a class="tag c-lav" style="--rot:-2deg" href="#about">About</a>
+                <a class="tag c-or" style="--rot:2deg" href="#work">Work</a>
+                <a class="tag c-yel" style="--rot:-1.5deg" href="#case-study">Case study</a>
+                <a class="tag c-grn" style="--rot:2.5deg" href="#services">Services</a>
+                <a class="tag c-pnk" style="--rot:-2.5deg" href="#skills">Skills</a>
+                <a class="tag c-blu" style="--rot:1.5deg" href="#process">Process</a>
+                <a class="tag c-or" style="--rot:-1deg" href="#contact">Contact</a>
+              </nav>
+            </div>
+          </div>
+
+          <div id="reel-wrap" class="reveal" style="margin-top:var(--s-8)">
+            <p class="kicker">Featured reel</p>
+            <div class="reel-frame">
+              <button class="reel" type="button" data-open-project="red-eye-effect" aria-label="Play featured reel: Red Eye Effect, 31 seconds">
+                <img src="assets/site/red-eye-thumb.webp" width="1280" height="720" alt="Close-up of a man looking down, graded in muted greens with one small red highlight in his eye" fetchpriority="high" decoding="async" />
+                <span class="reel-rec" aria-hidden="true"><i></i>Featured reel</span>
+                <span class="reel-play" aria-hidden="true"><svg><use href="#i-play" /></svg></span>
+                <span class="reel-meta">
+                  <span><strong>Red Eye Effect</strong><small>Colour study · DaVinci Resolve · 2026</small></span>
+                  <span class="timecode" aria-label="Duration 0 minutes 31 seconds">0:31</span>
+                </span>
+              </button>
+            </div>
+            <div class="wave" aria-hidden="true" data-wave></div>
+            <div class="readout" aria-hidden="true"><span>00:00:00:00</span><span>23.976 fps · 1920×1080</span><span>00:00:31:00</span></div>
+          </div>
+
+          <div class="stat-row reveal" role="list">
+            <div role="listitem"><b>31s</b><span>featured film runtime</span></div>
+            <div role="listitem"><b>7</b><span>services offered</span></div>
+            <div role="listitem"><b>6</b><span>stages from brief to delivery</span></div>
+            <div role="listitem"><b>1+</b><span>years of editing</span></div>
+          </div>
         </div>
       </section>
 
-      <!-- 2. ABOUT ------------------------------------------------------ -->
-      <section class="block" id="about" aria-labelledby="about-h" data-chapter>
+      <!-- 1.0 ABOUT ----------------------------------------------------- -->
+      <section class="chap alt" id="about" aria-labelledby="about-h" data-chapter style="--c:var(--lav)">
         <div class="wrap">
+          <div class="chap-head reveal">
+            <p class="chap-no"><span class="tag">1.0</span><span class="nm">About</span></p>
+            <h2 class="h-lg" id="about-h"><span class="hl">Self-taught, story-first, built through making.</span></h2>
+          </div>
           <div class="grid">
             <div class="col-5 reveal">
-              <figure class="portrait" style="margin:0">
+              <figure class="portrait">
                 <img src="assets/site/portrait.webp" width="720" height="960" loading="lazy" decoding="async" alt="Portrait of Aderemi Abdullah Salako in a dark blazer and white shirt against a grey backdrop" />
                 <figcaption>Abuja, Nigeria</figcaption>
               </figure>
             </div>
-            <div class="col-7 reveal about-copy" style="--d:100ms">
-              <p class="eyebrow"><span class="num">02</span> About</p>
-              <h2 class="section-title" id="about-h">Self-taught, story-first, built through making.</h2>
-              <p style="margin-top:var(--s-5)">I’m <strong>Aderemi Abdullah Salako</strong>, a video editor and content strategist based in Abuja, Nigeria, working under the name Remi Visuals. I’m a <strong>self-taught DaVinci Resolve editor</strong> with experience creating YouTube and social-media content, and I work with creators and brands remotely.</p>
+            <div class="col-7 reveal story" style="--d:100ms">
+              <p class="kicker">Who’s behind Remi Visuals</p>
+              <h3 class="story-h">A video editor who reads the data as well as the footage.</h3>
+              <p>I’m <strong>Aderemi Abdullah Salako</strong>, a video editor and content strategist based in Abuja, Nigeria. I’m a <strong>self-taught DaVinci Resolve editor</strong> with experience creating YouTube and social-media content, and I work with creators and brands remotely.</p>
               <p>I come to editing with a data-analyst’s habit of asking what the audience actually did, and a creative technologist’s curiosity about the tools. The goal is always the same: a cut that feels effortless to watch and clear in what it’s saying.</p>
               <div class="grid stats" role="list">
-                <div class="card stat col-6-t" role="listitem"><svg aria-hidden="true"><use href="#i-clock" /></svg><span class="stat-value is-accent">1+ year</span><p class="stat-label">of editing experience</p></div>
-                <div class="card stat col-6-t" role="listitem"><svg aria-hidden="true"><use href="#i-resolve" /></svg><span class="stat-value">DaVinci Resolve</span><p class="stat-label">end-to-end workflow: cut, colour, audio, Fusion</p></div>
-                <div class="card stat col-6-t" role="listitem"><svg aria-hidden="true"><use href="#i-yt" /></svg><span class="stat-value">YouTube + short-form</span><p class="stat-label">long-form stories and vertical-first cuts</p></div>
-                <div class="card stat col-6-t" role="listitem"><svg aria-hidden="true"><use href="#i-globe" /></svg><span class="stat-value">Remote collaboration</span><p class="stat-label">clear briefs, shared reviews, steady updates</p></div>
+                <div class="stat col-6-t" role="listitem" style="--c:var(--yellow)"><div><svg aria-hidden="true"><use href="#i-clock" /></svg><span class="stat-value">1+ year</span></div><p class="stat-label">of editing experience</p></div>
+                <div class="stat col-6-t" role="listitem" style="--c:var(--orange)"><div><svg aria-hidden="true"><use href="#i-resolve" /></svg><span class="stat-value">DaVinci Resolve</span></div><p class="stat-label">end-to-end workflow: cut, colour, audio, Fusion</p></div>
+                <div class="stat col-6-t" role="listitem" style="--c:var(--green)"><div><svg aria-hidden="true"><use href="#i-yt" /></svg><span class="stat-value">YouTube + short-form</span></div><p class="stat-label">long-form stories and vertical-first cuts</p></div>
+                <div class="stat col-6-t" role="listitem" style="--c:var(--pink)"><div><svg aria-hidden="true"><use href="#i-globe" /></svg><span class="stat-value">Remote collaboration</span></div><p class="stat-label">clear briefs, shared reviews, steady updates</p></div>
               </div>
             </div>
-            <div class="col-12 approach reveal">
-              <h3 class="approach-title">My approach</h3>
-              <div class="acc" data-accordion>
-                <div class="acc-item">
-                  <button class="acc-btn" type="button" id="ap1" aria-expanded="true" aria-controls="ap1p"><span class="n">01</span><span class="t">Storytelling</span><span class="pm" aria-hidden="true"></span></button>
-                  <div class="acc-panel" id="ap1p" role="region" aria-labelledby="ap1"><div><p>Every edit starts with one question: what should the viewer feel or do by the end? I structure footage around that answer, cutting what doesn’t earn its place and giving the moments that matter room to land.</p></div></div>
-                </div>
-                <div class="acc-item">
-                  <button class="acc-btn" type="button" id="ap2" aria-expanded="false" aria-controls="ap2p"><span class="n">02</span><span class="t">Pacing</span><span class="pm" aria-hidden="true"></span></button>
-                  <div class="acc-panel" id="ap2p" role="region" aria-labelledby="ap2"><div><p>Rhythm is what makes a video feel alive. I shape the speed of each scene so energy rises and falls on purpose, tighter for short-form hooks, more breathing room for long-form storytelling.</p></div></div>
-                </div>
-                <div class="acc-item">
-                  <button class="acc-btn" type="button" id="ap3" aria-expanded="false" aria-controls="ap3p"><span class="n">03</span><span class="t">Sound</span><span class="pm" aria-hidden="true"></span></button>
-                  <div class="acc-panel" id="ap3p" role="region" aria-labelledby="ap3"><div><p>Audiences forgive soft focus before they forgive bad audio. I clean dialogue, sync tracks and balance music and effects so the sound supports the story instead of competing with it.</p></div></div>
-                </div>
-                <div class="acc-item">
-                  <button class="acc-btn" type="button" id="ap4" aria-expanded="false" aria-controls="ap4p"><span class="n">04</span><span class="t">Colour</span><span class="pm" aria-hidden="true"></span></button>
-                  <div class="acc-panel" id="ap4p" role="region" aria-labelledby="ap4"><div><p>Colour carries mood. I correct and match shots first, protect skin tones, then build a look that fits the story, restrained where it should be and bold only where it counts.</p></div></div>
-                </div>
-                <div class="acc-item">
-                  <button class="acc-btn" type="button" id="ap5" aria-expanded="false" aria-controls="ap5p"><span class="n">05</span><span class="t">Audience retention</span><span class="pm" aria-hidden="true"></span></button>
-                  <div class="acc-panel" id="ap5p" role="region" aria-labelledby="ap5"><div><p>Hooks, structure, captions and format are decisions about attention. I design each edit for the platform it will live on, and treat retention data as feedback for the next cut.</p></div></div>
-                </div>
+          </div>
+          <div class="approach reveal">
+            <h3 class="h-md" style="margin-bottom:var(--s-5)"><span class="hl dk">My approach</span></h3>
+            <div class="acc" data-accordion>
+              <div class="acc-item">
+                <button class="acc-btn" type="button" id="ap1" aria-expanded="true" aria-controls="ap1p"><span class="n">01</span><span class="t">Storytelling</span><span class="pm" aria-hidden="true"></span></button>
+                <div class="acc-panel" id="ap1p" role="region" aria-labelledby="ap1"><div><p>Every edit starts with one question: what should the viewer feel or do by the end? I structure footage around that answer, cutting what doesn’t earn its place and giving the moments that matter room to land.</p></div></div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-btn" type="button" id="ap2" aria-expanded="false" aria-controls="ap2p"><span class="n">02</span><span class="t">Pacing</span><span class="pm" aria-hidden="true"></span></button>
+                <div class="acc-panel" id="ap2p" role="region" aria-labelledby="ap2"><div><p>Rhythm is what makes a video feel alive. I shape the speed of each scene so energy rises and falls on purpose, tighter for short-form hooks, more breathing room for long-form storytelling.</p></div></div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-btn" type="button" id="ap3" aria-expanded="false" aria-controls="ap3p"><span class="n">03</span><span class="t">Sound</span><span class="pm" aria-hidden="true"></span></button>
+                <div class="acc-panel" id="ap3p" role="region" aria-labelledby="ap3"><div><p>Audiences forgive soft focus before they forgive bad audio. I clean dialogue, sync tracks and balance music and effects so the sound supports the story instead of competing with it.</p></div></div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-btn" type="button" id="ap4" aria-expanded="false" aria-controls="ap4p"><span class="n">04</span><span class="t">Colour</span><span class="pm" aria-hidden="true"></span></button>
+                <div class="acc-panel" id="ap4p" role="region" aria-labelledby="ap4"><div><p>Colour carries mood. I correct and match shots first, protect skin tones, then build a look that fits the story, restrained where it should be and bold only where it counts.</p></div></div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-btn" type="button" id="ap5" aria-expanded="false" aria-controls="ap5p"><span class="n">05</span><span class="t">Audience retention</span><span class="pm" aria-hidden="true"></span></button>
+                <div class="acc-panel" id="ap5p" role="region" aria-labelledby="ap5"><div><p>Hooks, structure, captions and format are decisions about attention. I design each edit for the platform it will live on, and treat retention data as feedback for the next cut.</p></div></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 3. SELECTED WORK ---------------------------------------------- -->
-      <section class="block" id="work" aria-labelledby="work-h" data-chapter style="padding-top:0">
+      <!-- 2.0 WORK ------------------------------------------------------ -->
+      <section class="chap" id="work" aria-labelledby="work-h" data-chapter style="--c:var(--orange)">
         <div class="wrap">
-          <hr class="divider" style="margin-bottom:var(--s-9)" />
-          <div class="section-head reveal">
-            <p class="eyebrow"><span class="num">03</span> Selected work</p>
-            <h2 class="section-title" id="work-h">Selected work, one frame at a time.</h2>
-            <p class="section-lede">Filter by format. New projects are added here as they’re published, so what you see is always real work.</p>
+          <div class="chap-head reveal">
+            <p class="chap-no"><span class="tag">2.0</span><span class="nm">Work</span></p>
+            <h2 class="h-lg" id="work-h"><span class="hl">Selected work, one frame at a time.</span></h2>
+            <p class="chap-lede">Filter by format. New projects are added here as they’re published, so what you see is always real work.</p>
           </div>
           <div class="filters" role="group" aria-label="Filter projects by category" id="filters"></div>
           <p class="filter-status" id="filter-status" role="status" aria-live="polite"></p>
@@ -305,33 +319,66 @@
         </div>
       </section>
 
-      <!-- 4. CASE STUDY ------------------------------------------------- -->
-      <section class="block cs" id="case-study" aria-labelledby="cs-h" data-chapter>
+      <!-- 3.0 CASE STUDY ------------------------------------------------ -->
+      <section class="chap alt" id="case-study" aria-labelledby="cs-h" data-chapter style="--c:var(--yellow)">
         <div class="wrap">
-          <div class="cs-head grid">
+          <div class="chap-head reveal">
+            <p class="chap-no"><span class="tag">3.0</span><span class="nm">Case study</span></p>
+            <h2 class="h-lg" id="cs-h"><span class="hl">Red Eye Effect: restraint, then one red detail.</span></h2>
+            <p class="chap-lede">How a quiet close-up becomes an unsettling reveal when colour does the talking instead of effects.</p>
+          </div>
+
+          <div class="grid" style="align-items:end">
             <div class="col-8 reveal">
-              <p class="eyebrow"><span class="num">04</span> Case study</p>
-              <h2 class="section-title" id="cs-h" style="max-width:16ch">Red Eye Effect: restraint, then one red detail.</h2>
-              <p class="section-lede">How a quiet close-up becomes an unsettling reveal when colour does the talking instead of effects.</p>
+              <div class="metrics" role="list" aria-label="Project at a glance" style="margin-bottom:0">
+                <div class="metric" role="listitem" style="--c:var(--yellow)"><b>0:31</b><span>final runtime</span></div>
+                <div class="metric" role="listitem" style="--c:var(--orange)"><b>1</b><span>focal point: the eye</span></div>
+                <div class="metric" role="listitem" style="--c:var(--lav)"><b>2026</b><span>year produced</span></div>
+                <div class="metric" role="listitem" style="--c:var(--green)"><b style="font-size:1.9rem;padding-top:.7rem">Resolve</b><span>grade &amp; finishing</span></div>
+              </div>
             </div>
             <dl class="cs-facts col-4 reveal" style="--d:100ms">
               <div><dt>Project type</dt><dd>Personal colour study</dd></div>
               <div><dt>Role</dt><dd>Colour grade · selective correction · finishing</dd></div>
               <div><dt>Deliverable</dt><dd>31-second film</dd></div>
-              <div><dt>Year</dt><dd>2026</dd></div>
             </dl>
           </div>
+
+          <article class="story reveal" id="cs-data" style="margin-top:var(--s-8)">
+            <p class="kicker">Frame data</p>
+            <h3 class="story-h">The red eye is about 0.001% of the frame.</h3>
+            <p>I measured the final graded frame. Roughly half its pixels are neutral, a third are warm skin and beard tones, and a tenth is the green wall behind. The red accent is a handful of pixels, and it is the detail the entire grade is built around.</p>
+            <figure class="chart">
+              <p class="chart-title">What the final frame is made of (share of pixels)</p>
+              <div class="hbar">
+                <div class="hbar-row"><span class="lbl">Neutral / low saturation</span><div class="hbar-track"><div class="hbar-fill" style="--w:98.5%;--c:var(--lav)"></div></div><span class="val">49.3%</span></div>
+                <div class="hbar-row"><span class="lbl">Warm skin &amp; beard tones</span><div class="hbar-track"><div class="hbar-fill" style="--w:76.3%;--c:var(--yellow)"></div></div><span class="val">38.1%</span></div>
+                <div class="hbar-row"><span class="lbl">Green wall</span><div class="hbar-track"><div class="hbar-fill" style="--w:21.1%;--c:var(--green)"></div></div><span class="val">10.5%</span></div>
+                <div class="hbar-row"><span class="lbl">Cool blue-violet</span><div class="hbar-track"><div class="hbar-fill" style="--w:4.2%;--c:var(--blue)"></div></div><span class="val">2.1%</span></div>
+                <div class="hbar-row hot"><span class="lbl">Pure red accent (the eye)</span><div class="hbar-track"><div class="hbar-fill" style="--w:0.6%;--c:var(--orange)"></div></div><span class="val">0.001%</span></div>
+              </div>
+              <details class="cs-details" style="border-color:var(--line)">
+                <summary>View as a table</summary>
+                <div>
+                  <table>
+                    <thead><tr><th scope="col">Bucket</th><th scope="col">Pixels</th><th scope="col">Share</th></tr></thead>
+                    <tbody>
+                      <tr><td>Neutral / low saturation</td><td>550,826</td><td>49.3%</td></tr>
+                      <tr><td>Warm skin &amp; beard tones</td><td>426,411</td><td>38.1%</td></tr>
+                      <tr><td>Green wall</td><td>117,884</td><td>10.5%</td></tr>
+                      <tr><td>Cool blue-violet</td><td>23,259</td><td>2.1%</td></tr>
+                      <tr><td>Pure red accent (subset of warm)</td><td>14</td><td>0.001%</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+              <figcaption>Measured from the exported poster frame (1,405 × 796 px, letterbox removed), grouped by hue and saturation. Red accent: strongly red pixels, counted within the warm group.</figcaption>
+            </figure>
+          </article>
 
           <nav class="cs-nav" aria-label="Case study sections" id="cs-nav">
             <a href="#cs-overview">Overview</a><a href="#cs-goal">Goal &amp; challenge</a><a href="#cs-process">Process</a><a href="#cs-compare">Before / after</a><a href="#cs-tools">Tools</a><a href="#cs-result">Result</a>
           </nav>
-
-          <div class="metrics reveal" role="list" aria-label="Project at a glance">
-            <div class="card metric" role="listitem"><b>0:31</b><span>final runtime</span></div>
-            <div class="card metric" role="listitem"><b>1</b><span>focal point: the eye</span></div>
-            <div class="card metric" role="listitem"><b>2026</b><span>year produced</span></div>
-            <div class="card metric" role="listitem"><b style="font-size:1.35rem;padding-top:.5rem">Resolve</b><span>grade &amp; finishing</span></div>
-          </div>
 
           <div class="cs-block reveal" id="cs-overview">
             <h3><span class="n">01</span> Project overview</h3>
@@ -355,11 +402,11 @@
             <h3><span class="n">03</span> Editing &amp; grading workflow</h3>
             <p>The treatment keeps the palette restrained and contrast controlled, reserving saturation for the eye reveal. Each adjustment was chosen to protect the skin tone and let the emotional shift arrive through colour rather than noise.</p>
             <ol class="tl h five" style="margin-top:var(--s-5)">
-              <li><span class="mk" aria-hidden="true">1</span><span class="tc">Intent</span><h4>Define the look</h4><p>Decide what the grade should feel like before touching a control.</p></li>
-              <li><span class="mk" aria-hidden="true">2</span><span class="tc">Foundation</span><h4>Balance the shot</h4><p>Neutral exposure and white balance so every later decision is predictable.</p></li>
-              <li><span class="mk" aria-hidden="true">3</span><span class="tc">Protect</span><h4>Hold the skin tone</h4><p>Keep the face believable while the surrounding palette stays restrained.</p></li>
-              <li><span class="mk" aria-hidden="true">4</span><span class="tc">Accent</span><h4>Selective colour</h4><p>Reserve saturation for the eye so the reveal arrives through colour alone.</p></li>
-              <li><span class="mk" aria-hidden="true">5</span><span class="tc">Deliver</span><h4>Review &amp; export</h4><p>Check the grade across the whole 31 seconds, then render the final film.</p></li>
+              <li style="--c:var(--lav)"><span class="mk" aria-hidden="true">1</span><span class="tc">Intent</span><h4>Define the look</h4><p>Decide what the grade should feel like before touching a control.</p></li>
+              <li style="--c:var(--green)"><span class="mk" aria-hidden="true">2</span><span class="tc">Foundation</span><h4>Balance the shot</h4><p>Neutral exposure and white balance so every later decision is predictable.</p></li>
+              <li style="--c:var(--pink)"><span class="mk" aria-hidden="true">3</span><span class="tc">Protect</span><h4>Hold the skin tone</h4><p>Keep the face believable while the surrounding palette stays restrained.</p></li>
+              <li style="--c:var(--orange)"><span class="mk" aria-hidden="true">4</span><span class="tc">Accent</span><h4>Selective colour</h4><p>Reserve saturation for the eye so the reveal arrives through colour alone.</p></li>
+              <li style="--c:var(--yellow)"><span class="mk" aria-hidden="true">5</span><span class="tc">Deliver</span><h4>Review &amp; export</h4><p>Check the grade across the whole 31 seconds, then render the final film.</p></li>
             </ol>
             <details class="cs-details">
               <summary>Principles behind the grade</summary>
@@ -372,7 +419,7 @@
             <div class="ba" id="ba" role="group" aria-label="Before and after comparison">
               <img src="assets/site/red-eye-thumb.webp" alt="Graded frame: muted green palette with a red accent in the eye" width="1280" height="720" loading="lazy" decoding="async" />
               <img class="before" src="assets/site/red-eye-thumb.webp" alt="" width="1280" height="720" loading="lazy" decoding="async" />
-              <span class="tag l" aria-hidden="true">Before</span><span class="tag r" aria-hidden="true">After</span>
+              <span class="tag-l" aria-hidden="true">Before</span><span class="tag-r" aria-hidden="true">After</span>
               <span class="handle" aria-hidden="true"></span>
               <input type="range" min="0" max="100" value="50" aria-label="Drag to compare the flat starting point with the final grade" />
             </div>
@@ -390,42 +437,41 @@
             <h3><span class="n">06</span> Final result</h3>
             <p>A compact visual study with a precise focal point: the final grade gives the reveal its weight while preserving the calm that makes it unsettling.</p>
             <div class="cta-row" style="margin-top:var(--s-4)">
-              <button class="btn btn-primary" type="button" data-open-project="red-eye-effect"><svg aria-hidden="true"><use href="#i-play" /></svg> Watch the film</button>
-              <a class="btn btn-outline" href="/work/red-eye-effect/">Open full case-study page</a>
-              <a class="btn btn-text" href="#contact" data-hire-cta="case_study">Want a grade like this? →</a>
+              <button class="btn btn-or" type="button" data-open-project="red-eye-effect"><svg aria-hidden="true"><use href="#i-play" /></svg> Watch the film</button>
+              <a class="btn btn-line" href="/work/red-eye-effect/">Open full case-study page</a>
+              <a class="link-arrow" href="#contact" data-hire-cta="case_study" style="align-self:center">Want a grade like this? →</a>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 5. SERVICES ---------------------------------------------------- -->
-      <section class="block" id="services" aria-labelledby="svc-h" data-chapter>
+      <!-- 4.0 SERVICES -------------------------------------------------- -->
+      <section class="chap" id="services" aria-labelledby="svc-h" data-chapter style="--c:var(--green)">
         <div class="wrap">
-          <div class="section-head reveal">
-            <p class="eyebrow"><span class="num">05</span> Services</p>
-            <h2 class="section-title" id="svc-h">What I can take off your plate.</h2>
-            <p class="section-lede">Editing, colour and strategy for creators, brands and agencies. Pick one service or combine them into a package.</p>
+          <div class="chap-head reveal">
+            <p class="chap-no"><span class="tag">4.0</span><span class="nm">Services</span></p>
+            <h2 class="h-lg" id="svc-h"><span class="hl">What I can take off your plate.</span></h2>
+            <p class="chap-lede">Editing, colour and strategy for creators, brands and agencies. Pick one service or combine them into a package.</p>
           </div>
           <div class="grid" id="svc-grid">
-            <article class="card svc col-6-t col-3 reveal"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-yt" /></svg></span><h3>YouTube video editing</h3><p>Long-form edits with clear structure, pacing that holds attention, and sound cleanup.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv1">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv1"><div><ul><li>Story structure and hook planning</li><li>Cutting, pacing and b-roll placement</li><li>Captions, titles and lower thirds</li><li>Thumbnail-ready frame selection</li></ul><a class="btn btn-outline" href="#contact" data-service="YouTube video editing">Ask about this</a></div></div></div></article>
-            <article class="card svc col-6-t col-3 reveal" style="--d:60ms"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-phone" /></svg></span><h3>Short-form video editing</h3><p>Reels, TikTok and Shorts built around a strong opening and platform-ready rhythm.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv2">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv2"><div><ul><li>Vertical-first framing and reframing</li><li>Hooks in the first seconds</li><li>Readable, on-brand captions</li><li>Fast turnaround formats</li></ul><a class="btn btn-outline" href="#contact" data-service="Short-form video editing">Ask about this</a></div></div></div></article>
-            <article class="card svc col-6-t col-3 reveal" style="--d:120ms"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-grid" /></svg></span><h3>Social-media content packages</h3><p>A batch of consistent, on-brand posts built from the same footage and message.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv3">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv3"><div><ul><li>Multiple cut-downs per shoot</li><li>Consistent look across platforms</li><li>Format sizes for each channel</li><li>Scope agreed up front, per project</li></ul><a class="btn btn-outline" href="#contact" data-service="Social-media content packages">Ask about this</a></div></div></div></article>
-            <article class="card svc col-6-t col-3 reveal" style="--d:180ms"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-palette" /></svg></span><h3>Color correction &amp; basic grading</h3><p>Balanced, matched footage with a clean, cinematic finish that protects skin tones.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv4">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv4"><div><ul><li>Exposure and white-balance correction</li><li>Shot matching across cameras</li><li>Look development in DaVinci Resolve</li><li>Skin-tone protection</li></ul><a class="btn btn-outline" href="#contact" data-service="Color correction and basic grading">Ask about this</a></div></div></div></article>
-            <article class="card svc col-6-t col-4 reveal"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-audio" /></svg></span><h3>Audio cleanup &amp; synchronization</h3><p>Clearer dialogue, synced tracks and balanced sound under the picture.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv5">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv5"><div><ul><li>Dialogue cleanup and noise reduction</li><li>Syncing external audio to video</li><li>Balancing voice, music and effects</li></ul><a class="btn btn-outline" href="#contact" data-service="Audio cleanup and synchronization">Ask about this</a></div></div></div></article>
-            <article class="card svc col-6-t col-4 reveal" style="--d:60ms"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-motion" /></svg></span><h3>Motion graphics &amp; titles</h3><p>Clean titles, lower thirds and simple animated elements that support the message.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv6">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv6"><div><ul><li>Titles and lower thirds</li><li>Masking and tracking</li><li>Basic Fusion graphics</li></ul><a class="btn btn-outline" href="#contact" data-service="Motion graphics and titles">Ask about this</a></div></div></div></article>
-            <article class="card svc col-6-t col-4 reveal" style="--d:120ms"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-loop" /></svg></span><h3>Content repurposing</h3><p>Turn one long video or recording into a series of shorts, clips and posts.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv7">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv7"><div><ul><li>Finding the strongest moments</li><li>Reformatting for each platform</li><li>Captions and consistent branding</li></ul><a class="btn btn-outline" href="#contact" data-service="Content repurposing">Ask about this</a></div></div></div></article>
+            <article class="svc col-6-t col-3 reveal" style="--c:var(--green)"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-yt" /></svg></span><h3>YouTube video editing</h3><p>Long-form edits with clear structure, pacing that holds attention, and sound cleanup.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv1">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv1"><div><ul><li>Story structure and hook planning</li><li>Cutting, pacing and b-roll placement</li><li>Captions, titles and lower thirds</li><li>Thumbnail-ready frame selection</li></ul><a class="btn btn-line" href="#contact" data-service="YouTube video editing">Ask about this</a></div></div></div></article>
+            <article class="svc col-6-t col-3 reveal" style="--c:var(--lav);--d:60ms"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-phone" /></svg></span><h3>Short-form video editing</h3><p>Reels, TikTok and Shorts built around a strong opening and platform-ready rhythm.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv2">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv2"><div><ul><li>Vertical-first framing and reframing</li><li>Hooks in the first seconds</li><li>Readable, on-brand captions</li><li>Fast turnaround formats</li></ul><a class="btn btn-line" href="#contact" data-service="Short-form video editing">Ask about this</a></div></div></div></article>
+            <article class="svc col-6-t col-3 reveal" style="--c:var(--pink);--d:120ms"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-grid" /></svg></span><h3>Social-media content packages</h3><p>A batch of consistent, on-brand posts built from the same footage and message.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv3">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv3"><div><ul><li>Multiple cut-downs per shoot</li><li>Consistent look across platforms</li><li>Format sizes for each channel</li><li>Scope agreed up front, per project</li></ul><a class="btn btn-line" href="#contact" data-service="Social-media content packages">Ask about this</a></div></div></div></article>
+            <article class="svc col-6-t col-3 reveal" style="--c:var(--yellow);--d:180ms"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-palette" /></svg></span><h3>Color correction &amp; basic grading</h3><p>Balanced, matched footage with a clean, cinematic finish that protects skin tones.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv4">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv4"><div><ul><li>Exposure and white-balance correction</li><li>Shot matching across cameras</li><li>Look development in DaVinci Resolve</li><li>Skin-tone protection</li></ul><a class="btn btn-line" href="#contact" data-service="Color correction and basic grading">Ask about this</a></div></div></div></article>
+            <article class="svc col-6-t col-4 reveal" style="--c:var(--orange)"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-audio" /></svg></span><h3>Audio cleanup &amp; synchronization</h3><p>Clearer dialogue, synced tracks and balanced sound under the picture.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv5">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv5"><div><ul><li>Dialogue cleanup and noise reduction</li><li>Syncing external audio to video</li><li>Balancing voice, music and effects</li></ul><a class="btn btn-line" href="#contact" data-service="Audio cleanup and synchronization">Ask about this</a></div></div></div></article>
+            <article class="svc col-6-t col-4 reveal" style="--c:var(--blue);--d:60ms"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-motion" /></svg></span><h3>Motion graphics &amp; titles</h3><p>Clean titles, lower thirds and simple animated elements that support the message.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv6">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv6"><div><ul><li>Titles and lower thirds</li><li>Masking and tracking</li><li>Basic Fusion graphics</li></ul><a class="btn btn-line" href="#contact" data-service="Motion graphics and titles">Ask about this</a></div></div></div></article>
+            <article class="svc col-6-t col-4 reveal" style="--c:var(--green);--d:120ms"><span class="svc-ic"><svg aria-hidden="true"><use href="#i-loop" /></svg></span><h3>Content repurposing</h3><p>Turn one long video or recording into a series of shorts, clips and posts.</p><div class="svc-more"><button class="svc-btn" type="button" aria-expanded="false" aria-controls="sv7">Learn more <svg aria-hidden="true"><use href="#i-chev" /></svg></button><div class="svc-detail" id="sv7"><div><ul><li>Finding the strongest moments</li><li>Reformatting for each platform</li><li>Captions and consistent branding</li></ul><a class="btn btn-line" href="#contact" data-service="Content repurposing">Ask about this</a></div></div></div></article>
           </div>
         </div>
       </section>
 
-      <!-- 6. SKILLS ------------------------------------------------------ -->
-      <section class="block" id="skills" aria-labelledby="skills-h" data-chapter style="padding-top:0">
+      <!-- 5.0 SKILLS ---------------------------------------------------- -->
+      <section class="chap alt" id="skills" aria-labelledby="skills-h" data-chapter style="--c:var(--pink)">
         <div class="wrap">
-          <hr class="divider" style="margin-bottom:var(--s-9)" />
-          <div class="section-head reveal">
-            <p class="eyebrow"><span class="num">06</span> Skills &amp; workflow</p>
-            <h2 class="section-title" id="skills-h">Honest levels, no inflated percentages.</h2>
-            <p class="section-lede">Where I’m strongest, where I’m solid, and where I’m still growing, by discipline.</p>
+          <div class="chap-head reveal">
+            <p class="chap-no"><span class="tag">5.0</span><span class="nm">Skills &amp; workflow</span></p>
+            <h2 class="h-lg" id="skills-h"><span class="hl">Honest levels, no inflated percentages.</span></h2>
+            <p class="chap-lede">Where I’m strongest, where I’m solid, and where I’m still growing, by discipline.</p>
           </div>
           <div class="grid" id="skills-grid"></div>
           <div class="legend reveal" aria-label="Legend">
@@ -436,37 +482,37 @@
         </div>
       </section>
 
-      <!-- 7. PROCESS ----------------------------------------------------- -->
-      <section class="block cs" id="process" aria-labelledby="proc-h" data-chapter>
+      <!-- 6.0 PROCESS --------------------------------------------------- -->
+      <section class="chap" id="process" aria-labelledby="proc-h" data-chapter style="--c:var(--blue)">
         <div class="wrap">
-          <div class="section-head reveal">
-            <p class="eyebrow"><span class="num">07</span> Process</p>
-            <h2 class="section-title" id="proc-h">From brief to final cut, in six clear stages.</h2>
-            <p class="section-lede">A predictable workflow keeps remote projects calm: you always know what’s happening and what I need next.</p>
+          <div class="chap-head reveal">
+            <p class="chap-no"><span class="tag">6.0</span><span class="nm">Process</span></p>
+            <h2 class="h-lg" id="proc-h"><span class="hl">From brief to final cut, in six clear stages.</span></h2>
+            <p class="chap-lede">A predictable workflow keeps remote projects calm: you always know what’s happening and what I need next.</p>
           </div>
           <ol class="tl h reveal">
-            <li><span class="mk" aria-hidden="true">1</span><h4>Brief &amp; objectives</h4><p>We agree the goal, audience, platform, length and deadline.</p></li>
-            <li><span class="mk" aria-hidden="true">2</span><h4>Footage organization</h4><p>Ingest, label and sort the media so editing starts clean.</p></li>
-            <li><span class="mk" aria-hidden="true">3</span><h4>Rough cut</h4><p>The story structure in place, ready for early feedback.</p></li>
-            <li><span class="mk" aria-hidden="true">4</span><h4>Refinement &amp; pacing</h4><p>Trims, transitions, captions and rhythm polished.</p></li>
-            <li><span class="mk" aria-hidden="true">5</span><h4>Audio &amp; color</h4><p>Dialogue cleaned, sound balanced, shots corrected and graded.</p></li>
-            <li><span class="mk" aria-hidden="true">6</span><h4>Review &amp; delivery</h4><p>Final checks, agreed revisions and export in the right formats.</p></li>
+            <li style="--c:var(--lav)"><span class="mk" aria-hidden="true">1</span><h4>Brief &amp; objectives</h4><p>We agree the goal, audience, platform, length and deadline.</p></li>
+            <li style="--c:var(--green)"><span class="mk" aria-hidden="true">2</span><h4>Footage organization</h4><p>Ingest, label and sort the media so editing starts clean.</p></li>
+            <li style="--c:var(--yellow)"><span class="mk" aria-hidden="true">3</span><h4>Rough cut</h4><p>The story structure in place, ready for early feedback.</p></li>
+            <li style="--c:var(--pink)"><span class="mk" aria-hidden="true">4</span><h4>Refinement &amp; pacing</h4><p>Trims, transitions, captions and rhythm polished.</p></li>
+            <li style="--c:var(--blue)"><span class="mk" aria-hidden="true">5</span><h4>Audio &amp; color</h4><p>Dialogue cleaned, sound balanced, shots corrected and graded.</p></li>
+            <li style="--c:var(--orange)"><span class="mk" aria-hidden="true">6</span><h4>Review &amp; delivery</h4><p>Final checks, agreed revisions and export in the right formats.</p></li>
           </ol>
         </div>
       </section>
 
-      <!-- 8. SOCIAL PROOF ------------------------------------------------ -->
-      <section class="block" id="proof" aria-labelledby="proof-h" data-chapter>
+      <!-- 7.0 SOCIAL PROOF ---------------------------------------------- -->
+      <section class="chap alt" id="proof" aria-labelledby="proof-h" data-chapter style="--c:var(--lav)">
         <div class="wrap">
-          <div class="section-head reveal">
-            <p class="eyebrow"><span class="num">08</span> Social proof</p>
-            <h2 class="section-title" id="proof-h">Feedback, in the words of people I’ve worked with.</h2>
+          <div class="chap-head reveal">
+            <p class="chap-no"><span class="tag">7.0</span><span class="nm">Social proof</span></p>
+            <h2 class="h-lg" id="proof-h"><span class="hl">Feedback, in the words of people I’ve worked with.</span></h2>
           </div>
           <div class="grid">
             <div class="col-7" id="proof-list"></div>
             <div class="col-5 reveal">
-              <div class="card card-pad">
-                <h3 style="font-size:1.3rem;margin-bottom:var(--s-4)">What’s verifiable today</h3>
+              <div class="card" style="padding:var(--s-6)">
+                <h3 class="h-md" style="font-size:1.5rem;margin-bottom:var(--s-4)">What’s verifiable today</h3>
                 <ul class="proof-facts">
                   <li>Red Eye Effect: a finished 31-second colour study you can watch above.</li>
                   <li>Training through Shoot First: structured study in editing, compositing, colour and Fusion.</li>
@@ -478,15 +524,15 @@
         </div>
       </section>
 
-      <!-- 9. CONTACT ----------------------------------------------------- -->
-      <section class="block cs" id="contact" aria-labelledby="contact-h" data-chapter>
+      <!-- 8.0 CONTACT --------------------------------------------------- -->
+      <section class="chap contact" id="contact" aria-labelledby="contact-h" data-chapter>
         <div class="wrap">
           <div class="grid">
             <div class="col-5 reveal">
-              <p class="eyebrow"><span class="num">09</span> Contact</p>
-              <h2 class="contact-title" id="contact-h">Have a story to tell?</h2>
-              <p class="section-lede">If you have footage, an idea, or a channel that needs a sharper edit, I’d like to hear about it. Tell me what you’re making, who it’s for and where it will live, and we’ll take it from there.</p>
-              <p class="form-note" style="margin-top:var(--s-4)">I read every brief personally and reply as soon as I can. No auto-responders, no sales scripts.</p>
+              <p class="chap-no" style="margin-bottom:var(--s-5)"><span class="tag">8.0</span><span class="nm">Contact</span></p>
+              <h2 class="contact-title" id="contact-h"><span class="hl">Have a story to tell?</span></h2>
+              <p class="chap-lede" style="margin-top:var(--s-5)">If you have footage, an idea, or a channel that needs a sharper edit, I’d like to hear about it. Tell me what you’re making, who it’s for and where it will live, and we’ll take it from there.</p>
+              <p class="form-note">I read every brief personally and reply as soon as I can. No auto-responders, no sales scripts.</p>
               <div class="links" aria-label="Contact links">
                 <a href="mailto:hello@aderemisalako.me"><svg aria-hidden="true"><use href="#i-mail" /></svg><span>Email<small>hello@aderemisalako.me</small></span><span class="ar" aria-hidden="true">→</span></a>
                 <a href="https://www.linkedin.com/in/abdullah-salako-b43461252/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-in" /></svg><span>LinkedIn<small>Salako Abdullah</small></span><span class="ar" aria-hidden="true">↗</span></a>
@@ -495,11 +541,11 @@
                 <a href="https://github.com/abdullahsalako" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-gh" /></svg><span>GitHub<small>abdullahsalako</small></span><span class="ar" aria-hidden="true">↗</span></a>
               </div>
               <div style="margin-top:var(--s-5)">
-                <a class="btn btn-outline" id="resume-btn" href="#contact" aria-disabled="true" title="A résumé PDF hasn’t been uploaded yet"><svg aria-hidden="true"><use href="#i-download" /></svg> <span>Résumé PDF: coming soon</span></a>
+                <a class="btn btn-line" id="resume-btn" href="#contact" aria-disabled="true" title="A résumé PDF hasn’t been uploaded yet"><svg aria-hidden="true"><use href="#i-download" /></svg> <span>Résumé PDF: coming soon</span></a>
               </div>
             </div>
             <div class="col-7 reveal" style="--d:100ms">
-              <form class="card contact-card form" id="contact-form" novalidate>
+              <form class="contact-card form" id="contact-form" novalidate>
                 <div class="form-row">
                   <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required /><p class="err" id="e-name" role="alert"></p></div>
                   <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required /><p class="err" id="e-email" role="alert"></p></div>
@@ -516,7 +562,7 @@
                     </select></div>
                 </div>
                 <div class="field"><label for="f-details">Project details</label><textarea id="f-details" name="details" placeholder="What are you making, who is it for, where will it be published, and when do you need it?" required></textarea><p class="err" id="e-details" role="alert"></p></div>
-                <button class="btn btn-primary" type="submit" data-hire-cta="contact_form">Send brief <svg aria-hidden="true"><use href="#i-arrow" /></svg></button>
+                <button class="btn" type="submit" data-hire-cta="contact_form">Send brief <svg aria-hidden="true"><use href="#i-arrow" /></svg></button>
                 <p class="form-note">Sending opens your email app with this brief filled in, addressed to hello@aderemisalako.me. Nothing is stored on this website.</p>
                 <div class="form-status" id="form-status" role="status" hidden></div>
               </form>
@@ -526,18 +572,30 @@
       </section>
     </main>
 
-    <footer class="site">
-      <div class="wrap foot">
-        <span>© <span id="year">2026</span> Remi Visuals · Aderemi Abdullah Salako</span>
-        <nav aria-label="Footer links">
-          <a href="/">Home</a><a href="/portfolio">Portfolio</a><a href="/services">Services</a><a href="/journal/">Journal</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/sitemap">Sitemap</a>
-        </nav>
+    <footer class="site foot">
+      <div class="wrap">
+        <div class="foot-top">
+          <div>
+            <h3>Jump in, learn more</h3>
+            <p>Table of contents for the 2026 portfolio report.</p>
+          </div>
+          <ul aria-label="Chapters">
+            <li><a href="#about">1.0 About</a></li><li><a href="#work">2.0 Work</a></li><li><a href="#case-study">3.0 Case study</a></li><li><a href="#services">4.0 Services</a></li>
+          </ul>
+          <ul aria-label="More chapters and pages">
+            <li><a href="#skills">5.0 Skills</a></li><li><a href="#process">6.0 Process</a></li><li><a href="#contact">8.0 Contact</a></li><li><a href="/journal/">Journal</a></li><li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+        </div>
+        <div class="foot-bottom">
+          <span>© <span id="year">2026</span> Remi Visuals · Aderemi Abdullah Salako</span>
+          <nav aria-label="Other pages" style="display:flex;flex-wrap:wrap;gap:var(--s-4)"><a href="/portfolio">Portfolio</a><a href="/services">Services</a><a href="/about">About</a><a href="/contact">Contact</a></nav>
+        </div>
       </div>
     </footer>
 
     <!-- Project preview modal -->
     <dialog class="modal" id="modal" aria-labelledby="m-title">
-      <button class="icon-btn modal-close" type="button" id="m-close" aria-label="Close preview"><svg aria-hidden="true"><use href="#i-close" /></svg></button>
+      <button class="modal-close" type="button" id="m-close" aria-label="Close preview"><svg aria-hidden="true"><use href="#i-close" /></svg></button>
       <div class="modal-video"><video id="m-video" controls playsinline preload="none"></video></div>
       <div class="modal-body">
         <p class="p-cat" id="m-cat"></p>
@@ -545,8 +603,8 @@
         <p id="m-desc"></p>
         <div id="m-tools" style="display:flex;flex-wrap:wrap;gap:6px"></div>
         <div class="modal-actions">
-          <a class="btn btn-primary" id="m-case" href="#case-study">Read the case study</a>
-          <a class="btn btn-outline" href="#contact" id="m-hire" data-hire-cta="modal">Start a project</a>
+          <a class="btn btn-or" id="m-case" href="#case-study">Read the case study</a>
+          <a class="btn btn-line" href="#contact" id="m-hire" data-hire-cta="modal">Start a project</a>
         </div>
       </div>
     </dialog>
