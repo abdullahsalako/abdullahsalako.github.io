@@ -20,7 +20,7 @@
   function applyTheme(t) {
     root.setAttribute('data-theme', t);
     var meta = $('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', t === 'light' ? '#f6f2ea' : '#0a0e16');
+    if (meta) meta.setAttribute('content', t === 'light' ? '#f6f2ea' : '#0c0b0a');
     if (themeBtn) themeBtn.setAttribute('aria-label', t === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
   }
   applyTheme(root.getAttribute('data-theme') || 'dark');
