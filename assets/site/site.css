@@ -39,7 +39,14 @@
   --orange-500: #ff5f00; --orange-600: #e04f00; --orange-700: #b83f00; --orange-800: #8c3000; --orange-900: #5c2000; --orange-950: #381400;
   --accent-text: var(--orange-300);          /* orange used as text */
   --orange-tint: rgba(255, 95, 0, 0.14);     /* hover wash */
-  --blue: #93a8cf;
+  /* SECONDARY RANGE — muted blue, eleven steps. 400 is the fill colour used on dark;
+     in light theme the fill moves to 500. 950 is the text colour on every blue fill. */
+  --blue-50: #f1f4fa; --blue-100: #dde4f2; --blue-200: #c3d0e8; --blue-300: #a9bbdc; --blue-400: #93a8cf;
+  --blue-500: #7a92c0; --blue-600: #5f78a8; --blue-700: #485f8a; --blue-800: #344869; --blue-900: #223048; --blue-950: #141c2b;
+  --blue: var(--blue-400);
+  --on-blue: var(--blue-950);
+  --blue-text: var(--blue-300);              /* blue used as text */
+  --blue-tint: rgba(147, 168, 207, 0.16);    /* hover wash */
   --stone: #c9c4ba;
   --sand: #e6c79c;
   --sage: #9db8a3;
@@ -82,7 +89,7 @@
   --focus: var(--orange-700);
   --accent-text: var(--orange-700);
   --orange-tint: rgba(255, 95, 0, 0.12);
-  --blue: #7f97c4; --stone: #b3ada0; --sand: #d8b57f; --sage: #86a58d;
+  --blue: var(--blue-500); --blue-text: var(--blue-700); --blue-tint: rgba(95, 120, 168, 0.14); --stone: #b3ada0; --sand: #d8b57f; --sage: #86a58d;
 }
 
 /* 2. BASE ------------------------------------------------------------------ */
@@ -613,3 +620,50 @@ dialog.modal[open] { animation: pop 0.25s var(--ease); }
 .drawer nav a[aria-current='true'] { background: var(--orange-950); color: var(--orange-50); }
 .drawer .btn { --bb: var(--orange-950); --bf: var(--orange-50); }
 .p-card:hover, .p-card:focus-within { box-shadow: 8px 8px 0 var(--orange-500); }
+
+/* ==========================================================================
+   SECONDARY RANGE applied — the Story chapters (About, Work, Case study)
+   ========================================================================== */
+#about, #work, #case-study { --wash: var(--blue-tint); }
+.acc-btn:hover, .skill:hover, .hbar-row:hover, .cs-nav a:hover { background: var(--wash, var(--orange-tint)); }
+
+/* text on blue fills is always the deepest blue, never plain black */
+.stat[style*='g-story'], .metric[style*='g-story'], .story .stat[style*='g-story'] .stat-value { color: var(--on-blue); }
+.story .stat[style*='g-story'] .stat-label, .story .stat[style*='g-story'] .stat-value { color: var(--on-blue); }
+.stat[style*='g-story']:hover { box-shadow: 6px 6px 0 var(--blue-700); }
+.metric[style*='g-story']:hover { box-shadow: 6px 6px 0 var(--blue-700); }
+
+/* framed media: deep-blue captions and chips */
+.portrait figcaption, .ba .tag-l { background: var(--blue-950); color: var(--blue-50); }
+.portrait { box-shadow: inset 0 0 0 2px var(--blue-300); }
+.reel-frame { box-shadow: inset 0 0 0 2px var(--blue-300); }
+
+/* featured project card: a blue field with deep-blue ink */
+.p-feature { color: var(--on-blue); }
+.p-feature .p-body p { color: var(--on-blue); }
+.p-feature .p-cat { background: var(--blue-950); color: var(--blue-50); }
+.p-feature .chip { border-color: var(--blue-800); color: var(--blue-900); }
+.p-feature .btn:not(.btn-line) { --bb: var(--blue-950); --bf: var(--blue-50); }
+.p-feature .btn:not(.btn-line):hover { --bb: var(--blue-800); }
+.p-feature .btn-line { color: var(--blue-950); border-color: var(--blue-950); }
+.p-feature .btn-line:hover { background: var(--blue-950); color: var(--blue-50); }
+.p-feature blockquote { border-left-color: var(--blue-800); }
+
+/* work filters take the chapter colour on hover */
+#work .filter:hover { background: var(--blue-400); border-color: var(--blue-400); color: var(--blue-950); }
+:root[data-theme='light'] #work .filter:hover { background: var(--blue-500); border-color: var(--blue-500); }
+
+/* case study: the step markers climb the blue range; the accent step stays orange */
+.tl.five li:nth-child(1) { --c: var(--blue-200); --on-mk: var(--blue-950); }
+.tl.five li:nth-child(2) { --c: var(--blue-300); --on-mk: var(--blue-950); }
+.tl.five li:nth-child(3) { --c: var(--blue-400); --on-mk: var(--blue-950); }
+.tl.five li:nth-child(5) { --c: var(--blue-500); --on-mk: var(--blue-950); }
+.cs-nav a[aria-current='true'] { background: var(--blue-400); border-color: var(--blue-400); color: var(--blue-950); }
+:root[data-theme='light'] .cs-nav a[aria-current='true'] { background: var(--blue-500); border-color: var(--blue-500); }
+.cs-block h3 .n { background: var(--blue-950); color: var(--blue-50); }
+:root[data-theme='light'] .cs-block h3 .n { background: var(--blue-900); }
+.callout { border-left-color: var(--blue-500); }
+.hbar-fill[style*='sw-cool'] { background: var(--blue-400); }
+
+/* blue used as small text (kickers in Story sections) */
+#about .kicker, #work .kicker, #case-study .kicker { color: var(--blue-text); }
