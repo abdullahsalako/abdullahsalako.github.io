@@ -32,6 +32,13 @@
      Disciplines: Editing = blue · Color = orange · Audio = sage · Motion = sand · Strategy = stone
      Neutral ink/charcoal carries everything else. */
   --orange: #ff5f00;
+  /* PRIMARY RANGE — one hue, eleven steps. 500 is the brand orange.
+     50-200 tints (soft fills, focus) · 300-400 light (text on dark, hover) ·
+     600-700 pressed / text on light · 800-950 deep (shadows, text on orange) */
+  --orange-50: #fff3ea; --orange-100: #ffe0cb; --orange-200: #ffc29a; --orange-300: #ff9e63; --orange-400: #ff7d33;
+  --orange-500: #ff5f00; --orange-600: #e04f00; --orange-700: #b83f00; --orange-800: #8c3000; --orange-900: #5c2000; --orange-950: #381400;
+  --accent-text: var(--orange-300);          /* orange used as text */
+  --orange-tint: rgba(255, 95, 0, 0.14);     /* hover wash */
   --blue: #93a8cf;
   --stone: #c9c4ba;
   --sand: #e6c79c;
@@ -42,7 +49,7 @@
   /* swatches for the frame-data chart: the colours being measured */
   --sw-neutral: #8a857d; --sw-skin: #c4895a; --sw-wall: var(--sage); --sw-cool: var(--blue); --sw-red: var(--orange);
   --on-color: #16130f;        /* text on any colour field */
-  --focus: #ffd0a8;
+  --focus: var(--orange-200);
 
   --font-display: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -72,7 +79,9 @@
   --hl-fg: #ffffff;
   --hl2-bg: #ffffff;
   --hl2-fg: #1a1819;
-  --focus: #b43d00;
+  --focus: var(--orange-700);
+  --accent-text: var(--orange-700);
+  --orange-tint: rgba(255, 95, 0, 0.12);
   --blue: #7f97c4; --stone: #b3ada0; --sand: #d8b57f; --sage: #86a58d;
 }
 
@@ -540,3 +549,67 @@ dialog.modal[open] { animation: pop 0.25s var(--ease); }
 :root[data-theme='light'] .p-feature,
 :root[data-theme='light'] .tag { outline: 2px solid var(--ink); outline-offset: -2px; }
 :root[data-theme='light'] .tag { outline-offset: 0; }
+
+/* ==========================================================================
+   PRIMARY RANGE applied — hover / pressed / text / wash / depth
+   ========================================================================== */
+::selection { background: var(--orange-300); color: var(--orange-950); }
+.btn-or:hover { --bb: var(--orange-400); }
+.btn-or:active { --bb: var(--orange-600); }
+.link-arrow { border-bottom-color: var(--orange-500); }
+.link-arrow:hover { background: var(--orange-400); color: var(--orange-950); }
+.bar-tab button:hover { color: var(--orange-700); }
+.hbar-row.hot .lbl, .cs-details summary::after { color: var(--accent-text); }
+.hbar-row.hot .hbar-fill { outline-color: var(--orange-400); }
+.reel:hover .reel-play, .reel:focus-visible .reel-play { background: var(--orange-400); }
+.filter[aria-pressed='true']:hover { background: var(--orange-400); border-color: var(--orange-400); color: var(--orange-950); }
+
+/* soft washes on interactive rows */
+.acc-btn { transition: background-color 0.2s; }
+.acc-btn:hover { background: var(--orange-tint); }
+.skill { transition: background-color 0.2s; }
+.skill:hover { background: var(--orange-tint); }
+.hbar-row { transition: background-color 0.2s; }
+.hbar-row:hover { background: var(--orange-tint); }
+.cs-nav a:hover { background: var(--orange-tint); }
+.tl li:hover h4 { color: var(--accent-text); }
+
+/* colour discipline shows the whole range: light → brand → deep */
+.skill-cat[style*='d-color'] .pips i.on:nth-child(1) { background: var(--orange-300); }
+.skill-cat[style*='d-color'] .pips i.on:nth-child(2) { background: var(--orange-500); }
+.skill-cat[style*='d-color'] .pips i.on:nth-child(3) { background: var(--orange-700); }
+.skill-cat[style*='d-color'] h3 .tag { color: var(--orange-950); }
+
+/* waveform: two tones */
+.wave i:nth-child(7n+3) { background: var(--orange-300); opacity: 0.85; }
+.wave i:nth-child(7n) { background: var(--orange-500); }
+
+/* hero + marquee */
+.hero-tag { background: var(--orange-500); color: var(--orange-950); }
+.hero-sub { border-left-color: var(--orange-500); }
+.marquee { background: var(--orange-500); color: var(--orange-950); border-block: 2px solid var(--orange-800); }
+.marquee-track span::after { color: var(--orange-800); }
+.ramp { display: flex; height: 26px; }
+.ramp span { flex: 1; background: var(--r); transition: flex 0.35s var(--ease); }
+.ramp span:hover { flex: 3; }
+.ramp-cap { display: flex; justify-content: space-between; gap: var(--s-4); padding: var(--s-2) var(--gutter); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); background: var(--bg); }
+
+/* orange fields (contact + drawer): deep orange instead of near-black */
+.contact, .drawer-panel { color: var(--orange-950); }
+.contact .chap-lede, .contact p, .form-note { color: var(--orange-900); }
+.contact .tag { --c: var(--orange-950); color: var(--orange-50); }
+.contact-title .hl { background: var(--orange-950); color: var(--orange-50); }
+.links a { border-color: var(--orange-950); }
+.links a:hover { background: var(--orange-950); color: var(--orange-50); }
+.contact .btn-line { color: var(--orange-950); border-color: var(--orange-950); }
+.contact .btn-line:hover { background: var(--orange-950); color: var(--orange-50); }
+.contact-card { box-shadow: 10px 10px 0 var(--orange-900); }
+.contact-card .btn { --bb: var(--orange-950); --bf: var(--orange-50); }
+.contact-card .btn:hover { box-shadow: 5px 5px 0 var(--orange-500); background: var(--orange-800); border-color: var(--orange-800); }
+.field input, .field select, .field textarea { border-color: var(--orange-950); }
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { box-shadow: 4px 4px 0 var(--orange-600); }
+.drawer nav a { border-bottom-color: var(--orange-700); }
+.drawer-top button { background: var(--orange-950); color: var(--orange-50); }
+.drawer nav a[aria-current='true'] { background: var(--orange-950); color: var(--orange-50); }
+.drawer .btn { --bb: var(--orange-950); --bf: var(--orange-50); }
+.p-card:hover, .p-card:focus-within { box-shadow: 8px 8px 0 var(--orange-500); }
