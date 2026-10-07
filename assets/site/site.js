@@ -82,7 +82,7 @@
 
   function catLabel(id) { var c = S.categories.filter(function (x) { return x.id === id; })[0]; return c ? c.label : id; }
 
-  // category chip takes its discipline colour: editing formats = sand, social = strategy/clay, colour = orange, motion = dusk
+  // category chip takes its discipline colour: editing formats = blue, social = strategy/stone, colour = orange, motion = sand
   var TONE = { youtube: 'd-editing', 'short-form': 'd-editing', social: 'd-strategy', color: 'd-color', motion: 'd-motion' };
   function tone(p) { return TONE[p.categories[0]] || 'd-color'; }
 
