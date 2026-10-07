@@ -82,6 +82,10 @@
 
   function catLabel(id) { var c = S.categories.filter(function (x) { return x.id === id; })[0]; return c ? c.label : id; }
 
+  // category chip takes its discipline colour: editing formats = sand, social = strategy/clay, colour = orange, motion = dusk
+  var TONE = { youtube: 'd-editing', 'short-form': 'd-editing', social: 'd-strategy', color: 'd-color', motion: 'd-motion' };
+  function tone(p) { return TONE[p.categories[0]] || 'd-color'; }
+
   function cardHtml(p) {
     var feat = !!p.featured;
     var chips = (p.tools || []).map(function (t) { return '<span class="chip">' + esc(t) + '</span>'; }).join('');
@@ -91,7 +95,7 @@
       '<span class="mini-play" aria-hidden="true">' + icon('i-play') + '</span></button>';
     var body = '<div class="p-body">' +
       (feat ? '<span class="flag">★ Featured project</span>' : '') +
-      '<p class="p-cat">' + esc(p.categoryLabel) + (p.year ? ' · ' + esc(p.year) : '') + '</p>' +
+      '<p class="p-cat" style="--c:var(--' + tone(p) + ')">' + esc(p.categoryLabel) + (p.year ? ' · ' + esc(p.year) : '') + '</p>' +
       '<h3>' + esc(p.title) + '</h3><p>' + esc(p.description) + '</p>' +
       (feat ? '<blockquote>Case-study preview: a restrained palette, skin tones protected, and one saturated detail carrying the whole emotional shift.</blockquote>' : '') +
       '<div class="p-reveal"><div><div class="chips" aria-label="Tools used">' + chips + '</div>' +
@@ -170,7 +174,7 @@
   /* ---------- skills ---------- */
   var LEVELS = { 1: 'Developing', 2: 'Working knowledge', 3: 'Comfortable' };
   var skillsGrid = $('#skills-grid');
-  var SKILL_COLOR = { editing: 'lav', color: 'orange', audio: 'green', motion: 'pink', strategy: 'yellow' };
+  var SKILL_COLOR = { editing: 'd-editing', color: 'd-color', audio: 'd-audio', motion: 'd-motion', strategy: 'd-strategy' };
   if (skillsGrid) {
     skillsGrid.innerHTML = S.skills.map(function (c, idx) {
       var span = idx < 3 ? 'col-4 col-6-t' : 'col-6 col-6-t';
@@ -179,7 +183,7 @@
         return '<li class="skill"><div class="row"><span>' + esc(it[0]) + '</span><span class="level">' + LEVELS[it[1]] + '</span></div>' +
           '<div class="pips" role="img" aria-label="' + esc(it[0]) + ': ' + LEVELS[it[1]] + '">' + pips + '</div></li>';
       }).join('');
-      return '<article class="skill-cat reveal ' + span + '" style="--c:var(--' + (SKILL_COLOR[c.id] || 'orange') + ');--d:' + idx * 60 + 'ms"><h3><span class="tag" style="--rot:' + (idx % 2 ? 1.5 : -1.5) + 'deg">' + esc(c.title) + '</span></h3><ul>' + items + '</ul></article>';
+      return '<article class="skill-cat reveal ' + span + '" style="--c:var(--' + (SKILL_COLOR[c.id] || 'd-color') + ');--d:' + idx * 60 + 'ms"><h3><span class="tag" style="--rot:' + (idx % 2 ? 1.5 : -1.5) + 'deg">' + esc(c.title) + '</span></h3><ul>' + items + '</ul></article>';
     }).join('');
   }
 
