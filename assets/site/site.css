@@ -14,8 +14,8 @@
   --hero: #444242;
   --surface: #2f2c2d;
   --ink: #f4efe6;             /* main text */
-  --ink-2: #bdb7ad;           /* secondary text */
-  --ink-3: #8e887e;           /* tertiary */
+  --ink-2: #c9c4ba;           /* secondary text  (stone-300) */
+  --ink-3: #928c80;           /* tertiary        (stone-500) */
   --line: rgba(244, 239, 230, 0.16);
   --hl-bg: #ffffff;           /* text-on-box highlight */
   --hl-fg: #1a1819;
@@ -47,7 +47,14 @@
   --on-blue: var(--blue-950);
   --blue-text: var(--blue-300);              /* blue used as text */
   --blue-tint: rgba(147, 168, 207, 0.16);    /* hover wash */
-  --stone: #c9c4ba;
+  /* SOFT GREY RANGE — warm stone, eleven steps. 300 is the fill colour used on dark;
+     in light theme the fill moves to 400. 950 is the text colour on every stone fill. */
+  --stone-50: #f7f5f1; --stone-100: #ece9e2; --stone-200: #ddd9d0; --stone-300: #c9c4ba; --stone-400: #b0aa9e;
+  --stone-500: #928c80; --stone-600: #756f64; --stone-700: #5a554c; --stone-800: #413d37; --stone-900: #2b2825; --stone-950: #1a1816;
+  --stone: var(--stone-300);
+  --on-stone: var(--stone-950);
+  --stone-text: var(--stone-300);            /* grey used as text */
+  --stone-tint: rgba(201, 196, 186, 0.12);   /* hover wash */
   --sand: #e6c79c;
   --sage: #9db8a3;
   --maroon: #6e1426;
@@ -89,7 +96,7 @@
   --focus: var(--orange-700);
   --accent-text: var(--orange-700);
   --orange-tint: rgba(255, 95, 0, 0.12);
-  --blue: var(--blue-500); --blue-text: var(--blue-700); --blue-tint: rgba(95, 120, 168, 0.14); --stone: #b3ada0; --sand: #d8b57f; --sage: #86a58d;
+  --blue: var(--blue-500); --blue-text: var(--blue-700); --blue-tint: rgba(95, 120, 168, 0.14); --stone: var(--stone-400); --stone-text: var(--stone-700); --stone-tint: rgba(117, 111, 100, 0.14); --sand: #d8b57f; --sage: #86a58d;
 }
 
 /* 2. BASE ------------------------------------------------------------------ */
@@ -667,3 +674,43 @@ dialog.modal[open] { animation: pop 0.25s var(--ease); }
 
 /* blue used as small text (kickers in Story sections) */
 #about .kicker, #work .kicker, #case-study .kicker { color: var(--blue-text); }
+
+/* ==========================================================================
+   SOFT GREY RANGE applied — the Offer chapters (Services, Skills, Process, Proof)
+   ========================================================================== */
+#services, #skills, #process, #proof { --wash: var(--stone-tint); }
+#services .kicker, #skills .kicker, #process .kicker, #proof .kicker { color: var(--stone-text); }
+
+/* text on stone fills is always the deepest stone, never plain black */
+#services .chap-no .tag, #skills .chap-no .tag, #process .chap-no .tag, #proof .chap-no .tag, .c-offer { color: var(--on-stone); }
+.form-status { color: var(--on-stone); }
+.ghost { border-color: var(--stone-500) !important; }
+.ghost .stamp { background: var(--stone-300); color: var(--on-stone); }
+
+/* strategy discipline shows the whole range: soft → mid → light (reversed on light theme) */
+.skill-cat[style*='d-strategy'] .pips i.on:nth-child(1) { background: var(--stone-500); }
+.skill-cat[style*='d-strategy'] .pips i.on:nth-child(2) { background: var(--stone-300); }
+.skill-cat[style*='d-strategy'] .pips i.on:nth-child(3) { background: var(--stone-100); }
+:root[data-theme='light'] .skill-cat[style*='d-strategy'] .pips i.on:nth-child(1) { background: var(--stone-400); }
+:root[data-theme='light'] .skill-cat[style*='d-strategy'] .pips i.on:nth-child(2) { background: var(--stone-600); }
+:root[data-theme='light'] .skill-cat[style*='d-strategy'] .pips i.on:nth-child(3) { background: var(--stone-800); }
+.skill-cat[style*='d-strategy'] h3 .tag { color: var(--on-stone); }
+.svc[style*='d-strategy']:hover { box-shadow: 8px 8px 0 var(--stone-500); }
+
+/* process: the step markers climb the grey range; delivery stays orange */
+#process .tl li:nth-child(1) { --c: var(--stone-200); --on-mk: var(--stone-950); }
+#process .tl li:nth-child(2) { --c: var(--stone-300); --on-mk: var(--stone-950); }
+#process .tl li:nth-child(3) { --c: var(--stone-400); --on-mk: var(--stone-950); }
+#process .tl li:nth-child(4) { --c: var(--stone-500); --on-mk: var(--stone-950); }
+#process .tl li:nth-child(5) { --c: var(--stone-600); --on-mk: var(--stone-50); }
+#process .tl::before { background: var(--stone-500); }
+#process .tc, #process .tl p { color: var(--ink-2); }
+
+/* footer sits on the deepest stone */
+footer.site { background: var(--stone-950); border-top-color: var(--stone-700); color: var(--stone-300); }
+footer.site .foot-top h3 { color: var(--stone-50); }
+footer.site .foot a:hover { color: var(--stone-50); }
+footer.site .foot-bottom { border-top-color: var(--stone-800); }
+:root[data-theme='light'] footer.site { background: var(--stone-100); border-top-color: var(--stone-500); color: var(--stone-700); }
+:root[data-theme='light'] footer.site .foot-top h3, :root[data-theme='light'] footer.site .foot a:hover { color: var(--stone-950); }
+:root[data-theme='light'] footer.site .foot-bottom { border-top-color: var(--stone-300); }
