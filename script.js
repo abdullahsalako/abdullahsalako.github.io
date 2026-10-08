@@ -309,6 +309,25 @@ document.addEventListener('click', function (e) {
   });
 });
 
+/* ---------- analytics: journal clicks ----------
+   Sends a GA4 `journal_click` event for every link to a journal post
+   (/journal/<slug>/), wherever it appears: the journal list, the homepage,
+   related-post links. Posts added later are covered automatically. Links to
+   the journal index itself (/journal/) are not posts and are ignored. */
+document.addEventListener('click', function (e) {
+  var link = e.target.closest && e.target.closest('a[href]');
+  if (!link || typeof gtag !== 'function') return;
+  var m = link.pathname.match(/^\/journal\/([^\/]+)\/?(?:index\.html)?$/);
+  if (!m || link.hostname !== location.hostname) return;
+  var heading = link.querySelector('h1, h2, h3, h4');
+  gtag('event', 'journal_click', {
+    post_slug: m[1],
+    post_title: (heading || link).textContent.replace(/\s+/g, ' ').trim().slice(0, 100),
+    link_location: link.closest('.journal-list') ? 'journal_list' : link.closest('footer') ? 'footer' : 'page_body',
+    page_path: location.pathname
+  });
+});
+
 /* ---------- contact form (contact.html) ---------- */
 var form = document.querySelector('.contact-form');
 form && form.addEventListener('submit', function (event) {
