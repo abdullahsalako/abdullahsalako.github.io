@@ -16,7 +16,7 @@ sourceUrl: 'https://salakoaderemi.substack.com/p/there-is-no-light-at-the-end-of
 
 It’s the hope that kills. I don’t want my happiness to be tied to an event, because even when that event finally happens, the happiness won’t last. It will only create a void waiting for the next event to fill it up.
 
-So I’d rather learn to enjoy the pursuit, enjoy the tunneling process. I’d rather internalize how to dwell in the tunnel with zero expectations, finding meaning in becoming rather than constantly waiting for arrival. And if life rounds up, I’ll die like the *[man in the arena](https://www.theodorerooseveltcenter.org/encyclopedia/culture-and-society/man-in-the-arena/)*
+So I’d rather learn to enjoy the pursuit, enjoy the tunneling process. I’d rather internalize how to dwell in the tunnel with zero expectations, finding meaning in becoming rather than constantly waiting for arrival. And if life rounds up, I’ll die like the *man in the arena* ([read it here](https://www.theodorerooseveltcenter.org/encyclopedia/culture-and-society/man-in-the-arena/))
 
 You can’t wait for life to get easier before you decide to be happy. Life tends to hold back its goodness from people who clamor for it..
 
