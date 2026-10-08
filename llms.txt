@@ -13,6 +13,7 @@
 
 ## Journal
 
+- [There Is No Light at the End of the Tunnel](https://aderemisalako.me/journal/there-is-no-light-at-the-end-of-the-tunnel/): Stop waiting to be happy
 - [The DaVinci Resolve Node Workflow for Cinematic Skin Tones](https://aderemisalako.me/journal/node-workflow/): How I build a DaVinci Resolve node tree for cinematic skin tones: exposure balance, LOG transform, parallel HSL isolation and a soft grain overlay.
 - [Are Men Polygamous in Nature?](https://aderemisalako.me/journal/are-men-polygamous-in-nature/): What if monogamy is the exception, not the rule?
 - [27, in Retrospect](https://aderemisalako.me/journal/27-in-retrospect/): You don't notice the climb until you look down. A birthday reflection on turning 28, expectations and trying new things, by Aderemi A. Salako.
