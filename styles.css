@@ -17,7 +17,7 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 .skip-link{position:fixed;top:-100px;left:20px;z-index:200;background:var(--ink);color:var(--paper);padding:10px 14px;font:500 13px var(--body)}
 .skip-link:focus{top:10px}
 
-/* intro preloader (index.html) — shown only while html.intro-on is set */
+/* intro preloader (intro.js, every page) — shown only while html.intro-on is set */
 .intro{display:none;position:fixed;inset:0;z-index:400;align-items:center;justify-content:center;background:var(--paper);overflow:hidden}
 .intro-on .intro{display:flex}
 .intro-on body{overflow:hidden}
