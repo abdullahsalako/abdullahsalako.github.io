@@ -225,7 +225,7 @@ function writeLlms(published) {
   const posts = published.map((p) => `- [${p.title}](${p.url}): ${p.description}`).join('\n');
   fs.writeFileSync(path.join(ROOT, 'llms.txt'), `# Remi Visuals — ${AUTHOR}
 
-> Portfolio and journal of ${AUTHOR} (Remi Visuals), a video editor and colourist working in DaVinci Resolve. Cinematic video editing, colour grading, motion design, creative direction and social content. Based in Abuja, Nigeria.
+> Portfolio and journal of ${AUTHOR} (Remi Visuals), a video editor and colourist working in DaVinci Resolve. Cinematic video editing, colour grading, motion design, creative direction and social content. Based in Nigeria, working worldwide.
 
 ## Pages
 
