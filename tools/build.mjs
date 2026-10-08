@@ -81,13 +81,18 @@ function fill(tpl, vars) {
   return tpl.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in vars ? vars[k] : ''));
 }
 
+const SUBSCRIBE_URL = 'https://salakoaderemi.substack.com/?r=7bt26&utm_campaign=subscribe-page-share-screen&utm_medium=web'.replace(/&/g, '&amp;');
+
 function writePost(post, tpl) {
   // marked escapes apostrophes as &#39;; plain ones are valid HTML and easier to read
   let body = marked.parse(post.content).replace(/&#39;/g, "'");
   // closing line: related links (footnote, Markdown) and/or the Substack source
   const source = post.sourceUrl ? `Originally published on <a href="${esc(post.sourceUrl)}" target="_blank" rel="noopener">Substack</a>.` : '';
   const note = post.footnote ? marked.parseInline(String(post.footnote)) : '';
-  if (note || source) body += `\n<p class="article-source">${[note, source].filter(Boolean).join(' ')}</p>`;
+  // every journal post ends with a link to subscribe to the Substack
+  const subscribe = `<a href="${SUBSCRIBE_URL}" target="_blank" rel="noopener">Subscribe to my Substack</a> to get new posts as I write them.`;
+  const closing = [note, source].filter(Boolean).join(' ');
+  body += `\n<p class="article-source">${subscribe}${closing ? `<br />${closing}` : ''}</p>`;
   const person = { '@type': 'Person', '@id': `${SITE}/#person`, name: AUTHOR };
   const jsonLd = JSON.stringify({
     '@context': 'https://schema.org',
