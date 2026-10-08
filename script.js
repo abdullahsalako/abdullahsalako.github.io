@@ -328,6 +328,20 @@ document.addEventListener('click', function (e) {
   });
 });
 
+/* ---------- analytics: journal index clicks ----------
+   Sends a GA4 `journal_index_click` event for links to the journal list itself
+   (/journal/), such as the Journal item in the nav and footer. Links to
+   individual posts are covered by `journal_click` above. */
+document.addEventListener('click', function (e) {
+  var link = e.target.closest && e.target.closest('a[href]');
+  if (!link || typeof gtag !== 'function') return;
+  if (link.hostname !== location.hostname || !/^\/journal\/?(?:index\.html)?$/.test(link.pathname)) return;
+  gtag('event', 'journal_index_click', {
+    link_location: link.closest('footer') ? 'footer' : link.closest('header, nav') ? 'nav' : 'page_body',
+    page_path: location.pathname
+  });
+});
+
 /* ---------- contact form (contact.html) ---------- */
 var form = document.querySelector('.contact-form');
 form && form.addEventListener('submit', function (event) {
