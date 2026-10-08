@@ -21,3 +21,5 @@ So I’d rather learn to enjoy the pursuit, enjoy the tunneling process. I’d r
 You can’t wait for life to get easier before you decide to be happy. Life tends to hold back its goodness from people who clamor for it..
 
 **Those who love the journey go farther.**
+
+[Subscribe to my Substack](https://salakoaderemi.substack.com/?r=7bt26&utm_campaign=subscribe-page-share-screen&utm_medium=web) to get new posts as I write them.
