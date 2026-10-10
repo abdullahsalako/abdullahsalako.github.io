@@ -32,6 +32,9 @@ const CONFIG = {
   // --- Menu overlay (same dome, quicker)
   menu: { duration: 0.95, ease: 'power3.inOut', curve: 60, itemStagger: 0.06 },
 
+  cursor: { follow: 0.18 },              // 0-1, higher = snappier
+  recede: { scale: 0.06, lift: 3, fade: 0.7 },   // hero shrinks / lifts (vh) / fades as the next section slides over
+
   failsafe: 9   // seconds; if something stalls, force the page visible
 };
 
@@ -101,6 +104,40 @@ function initReveals() {
 function startPulse(dot) {
   if (reduced || !dot || !window.gsap) return;
   gsap.to(dot, { scale: CONFIG.content.dot.pulseScale, opacity: 0.55, duration: CONFIG.content.dot.pulseDuration, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+}
+
+/* ---- cursor dot ------------------------------------------------------------ */
+function initCursor() {
+  const el = $('#cursor');
+  if (!el || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  let tx = 0, ty = 0, x = 0, y = 0, seen = false;
+  const k = reduced ? 1 : CONFIG.cursor.follow;
+  window.addEventListener('pointermove', (e) => {
+    if (e.pointerType === 'touch') return;
+    tx = e.clientX; ty = e.clientY;
+    if (!seen) { x = tx; y = ty; seen = true; el.classList.add('on'); }
+    el.classList.toggle('big', !!e.target.closest('.headline'));
+  });
+  document.documentElement.addEventListener('pointerleave', () => { el.classList.remove('on'); seen = false; });
+  (function tick() {
+    x += (tx - x) * k; y += (ty - y) * k;
+    el.style.transform = `translate(${x}px, ${y}px)`;
+    requestAnimationFrame(tick);
+  })();
+}
+
+/* ---- hero recedes as the next section slides over it ------------------------- */
+function initRecede() {
+  const hero = $('.hero');
+  if (!hero || reduced) return;
+  const { scale, lift, fade } = CONFIG.recede;
+  const update = () => {
+    const p = Math.min(1, Math.max(0, window.scrollY / window.innerHeight));
+    hero.style.transform = p ? `scale(${1 - p * scale}) translateY(${-p * lift}vh)` : '';
+    hero.style.opacity = p ? String(1 - p * fade) : '';
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 }
 
 /* ---- menu ---------------------------------------------------------------- */
@@ -236,6 +273,8 @@ function boot() {
   const words = splitHeadline();
   initMenu();
   initReveals();
+  initCursor();
+  initRecede();
 
   const loader = $('#loader');
   const playing = root.classList.contains('intro-pending');
