@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#F5F4F0" />
+    <script>
+      /* Decide BEFORE first paint whether the opening sequence plays, so the page never flashes.
+         Plays once per session; skipped for reduced-motion. Add ?intro to the URL to replay it any time. */
+      (function () {
+        var d = document.documentElement, reduce = false, seen = false;
+        d.classList.add('js');
+        try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+        try { seen = sessionStorage.getItem('portfolio-intro-played') === '1'; } catch (e) {}
+        if (/[?&]intro\b/.test(location.search)) seen = false;
+        if (reduce) d.classList.add('reduced');
+        else if (seen) d.classList.add('seen');
+        else d.classList.add('intro-pending');
+      })();
+    </script>
+    <noscript><style>.loader { display: none !important; } .js [data-reveal] { opacity: 1 !important; transform: none !important; }</style></noscript>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TH2S1CQT9B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-TH2S1CQT9B');
+    </script>
+    <meta name="description" content="Freelance video editor, DaVinci Resolve colourist and content strategist in Nigeria, editing YouTube, short-form and brand films for creators and brands." />
+    <title>Aderemi Salako | Video Editor &amp; Colourist in Nigeria</title>
+    <link rel="canonical" href="https://aderemisalako.me/" />
+    <meta property="og:title" content="Aderemi A. Salako" />
+    <meta property="og:description" content="Remi Visuals: video editing, DaVinci Resolve colour grading and content strategy for creators, brands and agencies. Based in Nigeria, working worldwide." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aderemisalako.me/" />
+    <meta property="og:site_name" content="Remi Visuals" />
+    <meta property="og:locale" content="en_NG" />
+    <meta property="og:image" content="https://aderemisalako.me/assets/og-share-v6.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@remmivisuals" />
+    <meta name="twitter:title" content="Aderemi A. Salako" />
+    <meta name="twitter:description" content="Remi Visuals: video editing, DaVinci Resolve colour grading and content strategy for creators, brands and agencies. Based in Nigeria, working worldwide." />
+    <meta name="twitter:image" content="https://aderemisalako.me/assets/og-share-v6.jpg" />
+    <link rel="icon" type="image/png" href="remi-visuals-icon.png" />
+    <link rel="apple-touch-icon" href="remi-visuals-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700;800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://aderemisalako.me/#website",
+            "url": "https://aderemisalako.me/",
+            "name": "Remi Visuals",
+            "alternateName": "Aderemi A. Salako",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://aderemisalako.me/#person" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://aderemisalako.me/#person",
+            "name": "Aderemi A. Salako",
+            "alternateName": ["Aderemi Salako", "Salako Abdullah", "Remi Visuals"],
+            "jobTitle": "Video Editor, Colourist and Content Strategist",
+            "description": "Freelance video editor, DaVinci Resolve colourist and content strategist based in Nigeria, working with creators, brands and agencies remotely and on contract.",
+            "url": "https://aderemisalako.me/",
+            "image": "https://aderemisalako.me/headshot.jpg",
+            "email": "mailto:hello@aderemisalako.me",
+            "address": { "@type": "PostalAddress", "addressCountry": "NG" },
+            "knowsAbout": ["Video editing", "DaVinci Resolve", "Colour grading", "YouTube video editing", "Short-form video", "Content strategy", "Motion graphics", "Fusion compositing"],
+            "worksFor": { "@id": "https://aderemisalako.me/#business" },
+            "sameAs": [
+              "https://www.linkedin.com/in/abdullah-salako-b43461252/",
+              "https://x.com/remmivisuals",
+              "https://github.com/abdullahsalako",
+              "https://www.youtube.com/@aderemi.salako",
+              "https://www.instagram.com/aderemi.salako/"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://aderemisalako.me/#business",
+            "name": "Remi Visuals",
+            "url": "https://aderemisalako.me/",
+            "image": "https://aderemisalako.me/assets/og-share-v6.jpg",
+            "logo": "https://aderemisalako.me/remi-visuals-icon.png",
+            "description": "Video editing, DaVinci Resolve colour grading, YouTube and short-form editing, and content strategy by Aderemi A. Salako.",
+            "email": "hello@aderemisalako.me",
+            "founder": { "@id": "https://aderemisalako.me/#person" },
+            "address": { "@type": "PostalAddress", "addressCountry": "NG" },
+            "areaServed": [{ "@type": "Country", "name": "Nigeria" }, "Worldwide"],
+            "knowsLanguage": "en",
+            "makesOffer": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "YouTube video editing", "url": "https://aderemisalako.me/services#youtube-editing" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Short-form and social video editing", "url": "https://aderemisalako.me/services#short-form" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Colour grading in DaVinci Resolve", "url": "https://aderemisalako.me/services#colour-grading" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content strategy", "url": "https://aderemisalako.me/services#content-strategy" } }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+
+    <!-- OPENING SEQUENCE: black + name -> orange dome -> cream dome -> site. Removed from the DOM when done. -->
+    <div class="loader" id="loader" aria-hidden="true">
+      <p class="loader__name"><span>Aderemi</span><span>Salako</span></p>
+      <svg class="dome dome--orange" id="domeOrange" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><path d="" /></svg>
+      <svg class="dome dome--cream" id="domeCream" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><path d="" /></svg>
+    </div>
+
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header" id="header">
+      <a class="brand" href="/" aria-label="Aderemi Salako, home">Aderemi Salako</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="headline">
+        <p class="keep"><span class="keep__dot" id="dot" aria-hidden="true"></span><span class="keep__label">Keep Scrolling :)</span></p>
+
+        <!-- Swap this tagline for your own. One idea per line. -->
+        <h1 class="headline" id="headline">
+          <span class="line">I shape raw footage</span>
+          <span class="line">into stories</span>
+          <span class="line">people</span>
+          <span class="line">remember.</span>
+        </h1>
+
+        <p class="hero__note">Video editor and content strategist creating engaging visual experiences for YouTube, social media, brands and digital platforms.</p>
+      </section>
+
+      <section class="intro" aria-label="Introduction">
+        <p class="lead" data-reveal>I&rsquo;m Aderemi, a self-taught DaVinci Resolve editor and colourist in Abuja, Nigeria. I cut and grade stories for creators and brands, remotely and on contract, with one rule: make the footage feel like it was always meant to look this way.</p>
+        <!-- Replace the grey block with a real still or reel: <img src="..." alt="..."> or <video src="..." poster="..." muted loop playsinline></video> -->
+        <figure class="media" data-reveal data-delay="1" role="img" aria-label="Placeholder for a showreel still">
+          <figcaption class="media__name">Aderemi Salako</figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <!-- MENU OVERLAY: the same orange dome transition as the opening -->
+    <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+      <svg class="dome" id="domeMenu" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><path d="" /></svg>
+      <div class="menu__inner">
+        <div class="menu__top">
+          <span class="label">Menu</span>
+          <button class="menu__close" id="menuClose" type="button">Close</button>
+        </div>
+        <ul class="menu__list">
+          <li class="menu__item"><a href="/"><small>01</small>Home</a></li>
+          <li class="menu__item"><a href="/portfolio"><small>02</small>Portfolio</a></li>
+          <li class="menu__item"><a href="/services"><small>03</small>Services</a></li>
+          <li class="menu__item"><a href="/blog/"><small>04</small>Blog</a></li>
+          <li class="menu__item"><a href="/about"><small>05</small>About</a></li>
+          <li class="menu__item"><a href="/contact"><small>06</small>Contact</a></li>
+        </ul>
+        <p class="menu__foot"><a href="mailto:hello@aderemisalako.me">hello@aderemisalako.me</a></p>
+      </div>
+    </div>
+
+  </body>
+</html>
