@@ -111,7 +111,7 @@ p { margin: 0; }
 .menu__top { display: flex; align-items: center; justify-content: space-between; }
 .menu__close { font: 600 13px/1 var(--font-body); letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 0 10px 16px; }
 .menu__list { list-style: none; margin: auto 0; padding: 4vh 0; }
-.menu__list a { display: inline-flex; align-items: baseline; gap: 0.35em; text-decoration: none; font: 700 clamp(56px, 11vw, 150px)/0.92 var(--font-display); letter-spacing: -0.03em; text-transform: uppercase; transition: color 0.5s var(--ease-out), transform 0.5s var(--ease-out); }
+.menu__list a { display: inline-flex; align-items: baseline; gap: 0.35em; text-decoration: none; font: 700 clamp(48px, min(11vw, 12.5vh), 150px)/0.92 var(--font-display); letter-spacing: -0.03em; text-transform: uppercase; transition: color 0.5s var(--ease-out), transform 0.5s var(--ease-out); }
 .menu__list a small { font: 600 12px/1 var(--font-body); letter-spacing: 0.1em; }
 .menu__list a:hover, .menu__list a:focus-visible { color: var(--bg); transform: translateX(0.12em); }
 .menu__foot { font: 500 13px/1.4 var(--font-body); }
