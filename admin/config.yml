@@ -1,14 +1,14 @@
 # Sveltia CMS — https://github.com/sveltia/sveltia-cms
-# Saving a post commits a Markdown file to content/journal/. The "Build journal"
-# GitHub Action then renders it to /journal/<slug> and GitHub Pages publishes it.
+# Saving a post commits a Markdown file to content/journal/. The "Build blog"
+# GitHub Action then renders it to /blog/<slug> and GitHub Pages publishes it.
 backend:
   name: github
   repo: abdullahsalako/abdullahsalako.github.io
   branch: main
   commit_messages:
-    create: "Add journal post: {{slug}}"
-    update: "Update journal post: {{slug}}"
-    delete: "Delete journal post: {{slug}}"
+    create: "Add blog post: {{slug}}"
+    update: "Update blog post: {{slug}}"
+    delete: "Delete blog post: {{slug}}"
     uploadMedia: "Upload {{path}}"
     deleteMedia: "Delete {{path}}"
 
@@ -21,7 +21,7 @@ public_folder: /assets/journal
 
 collections:
   - name: journal
-    label: Journal
+    label: Blog
     label_singular: Post
     folder: content/journal
     create: true
@@ -31,7 +31,7 @@ collections:
     identifier_field: title
     summary: "{{title}} · {{status}} · {{date}}"
     sortable_fields: [date, title, status]
-    preview_path: "journal/{{slug}}/"
+    preview_path: "blog/{{slug}}/"
     view_filters:
       - { label: Published, field: status, pattern: published }
       - { label: Drafts, field: status, pattern: draft }
@@ -41,7 +41,7 @@ collections:
       - name: slug
         label: URL slug
         widget: string
-        hint: "The post lives at aderemisalako.me/journal/<slug>/. Lowercase words joined by hyphens. Don't change it after publishing."
+        hint: "The post lives at aderemisalako.me/blog/<slug>/. Lowercase words joined by hyphens. Don't change it after publishing."
         pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Lowercase letters, numbers and hyphens only']
       - name: status
         label: Status
@@ -60,7 +60,7 @@ collections:
         hint: "One or two sentences (about 150 characters). Shown in Google, AI search answers and link previews."
       - { name: section, label: Schema section, widget: string, required: false, hint: "articleSection for search engines, e.g. Colour grading, Editing, AI tools, Personal. Defaults to the tag." }
       - { name: dek, label: Subtitle, widget: string, required: false }
-      - { name: excerpt, label: Journal list excerpt, widget: text, required: false, hint: "Defaults to the SEO description." }
+      - { name: excerpt, label: Blog list excerpt, widget: text, required: false, hint: "Defaults to the SEO description." }
       - { name: cover, label: Cover image, widget: image, required: false, hint: "Also used as the social preview image." }
       - { name: coverPosition, label: Cover crop position, widget: string, required: false, hint: "CSS object-position for the list thumbnail, e.g. 'left 35%'." }
       - { name: footnote, label: Closing links, widget: text, required: false, hint: "Optional Markdown shown in small type after the post, e.g. links to a related case study or service." }
