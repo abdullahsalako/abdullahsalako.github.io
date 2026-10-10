@@ -13,6 +13,8 @@
     marquee: true,         // .ao-marquee ticker
     curtain: false         // dome wipe between pages (turn on only if you want it site-wide)
   };
+  var tag = document.querySelector('script[src*="addons.js"][data-ao]');   // <script src="/addons/addons.js" data-ao="cursor,progress"> turns on only those
+  if (tag) { var only = tag.getAttribute('data-ao').split(/[\s,]+/); for (var k1 in ON) ON[k1] = only.indexOf(k1) > -1; }
   if (window.AO) for (var k0 in window.AO) ON[k0] = window.AO[k0];   // pages can override, e.g. <script>window.AO={curtain:true}</script>
   var T = { follow: 0.18, recedeScale: 0.06, recedeLift: 3, recedeFade: 0.7, curtainMs: 650 };
 
