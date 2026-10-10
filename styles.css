@@ -25,6 +25,8 @@ hr{border:0;border-top:1px solid var(--line);margin:0}
 .intro-stroke{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 .intro-fill{fill:var(--ink);opacity:0;transition:opacity .3s ease}
 .intro-fill.is-on{opacity:1}
+.intro-fill.is-blink{animation:intro-blink .5s steps(1) 1}
+@keyframes intro-blink{0%{opacity:1}20%{opacity:.08}40%{opacity:1}60%{opacity:.08}80%{opacity:1}}
 .intro-pen{fill:none;stroke:var(--ink);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .3s ease}
 .intro-pen.is-writing{opacity:1}
 .intro-skip{position:absolute;right:34px;bottom:30px;padding:8px 2px;font:500 11px/1 var(--body);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);border-bottom:1px solid transparent}
