@@ -55,24 +55,32 @@
     var blocks = $$('[data-fill]');
     if (!blocks.length) return;
     var all = [];
-    blocks.forEach(function (b) {
-      var text = b.textContent.replace(/\s+/g, ' ').trim();
-      b.setAttribute('aria-label', text);
-      b.classList.add('ao-split');
-      b.textContent = '';
-      var words = text.split(' ').map(function (w, i, a) {
-        var s = document.createElement('span');
-        s.className = 'ao-w'; s.setAttribute('aria-hidden', 'true'); s.textContent = w;
-        b.appendChild(s); if (i < a.length - 1) b.appendChild(document.createTextNode(' '));
-        return s;
+    function wrap(node, list) {                       // split text into word spans, keeping inline tags (<em>, <a>) intact
+      Array.prototype.slice.call(node.childNodes).forEach(function (c) {
+        if (c.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            var s = document.createElement('span');
+            s.className = 'ao-w'; s.setAttribute('aria-hidden', 'true'); s.textContent = part;
+            list.push(s); frag.appendChild(s);
+          });
+          node.replaceChild(frag, c);
+        } else if (c.nodeType === 1) wrap(c, list);
       });
+    }
+    blocks.forEach(function (b) {
+      b.setAttribute('aria-label', b.textContent.replace(/\s+/g, ' ').trim());
+      b.classList.add('ao-split');
+      var words = []; wrap(b, words);
       all.push({ b: b, words: words });
     });
     function u() {
       all.forEach(function (o) {
         var r = o.b.getBoundingClientRect();
-        // 0 when the block's top reaches 90% of the screen, 1 when its bottom reaches 60%
-        var p = reduce ? 1 : (innerHeight * 0.9 - r.top) / (innerHeight * 0.3 + r.height);
+        // 0 when the block's top reaches 92% of the screen, 1 when its bottom reaches 72%
+        var p = reduce ? 1 : (innerHeight * 0.92 - r.top) / (innerHeight * 0.2 + r.height);
         p = Math.min(1, Math.max(0, p));
         var n = o.words.length;
         o.words.forEach(function (w, i) { w.classList.toggle('on', p >= (i + 1) / n - 0.001 || p >= 1); });
@@ -84,16 +92,23 @@
   function recede() {
     var h = document.querySelector('[data-recede]');
     if (!h || reduce) return;
+    var next = h.nextElementSibling;
+    function pin() {                                  // a hero taller than the screen pins once its bottom is in view
+      h.style.position = 'sticky';
+      h.style.top = Math.min(0, innerHeight - h.offsetHeight) + 'px';
+    }
     function u() {
-      var p = Math.min(1, Math.max(0, scrollY / innerHeight));
+      var p = next ? 1 - Math.min(1, Math.max(0, next.getBoundingClientRect().top / innerHeight)) : 0;
       h.style.transform = p ? 'scale(' + (1 - p * T.recedeScale) + ') translateY(' + (-p * T.recedeLift) + 'vh)' : '';
       h.style.opacity = p ? String(1 - p * T.recedeFade) : '';
     }
+    pin(); addEventListener('resize', function () { pin(); u(); });
+    addEventListener('load', pin);
     addEventListener('scroll', u, { passive: true }); u();
   }
 
   function marquee() {
-    $$('.ao-marquee__track').forEach(function (t) { t.setAttribute('aria-hidden', 'false'); t.innerHTML += t.innerHTML; });   // doubled for a seamless loop
+    $$('.ao-marquee__track').forEach(function (t) { t.innerHTML += t.innerHTML; });   // doubled for a seamless loop
   }
 
   function curtain() {

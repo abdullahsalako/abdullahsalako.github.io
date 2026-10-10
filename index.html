@@ -93,6 +93,9 @@
         ]
       }
     </script>
+    <link rel="stylesheet" href="/addons/addons.css" />
+    <script>window.AO = { reveal: false, curtain: false };</script>
+    <script src="/addons/addons.js" defer></script>
     <script src="script.js?v=4" defer></script>
   </head>
   <body>
@@ -112,12 +115,12 @@
     </header>
 
     <main id="main-content">
-      <section class="hero">
+      <section class="hero" data-recede>
         <div class="wrap hero-grid">
           <div class="hero-copy">
             <h1 class="hero-heading">
               <span class="kicker">Aderemi A. Salako &middot; Video Editor, Colourist &amp; Content Strategist</span>
-              <span class="hero-title">Edits with a considered eye, cut for <em>rhythm</em> and story.</span>
+              <span class="hero-title" data-fill>Edits with a considered eye, cut for <em>rhythm</em> and story.</span>
             </h1>
             <p class="hero-lede">I&rsquo;m a freelance video editor and DaVinci Resolve colourist in Nigeria, cutting YouTube videos, short-form social content and brand films for creators, brands and agencies, remotely or on contract.</p>
             <p class="hero-teasers"><a href="/contact" data-hire-cta="home_hero">Hire me &rarr;</a><a href="/portfolio">View portfolio &rarr;</a></p>
@@ -138,7 +141,8 @@
         </div>
       </section>
 
-      <section class="home-services" aria-labelledby="services-heading">
+      <section class="home-services ao-curve" aria-labelledby="services-heading">
+        <div class="ao-marquee" aria-hidden="true"><div class="ao-marquee__track"><span>YouTube editing</span><span>Short-form &amp; social</span><span>Colour grading</span><span>Content strategy</span></div></div>
         <div class="wrap">
           <div class="section-head reveal">
             <h2 id="services-heading">Services</h2>
