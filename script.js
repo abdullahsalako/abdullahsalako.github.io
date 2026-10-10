@@ -375,7 +375,7 @@ form && form.addEventListener('submit', function (event) {
     return len;
   });
   var total = lengths.reduce(function (a, b) { return a + b; }, 0);
-  var raf = null, dismissed = false, skipping = false;
+  var raf = null, dismissed = false;
 
   function draw(distance) {
     var walked = 0, active = 0, at = 0;
@@ -383,12 +383,7 @@ form && form.addEventListener('submit', function (event) {
       var drawn = Math.max(0, Math.min(lengths[i], distance - walked));
       strokes[i].style.strokeDashoffset = lengths[i] - drawn;
       if (drawn > 0) { active = i; at = drawn; }
-      if (lastStroke[glyphOf[i]] === i && fills[glyphOf[i]]) {
-        var fill = fills[glyphOf[i]], done = drawn >= lengths[i] - 0.5;
-        // each letter blinks once as it is inked in
-        if (done && !fill.classList.contains('is-on') && !skipping) fill.classList.add('is-blink');
-        fill.classList.toggle('is-on', done);
-      }
+      if (lastStroke[glyphOf[i]] === i && fills[glyphOf[i]]) fills[glyphOf[i]].classList.toggle('is-on', drawn >= lengths[i] - 0.5);
       walked += lengths[i];
     }
     var point = strokes[active].getPointAtLength(at);
@@ -420,7 +415,6 @@ form && form.addEventListener('submit', function (event) {
   }
 
   function skip() {
-    skipping = true;
     draw(total);
     pen.classList.remove('is-writing');
     dismiss(250);
