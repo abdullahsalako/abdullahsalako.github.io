@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Remi Visuals Journal</title>
-    <link>https://aderemisalako.me/journal/</link>
+    <title>Remi Visuals Blog</title>
+    <link>https://aderemisalako.me/blog/</link>
     <atom:link href="https://aderemisalako.me/feed.xml" rel="self" type="application/rss+xml" />
     <description>Notes on craft — colour, pacing, and process — from Aderemi A. Salako.</description>
     <language>en</language>
     <item>
       <title>There Is No Light at the End of the Tunnel</title>
-      <link>https://aderemisalako.me/journal/there-is-no-light-at-the-end-of-the-tunnel/</link>
-      <guid isPermaLink="true">https://aderemisalako.me/journal/there-is-no-light-at-the-end-of-the-tunnel/</guid>
+      <link>https://aderemisalako.me/blog/there-is-no-light-at-the-end-of-the-tunnel/</link>
+      <guid isPermaLink="true">https://aderemisalako.me/blog/there-is-no-light-at-the-end-of-the-tunnel/</guid>
       <pubDate>Thu, 08 Oct 2026 09:00:00 GMT</pubDate>
       <category>Essay</category>
       <description>Stop waiting to be happy</description>
     </item>
     <item>
       <title>The DaVinci Resolve Node Workflow for Cinematic Skin Tones</title>
-      <link>https://aderemisalako.me/journal/node-workflow/</link>
-      <guid isPermaLink="true">https://aderemisalako.me/journal/node-workflow/</guid>
+      <link>https://aderemisalako.me/blog/node-workflow/</link>
+      <guid isPermaLink="true">https://aderemisalako.me/blog/node-workflow/</guid>
       <pubDate>Tue, 15 Sep 2026 09:00:00 GMT</pubDate>
       <category>Colour Grade Note</category>
       <description>How I build a DaVinci Resolve node tree for cinematic skin tones: exposure balance, LOG transform, parallel HSL isolation and a soft grain overlay.</description>
     </item>
     <item>
       <title>Are Men Polygamous in Nature?</title>
-      <link>https://aderemisalako.me/journal/are-men-polygamous-in-nature/</link>
-      <guid isPermaLink="true">https://aderemisalako.me/journal/are-men-polygamous-in-nature/</guid>
+      <link>https://aderemisalako.me/blog/are-men-polygamous-in-nature/</link>
+      <guid isPermaLink="true">https://aderemisalako.me/blog/are-men-polygamous-in-nature/</guid>
       <pubDate>Sat, 15 Aug 2026 09:00:00 GMT</pubDate>
       <category>Essay</category>
       <description>What if monogamy is the exception, not the rule?</description>
     </item>
     <item>
       <title>27, in Retrospect</title>
-      <link>https://aderemisalako.me/journal/27-in-retrospect/</link>
-      <guid isPermaLink="true">https://aderemisalako.me/journal/27-in-retrospect/</guid>
+      <link>https://aderemisalako.me/blog/27-in-retrospect/</link>
+      <guid isPermaLink="true">https://aderemisalako.me/blog/27-in-retrospect/</guid>
       <pubDate>Tue, 14 Jul 2026 09:00:00 GMT</pubDate>
       <category>Personal · Reflection</category>
       <description>You don't notice the climb until you look down. A birthday reflection on turning 28, expectations and trying new things, by Aderemi A. Salako.</description>

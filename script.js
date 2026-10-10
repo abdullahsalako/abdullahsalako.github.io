@@ -256,11 +256,11 @@ if (caseStudy) {
   if (inquiry) inquiry.href = '/contact?ref=' + encodeURIComponent(project.title) + '#contact';
 }
 
-/* ---------- journal ----------
-   Posts are static pages at journal/<slug>/index.html, so search engines read
+/* ---------- blog ----------
+   Posts are static pages at blog/<slug>/index.html, so search engines read
    the full text without running JavaScript. They are generated from
    content/journal/<slug>.md by tools/build.mjs: write and edit posts at /admin,
-   and the "Build journal" GitHub Action rebuilds the pages, the journal list,
+   and the "Build blog" GitHub Action rebuilds the pages, the blog list,
    sitemap.xml, sitemap.html, feed.xml and llms.txt (see docs/SEO-CHECKLIST.md). */
 
 /* ---------- analytics: email link clicks ----------
@@ -309,15 +309,17 @@ document.addEventListener('click', function (e) {
   });
 });
 
-/* ---------- analytics: journal clicks ----------
-   Sends a GA4 `journal_click` event for every link to a journal post
-   (/journal/<slug>/), wherever it appears: the journal list, the homepage,
+/* ---------- analytics: blog clicks ----------
+   Sends a GA4 `journal_click` event for every link to a blog post
+   (/blog/<slug>/), wherever it appears: the blog list, the homepage,
    related-post links. Posts added later are covered automatically. Links to
-   the journal index itself (/journal/) are not posts and are ignored. */
+   the blog index itself (/blog/) are not posts and are ignored.
+   The event names keep their original `journal_*` spelling so existing GA
+   reports and history stay continuous after the Journal -> Blog rename. */
 document.addEventListener('click', function (e) {
   var link = e.target.closest && e.target.closest('a[href]');
   if (!link || typeof gtag !== 'function') return;
-  var m = link.pathname.match(/^\/journal\/([^\/]+)\/?(?:index\.html)?$/);
+  var m = link.pathname.match(/^\/blog\/([^\/]+)\/?(?:index\.html)?$/);
   if (!m || link.hostname !== location.hostname) return;
   var heading = link.querySelector('h1, h2, h3, h4');
   gtag('event', 'journal_click', {
@@ -328,14 +330,14 @@ document.addEventListener('click', function (e) {
   });
 });
 
-/* ---------- analytics: journal index clicks ----------
-   Sends a GA4 `journal_index_click` event for links to the journal list itself
-   (/journal/), such as the Journal item in the nav and footer. Links to
+/* ---------- analytics: blog index clicks ----------
+   Sends a GA4 `journal_index_click` event for links to the blog list itself
+   (/blog/), such as the Blog item in the nav and footer. Links to
    individual posts are covered by `journal_click` above. */
 document.addEventListener('click', function (e) {
   var link = e.target.closest && e.target.closest('a[href]');
   if (!link || typeof gtag !== 'function') return;
-  if (link.hostname !== location.hostname || !/^\/journal\/?(?:index\.html)?$/.test(link.pathname)) return;
+  if (link.hostname !== location.hostname || !/^\/blog\/?(?:index\.html)?$/.test(link.pathname)) return;
   gtag('event', 'journal_index_click', {
     link_location: link.closest('footer') ? 'footer' : link.closest('header, nav') ? 'nav' : 'page_body',
     page_path: location.pathname

@@ -1,6 +1,6 @@
 # Remi Visuals — Aderemi A. Salako
 
-> Portfolio and journal of Aderemi A. Salako (Remi Visuals), a video editor and colourist working in DaVinci Resolve. Cinematic video editing, colour grading, motion design, creative direction and social content. Based in Nigeria, working worldwide.
+> Portfolio and blog of Aderemi A. Salako (Remi Visuals), a video editor and colourist working in DaVinci Resolve. Cinematic video editing, colour grading, motion design, creative direction and social content. Based in Nigeria, working worldwide.
 
 ## Pages
 
@@ -11,14 +11,14 @@
 - [About](https://aderemisalako.me/about): Background and approach
 - [Contact](https://aderemisalako.me/contact): Hire me for editing or colour work — hello@aderemisalako.me
 
-## Journal
+## Blog
 
-- [There Is No Light at the End of the Tunnel](https://aderemisalako.me/journal/there-is-no-light-at-the-end-of-the-tunnel/): Stop waiting to be happy
-- [The DaVinci Resolve Node Workflow for Cinematic Skin Tones](https://aderemisalako.me/journal/node-workflow/): How I build a DaVinci Resolve node tree for cinematic skin tones: exposure balance, LOG transform, parallel HSL isolation and a soft grain overlay.
-- [Are Men Polygamous in Nature?](https://aderemisalako.me/journal/are-men-polygamous-in-nature/): What if monogamy is the exception, not the rule?
-- [27, in Retrospect](https://aderemisalako.me/journal/27-in-retrospect/): You don't notice the climb until you look down. A birthday reflection on turning 28, expectations and trying new things, by Aderemi A. Salako.
+- [There Is No Light at the End of the Tunnel](https://aderemisalako.me/blog/there-is-no-light-at-the-end-of-the-tunnel/): Stop waiting to be happy
+- [The DaVinci Resolve Node Workflow for Cinematic Skin Tones](https://aderemisalako.me/blog/node-workflow/): How I build a DaVinci Resolve node tree for cinematic skin tones: exposure balance, LOG transform, parallel HSL isolation and a soft grain overlay.
+- [Are Men Polygamous in Nature?](https://aderemisalako.me/blog/are-men-polygamous-in-nature/): What if monogamy is the exception, not the rule?
+- [27, in Retrospect](https://aderemisalako.me/blog/27-in-retrospect/): You don't notice the climb until you look down. A birthday reflection on turning 28, expectations and trying new things, by Aderemi A. Salako.
 
 ## Optional
 
 - [RSS feed](https://aderemisalako.me/feed.xml)
-- [Substack](https://salakoaderemi.substack.com): Personal essays, mirrored to the journal
+- [Substack](https://salakoaderemi.substack.com): Personal essays, mirrored to the blog

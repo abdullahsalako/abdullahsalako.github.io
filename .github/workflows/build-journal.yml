@@ -1,8 +1,8 @@
-# Renders content/journal/*.md to static pages, sitemap.xml, feed.xml and llms.txt,
+# Renders content/journal/*.md (the blog) to static pages, sitemap.xml, feed.xml and llms.txt,
 # then commits the result so GitHub Pages publishes it.
 # Runs whenever a post is saved in /admin (the CMS commits to content/journal),
 # and daily after pulling any new Substack posts.
-name: Build journal
+name: Build blog
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
     paths:
       - 'content/**'
       - 'tools/**'
-      - 'journal/index.html'
+      - 'blog/index.html'
   schedule:
     - cron: '0 6 * * *'   # 07:00 Lagos — sync Substack before the 9am report
   workflow_dispatch:
@@ -19,7 +19,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: build-journal
+  group: build-blog
   cancel-in-progress: false
 
 jobs:
@@ -49,10 +49,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A content journal assets/journal sitemap.xml sitemap.html feed.xml llms.txt
+          git add -A content blog journal assets/journal sitemap.xml sitemap.html feed.xml llms.txt
           if git diff --cached --quiet; then
             echo "Nothing changed."
           else
-            git commit -m "Build journal"
+            git commit -m "Build blog"
             git push
           fi

@@ -29,7 +29,7 @@ They are applied as Resolve FX on the Color page, which means they live on nodes
 
 ## Where each tool sits in the tree
 
-My base tree for faces is four nodes: primary exposure balance, the LOG transform into a working colour space, a parallel HSL node isolating skin, and a soft grain overlay at the end. I wrote about it in detail [here](https://aderemisalako.me/journal/node-workflow/).
+My base tree for faces is four nodes: primary exposure balance, the LOG transform into a working colour space, a parallel HSL node isolating skin, and a soft grain overlay at the end. I wrote about it in detail [here](https://aderemisalako.me/blog/node-workflow/).
 
 The AI tools slot in between the colour work and the grain:
 

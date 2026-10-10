@@ -1,6 +1,6 @@
 # SEO checklist for new content
 
-Use this every time you add a project, a journal post or a new page.
+Use this every time you add a project, a blog post or a new page.
 
 ## Adding a project (case study)
 
@@ -25,28 +25,28 @@ Use this every time you add a project, a journal post or a new page.
 4. In `script.js`, add or update the project in `projects` with
    `url: '/work/<short-slug>/'` so the portfolio lightbox links to it.
 5. Link to it from at least one other page: the homepage "Selected work", the
-   Portfolio "Case studies" list, or a related service or journal post.
+   Portfolio "Case studies" list, or a related service or blog post.
 6. Add it to `sitemap.xml` (with `<lastmod>`) and to `sitemap.html`.
 
-## Adding a journal post
+## Adding a blog post
 
 Posts are written in the CMS, not by hand.
 
 1. Open https://aderemisalako.me/admin/ and sign in with your GitHub token.
-2. Journal → New Post. Fill in Title, URL slug, Tag, SEO description
+2. Blog → New Post. Fill in Title, URL slug, Tag, SEO description
    (about 150 characters, say what the post teaches and who it is for) and
    the body. Add a cover image if you have one; it becomes the social preview.
 3. Keep Status on Draft while writing. Set it to Published when it is ready
    and save.
 4. Use "Closing links" to point to a related service or case study.
-5. The "Build journal" GitHub Action renders the page and updates the
-   journal list, `sitemap.xml`, `sitemap.html`, `feed.xml` and `llms.txt`.
+5. The "Build blog" GitHub Action renders the page and updates the
+   blog list, `sitemap.xml`, `sitemap.html`, `feed.xml` and `llms.txt`.
    The post is live a minute or two later.
 
 Substack posts are pulled in automatically every morning. To keep one off
 the site, set its Status to Draft in the CMS.
 
-Never edit `journal/<slug>/index.html` directly; the next build overwrites
+Never edit `blog/<slug>/index.html` directly; the next build overwrites
 it. Change `content/journal/<slug>.md` (or use the CMS) instead, and change
 the page layout in `tools/templates/post.html`.
 
