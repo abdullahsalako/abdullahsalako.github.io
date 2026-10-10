@@ -30,13 +30,11 @@
 /* 4. Word-by-word fill: add data-fill to a heading or paragraph ------------- */
 [data-fill] .ao-w { color: var(--ao-ghost); transition: color .6s ease; }
 [data-fill] .ao-w.on { color: inherit; }
-[data-fill].ao-split .ao-w { color: var(--ao-ghost); }
-[data-fill].ao-split .ao-w.on { color: var(--ao-ink); }
 
 /* 5. Curved section edge + hero recede ---------------------------------------
    Put class "ao-curve" on the section that should slide over the one above.
    Put data-recede on the element above (it should be position: sticky; top: 0). */
-.ao-curve { position: relative; z-index: 2; background: var(--ao-panel); margin-top: 8vh; }
+.ao-curve { border-top: 0 !important; position: relative; z-index: 2; background: var(--ao-panel); margin-top: 8vh; }
 .ao-curve::before { content: ""; position: absolute; left: 0; right: 0; bottom: calc(100% - 1px); height: 9vh; background: var(--ao-panel); border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
 [data-recede] { transform-origin: 50% 0; will-change: transform, opacity; }
 
@@ -68,3 +66,7 @@
   .ao-marquee__track { animation: none; }
   .ao-curtain { display: none; }
 }
+
+/* Sections after a [data-recede] hero must cover it completely (:where keeps your own backgrounds in charge) */
+:where([data-recede] ~ section) { position: relative; z-index: 2; background: var(--ao-paper); }
+:where([data-recede] ~ section.ao-curve) { background: var(--ao-panel); }
