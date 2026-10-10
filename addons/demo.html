@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Add-ons demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="addons.css" />
+  <style>
+    .demo-hero { position: sticky; top: 0; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; }
+    .demo-hero h1 { font: 500 clamp(2.6rem, 7vw, 6rem)/1.05 var(--display); letter-spacing: -.015em; margin: 0; max-width: 16ch; }
+    .demo-note { margin-top: 28px; color: var(--muted); max-width: 46ch; }
+    .demo-lead { font: 400 clamp(1.5rem, 2.6vw, 2.2rem)/1.3 var(--display); max-width: 30ch; margin: 0; }
+    .demo-tag { font: 600 11px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 0 0 18px; }
+    .ao-curve { padding-bottom: 20vh; }
+  </style>
+</head>
+<body>
+  <section class="demo-hero" data-recede>
+    <div class="wrap">
+      <p class="demo-tag">Add-ons demo &middot; scroll down</p>
+      <h1 data-fill>I shape raw footage into stories people remember.</h1>
+      <p class="demo-note">Your existing fonts and colours, with six optional effects layered on top. Move the mouse over the heading, then scroll.</p>
+    </div>
+  </section>
+
+  <div class="ao-curve">
+    <div class="ao-marquee" aria-label="Services"><div class="ao-marquee__track"><span>Video editing</span><span>Colour grading</span><span>Short-form</span><span>Content strategy</span><span>Motion graphics</span></div></div>
+
+    <section>
+      <div class="wrap">
+        <p class="demo-tag" data-reveal>Fade-up on scroll</p>
+        <p class="demo-lead" data-reveal="2" data-fill>Self-taught in DaVinci Resolve, I cut and grade stories for creators and brands, remotely and on contract, one rule: make the footage feel like it was always meant to look this way.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <p class="demo-tag" data-reveal>Hover-shift rows</p>
+        <ul class="ao-rows" data-reveal="2">
+          <li><a href="#"><span class="demo-lead">Short-form edits</span><small>Reels &middot; Shorts &middot; TikTok</small></a></li>
+          <li><a href="#"><span class="demo-lead">Colour grading</span><small>DaVinci Resolve</small></a></li>
+          <li><a href="#"><span class="demo-lead">Long-form YouTube</span><small>Story-first edits</small></a></li>
+        </ul>
+        <p style="margin-top:48px"><a href="../" class="demo-tag" style="border-bottom:1px solid var(--accent);padding-bottom:3px">Page transition: go to home &rarr;</a></p>
+      </div>
+    </section>
+  </div>
+
+  <script>window.AO = { curtain: true };</script>
+  <script src="addons.js" defer></script>
+</body>
+</html>

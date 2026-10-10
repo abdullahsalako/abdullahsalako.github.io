@@ -3,22 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#F5F4F0" />
-    <script>
-      /* Decide BEFORE first paint whether the opening sequence plays, so the page never flashes.
-         Plays once per session; skipped for reduced-motion. Add ?intro to the URL to replay it any time. */
-      (function () {
-        var d = document.documentElement, reduce = false, seen = false;
-        d.classList.add('js');
-        try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
-        try { seen = sessionStorage.getItem('portfolio-intro-played') === '1'; } catch (e) {}
-        if (/[?&]intro\b/.test(location.search)) seen = false;
-        if (reduce) d.classList.add('reduced');
-        else if (seen) d.classList.add('seen');
-        else d.classList.add('intro-pending');
-      })();
-    </script>
-    <noscript><style>.loader { display: none !important; } .js [data-reveal] { opacity: 1 !important; transform: none !important; }</style></noscript>
+    <meta name="theme-color" content="#faf7f1" />
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TH2S1CQT9B"></script>
     <script>
@@ -46,10 +31,11 @@
     <meta name="twitter:image" content="https://aderemisalako.me/assets/og-share-v6.jpg" />
     <link rel="icon" type="image/png" href="remi-visuals-icon.png" />
     <link rel="apple-touch-icon" href="remi-visuals-icon.png" />
+    <link rel="preload" as="image" href="headshot.webp" type="image/webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700;800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -107,70 +93,129 @@
         ]
       }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="main.js" defer></script>
+    <script src="script.js?v=3" defer></script>
   </head>
   <body>
-
-    <!-- OPENING SEQUENCE: black + name -> orange dome -> cream dome -> site. Removed from the DOM when done. -->
-    <div class="loader" id="loader" aria-hidden="true">
-      <p class="loader__name"><span>Aderemi</span><span>Salako</span></p>
-      <svg class="dome dome--orange" id="domeOrange" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><path d="" /></svg>
-      <svg class="dome dome--cream" id="domeCream" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><path d="" /></svg>
-    </div>
-
-    <div class="cursor" id="cursor" aria-hidden="true"></div>
-
-    <a class="skip" href="#main">Skip to content</a>
-
-    <header class="site-header" id="header">
-      <a class="brand" href="/" aria-label="Aderemi Salako, home">Aderemi Salako</a>
-      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <script src="/intro.js"></script>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site">
+      <div class="head-row">
+        <a class="brand" href="/"><span class="brand-name">Aderemi A. Salako</span> <span class="brand-mark">Remi Visuals</span></a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/portfolio">Portfolio</a>
+          <a href="/services">Services</a>
+          <a href="/blog/">Blog</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </div>
     </header>
 
-    <main id="main">
-      <section class="hero" aria-labelledby="headline">
-        <p class="keep"><span class="keep__dot" id="dot" aria-hidden="true"></span><span class="keep__label">Keep Scrolling :)</span></p>
-
-        <!-- Swap this tagline for your own. One idea per line. -->
-        <h1 class="headline" id="headline">
-          <span class="line">I shape raw footage</span>
-          <span class="line">into stories</span>
-          <span class="line">people</span>
-          <span class="line">remember.</span>
-        </h1>
-
-        <p class="hero__note">Video editor and content strategist creating engaging visual experiences for YouTube, social media, brands and digital platforms.</p>
+    <main id="main-content">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <h1 class="hero-heading">
+              <span class="kicker">Aderemi A. Salako &middot; Video Editor, Colourist &amp; Content Strategist</span>
+              <span class="hero-title">Edits with a considered eye, cut for <em>rhythm</em> and story.</span>
+            </h1>
+            <p class="hero-lede">I&rsquo;m a freelance video editor and DaVinci Resolve colourist in Nigeria, cutting YouTube videos, short-form social content and brand films for creators, brands and agencies, remotely or on contract.</p>
+            <p class="hero-teasers"><a href="/contact" data-hire-cta="home_hero">Hire me &rarr;</a><a href="/portfolio">View portfolio &rarr;</a></p>
+          </div>
+          <figure class="hero-figure">
+            <picture>
+              <source srcset="headshot.webp" type="image/webp" />
+              <img src="headshot.jpg" alt="Portrait of Aderemi A. Salako, video editor and colourist in Nigeria" width="1050" height="1400" fetchpriority="high" />
+            </picture>
+          </figure>
+        </div>
+        <div class="wrap">
+          <div class="meta-row reveal">
+            <div><span>Availability</span><p>Freelance, remote and contract projects, worldwide from Nigeria</p></div>
+            <div><span>Focus</span><p>DaVinci Resolve &middot; Colour &middot; YouTube, short-form &amp; social edits</p></div>
+            <div><span>Currently</span><p>Building Remi Visuals into a full-time studio practice</p></div>
+          </div>
+        </div>
       </section>
 
-      <section class="intro" aria-label="Introduction">
-        <p class="lead" data-reveal>I&rsquo;m Aderemi, a self-taught DaVinci Resolve editor and colourist in Abuja, Nigeria. I cut and grade stories for creators and brands, remotely and on contract, with one rule: make the footage feel like it was always meant to look this way.</p>
-        <!-- Replace the grey block with a real still or reel: <img src="..." alt="..."> or <video src="..." poster="..." muted loop playsinline></video> -->
-        <figure class="media" data-reveal data-delay="1" role="img" aria-label="Placeholder for a showreel still">
-          <figcaption class="media__name">Aderemi Salako</figcaption>
-        </figure>
+      <section class="home-services" aria-labelledby="services-heading">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <h2 id="services-heading">Services</h2>
+            <p class="note">Editing, colour and strategy for creators, brands and agencies.</p>
+          </div>
+          <div class="service-grid reveal">
+            <div class="service">
+              <h3><a href="/services#youtube-editing">YouTube video editing</a></h3>
+              <p>Long-form edits with clear structure, pacing that holds attention, captions, sound cleanup and thumbnail-ready frames.</p>
+            </div>
+            <div class="service">
+              <h3><a href="/services#short-form">Short-form &amp; social content</a></h3>
+              <p>Reels, TikTok and Shorts built around a strong first three seconds, readable captions and platform-ready rhythm.</p>
+            </div>
+            <div class="service">
+              <h3><a href="/services#colour-grading">Colour grading in DaVinci Resolve</a></h3>
+              <p>Correction, matching and cinematic looks that protect skin tones and keep a whole piece visually consistent.</p>
+            </div>
+            <div class="service">
+              <h3><a href="/services#content-strategy">Content strategy</a></h3>
+              <p>Formats, hooks and a publishing rhythm that turn one shoot into a series your audience comes back for.</p>
+            </div>
+          </div>
+          <p class="gallery-cta reveal"><a class="link-cta" href="/services">All services and how I work &rarr;</a></p>
+        </div>
+      </section>
+
+      <section class="home-work" aria-labelledby="work-heading">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <h2 id="work-heading">Selected work</h2>
+            <p class="note">Case studies with the brief, my role, the tools and the result.</p>
+          </div>
+          <a class="feature-card reveal" href="/work/red-eye-effect/">
+            <picture>
+              <source srcset="assets/red-eye-effect-poster.webp" type="image/webp" />
+              <img src="assets/red-eye-effect-poster.jpg" alt="Red Eye Effect colour study: a close-up portrait graded to a red eye reveal" width="1920" height="1080" loading="lazy" decoding="async" />
+            </picture>
+            <div class="feature-copy">
+              <p class="kicker">Colour study &middot; 2026</p>
+              <h3>Red Eye Effect</h3>
+              <p>A 31-second cinematic colour study that turns a quiet close-up into an unsettling red-eye reveal through restrained grading and selective colour.</p>
+              <span class="link-cta">Read the case study &rarr;</span>
+            </div>
+          </a>
+          <p class="gallery-cta reveal"><a class="link-cta" href="/portfolio">View the full portfolio &rarr;</a> <a class="link-cta" href="/blog/node-workflow/">Read: my DaVinci Resolve node workflow &rarr;</a></p>
+        </div>
+      </section>
+
+      <section class="home-cta" aria-labelledby="cta-heading">
+        <div class="wrap cta-row reveal">
+          <div>
+            <h2 id="cta-heading">Have footage that needs an editor?</h2>
+            <p>Send a short brief with the platform, length and deadline. I reply within 1&ndash;2 business days and work with clients across Nigeria and remotely worldwide.</p>
+          </div>
+          <a class="about-cv" href="/contact" data-hire-cta="home_footer_cta">Start a project &rarr;</a>
+        </div>
       </section>
     </main>
 
-    <!-- MENU OVERLAY: the same orange dome transition as the opening -->
-    <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
-      <svg class="dome" id="domeMenu" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><path d="" /></svg>
-      <div class="menu__inner">
-        <div class="menu__top">
-          <span class="label">Menu</span>
-          <button class="menu__close" id="menuClose" type="button">Close</button>
-        </div>
-        <ul class="menu__list">
-          <li class="menu__item"><a href="/"><small>01</small>Home</a></li>
-          <li class="menu__item"><a href="/portfolio"><small>02</small>Portfolio</a></li>
-          <li class="menu__item"><a href="/services"><small>03</small>Services</a></li>
-          <li class="menu__item"><a href="/blog/"><small>04</small>Blog</a></li>
-          <li class="menu__item"><a href="/about"><small>05</small>About</a></li>
-          <li class="menu__item"><a href="/contact"><small>06</small>Contact</a></li>
-        </ul>
-        <p class="menu__foot"><a href="mailto:hello@aderemisalako.me">hello@aderemisalako.me</a></p>
+    <footer class="site">
+      <div class="foot-row">
+        <span>&copy; <span id="year"></span> Remi Visuals</span>
+        <nav aria-label="Footer links" style="display:flex;gap:16px">
+          <a href="/">Home</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/services">Services</a>
+          <a href="/blog/">Blog</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="/sitemap">Sitemap</a>
+          <a href="https://www.linkedin.com/in/abdullah-salako-b43461252/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://x.com/remmivisuals" target="_blank" rel="noopener noreferrer">X</a>
+          <a href="https://www.youtube.com/@aderemi.salako" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="https://www.instagram.com/aderemi.salako/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </nav>
       </div>
-    </div>
-
+    </footer>
   </body>
 </html>
