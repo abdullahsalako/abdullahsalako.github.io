@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Light header: a tiny two-line wordmark and a tiny nav on a clean white page.
+   Loaded after styles.css on every page; it only restyles the top of the site
+   and the page tone, nothing else. Retune with the variables below.
+   ========================================================================== */
+:root {
+  --paper: #fcfcfa;                                   /* page: light, near-white */
+  --line: #e7e3dd;                                    /* hairlines */
+  --header-font: 'Jost', 'Futura', 'Century Gothic', 'Avenir Next', Arial, sans-serif;
+}
+header.site { border-bottom: 0; padding: 26px 0 8px; }
+.brand { gap: 6px; }
+.brand-name { font: 500 11.5px/1.15 var(--header-font); letter-spacing: .2em; text-transform: uppercase; color: var(--ink); }
+.brand-mark { font: 400 9.5px/1 var(--header-font); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
+.brand:hover .brand-name { color: var(--accent); }
+.site-nav { font: 400 11px/1 var(--header-font); letter-spacing: .16em; gap: 28px; }
+.site-nav a { color: var(--ink); }
+.site-nav a:hover, .site-nav a.on { color: var(--ink); }
+@media (max-width: 700px) { .site-nav { gap: 16px; font-size: 10px; letter-spacing: .1em; } }
