@@ -17,3 +17,35 @@ header.site { border-bottom: 0; padding: 26px 0 8px; }
 .site-nav a { color: var(--ink); }
 .site-nav a:hover, .site-nav a.on { color: var(--ink); }
 @media (max-width: 700px) { .site-nav { gap: 16px; font-size: 10.5px; letter-spacing: .1em; } }
+
+/* ---- font consistency: Jost for headings and every small label, Inter for paragraph text ---- */
+:root { --display: var(--header-font); }
+.about-cv,
+.ao-rows small,
+.article-foot,
+.article-meta,
+.back-link,
+.case-facts dt,
+.coming-soon,
+.contact-links,
+.deck-count,
+.foot-row,
+.gallery-head::before,
+.hero-figure figcaption,
+.hero-teasers a,
+.intro-skip,
+.journal-date,
+.journal-soon,
+.journal-tag,
+.kicker,
+.lightbox-caption a.button-link,
+.lightbox-close,
+.lightbox-meta,
+.lightbox-nav,
+.link-cta,
+.meta-row span,
+.stack-meta { font-family: var(--header-font); }
+.hero-title em { font-style: normal; }
+.gallery-tagline { font-style: normal; font-weight: 500; }
+.article-body blockquote { font-style: normal; }
+.case-hero figcaption { font-family: var(--body); font-style: normal; }
