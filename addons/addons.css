@@ -84,3 +84,6 @@
 .deck-btn:hover, .deck-btn:focus-visible { color: var(--ao-accent); border-color: var(--ao-accent); }
 @media (max-width: 480px) { .tile-grid.is-deck { padding: 14px 18px 0; } }
 @media (prefers-reduced-motion: reduce) { .deck-stage .tile { transition: none; } }
+
+/* the page-transition curtain is retired */
+.ao-curtain { display: none !important; }
