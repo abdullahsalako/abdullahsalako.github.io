@@ -83,6 +83,7 @@
         var r = o.b.getBoundingClientRect();
         // 0 when the block's top reaches 92% of the screen, 1 when its bottom reaches 72%
         var p = reduce ? 1 : (innerHeight * 0.92 - r.top) / (innerHeight * 0.2 + r.height);
+        if (innerHeight + scrollY >= root.scrollHeight - 4) p = 1;   // bottom of the page: nothing further to scroll, so finish the fill
         p = Math.min(1, Math.max(0, p));
         var n = o.words.length;
         o.words.forEach(function (w, i) { w.classList.toggle('on', p >= (i + 1) / n - 0.001 || p >= 1); });
