@@ -59,12 +59,13 @@ footer.site { background: transparent; }
 .ht-indent { padding-left: clamp(0px, 13vw, 210px); }
 .hero-title em { font-style: normal; color: inherit; }
 .hero-heading { margin-bottom: clamp(20px, 2.6vw, 34px); }
-.hero-lede { font: 400 12.5px/1.75 var(--body); max-width: 40ch; margin-left: clamp(0px, 36vw, 470px); color: var(--muted); letter-spacing: .01em; }
-.hero-teasers { margin: 22px 0 0 clamp(0px, 36vw, 470px); gap: 26px; }
+.hero-lede { font: 400 clamp(14.5px, 1.25vw, 17px)/1.7 var(--body); max-width: 46ch; margin-left: clamp(0px, 22vw, 290px); color: #4b4743; letter-spacing: .005em; }
+.hero-teasers { margin: 24px 0 0 clamp(0px, 22vw, 290px); gap: 26px; }
 .hero-teasers a { font: 400 11px/1 var(--body); }
 @media (max-width: 700px) { .hero-lede, .hero-teasers { margin-left: 0; } .ht-indent { padding-left: 8vw; } }
 
-.hero-fan { position: relative; width: 100vw; margin: clamp(24px, 3.4vw, 46px) calc(50% - 50vw) 0; height: clamp(250px, 33vw, 470px); overflow: hidden; display: flex; justify-content: center; align-items: flex-end; }
+.hero-copy { position: relative; z-index: 3; }
+.hero-fan { position: relative; z-index: 0; isolation: isolate; width: 100vw; margin: clamp(48px, 6.4vw, 100px) calc(50% - 50vw) 0; height: clamp(250px, 33vw, 470px); overflow: hidden; display: flex; justify-content: center; align-items: flex-end; }
 .fan-card { --w: clamp(150px, 21vw, 300px); position: relative; flex: none; width: var(--w); aspect-ratio: 4 / 5; margin: 0 calc(var(--w) * -.04); transform: translateY(var(--y, 40px)) rotate(var(--r, 0deg)); transform-origin: 50% 100%; background: var(--beige-soft); transition: transform .8s var(--ease); animation: fan-in 1.3s var(--ease) both; animation-delay: calc(var(--n, 0) * 90ms + .1s); }
 .fan-card picture, .fan-card img { display: block; width: 100%; height: 100%; }
 .fan-card img { object-fit: cover; outline: 0; filter: none; }

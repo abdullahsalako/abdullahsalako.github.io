@@ -1,9 +1,15 @@
-/* Name-writing intro: plays on the first page of every new browser session, whichever page the visit starts on.
+/* Name-writing intro: plays whenever the site is opened or refreshed, on whichever page the visit starts, and not when moving between pages inside the site.
    Loaded as a blocking script right after <body> opens. The animation itself lives in script.js. */
 (function () {
   var d = document.documentElement, seen = false;
   try { seen = sessionStorage.getItem('rv-intro') === '1'; } catch (e) {}
-  if (seen || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !document.body) return;
+  // the name writes itself whenever the site is opened (link, bookmark, typed address, refresh);
+  // it stays out of the way when you are just clicking between pages inside the site
+  var nav = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]) || {};
+  var internal = false;
+  try { internal = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
+  if (seen && internal && nav.type !== 'reload') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !document.body) return;
   d.classList.add('intro-on');
   // failsafe: never leave the page covered if script.js never runs
   setTimeout(function () { d.classList.remove('intro-on'); }, 6000);
