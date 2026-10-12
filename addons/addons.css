@@ -54,24 +54,16 @@
 .ao-rows > li > a:hover, .ao-rows > li > a:focus-visible { transform: translateX(14px); color: var(--ao-accent); }
 .ao-rows small { font: 600 11px/1 var(--body, sans-serif); letter-spacing: .14em; text-transform: uppercase; color: var(--muted, #726b5e); }
 
-/* 8. Page-transition curtain: the dome rises between pages ---------------------- */
-.ao-curtain { position: fixed; inset: 0; z-index: 600; background: var(--ao-accent); transform: translateY(calc(100% + 30vh)); pointer-events: none; }
-.ao-curtain::before { content: ""; position: absolute; left: -10%; right: -10%; bottom: 100%; height: 22vh; background: var(--ao-accent); border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
-.ao-curtain.in { transform: none; transition: transform .8s cubic-bezier(.76, 0, .24, 1); }
-.ao-curtain.cover { transform: none; transition: none; }
-.ao-curtain.out { transform: translateY(calc(-100% - 30vh)); transition: transform .9s cubic-bezier(.76, 0, .24, 1); }
-
 @media (prefers-reduced-motion: reduce) {
   .ao-js [data-reveal] { opacity: 1; transform: none; transition: none; }
   .ao-marquee__track { animation: none; }
-  .ao-curtain { display: none; }
 }
 
 /* Sections after a [data-recede] hero must cover it completely (:where keeps your own backgrounds in charge) */
 :where([data-recede] ~ section) { position: relative; z-index: 2; background: var(--ao-paper); }
 :where([data-recede] ~ section.ao-curve) { background: var(--ao-panel); }
 
-/* 9. Card deck (portfolio galleries; see deck.js) ---------------------------------- */
+/* 8. Card deck (portfolio galleries; see deck.js) ---------------------------------- */
 .tile-grid.is-deck { display: block; position: relative; padding: 18px 26px 0; }
 .deck-stage { position: relative; width: min(100%, 440px); margin: 0 auto; aspect-ratio: 4 / 4.7; touch-action: pan-y; user-select: none; }
 .deck-stage .tile { position: absolute; inset: 0; aspect-ratio: auto; transform-origin: 50% 100%; box-shadow: 0 22px 44px -24px rgba(28, 26, 22, .55), 0 0 0 1px rgba(28, 26, 22, .12); transition: transform var(--deck-ms, .6s) var(--ao-ease), opacity var(--deck-ms, .6s) ease; }
@@ -85,5 +77,5 @@
 @media (max-width: 480px) { .tile-grid.is-deck { padding: 14px 18px 0; } }
 @media (prefers-reduced-motion: reduce) { .deck-stage .tile { transition: none; } }
 
-/* the page-transition curtain is retired */
+/* the page-transition curtain was removed; this keeps a stale cached copy of it from ever showing */
 .ao-curtain { display: none !important; }

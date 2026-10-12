@@ -10,13 +10,12 @@
     reveal: true,          // [data-reveal] fades up as it enters the screen
     fill: true,            // [data-fill] text fills word by word as you scroll
     recede: true,          // [data-recede] shrinks/fades while the next section slides over it
-    marquee: true,         // .ao-marquee ticker
-    curtain: false         // page wipe between pages: retired, kept off (see below)
+    marquee: true          // .ao-marquee ticker
   };
   var tag = document.querySelector('script[src*="addons.js"][data-ao]');   // <script src="/addons/addons.js" data-ao="cursor,progress"> turns on only those
   if (tag) { var only = tag.getAttribute('data-ao').split(/[\s,]+/); for (var k1 in ON) ON[k1] = only.indexOf(k1) > -1; }
-  if (window.AO) for (var k0 in window.AO) ON[k0] = window.AO[k0];   // pages can override, e.g. <script>window.AO={curtain:true}</script>
-  var T = { follow: 0.18, recedeScale: 0.06, recedeLift: 3, recedeFade: 0.7, curtainMs: 650 };
+  if (window.AO) for (var k0 in window.AO) ON[k0] = window.AO[k0];   // pages can override, e.g. <script>window.AO={fill:false}</script>
+  var T = { follow: 0.18, recedeScale: 0.06, recedeLift: 3, recedeFade: 0.7 };
 
   var root = document.documentElement;
   var reduce = false;
@@ -114,30 +113,6 @@
     $$('.ao-marquee__track').forEach(function (t) { t.innerHTML += t.innerHTML; });   // doubled for a seamless loop
   }
 
-  function curtain() {
-    if (reduce) return;
-    var c = el('ao-curtain'), KEY = 'ao-curtain';
-    function arrive() {
-      var came = false; try { came = sessionStorage.getItem(KEY) === '1'; sessionStorage.removeItem(KEY); } catch (e) {}
-      if (!came) return;
-      c.classList.add('cover');
-      requestAnimationFrame(function () { requestAnimationFrame(function () { c.classList.remove('cover'); c.classList.add('out'); }); });
-    }
-    arrive();
-    addEventListener('pageshow', function (e) { if (e.persisted) { c.className = 'ao-curtain'; } });
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('a[href]');
-      if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      if (a.target && a.target !== '_self' || a.hasAttribute('download')) return;
-      var u = new URL(a.href, location.href);
-      if (u.origin !== location.origin || (u.pathname === location.pathname && u.search === location.search)) return;
-      e.preventDefault();
-      try { sessionStorage.setItem(KEY, '1'); } catch (x) {}
-      c.className = 'ao-curtain in';
-      setTimeout(function () { location.href = a.href; }, T.curtainMs);
-    });
-  }
-
   function boot() {
     if (ON.cursor) cursor();
     if (ON.progress) progress();
@@ -145,8 +120,6 @@
     if (ON.fill) fill();
     if (ON.recede) recede();
     if (ON.marquee) marquee();
-    // the page-transition curtain was removed from the site; it can no longer be switched on by cached pages
-    // if (ON.curtain) curtain();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

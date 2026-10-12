@@ -20,7 +20,7 @@ Turn features on/off in the `ON = {...}` block at the top of `addons.js`, or per
 | **Hero recede + curved panel** | `data-recede` on a `position: sticky; top: 0` hero, `class="ao-curve"` on the next section | |
 | **Marquee ticker** | `<div class="ao-marquee"><div class="ao-marquee__track"><span>Editing</span>...</div></div>` | Pauses on hover |
 | **Hover-shift rows** | `<ul class="ao-rows"><li><a href=...>...</a></li></ul>` | |
-| **Page-transition curtain** | `window.AO = { curtain: true }` | Accent-coloured dome wipes between pages. Off by default |
+| **Card deck** | Loaded only on the portfolio (`<script src="/addons/deck.js" defer>`, after `script.js`); turns each `.tile-grid` into a stack of cards you drag, swipe or arrow through | Top card opens the viewer |
 
 All effects switch off (or show instantly) when the visitor has "reduce motion" enabled.
 
