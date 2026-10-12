@@ -259,7 +259,7 @@ footer.site{border-top:1px solid var(--line);padding:32px 0}
 .case-hero img,.case-hero video{width:100%;max-height:640px;object-fit:cover;background:#000}
 .case-hero figcaption{padding:10px 0 0;font:italic 400 13px Georgia,serif;color:var(--muted)}
 .feature-card+.feature-card{margin-top:56px}
-.case-hero-vertical{max-width:360px;margin-left:auto;margin-right:auto}
+.case-hero-vertical{max-width:420px;margin-left:auto;margin-right:auto}
 .case-hero-vertical video{height:auto;aspect-ratio:9/16;max-height:none;object-fit:contain}
 .case-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:60px}
 .case-layout section+section{margin-top:40px}
