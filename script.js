@@ -370,10 +370,15 @@ form && form.addEventListener('submit', function (event) {
   if (!intro || !root.classList.contains('intro-on')) return;
 
   // 2200 + 520 + 420 = 3.1s, or 3.3s if the hero image still needs a moment
-  var WRITE = 2200, HOLD = 520, FADE = 420, HERO_WAIT = 200;
+  var WRITE = 2200, HOLD = 520, FADE = 900, HERO_WAIT = 200;
   var strokes = [].slice.call(intro.querySelectorAll('.intro-stroke'));
   var fills = [].slice.call(intro.querySelectorAll('.intro-fill'));
   var pen = document.getElementById('intro-pen');
+  var pct = document.createElement('span');
+  pct.className = 'intro-pct';
+  pct.setAttribute('aria-hidden', 'true');
+  pct.textContent = '0%';
+  intro.appendChild(pct);
   // each letter is traced as one or more outlines, then inked in once its last outline is done
   var glyphOf = strokes.map(function (path) { return +path.getAttribute('data-g'); });
   var lastStroke = {};
@@ -396,6 +401,7 @@ form && form.addEventListener('submit', function (event) {
       if (lastStroke[glyphOf[i]] === i && fills[glyphOf[i]]) fills[glyphOf[i]].classList.toggle('is-on', drawn >= lengths[i] - 0.5);
       walked += lengths[i];
     }
+    pct.textContent = Math.min(100, Math.round(distance / total * 100)) + '%';
     var point = strokes[active].getPointAtLength(at);
     pen.setAttribute('transform', 'translate(' + point.x + ',' + point.y + ') rotate(34)');
   }
