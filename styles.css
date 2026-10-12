@@ -214,7 +214,7 @@ footer.site{border-top:1px solid var(--line);padding:32px 0}
 .js-ready .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
 .js-ready .reveal.is-visible{opacity:1;transform:none}
 
-.lightbox{position:fixed;inset:0;z-index:200;overscroll-behavior:contain;background:rgba(28,26,22,.96);display:none;align-items:center;justify-content:center;padding:min(6vw,60px)}
+.lightbox{position:fixed;inset:0;z-index:200;overscroll-behavior:contain;background:var(--ink);display:none;align-items:center;justify-content:center;padding:min(6vw,60px)}
 .lightbox.is-open{display:flex}
 .lightbox-stage{margin:0;width:min(1180px,100%);display:flex;flex-direction:column;align-items:center;gap:16px;color:var(--paper)}
 .lightbox-media{max-width:100%;max-height:78vh;display:flex;align-items:center;justify-content:center}
@@ -229,6 +229,13 @@ footer.site{border-top:1px solid var(--line);padding:32px 0}
 .lightbox-nav:hover{opacity:1}
 .lightbox-prev{left:max(20px,2vw)}
 .lightbox-next{right:max(20px,2vw)}
+/* phones: arrows sit in the bottom corners, clear of the video controls and the caption */
+@media(max-width:700px){
+  .lightbox{padding:64px 16px 84px}
+  .lightbox-nav{top:auto;bottom:28px;transform:none;padding:10px 4px}
+  .lightbox-prev{left:20px}
+  .lightbox-next{right:20px}
+}
 
 .back-link{display:inline-block;font:500 12px/1 var(--body);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:4px;margin-bottom:40px}
 .back-link:hover{color:var(--accent);border-color:var(--accent)}
