@@ -11,7 +11,7 @@
     fill: true,            // [data-fill] text fills word by word as you scroll
     recede: true,          // [data-recede] shrinks/fades while the next section slides over it
     marquee: true,         // .ao-marquee ticker
-    curtain: false         // dome wipe between pages (turn on only if you want it site-wide)
+    curtain: false         // page wipe between pages: retired, kept off (see below)
   };
   var tag = document.querySelector('script[src*="addons.js"][data-ao]');   // <script src="/addons/addons.js" data-ao="cursor,progress"> turns on only those
   if (tag) { var only = tag.getAttribute('data-ao').split(/[\s,]+/); for (var k1 in ON) ON[k1] = only.indexOf(k1) > -1; }
@@ -145,7 +145,8 @@
     if (ON.fill) fill();
     if (ON.recede) recede();
     if (ON.marquee) marquee();
-    if (ON.curtain) curtain();
+    // the page-transition curtain was removed from the site; it can no longer be switched on by cached pages
+    // if (ON.curtain) curtain();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
