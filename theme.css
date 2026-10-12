@@ -1,7 +1,8 @@
 /* ==========================================================================
-   Light header: a tiny two-line wordmark and a tiny nav on a clean white page.
-   Loaded after styles.css on every page; it only restyles the top of the site
-   and the page tone, nothing else. Retune with the variables below.
+   Theme layer, loaded after styles.css on every page. Restyles only:
+   1. the light header (tiny two-line wordmark and nav) and the near-white page tone;
+   2. font consistency (Jost for headings and small labels, Inter for paragraphs).
+   Retune with the variables below.
    ========================================================================== */
 :root {
   --paper: #fcfcfa;                                   /* page: light, near-white */
@@ -15,7 +16,6 @@ header.site { border-bottom: 0; padding: 26px 0 8px; }
 .brand:hover .brand-name { color: var(--accent); }
 .site-nav { font: 600 11.5px/1 var(--header-font); letter-spacing: .16em; gap: 28px; }
 .site-nav a { color: var(--ink); }
-.site-nav a:hover, .site-nav a.on { color: var(--ink); }
 @media (max-width: 700px) { .site-nav { gap: 16px; font-size: 10.5px; letter-spacing: .1em; } }
 
 /* ---- font consistency: Jost for headings and every small label, Inter for paragraph text ---- */
@@ -43,8 +43,7 @@ header.site { border-bottom: 0; padding: 26px 0 8px; }
 .lightbox-meta,
 .lightbox-nav,
 .link-cta,
-.meta-row span,
-.stack-meta { font-family: var(--header-font); }
+.meta-row span { font-family: var(--header-font); }
 .hero-title em { font-style: normal; }
 .gallery-tagline { font-style: normal; font-weight: 500; }
 .article-body blockquote { font-style: normal; }
