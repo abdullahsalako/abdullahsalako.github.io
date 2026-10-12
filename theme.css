@@ -10,10 +10,10 @@
 }
 header.site { border-bottom: 0; padding: 26px 0 8px; }
 .brand { gap: 6px; }
-.brand-name { font: 500 11.5px/1.15 var(--header-font); letter-spacing: .2em; text-transform: uppercase; color: var(--ink); }
-.brand-mark { font: 400 9.5px/1 var(--header-font); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
+.brand-name { font: 700 12px/1.15 var(--header-font); letter-spacing: .2em; text-transform: uppercase; color: var(--ink); }
+.brand-mark { font: 500 10px/1 var(--header-font); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
 .brand:hover .brand-name { color: var(--accent); }
-.site-nav { font: 400 11px/1 var(--header-font); letter-spacing: .16em; gap: 28px; }
+.site-nav { font: 600 11.5px/1 var(--header-font); letter-spacing: .16em; gap: 28px; }
 .site-nav a { color: var(--ink); }
 .site-nav a:hover, .site-nav a.on { color: var(--ink); }
-@media (max-width: 700px) { .site-nav { gap: 16px; font-size: 10px; letter-spacing: .1em; } }
+@media (max-width: 700px) { .site-nav { gap: 16px; font-size: 10.5px; letter-spacing: .1em; } }
