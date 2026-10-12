@@ -145,6 +145,7 @@ section{padding:clamp(56px,8vw,96px) 0}
 /* tactile press on gallery tiles */
 .tile{transition:scale .15s ease}
 .tile:active{scale:.96}
+.tile.is-vertical img,.tile.is-vertical video{object-position:50% 19%}
 .gallery-cta{margin:22px 0 0}
 .link-cta{font:500 12px/1 var(--body);text-transform:uppercase;letter-spacing:.1em;color:var(--ink);padding:0 0 6px;border-bottom:1px solid var(--line);transition:color .3s ease,border-color .3s ease}
 .link-cta:hover{color:var(--accent);border-color:var(--accent)}

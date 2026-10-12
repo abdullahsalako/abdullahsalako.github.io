@@ -31,14 +31,14 @@ var projects = [
     approach: 'The treatment keeps the surrounding palette restrained and the contrast controlled, reserving saturation for the eye reveal. Each adjustment was chosen to protect the skin tone and let the emotional shift arrive through colour rather than noise.',
     outcome: 'A compact visual study with a precise focal point: the final grade gives the reveal its weight while preserving the calm that makes it unsettling.' },
   { slug: 'Real Estate Property Tour', title: 'Real Estate Property Tour', cat: 'Short form · Property Tour · 2026', meta: 'Short Form · 2026',
-    desc: 'A vertical property tour for TikTok and Instagram Reels: a sharp hook, word-timed captions, a quick room-by-room walkthrough and one clear prompt to book a private showing.',
+    desc: 'A 27-second vertical property tour for TikTok and Instagram Reels.',
     url: '/work/real-estate-property-tour/',
     video: 'assets/real-estate-property-tour.mp4', poster: 'assets/real-estate-property-tour-poster-vertical.jpg',
     thumb: 'assets/showreel/real-estate-property-tour-square.jpg',
-    role: 'Editing · captions · motion graphics · finishing', focus: 'Vertical short-form edit', deliverable: '27-second 1080 × 1920 reel',
-    brief: 'Produce a sleek vertical property highlight reel from 48 seconds of raw walkthrough footage, built to earn attention in the first three seconds and drive qualified buyer inquiries.',
-    approach: 'The opening states the facts the presenter says out loud: four bedrooms, three bathrooms, one story. Her intro stays in sync with word-timed captions. The silent middle of the walk-through becomes seven short shots with slow push-ins and room labels, and the closing line lands on a single booking prompt.',
-    outcome: 'A 27-second reel built for the platforms it will be posted on: readable on a muted phone, paced around the presenter\u2019s words and finished with a single clear next step.' },
+    role: 'Video editing · captions', focus: 'Vertical short-form edit', deliverable: '27-second vertical reel',
+    brief: 'Turn raw walkthrough footage into a short reel that drives buyer inquiries.',
+    approach: 'A sharp hook, word-timed captions, a quick room-by-room tour and one clear prompt to book a showing.',
+    outcome: 'A 27-second vertical reel ready for TikTok and Instagram Reels.', vertical: true },
   { slug: 'Momentum', title: 'Momentum', cat: 'Commercial · VFX · 2026', meta: 'Commercial · 2026',
     desc: 'A high energy brand film treatment with editorial pacing, VFX polish, colour finishing, and motion led emphasis.',
     thumb: 'assets/showreel/video-placeholder-01.webp',
@@ -139,6 +139,7 @@ if (filmGrid) {
     var b = tile('Play ' + p.title + ' — ' + p.meta,
       '<video src="' + (p.video || PLACEHOLDER_FILM) + '" poster="' + (p.thumb || p.poster) +
       '" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>' + ICON_PLAY);
+    if (p.vertical) b.classList.add('is-vertical');
     var vid = b.querySelector('video');
     if (!quiet) {
       var play = function () { var r = vid.play(); if (r && r.catch) r.catch(function () {}); };
