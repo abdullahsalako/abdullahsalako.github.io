@@ -70,3 +70,17 @@
 /* Sections after a [data-recede] hero must cover it completely (:where keeps your own backgrounds in charge) */
 :where([data-recede] ~ section) { position: relative; z-index: 2; background: var(--ao-paper); }
 :where([data-recede] ~ section.ao-curve) { background: var(--ao-panel); }
+
+/* 9. Card deck (portfolio galleries; see deck.js) ---------------------------------- */
+.tile-grid.is-deck { display: block; position: relative; padding: 18px 26px 0; }
+.deck-stage { position: relative; width: min(100%, 440px); margin: 0 auto; aspect-ratio: 4 / 4.7; touch-action: pan-y; user-select: none; }
+.deck-stage .tile { position: absolute; inset: 0; aspect-ratio: auto; transform-origin: 50% 100%; box-shadow: 0 22px 44px -24px rgba(28, 26, 22, .55), 0 0 0 1px rgba(28, 26, 22, .12); transition: transform var(--deck-ms, .6s) var(--ao-ease), opacity var(--deck-ms, .6s) ease; }
+.deck-stage img, .deck-stage video { pointer-events: none; -webkit-user-drag: none; }
+.deck-stage .tile[inert] { pointer-events: none; }
+.deck-stage .tile.is-flying { transition-duration: .56s; }
+.deck-stage .tile:active { scale: 1; }
+.deck-ctrl { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 56px; font: 600 11px/1 var(--body, sans-serif); letter-spacing: .16em; color: var(--muted, #726b5e); }
+.deck-btn { width: 40px; height: 40px; border: 1px solid var(--line, #ddd6c7); border-radius: 50%; display: inline-grid; place-items: center; font-size: 16px; color: var(--ao-ink); transition: color .3s, border-color .3s, background .3s; }
+.deck-btn:hover, .deck-btn:focus-visible { color: var(--ao-accent); border-color: var(--ao-accent); }
+@media (max-width: 480px) { .tile-grid.is-deck { padding: 14px 18px 0; } }
+@media (prefers-reduced-motion: reduce) { .deck-stage .tile { transition: none; } }
