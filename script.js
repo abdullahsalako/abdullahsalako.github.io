@@ -7,7 +7,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   // urls are extensionless, but /page.html still resolves — match either form
   var norm = function (p) { return p.replace(/^\/|\/$/g, '').replace(/\.html$/, '') || 'index'; };
   var page = norm(location.pathname.split('/').filter(Boolean)[0] || '');
-  if (page === 'work' || page === 'project' || page === 'films') page = 'portfolio';  // case studies and the all-films gallery live under the portfolio
+  if (page === 'work' || page === 'project' || page === 'films' || page === 'photography') page = 'portfolio';  // case studies and the all-films / all-photography galleries live under the portfolio
   document.querySelectorAll('.site-nav a').forEach(function (link) {
     var href = norm(link.getAttribute('href').split('#')[0].split('?')[0]);
     var active = href === page;
