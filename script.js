@@ -16,7 +16,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   });
 })();
 
-/* ---------- shared project data (Showreel lightbox + project.html case studies) ----------
+/* ---------- shared project data (portfolio viewer + project.html case studies) ----------
    A project with a `url` has its own static, indexable case-study page (e.g.
    work/red-eye-effect/index.html). The rest are concept treatments shown through
    the noindex project.html template until they have real footage and a page. */
@@ -89,7 +89,7 @@ var projects = [
     outcome: 'A restrained premium finish designed to feel contemporary, warm, and considered across a hero spot and campaign cutdowns.' }
 ];
 
-/* ---------- Showreel galleries (portfolio.html) ----------
+/* ---------- Portfolio galleries (portfolio.html) ----------
    Photography is temporary placeholder imagery: swap the files in
    assets/showreel/ (keeping the names; WebP keeps them light) or edit the list
    below. `alt` describes the image for search and screen readers.
