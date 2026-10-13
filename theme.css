@@ -48,3 +48,7 @@ header.site { border-bottom: 0; padding: 26px 0 8px; }
 .gallery-tagline { font-style: normal; font-weight: 500; }
 .article-body blockquote { font-style: normal; }
 .case-hero figcaption { font-family: var(--body); font-style: normal; }
+
+/* all-films page: as many columns as the screen can hold (4 on desktop), 2 on phones */
+.films-grid { grid-template-columns: repeat(auto-fill, minmax(clamp(150px, 22vw, 260px), 1fr)); gap: 12px; }
+.back-link-row { margin: 0 0 18px; }
