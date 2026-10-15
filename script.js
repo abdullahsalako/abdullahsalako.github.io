@@ -302,6 +302,20 @@ document.addEventListener('click', function (e) {
   });
 });
 
+/* ---------- analytics: CV downloads ----------
+   Any link marked data-cv-download="<where it sits>" sends a GA4 `cv_download`
+   event with that location. GA4's enhanced measurement may also log a generic
+   file_download for the same click; cv_download is the one to mark as a key
+   event. */
+document.addEventListener('click', function (e) {
+  var link = e.target.closest && e.target.closest('[data-cv-download]');
+  if (!link || typeof gtag !== 'function') return;
+  gtag('event', 'cv_download', {
+    cta_location: link.getAttribute('data-cv-download'),
+    page_path: location.pathname
+  });
+});
+
 /* ---------- analytics: social profile clicks ----------
    Sends a GA4 `social_click` event for links to the profiles below, wherever
    they appear. link_location says whether it was the footer or the contact
