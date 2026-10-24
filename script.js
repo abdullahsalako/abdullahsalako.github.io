@@ -21,6 +21,14 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
    work/red-eye-effect/index.html). The rest are concept treatments shown through
    the noindex project.html template until they have real footage and a page. */
 var projects = [
+  { slug: 'Cinematic Color', title: 'How to Get Cinematic Color Every Time', cat: 'YouTube · DaVinci Resolve · 2026', meta: 'YouTube · 2026',
+    desc: 'A practical DaVinci Resolve breakdown of how colour shapes emotion, from accurate starting points to cinematic feeling.',
+    url: 'https://youtu.be/mcZkpyXRezI', youtube: 'mcZkpyXRezI',
+    poster: 'https://i.ytimg.com/vi/mcZkpyXRezI/maxresdefault.jpg', thumb: 'https://i.ytimg.com/vi/mcZkpyXRezI/maxresdefault.jpg',
+    role: 'Edit · colour grade · creative direction', focus: 'Cinematic colour education', deliverable: 'YouTube film',
+    brief: 'Show how colour changes the emotional read of the same image, then make the process practical for editors working in DaVinci Resolve.',
+    approach: 'The film moves from colour as instinct to colour as a repeatable craft: contrast, palette, skin tone and feeling all work together to make an image cinematic.',
+    outcome: 'A clear, cinematic introduction to colour grading that gives viewers a practical place to start in DaVinci Resolve.' },
   { slug: 'Red Eye Effect', title: 'Red Eye Effect', cat: 'Featured · Colour Study · 2026', meta: 'Colour Grading · 2026',
     desc: 'A cinematic colour study that turns a quiet close-up into an unsettling red-eye reveal through restrained grading and selective colour work.',
     url: '/work/red-eye-effect/',
@@ -136,12 +144,14 @@ var filmGrid = document.getElementById('filmGrid');
 if (filmGrid) {
   var quiet = matchMedia('(prefers-reduced-motion: reduce)').matches;
   projects.forEach(function (p, i) {
-    var b = tile('Play ' + p.title + ' — ' + p.meta,
-      '<video src="' + (p.video || PLACEHOLDER_FILM) + '" poster="' + (p.thumb || p.poster) +
-      '" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>' + ICON_PLAY);
+    var media = p.youtube
+      ? '<img src="' + (p.thumb || p.poster) + '" alt="Thumbnail for ' + p.title + '" width="1920" height="1080" loading="lazy" decoding="async" />'
+      : '<video src="' + (p.video || PLACEHOLDER_FILM) + '" poster="' + (p.thumb || p.poster) +
+        '" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>';
+    var b = tile('Play ' + p.title + ' — ' + p.meta, media + ICON_PLAY);
     if (p.vertical) b.classList.add('is-vertical');
     var vid = b.querySelector('video');
-    if (!quiet) {
+    if (vid && !quiet) {
       var play = function () { var r = vid.play(); if (r && r.catch) r.catch(function () {}); };
       var stop = function () { vid.pause(); vid.currentTime = 0; };
       b.addEventListener('mouseenter', play);
@@ -180,12 +190,22 @@ var lastFocused = null;
       lbMeta.textContent = item.meta;
       lbLink.hidden = true;
     } else {
-      lbMedia.innerHTML = '<video src="' + (item.video || PLACEHOLDER_FILM) + '" poster="' + item.poster +
-        '" controls playsinline preload="metadata"></video>';
+      lbMedia.innerHTML = item.youtube
+        ? '<iframe src="https://www.youtube-nocookie.com/embed/' + item.youtube + '" title="' + item.title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+        : '<video src="' + (item.video || PLACEHOLDER_FILM) + '" poster="' + item.poster +
+          '" controls playsinline preload="metadata"></video>';
       lbTitle.textContent = item.title;
       lbMeta.textContent = item.cat;
       lbLink.hidden = false;
       lbLink.href = item.url || '/project?project=' + encodeURIComponent(item.slug);
+      lbLink.textContent = item.youtube ? 'Watch on YouTube →' : 'Read the full case study →';
+      if (item.youtube) {
+        lbLink.target = '_blank';
+        lbLink.rel = 'noopener noreferrer';
+      } else {
+        lbLink.removeAttribute('target');
+        lbLink.removeAttribute('rel');
+      }
     }
   }
 
