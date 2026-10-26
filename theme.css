@@ -24,6 +24,13 @@ header.site{padding:16px 0}
 .site-nav{align-items:center;gap:clamp(16px,2vw,32px);font:500 clamp(13px,1.05vw,16px)/1.2 var(--body);letter-spacing:0;text-transform:none;white-space:nowrap}
 .site-nav a{padding:8px 0;color:var(--ink)}
 .site-nav a::after{bottom:2px;background:currentColor}
+.nav-dropdown{position:relative}
+.nav-dropdown summary{display:flex;align-items:center;gap:6px;padding:8px 0;cursor:pointer;list-style:none}
+.nav-dropdown summary::-webkit-details-marker{display:none}
+.nav-dropdown summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.nav-dropdown[open] summary span{transform:rotate(180deg)}
+.nav-dropdown-menu{position:absolute;z-index:30;top:100%;left:-16px;min-width:150px;padding:8px 16px;background:var(--paper);box-shadow:0 8px 24px #1c1a161a}
+.nav-dropdown-menu a{display:block;padding:10px 0}
 .nav-actions,.nav-social{display:flex;align-items:center}
 .nav-actions{gap:clamp(18px,2vw,30px)}
 .nav-social{gap:clamp(12px,1.3vw,20px)}
@@ -43,6 +50,9 @@ header.site{padding:16px 0}
   .site-nav a{padding:11px 0}
   .site-nav a::after{display:none}
   .site-nav a.on{color:var(--accent)}
+  .nav-dropdown summary{padding:11px 0}
+  .nav-dropdown-menu{position:static;box-shadow:none;padding:0 0 4px 16px}
+  .nav-dropdown-menu a{padding:10px 0}
   .nav-actions{justify-content:space-between}
 }
 

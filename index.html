@@ -109,8 +109,13 @@
         <div class="nav-panel" id="primary-menu">
           <nav class="site-nav" aria-label="Primary">
             <a href="/services">Services</a>
-            <a href="/blog/">Blog</a>
-            <a href="/about">About</a>
+            <details class="nav-dropdown">
+              <summary>About <span aria-hidden="true">⌄</span></summary>
+              <div class="nav-dropdown-menu">
+                <a href="/about">About Me</a>
+                <a href="/blog/">Blog</a>
+              </div>
+            </details>
             <a href="/contact">Start a Project</a>
           </nav>
           <div class="nav-actions">
