@@ -16,7 +16,35 @@ header.site { border-bottom: 0; padding: 26px 0 8px; }
 .brand:hover .brand-name { color: var(--accent); }
 .site-nav { font: 600 11.5px/1 var(--header-font); letter-spacing: .16em; gap: 28px; }
 .site-nav a { color: var(--ink); }
-@media (max-width: 700px) { .site-nav { gap: 16px; font-size: 10.5px; letter-spacing: .1em; } }
+/* Navigation: a single generous row on desktop, a compact disclosure on mobile. */
+header.site{padding:16px 0}
+.head-row{width:min(1440px,calc(100% - var(--gutter)));flex-wrap:nowrap;gap:clamp(20px,3vw,48px)}
+.brand{flex:none}
+.nav-panel{display:flex;align-items:center;justify-content:space-between;gap:24px;flex:1;min-width:0}
+.site-nav{align-items:center;gap:clamp(16px,2vw,32px);font:500 clamp(13px,1.05vw,16px)/1.2 var(--body);letter-spacing:0;text-transform:none;white-space:nowrap}
+.site-nav a{padding:8px 0;color:var(--ink)}
+.site-nav a::after{bottom:2px;background:currentColor}
+.nav-actions,.nav-social{display:flex;align-items:center}
+.nav-actions{gap:clamp(18px,2vw,30px)}
+.nav-social{gap:clamp(12px,1.3vw,20px)}
+.nav-social a{display:grid;place-items:center;width:32px;height:40px;color:var(--ink)}
+.nav-social svg{display:block;width:20px;height:20px;fill:currentColor}
+.nav-social a:hover{color:var(--accent)}
+.nav-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--paper);border-radius:9px;padding:15px 20px;font:500 13px/1 var(--body);text-transform:uppercase;white-space:nowrap}
+.nav-cta:hover{background:var(--accent)}
+.nav-toggle{display:none}
+@media(max-width:1100px){
+  .head-row{flex-wrap:wrap;justify-content:space-between}
+  .js-ready .nav-toggle{display:flex;align-items:center;gap:10px;font:600 12px/1 var(--body);text-transform:uppercase;letter-spacing:.08em;padding:12px 0}
+  .nav-panel{display:flex;flex-basis:100%;flex-direction:column;align-items:stretch;gap:18px;padding:10px 0 6px}
+  .js-ready .nav-panel{display:none}
+  .js-ready .nav-panel.is-open{display:flex}
+  .site-nav{align-items:stretch;flex-direction:column;gap:0;font-size:16px;letter-spacing:0}
+  .site-nav a{padding:11px 0}
+  .site-nav a::after{display:none}
+  .site-nav a.on{color:var(--accent)}
+  .nav-actions{justify-content:space-between}
+}
 
 /* ---- font consistency: Jost for headings and every small label, Inter for paragraph text ---- */
 :root { --display: var(--header-font); }
