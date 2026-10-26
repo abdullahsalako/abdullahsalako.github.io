@@ -2,6 +2,23 @@ document.documentElement.classList.add('js-ready');
 var yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+var navToggle = document.querySelector('.nav-toggle');
+var navPanel = document.querySelector('.nav-panel');
+if (navToggle && navPanel) {
+  navToggle.addEventListener('click', function () {
+    var open = navToggle.getAttribute('aria-expanded') !== 'true';
+    navToggle.setAttribute('aria-expanded', String(open));
+    navPanel.classList.toggle('is-open', open);
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+      navToggle.setAttribute('aria-expanded', 'false');
+      navPanel.classList.remove('is-open');
+      navToggle.focus();
+    }
+  });
+}
+
 /* ---------- nav active state ---------- */
 (function () {
   // urls are extensionless, but /page.html still resolves — match either form
