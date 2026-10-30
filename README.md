@@ -19,7 +19,7 @@ I’m Aderemi A. Salako, a visual storyteller working at the intersection of edi
 ## Contact
 
 - Email: [hello@aderemisalako.me](mailto:hello@aderemisalako.me)
-- LinkedIn: [Salako Abdullah](https://www.linkedin.com/in/abdullah-salako-b43461252/)
+- LinkedIn: [Aderemi A. Salako](https://www.linkedin.com/in/abdullah-salako-aderemi/)
 - X: [@remmivisuals](https://x.com/remmivisuals)
 - YouTube: [@aderemi.salako](https://www.youtube.com/@aderemi.salako)
 - Instagram: [@aderemi.salako](https://www.instagram.com/aderemi.salako/)
