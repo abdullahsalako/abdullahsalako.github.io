@@ -8,6 +8,7 @@
   --paper: #fcfcfa;                                   /* page: light, near-white */
   --line: #e7e3dd;                                    /* hairlines */
   --header-font: 'Jost', 'Futura', 'Century Gothic', 'Avenir Next', Arial, sans-serif;
+  color-scheme: light;
 }
 header.site { border-bottom: 0; padding: 26px 0 8px; }
 .brand { gap: 6px; }
@@ -86,6 +87,36 @@ header.site{padding:16px 0}
 .gallery-tagline { font-style: normal; font-weight: 500; }
 .article-body blockquote { font-style: normal; }
 .case-hero figcaption { font-family: var(--body); font-style: normal; }
+
+/* Automatic system dark mode: preserve the warm editorial palette instead of
+   applying a mechanical inversion. */
+@media (prefers-color-scheme: dark) {
+  html:root {
+    --paper: #11110f;
+    --ink: #f7f3eb;
+    --muted: #b9b1a5;
+    --line: #3c3831;
+    --accent: #c47a48;
+    --ao-paper: #11110f;
+    --ao-panel: #1d1a16;
+    --ao-ghost: #625d54;
+    color-scheme: dark;
+  }
+  body, header.site, footer.site { background: var(--paper); }
+  .home-cta { background: var(--ao-panel); }
+  .brand-name, .interior-hero h1 { color: #fffdf8; }
+  .nav-cta { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px #5b5449; }
+  .nav-cta:hover { background: var(--accent); color: #11110f; box-shadow: none; }
+  .nav-dropdown-menu { box-shadow: 0 8px 24px #0008; }
+  .journal-thumb, .article-body code { background: #24211d; }
+  .article-body { color: #ddd7cd; }
+  .tile-veil { background: #0007; }
+  .tile, .feature-card img { background: #0b0b0a; }
+  .hero-figure img, .feature-card img { outline-color: #ffffff1f; }
+  .deck-stage .tile { box-shadow: 0 22px 44px -24px #000c, 0 0 0 1px #ffffff1f; }
+  .lightbox { --paper: #f3efe7; --ink: #11110f; background: #080807; color: #f3efe7; }
+  .studio-signature { background: #11110f; border-top: 0; padding: 32px; }
+}
 
 /* all-films and all-photography pages: as many columns as the screen can hold (4 on desktop), 2 on phones */
 .all-grid { grid-template-columns: repeat(auto-fill, minmax(clamp(150px, 22vw, 260px), 1fr)); gap: 12px; }

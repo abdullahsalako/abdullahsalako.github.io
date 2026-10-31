@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#faf7f1" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fcfcfa" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#11110f" />
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TH2S1CQT9B"></script>
     <script>
@@ -23,7 +24,8 @@
     <meta property="og:locale" content="en_NG" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:image" content="https://aderemisalako.me/assets/og-share-v6.jpg" />
-    <link rel="icon" type="image/png" href="/remi-visuals-icon.png" />
+    <link rel="icon" type="image/png" media="(prefers-color-scheme: light)" href="/remi-visuals-icon.png" />
+    <link rel="icon" type="image/png" media="(prefers-color-scheme: dark)" href="/assets/remi-visuals-icon-dark.png" />
     <link rel="apple-touch-icon" href="/remi-visuals-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -120,7 +122,10 @@
             <p class="about-training">Trained through <a href="https://www.shootfirst.art/" target="_blank" rel="noopener noreferrer">Shoot First</a> — structured training in editing, compositing, colour grading, Fusion, and practical VFX workflows.</p>
 
             <div class="studio-signature">
-              <img src="/assets/remi-visuals-lockup.png" alt="Remi Visuals logo" width="1254" height="1254" loading="lazy" />
+              <picture>
+                <source media="(prefers-color-scheme: dark)" srcset="/assets/remi-visuals-lockup-dark.png" />
+                <img src="/assets/remi-visuals-lockup.png" alt="Remi Visuals logo" width="512" height="512" loading="lazy" />
+              </picture>
               <p><strong>Remi Visuals</strong> is the independent creative practice of Aderemi Salako — the studio identity behind my editing, colour and visual storytelling work.</p>
             </div>
           </div>
@@ -130,7 +135,7 @@
 
     <footer class="site">
       <div class="foot-row">
-        <span class="footer-brand"><img src="/assets/remi-visuals-mark.png" alt="" width="36" height="36" aria-hidden="true" /><span>&copy; <span id="year"></span> Remi Visuals</span></span>
+        <span class="footer-brand"><picture><source media="(prefers-color-scheme: dark)" srcset="/assets/remi-visuals-mark-dark.png" /><img src="/assets/remi-visuals-mark.png" alt="" width="36" height="36" aria-hidden="true" /></picture><span>&copy; <span id="year"></span> Remi Visuals</span></span>
         <nav aria-label="Footer links" style="display:flex;gap:16px">
           <a href="/">Home</a>
           <a href="/portfolio">Portfolio</a>

@@ -229,6 +229,7 @@ section{padding:clamp(56px,8vw,96px) 0}
 footer.site{border-top:1px solid var(--line);padding:32px 0}
 .foot-row{width:min(1180px,calc(100% - var(--gutter)));margin-inline:auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font:500 11px/1 var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
 .footer-brand{display:inline-flex;align-items:center;gap:10px}
+.footer-brand picture{display:flex;align-items:center}
 .footer-brand img{display:block;width:32px;height:32px;object-fit:contain}
 .foot-row nav{flex-wrap:wrap;row-gap:10px}
 
