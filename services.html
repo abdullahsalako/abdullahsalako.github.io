@@ -75,7 +75,7 @@
       }
     </script>
     <link rel="stylesheet" href="/addons/addons.css?v=2" />
-    <script src="/addons/addons.js?v=2" data-ao="cursor,progress" defer></script>
+    <script src="/addons/addons.js?v=2" data-ao="cursor,progress,recede" defer></script>
     <script src="/script.js?v=6" defer></script>
   </head>
   <body>
@@ -110,14 +110,18 @@
     </header>
 
     <main id="main-content">
-      <section>
+      <section class="interior-hero" data-recede>
         <div class="wrap">
           <div class="page-intro">
             <p class="kicker">Services</p>
             <h1>Video editing, colour grading and content strategy</h1>
             <p>I edit and grade in DaVinci Resolve for YouTube creators, brands and agencies. I take on freelance, remote and contract work for clients worldwide.</p>
           </div>
+        </div>
+      </section>
 
+      <section class="interior-layer ao-curve" aria-label="Services list">
+        <div class="wrap">
           <div class="service-list">
             <div class="service-block reveal" id="youtube-editing">
               <h2>YouTube video editing</h2>
