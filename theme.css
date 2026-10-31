@@ -18,10 +18,10 @@ header.site { border-bottom: 0; padding: 26px 0 8px; }
 .site-nav a { color: var(--ink); }
 /* Navigation: a single generous row on desktop, a compact disclosure on mobile. */
 header.site{padding:16px 0}
-.head-row{width:min(1440px,calc(100% - var(--gutter)));flex-wrap:nowrap;gap:clamp(20px,3vw,48px)}
+.head-row{width:min(1440px,calc(100% - var(--gutter)));align-items:flex-start;flex-wrap:nowrap;gap:clamp(20px,3vw,48px)}
 .brand{flex:none}
-.nav-panel{display:flex;align-items:center;justify-content:space-between;gap:24px;flex:1;min-width:0}
-.site-nav{align-items:center;gap:clamp(16px,2vw,32px);font:500 clamp(13px,1.05vw,16px)/1.2 var(--body);letter-spacing:0;text-transform:none;white-space:nowrap}
+.nav-panel{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex:1;min-width:0}
+.site-nav{align-items:center;gap:clamp(16px,2vw,32px);font:500 clamp(13px,1.05vw,16px)/1.2 var(--body);letter-spacing:0;text-transform:none;white-space:nowrap;transform:translateY(-8px)}
 .site-nav a{padding:8px 0;color:var(--ink)}
 .site-nav a::after{bottom:2px;background:currentColor}
 .nav-dropdown{position:relative}
@@ -41,12 +41,12 @@ header.site{padding:16px 0}
 .nav-cta:hover{background:var(--accent)}
 .nav-toggle{display:none}
 @media(max-width:1100px){
-  .head-row{flex-wrap:wrap;justify-content:space-between}
+  .head-row{align-items:center;flex-wrap:wrap;justify-content:space-between}
   .js-ready .nav-toggle{display:flex;align-items:center;gap:10px;font:600 12px/1 var(--body);text-transform:uppercase;letter-spacing:.08em;padding:12px 0}
   .nav-panel{display:flex;flex-basis:100%;flex-direction:column;align-items:stretch;gap:18px;padding:10px 0 6px}
   .js-ready .nav-panel{display:none}
   .js-ready .nav-panel.is-open{display:flex}
-  .site-nav{align-items:stretch;flex-direction:column;gap:0;font-size:16px;letter-spacing:0}
+  .site-nav{align-items:stretch;flex-direction:column;gap:0;font-size:16px;letter-spacing:0;transform:none}
   .site-nav a{padding:11px 0}
   .site-nav a::after{display:none}
   .site-nav a.on{color:var(--accent)}
