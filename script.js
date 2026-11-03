@@ -417,6 +417,7 @@ form && form.addEventListener('submit', function (event) {
     'Service: ' + (data.get('service') || 'Not provided'),
     'Platform and final length: ' + (data.get('platform') || 'Not provided'),
     'Deadline: ' + (data.get('deadline') || 'Not provided'),
+    'Estimated budget: ' + (data.get('budget') || 'Not provided'),
     'Footage or reference link: ' + (data.get('link') || 'Not provided'),
     '',
     'Project brief:',
