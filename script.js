@@ -410,7 +410,19 @@ var form = document.querySelector('.contact-form');
 form && form.addEventListener('submit', function (event) {
   event.preventDefault();
   var data = new FormData(form);
-  var body = 'Name: ' + data.get('name') + '\nEmail: ' + data.get('email') + '\n\n' + data.get('brief');
+  var body = [
+    'Name: ' + data.get('name'),
+    'Email: ' + data.get('email'),
+    'Company or channel: ' + (data.get('company') || 'Not provided'),
+    'Service: ' + (data.get('service') || 'Not provided'),
+    'Platform and final length: ' + (data.get('platform') || 'Not provided'),
+    'Deadline: ' + (data.get('deadline') || 'Not provided'),
+    'Estimated budget: ' + (data.get('budget') || 'Not provided'),
+    'Footage or reference link: ' + (data.get('link') || 'Not provided'),
+    '',
+    'Project brief:',
+    data.get('brief')
+  ].join('\n');
   location.href = 'mailto:hello@aderemisalako.me?subject=' + encodeURIComponent('Project brief — ' + data.get('name')) + '&body=' + encodeURIComponent(body);
 });
 
