@@ -230,12 +230,15 @@ section{padding:clamp(56px,8vw,96px) 0}
 .form-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px 16px;margin-top:26px}
 .form-fields label{display:flex;flex-direction:column;gap:7px;font:600 11px/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .form-fields input,.form-fields select,.form-fields textarea{width:100%;border:1px solid var(--line);border-radius:0;background:transparent;color:var(--ink);padding:12px 13px;font:400 14px/1.4 var(--body);letter-spacing:0;text-transform:none}
+.form-fields select{color-scheme:light}
+.form-fields select option{background:var(--paper);color:var(--ink)}
 .form-fields textarea{resize:vertical;min-height:126px}
 .form-fields input:focus,.form-fields select:focus,.form-fields textarea:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:var(--accent)}
 .full-field{grid-column:1 / -1}
 .form-submit{margin-top:24px;border:0}
 .form-note{font-size:12px;margin:16px 0 0}
 @media(max-width:760px){.contact-grid{grid-template-columns:1fr;gap:64px}.form-fields{grid-template-columns:1fr}.full-field{grid-column:auto}}
+@media(prefers-color-scheme:dark){.form-fields select{background:var(--ao-panel);color-scheme:dark}.form-fields select option{background:#1d1a16;color:#f7f3eb}}
 .nowrap{white-space:nowrap}
 
 footer.site{border-top:1px solid var(--line);padding:32px 0}
