@@ -200,6 +200,13 @@ section{padding:clamp(56px,8vw,96px) 0}
 .studio-signature p{max-width:38ch;margin:0;font:400 14px/1.7 var(--body);color:var(--muted)}
 @media(max-width:560px){.studio-signature{align-items:flex-start;flex-direction:column;gap:18px}}
 .services-list{font:400 14px/1.9 var(--body);color:var(--muted);margin:0}
+.toolkit-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.toolkit-card{border-top:1px solid var(--ink);padding-top:24px}
+.toolkit-card h3{margin-bottom:12px}
+.toolkit-card .link-cta{display:inline-block;margin-top:18px}
+.toolkit-note{max-width:58ch;margin-top:72px;padding-top:28px;border-top:1px solid var(--line)}
+.toolkit-note p:not(.kicker){color:var(--muted);margin:0 0 18px}
+@media(max-width:760px){.toolkit-grid{grid-template-columns:1fr}.toolkit-note{margin-top:56px}}
 .about-cv{margin-top:26px;font:500 13px/1 var(--body);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--accent);color:var(--accent);display:inline-block;padding-bottom:4px}
 .about-training{margin-top:26px;font:400 14px/1.6 var(--body);color:var(--muted)}
 .about-training a{color:var(--accent);border-bottom:1px solid var(--accent)}
@@ -221,9 +228,27 @@ section{padding:clamp(56px,8vw,96px) 0}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end}
 .contact h1{font:500 clamp(1.8rem,3.4vw,2.7rem)/1.15 var(--display);margin:0 0 26px;max-width:14ch}
 .contact-email{font:500 clamp(1.1rem,2vw,1.4rem) var(--body);border-bottom:1px solid var(--accent);color:var(--accent);padding-bottom:3px}
+.contact-direct{align-self:start}
+.contact-email-cta{display:block;width:max-content;margin-top:24px;border:1px solid var(--accent);padding:13px 16px;color:var(--accent);font:600 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;transition:background .25s ease,color .25s ease}
+.contact-email-cta:hover{background:var(--accent);color:var(--paper)}
 .contact-links{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px 22px;font:500 12px/1 var(--body);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .contact-links a:hover{color:var(--accent)}
 .contact-note{margin-top:40px;font:400 14px/1.6 var(--body);color:var(--muted);max-width:40ch}
+.contact-form{border-top:1px solid var(--ink);padding-top:28px}
+.contact-form h2{font:500 clamp(1.5rem,3vw,2.2rem)/1.15 var(--display);margin:0 0 10px}
+.form-intro,.form-note{font:400 14px/1.6 var(--body);color:var(--muted);max-width:42ch}
+.form-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px 16px;margin-top:26px}
+.form-fields label{display:flex;flex-direction:column;gap:7px;font:600 11px/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.form-fields input,.form-fields select,.form-fields textarea{width:100%;border:1px solid var(--line);border-radius:0;background:transparent;color:var(--ink);padding:12px 13px;font:400 14px/1.4 var(--body);letter-spacing:0;text-transform:none}
+.form-fields select{color-scheme:light}
+.form-fields select option{background:var(--paper);color:var(--ink)}
+.form-fields textarea{resize:vertical;min-height:126px}
+.form-fields input:focus,.form-fields select:focus,.form-fields textarea:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:var(--accent)}
+.full-field{grid-column:1 / -1}
+.form-submit{margin-top:24px;border:0}
+.form-note{font-size:12px;margin:16px 0 0}
+@media(max-width:760px){.contact-grid{grid-template-columns:1fr;gap:64px}.form-fields{grid-template-columns:1fr}.full-field{grid-column:auto}}
+@media(prefers-color-scheme:dark){.form-fields select{background:var(--ao-panel);color-scheme:dark}.form-fields select option{background:#1d1a16;color:#f7f3eb}}
 .nowrap{white-space:nowrap}
 
 footer.site{border-top:1px solid var(--line);padding:32px 0}

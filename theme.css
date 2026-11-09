@@ -17,6 +17,11 @@ header.site { border-bottom: 0; padding: 26px 0 8px; }
 .brand:hover .brand-name { color: var(--accent); }
 .site-nav { font: 600 11.5px/1 var(--header-font); letter-spacing: .16em; gap: 28px; }
 .site-nav a { color: var(--ink); }
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-nav a.on,
+.nav-dropdown summary:hover,
+.nav-dropdown summary:focus-visible { color: var(--accent); }
 /* Navigation: a single generous row on desktop, a compact disclosure on mobile. */
 header.site{padding:16px 0}
 .head-row{width:min(1440px,calc(100% - var(--gutter)));align-items:flex-start;flex-wrap:nowrap;gap:clamp(20px,3vw,48px)}
