@@ -200,6 +200,13 @@ section{padding:clamp(56px,8vw,96px) 0}
 .studio-signature p{max-width:38ch;margin:0;font:400 14px/1.7 var(--body);color:var(--muted)}
 @media(max-width:560px){.studio-signature{align-items:flex-start;flex-direction:column;gap:18px}}
 .services-list{font:400 14px/1.9 var(--body);color:var(--muted);margin:0}
+.toolkit-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.toolkit-card{border-top:1px solid var(--ink);padding-top:24px}
+.toolkit-card h3{margin-bottom:12px}
+.toolkit-card .link-cta{display:inline-block;margin-top:18px}
+.toolkit-note{max-width:58ch;margin-top:72px;padding-top:28px;border-top:1px solid var(--line)}
+.toolkit-note p:not(.kicker){color:var(--muted);margin:0 0 18px}
+@media(max-width:760px){.toolkit-grid{grid-template-columns:1fr}.toolkit-note{margin-top:56px}}
 .about-cv{margin-top:26px;font:500 13px/1 var(--body);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--accent);color:var(--accent);display:inline-block;padding-bottom:4px}
 .about-training{margin-top:26px;font:400 14px/1.6 var(--body);color:var(--muted)}
 .about-training a{color:var(--accent);border-bottom:1px solid var(--accent)}
