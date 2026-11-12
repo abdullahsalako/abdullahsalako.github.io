@@ -11,7 +11,19 @@
   color-scheme: light;
 }
 header.site { border-bottom: 0; padding: 26px 0 8px; }
-.brand { gap: 6px; }
+.brand {
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.brand::before {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  background: url("/assets/remi-visuals-mark.png") center / contain no-repeat;
+}
 .brand-name { font: 700 12px/1.15 var(--header-font); letter-spacing: .2em; text-transform: uppercase; color: var(--ink); }
 .brand-mark { font: 500 10px/1 var(--header-font); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
 .brand:hover .brand-name { color: var(--accent); }
@@ -108,6 +120,7 @@ header.site{padding:16px 0}
     color-scheme: dark;
   }
   body, header.site, footer.site { background: var(--paper); }
+  .brand::before { background-image: url("/assets/remi-visuals-mark-dark.png"); }
   .home-cta { background: var(--ao-panel); }
   .brand-name, .interior-hero h1 { color: #fffdf8; }
   .nav-cta { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px #5b5449; }
