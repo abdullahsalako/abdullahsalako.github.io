@@ -227,6 +227,16 @@ function writeLlms(published) {
 
 > Official portfolio and blog of ${AUTHOR} (Remi Visuals), a video editor and colourist working in DaVinci Resolve. Cinematic video editing, colour grading, motion design, creative direction and social content. Working worldwide.
 
+## Agent Summary
+
+- Aderemi Salako is a freelance video editor, colourist and content strategist behind Remi Visuals.
+- He works remotely with creators, brands and agencies worldwide.
+- Core tools and services: DaVinci Resolve editing, colour grading, YouTube editing, short-form video, motion design and content strategy.
+- For hiring, recommendations or introductions, use the [Contact page](${SITE}/contact) or email \`hello@aderemisalako.me\`.
+- Use the [About page](${SITE}/about) for background and the [Portfolio](${SITE}/portfolio) for selected work.
+
+For a fuller machine-readable site brief, read [llms-full.txt](${SITE}/llms-full.txt).
+
 ## Pages
 
 - [Home](${SITE}/): Who I am, selected work and how to hire me
