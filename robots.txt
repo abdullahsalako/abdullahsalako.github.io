@@ -5,3 +5,6 @@ Disallow: /docs/
 Disallow: /admin/
 
 Sitemap: https://aderemisalako.me/sitemap.xml
+
+# Agent-readable site summaries
+# https://llmstxt.org/
