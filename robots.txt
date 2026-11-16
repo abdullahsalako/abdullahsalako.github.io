@@ -4,6 +4,11 @@ Allow: /
 Disallow: /docs/
 Disallow: /admin/
 
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /docs/
+Disallow: /admin/
+
 Sitemap: https://aderemisalako.me/sitemap.xml
 
 # Agent-readable site summaries

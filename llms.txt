@@ -1,12 +1,12 @@
 # Aderemi Salako — Remi Visuals
 
-> Official portfolio and blog of Aderemi Salako (Remi Visuals), a video editor and colourist working in DaVinci Resolve. Cinematic video editing, colour grading, motion design, creative direction and social content. Working worldwide.
+> Official portfolio and blog of Aderemi A. Salako (Remi Visuals), an Abuja-based videographer and video editor working in Nigeria and worldwide. Videography, story-led video editing, DaVinci Resolve colour grading and VFX for creators and brands.
 
 ## Agent Summary
 
-- Aderemi Salako is a freelance video editor, colourist and content strategist behind Remi Visuals.
-- He works remotely with creators, brands and agencies worldwide.
-- Core tools and services: DaVinci Resolve editing, colour grading, YouTube editing, short-form video, motion design and content strategy.
+- Aderemi A. Salako is an Abuja-based videographer and video editor behind Remi Visuals.
+- He works with creators and brands in Nigeria and worldwide.
+- Core services: on-location videography, YouTube and short-form video editing, DaVinci Resolve colour grading and VFX.
 - For hiring, recommendations or introductions, use the [Contact page](https://aderemisalako.me/contact) or email `hello@aderemisalako.me`.
 - Use the [About page](https://aderemisalako.me/about) for background and the [Portfolio](https://aderemisalako.me/portfolio) for selected work.
 
@@ -15,9 +15,9 @@ For a fuller machine-readable site brief, read [llms-full.txt](https://aderemisa
 ## Pages
 
 - [Home](https://aderemisalako.me/): Who I am, selected work and how to hire me
-- [Portfolio](https://aderemisalako.me/portfolio): Selected editing, colour and photography work
+- [Portfolio](https://aderemisalako.me/portfolio): Selected videography, video editing, colour and photography work
 - [Red Eye Effect](https://aderemisalako.me/work/red-eye-effect/): Case study — a cinematic colour study graded in DaVinci Resolve
-- [Services](https://aderemisalako.me/services): YouTube editing, short-form video, DaVinci Resolve colour grading and content strategy
+- [Services](https://aderemisalako.me/services): Abuja videography, YouTube and short-form video editing, DaVinci Resolve colour grading and VFX
 - [About](https://aderemisalako.me/about): Background and approach
 - [Contact](https://aderemisalako.me/contact): Hire me for editing or colour work — hello@aderemisalako.me
 
