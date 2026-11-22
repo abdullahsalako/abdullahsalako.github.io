@@ -118,20 +118,10 @@ var projects = [
    Photography is temporary placeholder imagery: swap the files in
    assets/showreel/ (keeping the names; WebP keeps them light) or edit the list
    below. `alt` describes the image for search and screen readers.
-   Film tiles reuse the projects above; every tile without its own
-   footage falls back to PLACEHOLDER_FILM for preview and playback. */
-var PLACEHOLDER_FILM = 'assets/red-eye-effect.mp4';
+   Only projects with their own footage are displayed in the film gallery. */
+var playableProjects = projects.filter(function (project) { return project.video || project.youtube; });
 
-var photos = [
-  { src: 'assets/showreel/photography-placeholder-01.webp', title: 'Portrait', meta: 'Studio', alt: 'Studio portrait photograph' },
-  { src: 'assets/showreel/photography-placeholder-02.webp', title: 'Lifestyle', meta: 'On location', alt: 'Lifestyle photograph taken on location' },
-  { src: 'assets/showreel/photography-placeholder-03.webp', title: 'Headshot', meta: 'Professional', alt: 'Professional headshot photograph' },
-  { src: 'assets/showreel/photography-placeholder-04.webp', title: 'Editorial', meta: 'Fashion', alt: 'Editorial fashion photograph' },
-  { src: 'assets/showreel/photography-placeholder-05.webp', title: 'Portrait', meta: 'Low key', alt: 'Low-key studio portrait photograph' },
-  { src: 'assets/showreel/photography-placeholder-06.webp', title: 'Lifestyle', meta: 'Street', alt: 'Street lifestyle photograph' },
-  { src: 'assets/showreel/photography-placeholder-07.webp', title: 'Lifestyle', meta: 'Golden hour', alt: 'Lifestyle photograph at golden hour' },
-  { src: 'assets/showreel/photography-placeholder-08.webp', title: 'Product', meta: 'Apparel', alt: 'Product photograph of apparel' }
-];
+var photos = [];
 
 var ICON_VIEW = '<svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
   '<path d="M9 3H3v6M15 3h6v6M9 21H3v-6M15 21h6v-6" /></svg>';
@@ -160,10 +150,10 @@ if (photoGrid) {
 var filmGrid = document.getElementById('filmGrid');
 if (filmGrid) {
   var quiet = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  projects.forEach(function (p, i) {
+  playableProjects.forEach(function (p, i) {
     var media = p.youtube
       ? '<img src="' + (p.thumb || p.poster) + '" alt="Thumbnail for ' + p.title + '" width="1920" height="1080" loading="lazy" decoding="async" />'
-      : '<video src="' + (p.video || PLACEHOLDER_FILM) + '" poster="' + (p.thumb || p.poster) +
+      : '<video src="' + p.video + '" poster="' + (p.thumb || p.poster) +
         '" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>';
     var b = tile('Play ' + p.title + ' — ' + p.meta, media + ICON_PLAY);
     if (p.vertical) b.classList.add('is-vertical');
@@ -209,7 +199,7 @@ var lastFocused = null;
     } else {
       lbMedia.innerHTML = item.youtube
         ? '<iframe src="https://www.youtube-nocookie.com/embed/' + item.youtube + '" title="' + item.title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
-        : '<video src="' + (item.video || PLACEHOLDER_FILM) + '" poster="' + item.poster +
+        : '<video src="' + item.video + '" poster="' + item.poster +
           '" controls playsinline preload="metadata"></video>';
       lbTitle.textContent = item.title;
       lbMeta.textContent = item.cat;
@@ -228,7 +218,7 @@ var lastFocused = null;
 
   window.openViewer = function (which, i) {
     kind = which;
-    set = which === 'photo' ? photos : projects;
+    set = which === 'photo' ? photos : playableProjects;
     lastFocused = document.activeElement;
     show(i);
     lb.classList.add('is-open');
