@@ -395,6 +395,26 @@ document.addEventListener('click', function (e) {
   });
 });
 
+/* ---------- project enquiries ---------- */
+var enquiryForm = document.querySelector('form.contact-form');
+if (enquiryForm) enquiryForm.addEventListener('submit', async function (event) {
+  event.preventDefault();
+  var status = enquiryForm.querySelector('.form-status');
+  var button = enquiryForm.querySelector('[type="submit"]');
+  if (!enquiryForm.dataset.endpoint) { status.textContent = 'Please use the alternative form or email me directly.'; return; }
+  button.disabled = true;
+  status.textContent = 'Sending your enquiry…';
+  try {
+    var response = await fetch(enquiryForm.dataset.endpoint, {method:'POST', body: new URLSearchParams(new FormData(enquiryForm))});
+    var result = await response.json();
+    if (!response.ok || !result.ok) throw new Error('Submission failed');
+    enquiryForm.reset();
+    status.textContent = 'Thank you. Your enquiry has been sent.';
+  } catch (error) {
+    status.textContent = 'Your enquiry could not be sent. Please try again or use the alternative form below.';
+  } finally { button.disabled = false; }
+});
+
 /* ---------- intro preloader (index.html) ---------- */
 (function () {
   var root = document.documentElement;
