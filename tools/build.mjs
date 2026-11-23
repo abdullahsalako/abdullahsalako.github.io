@@ -225,12 +225,12 @@ function writeLlms(published) {
   const posts = published.map((p) => `- [${p.title}](${p.url}): ${p.description}`).join('\n');
   fs.writeFileSync(path.join(ROOT, 'llms.txt'), `# ${AUTHOR} — Remi Visuals
 
-> Official portfolio and blog of ${AUTHOR} (Remi Visuals), a video editor and colourist working in DaVinci Resolve. Cinematic video editing, colour grading, motion design, creative direction and social content. Working worldwide.
+> Official portfolio and blog of ${AUTHOR} (Remi Visuals), a video editor and colourist based in Nigeria, working remotely with clients worldwide. Cinematic video editing, DaVinci Resolve colour grading, motion design, creative direction and social content.
 
 ## Pages
 
 - [Home](${SITE}/): Who I am, selected work and how to hire me
-- [Portfolio](${SITE}/portfolio): Selected editing, colour and photography work
+- [Portfolio](${SITE}/portfolio): Selected video editing and colour work
 - [Red Eye Effect](${SITE}/work/red-eye-effect/): Case study — a cinematic colour study graded in DaVinci Resolve
 - [Services](${SITE}/services): YouTube editing, short-form video, DaVinci Resolve colour grading and content strategy
 - [About](${SITE}/about): Background and approach
