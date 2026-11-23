@@ -3,7 +3,7 @@
 (function () {
   var d = document.documentElement, seen = false;
   try { seen = sessionStorage.getItem('rv-intro') === '1'; } catch (e) {}
-  if (seen || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !document.body) return;
+  if (seen || window.matchMedia('(prefers-reduced-motion: reduce)').matches || (location.pathname === '/' && window.matchMedia('(max-width: 760px)').matches) || !document.body) return;
   d.classList.add('intro-on');
   // failsafe: never leave the page covered if script.js never runs
   setTimeout(function () { d.classList.remove('intro-on'); }, 6000);
