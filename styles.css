@@ -73,6 +73,10 @@ section{padding:clamp(56px,8vw,96px) 0}
 .hero-film{width:100%;margin:0}
 .hero-film-player{aspect-ratio:16/9;background:#111;outline:1px solid var(--line);overflow:hidden}
 .hero-film-player iframe{display:block;width:100%;height:100%;border:0}
+.hero-film-trigger{position:relative;display:block;width:100%;height:100%;overflow:hidden}
+.hero-film-trigger img{display:block;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;filter:none}
+.hero-film-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:64px;height:48px;border-radius:12px;background:#a8501f;color:#fff;font:24px/1 sans-serif}
+.hero-film-trigger:hover .hero-film-play,.hero-film-trigger:focus-visible .hero-film-play{background:#c47a48;color:#111}
 .hero-film figcaption strong{display:block;margin-top:6px;color:var(--ink);font:500 16px/1.4 var(--body);text-transform:none;letter-spacing:0}
 .hero-figure figcaption{margin-top:14px;font:500 11px/1.5 var(--body);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
 .meta-row{margin-top:clamp(40px,6vw,64px);padding-top:26px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr;gap:22px}

@@ -1,3 +1,17 @@
+/* Load the featured player only when a visitor chooses to watch. */
+var featuredFilm = document.querySelector('.hero-film-trigger');
+if (featuredFilm) featuredFilm.addEventListener('click', function (event) {
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  var player = document.createElement('iframe');
+  player.src = 'https://www.youtube-nocookie.com/embed/mcZkpyXRezI?autoplay=1';
+  player.title = 'How to Get Cinematic Color Every Time — Aderemi Salako';
+  player.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  player.allowFullscreen = true;
+  featuredFilm.replaceWith(player);
+  player.focus();
+});
+
 document.documentElement.classList.add('js-ready');
 var yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
