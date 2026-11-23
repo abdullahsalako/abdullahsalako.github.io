@@ -1,11 +1,11 @@
 # Aderemi Salako — Remi Visuals
 
-> Official portfolio and blog of Aderemi Salako (Remi Visuals), a video editor and colourist working in DaVinci Resolve. Cinematic video editing, colour grading, motion design, creative direction and social content. Working worldwide.
+> Official portfolio and blog of Aderemi Salako (Remi Visuals), a video editor and colourist based in Nigeria, working remotely with clients worldwide. Cinematic video editing, DaVinci Resolve colour grading, motion design, creative direction and social content.
 
 ## Pages
 
 - [Home](https://aderemisalako.me/): Who I am, selected work and how to hire me
-- [Portfolio](https://aderemisalako.me/portfolio): Selected editing, colour and photography work
+- [Portfolio](https://aderemisalako.me/portfolio): Selected video editing and colour work
 - [Red Eye Effect](https://aderemisalako.me/work/red-eye-effect/): Case study — a cinematic colour study graded in DaVinci Resolve
 - [Services](https://aderemisalako.me/services): YouTube editing, short-form video, DaVinci Resolve colour grading and content strategy
 - [About](https://aderemisalako.me/about): Background and approach
