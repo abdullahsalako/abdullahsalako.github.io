@@ -86,6 +86,16 @@ const SUBSCRIBE_URL = 'https://salakoaderemi.substack.com/?r=7bt26&utm_campaign=
 function writePost(post, tpl) {
   // marked escapes apostrophes as &#39;; plain ones are valid HTML and easier to read
   let body = marked.parse(post.content).replace(/&#39;/g, "'");
+  const tocItems = [];
+  body = body.replace(/<h2>(.*?)<\/h2>/g, (_, heading) => {
+    const label = heading.replace(/<[^>]+>/g, '').replace(/&#39;/g, "'").trim();
+    const id = `section-${slugify(label)}`;
+    tocItems.push(`<li><a href="#${id}">${label}</a></li>`);
+    return `<h2 id="${id}">${heading}</h2>`;
+  });
+  const tocHtml = tocItems.length
+    ? `<nav class="article-toc" aria-label="Article sections"><p>In this article</p><ol>${tocItems.join('')}</ol></nav>`
+    : '';
   // closing line: related links (footnote, Markdown) and/or the Substack source
   const source = post.sourceUrl ? `Originally published on <a href="${esc(post.sourceUrl)}" target="_blank" rel="noopener">Substack</a>.` : '';
   const note = post.footnote ? marked.parseInline(String(post.footnote)) : '';
@@ -121,6 +131,7 @@ function writePost(post, tpl) {
     readTime: esc(post.readTime),
     tag: esc(post.tag || 'Blog'),
     dekHtml: post.dek ? `<p class="article-dek">${esc(post.dek)}</p>` : '',
+    tocHtml,
     bodyHtml: body.trim().split('\n').map((l) => '            ' + l).join('\n'),
     jsonLd,
   });

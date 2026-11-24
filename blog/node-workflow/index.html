@@ -111,18 +111,19 @@
               <span>6 min read</span>
             </div>
           </div>
+          <nav class="article-toc" aria-label="Article sections"><p>In this article</p><ol><li><a href="#section-1-primary-exposure-balance">1. Primary exposure balance</a></li><li><a href="#section-2-the-log-transform">2. The LOG transform</a></li><li><a href="#section-3-parallel-hsl-isolation">3. Parallel HSL isolation</a></li><li><a href="#section-4-soft-grain-overlay">4. Soft grain overlay</a></li></ol></nav>
           <div class="article-body">
             <p>Every grade I build for a face starts the same way: get the exposure and the LOG transform right before a single hue is touched. Skin is the one thing a viewer has calibrated their whole life — it forgives almost nothing, so the node tree has to earn cinematic warmth without ever announcing itself.</p>
-            <h2>1. Primary exposure balance</h2>
+            <h2 id="section-1-primary-exposure-balance">1. Primary exposure balance</h2>
             <p>The first node does one job: even out exposure across the face before any look is applied. A soft power window keyed to the highlights on the forehead and cheekbones, blended at low opacity, prevents the grade downstream from having to fight uneven light.</p>
-            <h2>2. The LOG transform</h2>
+            <h2 id="section-2-the-log-transform">2. The LOG transform</h2>
             <p>Converting into a working colour space early means every later node operates on predictable values. I keep a scope open through this stage — not for the shape of the curve, but to confirm skin sits where it should before anything stylistic happens.</p>
-            <h2>3. Parallel HSL isolation</h2>
+            <h2 id="section-3-parallel-hsl-isolation">3. Parallel HSL isolation</h2>
             <p>This is the actual warmth: a qualifier isolates the skin-tone range in parallel with the rest of the frame, so adjustments to hue and saturation land only where they're meant to. Small moves — a few degrees of hue, a touch of saturation — read as a lot on a close-up.</p>
             <blockquote>
             <p>The goal is never a “look.” It’s a face that reads as itself, just lit a little more generously than the camera saw it.</p>
             </blockquote>
-            <h2>4. Soft grain overlay</h2>
+            <h2 id="section-4-soft-grain-overlay">4. Soft grain overlay</h2>
             <p>The last node adds a fine, even grain over the full frame at low opacity. It does two things at once: it unifies footage shot across slightly different conditions, and it keeps skin from looking over-smoothed once the isolation node has done its work.</p>
             <p>None of this is complicated on its own. What makes it repeatable is building it as a saved node tree, so every new project starts from the same disciplined base instead of a blank page.</p>
             <p class="article-source"><a href="https://salakoaderemi.substack.com/?r=7bt26&amp;utm_campaign=subscribe-page-share-screen&amp;utm_medium=web" target="_blank" rel="noopener">Subscribe to my Substack</a> to get new posts as I write them.<br />See this approach on a finished piece in the <a href="/work/red-eye-effect/">Red Eye Effect colour study</a>, or read about my <a href="/services#colour-grading">colour grading services</a>.</p>
