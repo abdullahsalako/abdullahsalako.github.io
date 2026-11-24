@@ -6,11 +6,11 @@ date: '2026-11-24'
 tag: Essay
 dek: I’m learning how to become antifragile
 description: I’m learning how to become antifragile
-cover: /assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover.png
+cover: /assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover.webp
 readTime: 3 min read
 ---
 
-![](/assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover.png)
+![](/assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover.webp)
 
 We haven’t had electricity for three days. This has made me spend less time looking at blue screens and more time writing and reading.
 
