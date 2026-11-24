@@ -26,7 +26,7 @@ It was not the money I wanted to spend, but it was money I had, and I’m gratef
 
 When I think about how I was able to survive that period, I think about the work it took to earn that money. I also think about where my ability to work so hard came from.
 
-I worked even harder when I was younger. I built resilience and discipline early by following my father to the farm and doing hard manual labour. At the time, I probably didn’t understand what those experiences were building inside me. I only knew that there was work to be done.
+I worked even harder when I was younger. I built resilience and discipline early by following my father to the farm and doing hard manual labour. I remember grumbling one time, and my father told me, “When the task becomes harder, you double your courage.” At the time, I probably didn’t understand what those experiences—or his words—were building inside me. I only knew that there was work to be done.
 
 The main thing that has changed is how smartly I can work and how much money that work can earn. The discipline is the same. The resilience is the same. They have simply found a different expression.
 
