@@ -23,7 +23,7 @@ header.site { border-bottom: 0; padding: 26px 0 8px; }
 .nav-dropdown summary:hover,
 .nav-dropdown summary:focus-visible { color: var(--accent); }
 /* Navigation: a single generous row on desktop, a compact disclosure on mobile. */
-header.site{padding:16px 0}
+header.site{position:relative;z-index:10;padding:16px 0}
 .head-row{width:min(1440px,calc(100% - var(--gutter)));align-items:flex-start;flex-wrap:nowrap;gap:clamp(20px,3vw,48px)}
 .brand{flex:none}
 .nav-panel{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex:1;min-width:0}
