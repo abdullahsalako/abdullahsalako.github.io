@@ -1,5 +1,5 @@
 ---
-title: I Hated Spending It. I’m Grateful I Had It.
+title: I Hated Spending It but I’m Grateful I Had It.
 slug: i-hated-spending-it-im-grateful-i-had-it
 status: published
 date: '2026-11-24'
