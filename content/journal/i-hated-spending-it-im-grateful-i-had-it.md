@@ -30,7 +30,10 @@ I worked even harder when I was younger. I built resilience and discipline early
 
 I think the main thing that has changed is how smart I can work now and how much scope I can carry. The discipline is the same. The resilience is the same. I just express them differently now.
 
-![](/assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility.jpeg)
+<picture>
+  <source type="image/webp" srcset="/assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-640.webp 640w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-960.webp 960w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-1400.webp 1400w" sizes="(max-width: 700px) 100vw, 760px">
+  <img src="/assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-960.webp" srcset="/assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-640.webp 640w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-960.webp 960w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-1400.webp 1400w" sizes="(max-width: 700px) 100vw, 760px" width="1400" height="782" loading="lazy" decoding="async" alt="Antifragility in life">
+</picture>
 
 I’m learning how to bounce back from shock with less surprise each time.
 
