@@ -46,7 +46,7 @@ for (const f of pages) {
   const h = read(f);
   const stub = redirectStubs.includes(f);
   const problems = [];
-  if (!/href="\/?theme\.css"/.test(h)) problems.push('missing theme.css');
+  if (!/href="\/?theme\.css(?:\?v=\d+)?"/.test(h)) problems.push('missing theme.css');
   if (!stub) {
     if (!/addons\/addons\.css/.test(h) || !/addons\/addons\.js/.test(h)) problems.push('missing addons css/js');
     if (!/script\.js\?v=\d+/.test(h)) problems.push('missing versioned script.js');
