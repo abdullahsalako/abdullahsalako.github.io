@@ -4,8 +4,8 @@ slug: i-hated-spending-it-im-grateful-i-had-it
 status: published
 date: '2026-11-24'
 tag: Essay
-dek: I’m learning how to become antifragile
-description: I’m learning how to become antifragile
+dek: I’m learning how to be antifragile
+description: I’m learning how to be antifragile
 cover: /assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover.webp
 readTime: 3 min read
 ---
