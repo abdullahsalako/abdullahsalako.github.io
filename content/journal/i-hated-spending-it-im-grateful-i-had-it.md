@@ -10,7 +10,10 @@ cover: /assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover.webp
 readTime: 3 min read
 ---
 
-![](/assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover.webp)
+<picture>
+  <source type="image/webp" srcset="/assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover-640.webp 640w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover-960.webp 960w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover.webp 1672w" sizes="(max-width: 700px) 100vw, 640px">
+  <img src="/assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover-960.webp" srcset="/assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover-640.webp 640w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover-960.webp 960w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover.webp 1672w" sizes="(max-width: 700px) 100vw, 640px" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async" alt="A damaged car on a quiet road at night">
+</picture>
 
 We haven’t had electricity for three days. This has made me spend less time looking at blue screens and more time writing and reading.
 
@@ -32,7 +35,7 @@ I think the main thing that has changed is how smart I can work now and how much
 
 <picture>
   <source type="image/webp" srcset="/assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-640.webp 640w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-960.webp 960w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-1400.webp 1400w" sizes="(max-width: 700px) 100vw, 760px">
-  <img src="/assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-960.webp" srcset="/assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-640.webp 640w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-960.webp 960w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-1400.webp 1400w" sizes="(max-width: 700px) 100vw, 760px" width="1400" height="782" loading="lazy" decoding="async" alt="Antifragility in life">
+  <img src="/assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-960.webp" srcset="/assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-640.webp 640w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-960.webp 960w, /assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility-1400.webp 1400w" sizes="(max-width: 700px) 100vw, 640px" width="1400" height="782" loading="lazy" decoding="async" alt="Nassim Nicholas Taleb explains antifragility, comparing fragile, robust and antifragile responses to hardship">
 </picture>
 
 I’m learning how to bounce back from shock with less surprise each time.
