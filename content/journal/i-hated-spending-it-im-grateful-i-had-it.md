@@ -49,4 +49,4 @@ Sometimes bouncing back requires money you had planned to spend on something els
 
 So it’s a good time to start building resilience. Life will test you in ways you can’t even imagine. It may take your time, your peace, your plans or the money you worked hard to earn.
 
-Many people may come save you, but your biggest saviour is you.
+<p class="article-closing-highlight"><strong>Many people may come save you, but your biggest saviour is you.</strong></p>
