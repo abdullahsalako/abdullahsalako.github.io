@@ -13,7 +13,7 @@
 
 ## Blog
 
-- [I Hated Spending It. I’m Grateful I Had It.](https://aderemisalako.me/blog/i-hated-spending-it-im-grateful-i-had-it/): What surviving an accident taught me about money, resilience and becoming my own saviour
+- [I Hated Spending It. I’m Grateful I Had It.](https://aderemisalako.me/blog/i-hated-spending-it-im-grateful-i-had-it/): I’m learning how to become antifragile
 - [There Is No Light at the End of the Tunnel](https://aderemisalako.me/blog/there-is-no-light-at-the-end-of-the-tunnel/): Stop waiting to be happy
 - [The DaVinci Resolve Node Workflow for Cinematic Skin Tones](https://aderemisalako.me/blog/node-workflow/): How I build a DaVinci Resolve node tree for cinematic skin tones: exposure balance, LOG transform, parallel HSL isolation and a soft grain overlay.
 - [Are Men Polygamous in Nature?](https://aderemisalako.me/blog/are-men-polygamous-in-nature/): What if monogamy is the exception, not the rule?
