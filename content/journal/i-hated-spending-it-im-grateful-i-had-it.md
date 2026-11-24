@@ -4,8 +4,8 @@ slug: i-hated-spending-it-im-grateful-i-had-it
 status: published
 date: '2026-11-24'
 tag: Essay
-dek: What surviving an accident taught me about money, resilience and becoming my own saviour
-description: What surviving an accident taught me about money, resilience and becoming my own saviour
+dek: I’m learning how to become antifragile
+description: I’m learning how to become antifragile
 cover: /assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover.png
 readTime: 3 min read
 ---
@@ -26,12 +26,20 @@ It was not the money I wanted to spend, but it was money I had, and I’m gratef
 
 When I think about how I was able to survive that period, I think about the work it took to earn that money. I also think about where my ability to work so hard came from.
 
-I worked even harder when I was younger. I built resilience and discipline early by following my father to the farm and doing hard manual labour. I remember grumbling one time, and my father told me, “When the task becomes harder, you double your courage.” At the time, I probably didn’t understand what those experiences—or his words—were building inside me. I only knew that there was work to be done.
+I worked even harder when I was younger. I built resilience and discipline early by following my father to the farm and doing manual labour. I remember grumbling one time, and my father told me, “When the task becomes harder, you double your courage.” At the time, I saw it as unnecessary suffering. Looking back now, I realise that those experiences were shaping the person I would become.
 
-The main thing that has changed is how smartly I can work and how much money that work can earn. The discipline is the same. The resilience is the same. They have simply found a different expression.
+I think the main thing that has changed is how smart I can work now and how much scope I can carry. The discipline is the same. The resilience is the same. I just express them differently now.
 
-I’m learning how to bounce back from shock with less surprise each time. Sometimes bouncing back requires money you had planned to spend on something else. Sometimes it means going to the hospital and then finding the strength to deal with the police when all you want to do is go home. Sometimes it means accepting that life can change suddenly and still deciding to move forward.
+![](/assets/journal/i-hated-spending-it-im-grateful-i-had-it/antifragility.jpeg)
 
-This feels like a good time to start building resilience. Life will test you in ways you cannot predict. It may take your time, your peace, your plans or the money you worked hard to earn.
+I’m learning how to bounce back from shock with less surprise each time.
+
+Nassim Nicholas Taleb calls this idea *antifragility*. Fragile things break under pressure. Robust things withstand pressure and remain the same. Antifragile things become stronger because of pressure.
+
+Taleb writes that “some things benefit from shocks; they thrive and grow when exposed to volatility, randomness, disorder, and stressors.”
+
+Sometimes bouncing back requires money you had planned to spend on something else, or money you don’t even have at all. Sometimes it means spending time in a hospital bed or dealing with the crooks called the Nigerian police. Sometimes it means accepting that life can change suddenly and still deciding to move forward.
+
+So it’s a good time to start building resilience. Life will test you in ways you can’t even imagine. It may take your time, your peace, your plans or the money you worked hard to earn.
 
 Many people may come save you, but your biggest saviour is you.
