@@ -8,6 +8,7 @@ dek: I’m learning how to be antifragile
 description: I’m learning how to be antifragile
 cover: /assets/journal/i-hated-spending-it-im-grateful-i-had-it/cover.webp
 readTime: 3 min read
+footnote: '[Read this article on Substack](https://salakoaderemi.substack.com/p/i-hated-spending-it-but-im-grateful)'
 ---
 
 <picture>
