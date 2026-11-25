@@ -44,7 +44,7 @@ I’m learning how to bounce back from shock with less surprise each time.
 
 Nassim Nicholas Taleb calls this idea *antifragility*. Fragile things break under pressure. Robust things withstand pressure and remain the same. Antifragile things become stronger because of pressure.
 
-Taleb writes that *“some things benefit from shocks; they thrive and grow when exposed to volatility, randomness, disorder, and stressors.”*
+Taleb writes that *“some things benefit from shocks; they thrive and grow when exposed to volatility, randomness, disorder, and stressors.”* This is from his book *Antifragile*.
 
 Sometimes bouncing back requires money you had planned to spend on something else, or money you don’t even have at all. Sometimes it means spending time in a hospital bed or dealing with the crooks called the Nigerian police. Sometimes it means accepting that life can change suddenly and still deciding to move forward.
 
