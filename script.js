@@ -395,6 +395,19 @@ document.addEventListener('click', function (e) {
   });
 });
 
+/* ---------- analytics: article views ----------
+   Every generated blog post supplies its slug and title on the article element.
+   GA4 already receives a standard page_view; this separate event makes it easy
+   to report views of a single article by post_slug or post_title. */
+var trackedArticle = document.querySelector('article[data-post-slug]');
+if (trackedArticle && typeof gtag === 'function') {
+  gtag('event', 'article_view', {
+    post_slug: trackedArticle.dataset.postSlug,
+    post_title: trackedArticle.dataset.postTitle,
+    page_path: location.pathname
+  });
+}
+
 /* ---------- analytics: blog index clicks ----------
    Sends a GA4 `journal_index_click` event for links to the blog list itself
    (/blog/), such as the Blog item in the nav and footer. Links to
